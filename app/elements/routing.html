@@ -53,6 +53,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       setFocus(app.route);
     });
 
+    // Share-content page route
+    page('/share-content', function() {
+      app.route = 'share-content';
+      setFocus(app.route);
+    });
+    
     // About page route
     page('/about', function() {
       app.route = 'about';
