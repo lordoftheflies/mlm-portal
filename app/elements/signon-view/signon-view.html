@@ -1,0 +1,152 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../../bower_components/paper-toggle-button/paper-toggle-button.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../bower_components/iron-form/iron-form.html">
+<link rel="import" href="../../styles/shared-styles.html">
+<!--<link rel="import" href="../../bower_components/i18n-behavior/i18n-behavior.html">-->
+
+<dom-module id="signon-view">
+    <template>
+        <style include="shared-styles">
+            :host {
+                display: block;
+                /*@apply(--layout-flex);*/
+                @apply(--layout-center);
+                @apply(--layout-vertical);
+            }
+        </style>
+        <!--<paper-card heading="Sign-on" class="layout horizontal center">-->
+            <form is="iron-form" id="form" verbose
+                  content-type="application/json" 
+                  method="post"
+                  on-response="onSignOnResponse"
+                  on-error="onSignOnError" 
+                  handle-as="json"
+                  action="{{baseUrl}}authentication/signon">
+                <div class="card-content">
+                    <paper-input 
+                        id="registrateTitleLabel" 
+                        name="name" 
+                        label="Name" 
+                        type="text" 
+                        auto-validate 
+                        pattern="{{namePattern}}" 
+                        error-message="Invalid name.">
+                    </paper-input>
+                </div>
+                <div class="card-content">
+                    <paper-input 
+                        id="registrateEmailLabel" 
+                        name="email" 
+                        label="Email address" 
+                        type="email" 
+                        auto-validate 
+                        pattern="{{mailPattern}}" 
+                        error-message="Invalid email address.">
+                        <iron-icon icon="account-circle" prefix></iron-icon>
+                    </paper-input>
+                </div>
+                <div class="card-content">
+                    <paper-input 
+                        id="registratePasswordLabel" 
+                        name="password" 
+                        label="Password" 
+                        type="password" 
+                        auto-validate 
+                        pattern="{{passPattern}}" 
+                        error-message="Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number.">
+                        <iron-icon icon="lock" prefix></iron-icon>
+                    </paper-input>
+                    <paper-input 
+                        id="registratePasswordConfirmLabel" 
+                        name="passwordConfirm" 
+                        label="Password confirmation" 
+                        type="password"
+                        <iron-icon icon="lock" prefix></iron-icon>
+                    </paper-input>
+                </div>
+                <div class="card-content">
+                    <paper-input 
+                        id="registrateCodeLabel" 
+                        name="code" 
+                        label="Activation code" 
+                        type="text" 
+                        auto-validate 
+                        pattern="{{passPattern}}" 
+                        error-message="Activation code.">
+                        <iron-icon icon="lock" prefix></iron-icon>
+                    </paper-input>
+                </div>
+                <div class="card-actions">
+                    <paper-button id="registrateSignInButton" raised class="primary"  on-click="onNavigateToSignIn" dialog-dismiss>Signin</paper-button>
+
+                    <paper-fab id="registrateSignOnButton" icon="arrow-forward" title="submit" on-click="onRegistrate" ></paper-fab>
+                </div>
+            </form>
+        <!--</paper-card>-->
+    </template>
+    <script>
+        (function () {
+            'use strict';
+
+            Polymer({
+                is: 'signon-view',
+                behaviors: [PlutoniumBehaviors.WidgetBehavior],
+                properties: {
+                    mailPattern: {
+                        type: String,
+                        value: '/[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/'
+                    },
+                    passPattern: {
+                        type: String,
+                        value: '/(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{6,16})$/'
+                    },
+                    namePattern: {
+                        type: String,
+                        value: '/[a-zA-Z]*/'
+                    }
+                },
+                listeners: {
+                    'form.iron-form-response': 'onSignOnResponse',
+                    'form.iron-form-error': 'onSignOnError'
+                },
+                onNavigateToSignIn: function () {
+//                    app.$.registrationDialog.close();
+                    app.$.loginDialog.open();
+                },
+                onSignOnResponse: function (event, details) {
+                    console.log('Sign-on response: ' + JSON.stringify(details.response));
+                    app.sessionInfo = details.response;
+                    page.redirect(app.baseUrl + 'mailbox');
+                },
+                onSignOnError: function (event, details) {
+                    console.log('Sign-on error: ' + JSON.stringify(details.response));
+                    app.$.toast.text = app.locale.error_registration;
+                    app.$.toast.show();
+                },
+                onRegistrate: function () {
+                    console.log('Registrate user ...');
+//                    this.fire('login', credentials);
+//                    app.$.toast.text = app.locale.error_credentials;
+//               +     app.$.toast.show();
+//                    page.redirect(app.baseUrl);
+                    this.$.form.submit();
+                }
+            });
+        })();
+    </script>
+</dom-module>
