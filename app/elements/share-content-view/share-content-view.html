@@ -1,0 +1,242 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../bower_components/plutonium-cm-form/plutonium-cm-editor-text.html">
+<link rel="import" href="../../bower_components/plutonium-cm-form/plutonium-cm-editor-image.html">
+<link rel="import" href="../../bower_components/plutonium-cm-form/plutonium-cm-editor-link.html">
+<link rel="import" href="../../bower_components/plutonium-cm-form/plutonium-cm-editor-video.html">
+<link rel="import" href="../../bower_components/plutonium-cm-form/plutonium-cm-form.html">
+<!--<link rel="import" href="../../bower_components/i18n-behavior/i18n-behavior.html">-->
+
+<link rel="import" href="../plutonium-witdget-behavior.html">
+
+<dom-module id="share-content-view">
+    <template>
+        <style>
+            :host {
+                display: block;
+                /*@apply(--layout-vertical);*/
+                /*@apply(--layout-horizontal);*/
+                /*@apply(--layout-center);*/
+            }
+
+            plutonium-cm-form {
+                display: block;
+                @apply(--layout-vertical);
+            }
+            /*            :host paper-material {
+                            margin-left: 20px;
+                            background-color: white;
+                            @apply(--layout-vertical);
+                            @apply(--layout-center);
+                        }*/
+
+            /*             {
+                            @apply(--layout-horizontal);
+                            @apply(--layout-flex);
+                            @apply(--layout-center);
+                        }
+            /*            .card-content {
+                            @apply(--layout-horizontal);
+                            @apply(--layout-flex);
+                            @apply(--layout-center);
+                        }
+                        .section-content {
+                            display: inline-block;
+                            @apply(--layout-horizontal);
+                            @apply(--layout-flex);
+                                            @apply(--layout-center);
+                        }
+                        .section-actions {
+                            display: inline-block;
+                            @apply(--layout-vertical);
+                            @apply(--layout-center);
+                        }*/
+        </style>
+
+        <iron-ajax 
+            id="contactsAjax"
+            url="{{apiUrl}}/addressbook/{{accountId}}/contacts" 
+            last-response="{{contacts}}" 
+            auto></iron-ajax>
+
+        <plutonium-cm-form 
+            contacts="{{contacts}}" 
+            content-model="{{sections}}"
+            editors="[[editorMap]]">
+            <paper-dialog id="textEditorDialog" modal class="editor">
+                <h2 id="textEditorDialogTitle">Edit text properties</h2>
+                <div class="content">
+                    <input type="hidden" name="name">
+                    <paper-input name="title" label="{{text.textEditorTitlePlaceholder}}">
+                    </paper-input>
+                    <paper-textarea name="data" label="Text" rows="10" type="text"></paper-textarea>
+
+                </div>
+                <div class="buttons">
+                    <paper-button id="textEditorDialogCancelButton" dialog-dismiss>{{text.textEditorCancelLabel}}</paper-button>
+                    <paper-button id="textEditorDialogAcceptButton" raised dialog-confirm>Accept</paper-button>
+                </div>
+            </paper-dialog>
+
+            <paper-dialog id="imageEditorDialog" modal class="editor">
+                <h2 id="imageEditorDialogTitle">Edit image properties</h2>
+                <div class="content">
+                    <input type="hidden" name="name">
+                    <paper-input name="title" label="Title"></paper-input>
+
+                    <paper-input name="data" required auto-validate
+                                 label="Image url">
+
+                    </paper-input>
+                </div>
+                <div class="buttons">
+                    <paper-button id="imageEditorDialogCancelButton" dialog-dismiss>Cancel</paper-button>
+                    <paper-button id="imageEditorDialogAcceptButton" raised dialog-confirm>Accept</paper-button>
+                </div>
+            </paper-dialog>
+
+            <paper-dialog id="linkEditorDialog" modal class="editor">
+                <h2 id="linkEditorDialogTitle">Edit link properties</h2>
+                <div class="content">
+                    <input type="hidden" name="name">
+                    <paper-input id="linkEditorDialogTitleLabel" name="title" label="Title" ></paper-input>
+
+                    <input name="data" type="hidden" />
+                    <paper-dropdown-menu id="linkEditorReferenceLabel" label="Reference">
+                        <paper-menu
+                            class="dropdown-content" selected="{{data}}" attr-for-selected="value"
+                            attr-for-selected="id">
+                            <template is="dom-repeat" items="{{shareableContents}}">
+                                <paper-item value="{{item.id}}">{{item.name}}</paper-item>
+                            </template>
+                        </paper-menu>
+                    </paper-dropdown-menu>
+                </div>
+                <div class="buttons">
+                    <paper-button id="linkEditorDialogCancelButton" dialog-dismiss>Cancel</paper-button>
+                    <paper-button id="linkEditorDialogAcceptButton" raised dialog-confirm>Accept</paper-button>
+                </div>
+            </paper-dialog>
+
+
+
+            <paper-dialog id="videoEditorDialog" modal class="editor">
+                <h2 id="videoEditorDialogTitle">Edit video properties</h2>
+                <div class="content">
+                    <input type="hidden" name="name">
+                    <paper-input name="title" label='Title' value="{{title}}">
+
+                    </paper-input>
+                    <paper-input name="data" required auto-validate
+                                 label='Video url'
+                                 error-message='Invalid Youtube url.'
+                                 value="{{url}}">
+
+                    </paper-input>
+                </div>
+                <div class="buttons">
+                    <paper-button id="videoEditorDialogCancelButton" dialog-dismiss>Cancel</paper-button>
+                    <paper-button id="videoEditorDialogAcceptButton" raised dialog-confirm>Accept</paper-button>
+                </div>
+            </paper-dialog> 
+        </plutonium-cm-form>
+
+        <iron-ajax 
+            id="shareAjax"
+            handle-as="json"
+            content-type="application/json"
+            method="POST"
+            url="{{apiUrl}}/content-management/save" 
+            body="{{pageDto}}"></iron-ajax>
+    </template>
+    <script>
+        (function () {
+            'use strict';
+
+            Polymer({
+                is: 'share-content-view',
+                behaviors: [
+//                    PlutoniumBehaviors.WidgetBehavior,
+                    
+                ],
+                properties: {
+                    shareAjaxRequest: {
+                        
+                    },
+                    pageDto: {
+                        type: Object,
+                        notify: true
+                    },
+                    sections: {
+                        type: Object,
+                        notify: true,
+                        value: {
+                            "sections": [
+                            ]
+                        }
+                    },
+                    editorMap: {
+                        type: Object,
+                        notify: true,
+                        value: {
+                            "plutonium-cm-editor-image": "imageEditorDialog",
+                            "plutonium-cm-editor-link": "linkEditorDialog",
+                            "plutonium-cm-editor-text": "textEditorDialog",
+                            "plutonium-cm-editor-video": "videoEditorDialog"}
+                    },
+                    accountId: {
+                        type: String,
+                        notify: true
+                    }
+                },
+                //                listeners: {
+                //                    'addSection': 'addSection',
+                //                    'embedVideo': 'embedVideo',
+                //                    'embedImage': 'embedImage'
+                //                }
+                //                ,
+                observers: [
+                    'updateModel(sections)'
+                ],
+                listeners: {
+                    'share': 'onShare',
+                    'shareAjax.error': 'onShareError',
+                    'shareAjax.response': 'onShareResponse'
+                },
+                updateModel: function (sections) {
+                    this.pageDto = {
+                    };
+                },
+                onShare: function(e, details) {
+                    console.log('Save content: ' + JSON.stringify(details));
+                    this.pageDto = details.content;
+                    this.$.shareAjax.generateRequest();
+                },
+                onShareError: function() {
+                    app.$.toast.text = app.locale.error_share;
+                    app.$.toast.show();
+                },
+                onShareResponse: function() {
+                    app.$.toast.text = app.locale.success_share;
+                    app.$.toast.show();
+                }
+            });
+        })();
+    </script>
+</dom-module>
