@@ -140,7 +140,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
 
             paper-material div {
-                @apply(--layout-horizontal);
+                /*@apply(--layout-horizontal);*/
             }
         </style>
 
@@ -148,19 +148,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             id="genocideIronAjax"
             url="{{apiUrl}}/addressbook/genocide" 
             params="{{genocideRequestParams}}"
-            last-response="{{parents}}" 
-            auto></iron-ajax>
+            last-response="{{parents}}"></iron-ajax>
         <iron-ajax 
             id="possibleParentsIronAjax"
             url="{{apiUrl}}/addressbook/all" 
-            last-response="{{possibleParents}}" 
-            auto></iron-ajax>
+            last-response="{{possibleParents}}"></iron-ajax>
         <iron-ajax 
             id="childrenIronAjax"
             url="{{apiUrl}}/addressbook/children" 
             params="{{childrenRequestParams}}"
-            last-response="{{data}}" 
-            auto></iron-ajax>
+            last-response="{{data}}"></iron-ajax>
 
         <paper-dialog id="memberDialog" modal>
             <h2 id="newMemberDialogTitle">New member</h2>
@@ -222,21 +219,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </div>
         </paper-dialog>
 
-        <paper-material elevation="2">
-            <!--            <iron-selector class="breadcrumbs" id="parentBeadCrumbs" attr-for-selected="nodeid" selected="{{selectedAccount}}">
-                            <template is="dom-repeat" items="[[parents]]">
-                                <div nodeid="{{item.id}}" unusedcodes="{{item.codes}}" on-tap="onNavigateToChildren" id="parentName-{{item.id}}">
-                                    <iron-image class="thumbnail" sizing="contain" src="[[item.image]]"></iron-image>
-                                    <span>[[item.name]]</span>
-                                    <paper-badge id="codeBadge-{{item.id}}" for="parentName-{{item.id}}" label="{{item.codes}}" class="blue"></paper-badge>
-                                </div>
-                            </template>
-                        </iron-selector>-->
+        <!--            <iron-selector class="breadcrumbs" id="parentBeadCrumbs" attr-for-selected="nodeid" selected="{{selectedAccount}}">
+                        <template is="dom-repeat" items="[[parents]]">
+                            <div nodeid="{{item.id}}" unusedcodes="{{item.codes}}" on-tap="onNavigateToChildren" id="parentName-{{item.id}}">
+                                <iron-image class="thumbnail" sizing="contain" src="[[item.image]]"></iron-image>
+                                <span>[[item.name]]</span>
+                                <paper-badge id="codeBadge-{{item.id}}" for="parentName-{{item.id}}" label="{{item.codes}}" class="blue"></paper-badge>
+                            </div>
+                        </template>
+                    </iron-selector>-->
 
-            <template is="dom-repeat" items="{{parents}}">
-                <grapp-breadcrumb href="{{baseUrl}}network/{{item.id}}">[[item.name]]</grapp-breadcrumb>
-            </template>
+        <template is="dom-repeat" items="{{parents}}">
+            <grapp-breadcrumb href="{{baseUrl}}network/{{item.id}}">[[item.name]]</grapp-breadcrumb>
+        </template>
 
+        <paper-material elevation="1" class="layout end-justified">
             <div class="card-actions">
                 <paper-icon-button icon="arrow-upward" on-click="onNavigateUp"></paper-icon-button>
                 <paper-icon-button icon="add-circle" on-click="onOpenCreateMember"></paper-icon-button>

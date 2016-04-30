@@ -1,0 +1,88 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-list/iron-list.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../bower_components/plutonium-cm-form/plutonium-cm-section.html">
+
+<!--<link rel="import" href="../../bower_components/i18n-behavior/i18n-behavior.html">-->
+
+<dom-module id="content-viewer">
+    <template>
+        <style>
+            :host {
+                display: inline-block;
+                /*@apply(--layout-horizontal);*/
+            }
+
+            /*            paper-card {
+                            @apply(--layout-horizontal);
+                            @apply(--layout-flex);
+                            width: 100%;
+                        }
+            
+                        #contentDisplay {
+                            width: 100%;
+                        }*/
+        </style>
+
+        <template is="dom-if" if="{{!data.leaf}}">
+            <paper-card heading$="{{title}}">
+                        <div class="card-content">
+                    <iron-list items="{{data.sections}}" as="section"  hidden$="[[!data.sections.length]]">
+                               <template>
+                            <paper-item tabindex$="[[tabIndex]]">
+                                        <label id="articleTitleLabel" title="Navigate to {{baseUrl}}content-tree/{{section.data}}">
+                                    <a href$="{{baseUrl}}content-tree/{{section.data}}">[[section.title]]</a>
+                                </label>
+                            </paper-item>
+                        </template>
+                    </iron-list>
+                </div>
+            </paper-card>
+            <!---->
+        </template>
+        <template is="dom-if" if="{{data.leaf}}">
+            <paper-card heading$="{{data.title}}">
+                <plutonium-cm-section id="contentDisplay"  content-model$="{{data}}">
+                </plutonium-cm-section>
+            </paper-card>
+        </template>
+
+</template>
+<script>
+    (function () {
+        'use strict';
+
+        Polymer({
+            is: 'content-viewer',
+            behaviors: [PlutoniumBehaviors.WidgetBehavior],
+            properties: {
+                data: {
+                    type: Object,
+                    notify: true
+                },
+                title: {
+                    type: String,
+                    notify: true
+                }
+            },
+            observer: [
+                'computeTitle(data.title)'
+            ],
+            computeTitle: function (data) {
+                this.title = data.title;
+            }
+        });
+    })();
+</script>
+</dom-module>

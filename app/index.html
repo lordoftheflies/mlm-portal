@@ -99,6 +99,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             <span id="shareContentMenuTitle">Share content</span>
                         </a>
 
+                        <a hidden="[[!sessionInfo]]" data-route="content-tree" href="{{baseUrl}}content-tree/ROOT">
+                            <iron-icon icon="mail"></iron-icon>
+                            <span id="contentsMenuTitle">Contents</span>
+                        </a>
+                        
                         <a  hidden="[[!sessionInfo]]" data-route="network" href="{{baseUrl}}network/[[sessionInfo.token]]">
                             <iron-icon icon="supervisor-account"></iron-icon>
                             <span id="networkMenuTitle">Network</span>
@@ -157,7 +162,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         <iron-pages attr-for-selected="data-route" selected="{{route}}">
                             <section data-route="profile">
                                 <paper-material elevation="1">
-                                    <h2 id="shareContentViewTitleLabel" class="page-title focus-target" tabindex="-1">Share content</h2>
+                                    <h2 id="shareContentViewTitleLabel" class="page-title focus-target" tabindex="-1">Profile</h2>
                                     <profile-view account-id="{{sessionInfo.token}}" base-url="{{backEndUrl}}"></profile-view>
                                 </paper-material>
                             </section>
@@ -168,7 +173,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                     <share-content-view account-id="{{sessionInfo.token}}"></share-content-view>
                                 </paper-material>
                             </section>
-
+                            <section data-route="content-tree">
+                                <paper-material elevation="1">
+                                    <h2 id="contentTreeViewTitleLabel" class="page-title focus-target" tabindex="-1">Contents</h2>
+                                    <content-tree-view selected-root="[[params.contentId]]" base-url="/" api-url="{{backEndUrl}}"></content-tree-view>
+                                </paper-material>
+                            </section>
                             <section data-route="network">
                                 <paper-material elevation="1">
                                     <h2 id="networkViewTitleLabel" class="page-title focus-target" tabindex="-1">Network</h2>
