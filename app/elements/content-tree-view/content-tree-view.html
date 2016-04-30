@@ -74,109 +74,114 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <paper-tab text-id="messagesPagePublishedFolderTitle" name="published">Published</paper-tab>
         </paper-tabs>
 
-        <content-viewer 
+        <content-viewer
+            title$="{{title}}"
             data="{{data}}">
-        </content-viewer>
-    </template>
-    <script>
-        (function () {
-            'use strict';
+    </content-viewer>
+</template>
+<script>
+    (function () {
+        'use strict';
 
-            Polymer({
-                is: 'content-tree-view',
-                behaviors: [
-                    PlutoniumBehaviors.WidgetBehavior,
-                            //                BehaviorsStore.I18nBehavior
-                ],
-                properties: {
-                    tocRequestParams: {
-                        type: Object,
-                        notify: true,
-                        value: {
-                            pageId: 'ROOT'
-                        }
-                    },
-                    infoRequestParams: {
-                        type: Object,
-                        notify: true,
-                        value: {
-                            pageId: 'ROOT'
-                        }
-                    },
-                    renderBreadCrumbs: {
-                        type: Boolean,
-                        notify: true,
-                        value: false
-                    },
-                    selectedContentFolder: {
-                        type: String,
-                        notify: true,
-                        value: 'public'
-                    },
-                    selectedRoot: {
-                        type: String,
-                        notify: true
-                    },
-                    baseUrl: {
-                        type: String,
-                        notify: true
-                    },
-                    rootModel: {
-                        type: Object,
-                        notify: true
-                    },
-                    parentModel: {
-                        type: Object,
-                        notify: true
-                    },
-                    data: {
-                        type: Object,
-                        notify: true
+        Polymer({
+            is: 'content-tree-view',
+            behaviors: [
+                PlutoniumBehaviors.WidgetBehavior,
+                        //                BehaviorsStore.I18nBehavior
+            ],
+            properties: {
+                tocRequestParams: {
+                    type: Object,
+                    notify: true,
+                    value: {
+                        pageId: 'ROOT'
                     }
                 },
-                observers: [
-                    'computeTocRequestParams(selectedRoot, selectedContentFolder)'
-                ],
-                ready: function () {
-                    console.log('Toc-Content-view is READY(account-id=' + this.selectedRoot + ')');
+                infoRequestParams: {
+                    type: Object,
+                    notify: true,
+                    value: {
+                        pageId: 'ROOT'
+                    }
                 },
-                computeTocRequestParams: function (selectedRoot, selectedContentFolder) {
-                    this.tocRequestParams.pageId = selectedRoot;
-                    this.tocRequestParams.tag = selectedContentFolder;
-                    this.infoRequestParams.pageId = selectedRoot;
-                    console.log('Toc-Content-view toc navigation request parameters updated: ' + JSON.stringify(this.tocRequestParams))
-                    if (this.data !== undefined)
-                        this.splice('data.sections', 0, this.data.sections.length);
-                    this.$.rootModelAjax.generateRequest();
-                    this.$.childTocAjax.generateRequest();
-                    this.$.parentTocAjax.generateRequest();
+                renderBreadCrumbs: {
+                    type: Boolean,
+                    notify: true,
+                    value: false
                 },
-                getItemClasses: function (item) {
-                    return item.tags.join(" ");
+                selectedContentFolder: {
+                    type: String,
+                    notify: true,
+                    value: 'public'
                 },
-                isLeaf: function (item) {
-                    console.log(item.sections.length);
-                    return item.sections.length === 0;
+                selectedRoot: {
+                    type: String,
+                    notify: true
                 },
-                isFork: function (item) {
-                    return item.sections.length > 0;
+                baseUrl: {
+                    type: String,
+                    notify: true
                 },
-                onParentTocResponse: function () {
-                    console.log('Toc-Content-View parent path success response (' + this.selectedRoot + ').');
-                    //                this.renderBreadCrumbs = true;
+                rootModel: {
+                    type: Object,
+                    notify: true
                 },
-                onParentTocError: function () {
-                    console.log('Toc-Content-View parent path failed to respond (' + this.selectedRoot + ').');
-                    this.selectedContentFolder = 'public';
-                    //                this.renderBreadCrumbs = true;
+                parentModel: {
+                    type: Object,
+                    notify: true
                 },
-                onContentResponse: function () {
-                    console.log('Content fetched for ' + this.selectedRoot);
+                data: {
+                    type: Object,
+                    notify: true
                 },
-                onContentError: function () {
-                    console.log('Content fetching failed for ' + this.selectedRoot);
+                title: {
+                    type: String,
+                    notify: true
                 }
-            });
-        })();
-    </script>
+            },
+            observers: [
+                'computeTocRequestParams(selectedRoot, selectedContentFolder)'
+            ],
+            ready: function () {
+                console.log('Toc-Content-view is READY(account-id=' + this.selectedRoot + ')');
+            },
+            computeTocRequestParams: function (selectedRoot, selectedContentFolder) {
+                this.tocRequestParams.pageId = selectedRoot;
+                this.tocRequestParams.tag = selectedContentFolder;
+                this.infoRequestParams.pageId = selectedRoot;
+                console.log('Toc-Content-view toc navigation request parameters updated: ' + JSON.stringify(this.tocRequestParams))
+                if (this.data !== undefined)
+                    this.splice('data.sections', 0, this.data.sections.length);
+                this.$.rootModelAjax.generateRequest();
+                this.$.childTocAjax.generateRequest();
+                this.$.parentTocAjax.generateRequest();
+            },
+            getItemClasses: function (item) {
+                return item.tags.join(" ");
+            },
+            isLeaf: function (item) {
+                console.log(item.sections.length);
+                return item.sections.length === 0;
+            },
+            isFork: function (item) {
+                return item.sections.length > 0;
+            },
+            onParentTocResponse: function () {
+                console.log('Toc-Content-View parent path success response (' + this.selectedRoot + ').');
+                //                this.renderBreadCrumbs = true;
+            },
+            onParentTocError: function () {
+                console.log('Toc-Content-View parent path failed to respond (' + this.selectedRoot + ').');
+                this.selectedContentFolder = 'public';
+                //                this.renderBreadCrumbs = true;
+            },
+            onContentResponse: function () {
+                console.log('Content fetched for ' + this.selectedRoot);
+            },
+            onContentError: function () {
+                console.log('Content fetching failed for ' + this.selectedRoot);
+            }
+        });
+    })();
+</script>
 </dom-module>

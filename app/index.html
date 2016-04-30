@@ -103,7 +103,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             <iron-icon icon="mail"></iron-icon>
                             <span id="contentsMenuTitle">Contents</span>
                         </a>
-                        
+
                         <a  hidden="[[!sessionInfo]]" data-route="network" href="{{baseUrl}}network/[[sessionInfo.token]]">
                             <iron-icon icon="supervisor-account"></iron-icon>
                             <span id="networkMenuTitle">Network</span>
@@ -176,7 +176,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             <section data-route="content-tree">
                                 <paper-material elevation="1">
                                     <h2 id="contentTreeViewTitleLabel" class="page-title focus-target" tabindex="-1">Contents</h2>
-                                    <content-tree-view selected-root="[[params.contentId]]" base-url="/" api-url="{{backEndUrl}}"></content-tree-view>
+                                    <content-tree-view 
+                                        selected-root="[[params.contentId]]" 
+                                        base-url="/" 
+                                        api-url="{{backEndUrl}}"></content-tree-view>
                                 </paper-material>
                             </section>
                             <section data-route="network">
