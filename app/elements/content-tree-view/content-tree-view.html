@@ -1,0 +1,181 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../bower_components/iron-list/iron-list.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../../bower_components/grapp-breadcrumbs/grapp-breadcrumbs.html">
+
+<!--<link rel="import" href="../../bower_components/i18n-behavior/i18n-behavior.html">-->
+
+<dom-module id="content-tree-view">
+    <template>
+        <style>
+            :host {
+                display: inline-block;
+            }
+/*            content-viewer {
+                width: 100%;
+                @apply(--layout-horizontal);
+                @apply(--layout-flex);
+            }*/
+        </style>
+
+        <iron-ajax 
+            id="rootModelAjax"
+            url="{{apiUrl}}/content-management/toc/info" 
+            params="{{infoRequestParams}}"
+            handle-as="json"
+            last-response="{{rootModel}}">
+        </iron-ajax>
+
+        <iron-ajax 
+            id="parentTocAjax"
+            url="{{apiUrl}}/content-management/toc/path" 
+            params="{{tocRequestParams}}"
+            handle-as="json"
+            last-response="{{parentModel}}" 
+            on-response="onParentTocResponse"
+            on-error="onParentTocError">
+        </iron-ajax>
+
+        <iron-ajax 
+            id="childTocAjax"
+            url="{{apiUrl}}/content-management/toc" 
+            params="{{tocRequestParams}}"
+            handle-as="json"
+            last-response="{{data}}">
+        </iron-ajax>
+
+        <template is="dom-repeat" items="{{parentModel.sections}}">
+            <grapp-breadcrumb href="{{baseUrl}}content-tree/{{item.data}}">[[item.title]]</grapp-breadcrumb>
+        </template>
+        <paper-tabs selected="{{selectedContentFolder}}" attr-for-selected="name" autoselect>
+            <paper-tab text-id="messagesPagePublicFolderTitle" name="public">Public</paper-tab>
+            <paper-tab text-id="messagesPageMyContentsFolderTitle" name="drafts">Drafts</paper-tab>
+            <paper-tab text-id="messagesPagePublishedFolderTitle" name="published">Published</paper-tab>
+        </paper-tabs>
+
+        <iron-pages 
+            selected="{{selectedContentFolder}}" 
+            attr-for-selected="id">
+            <content-viewer 
+                    id="public"
+                    base-url="{{baseUrl}}"
+                    data="{{data}}">
+            </content-viewer>
+            <content-viewer 
+                id="drafts"
+                base-url="{{baseUrl}}"
+                data="{{data}}">
+            </content-viewer>
+            <content-viewer 
+                id="published"
+                base-url="{{baseUrl}}"
+                data="{{data}}">
+            </content-viewer>
+        </iron-pages>
+    </template>
+<script>
+    (function () {
+        'use strict';
+
+        Polymer({
+            is: 'content-tree-view',
+            behaviors: [
+                PlutoniumBehaviors.WidgetBehavior,
+//                BehaviorsStore.I18nBehavior
+            ],
+            properties: {
+                tocRequestParams: {
+                    type: Object,
+                    notify: true,
+                    value: {
+                        pageId: 'ROOT'
+                    }
+                },
+                infoRequestParams: {
+                    type: Object,
+                    notify: true,
+                    value: {
+                        pageId: 'ROOT'
+                    }
+                },
+                renderBreadCrumbs: {
+                    type: Boolean,
+                    notify: true,
+                    value: false
+                },
+                selectedContentFolder: {
+                    type: String,
+                    notify: true,
+                    value: 'public'
+                },
+                selectedRoot: {
+                    type: String,
+                    notify: true
+                },
+                baseUrl: {
+                    type: String,
+                    notify: true
+                },
+                rootModel: {
+                    type: Object,
+                    notify: true
+                },
+                parentModel: {
+                    type: Object,
+                    notify: true
+                }
+            },
+            observers: [
+                'computeTocRequestParams(selectedRoot)'
+            ],
+            ready: function () {
+                console.log('Toc-Content-view is READY(account-id=' + this.selectedRoot + ')');
+            },
+            computeTocRequestParams: function (selectedRoot) {
+                this.tocRequestParams.pageId = selectedRoot;
+                this.infoRequestParams.pageId = selectedRoot;
+                console.log('Toc-Content-view toc navigation request parameters updated: ' + JSON.stringify(this.tocRequestParams))
+//                if (this.data !== undefined)
+//                    this.splice('data.sections', 0, this.data.sections.length);
+                this.$.rootModelAjax.generateRequest();
+                this.$.childTocAjax.generateRequest();
+                this.$.parentTocAjax.generateRequest();
+            },
+            getItemClasses: function (item) {
+                return item.tags.join(" ");
+            },
+            isLeaf: function (item) {
+                console.log(item.sections.length);
+                return item.sections.length === 0;
+            },
+            isFork: function (item) {
+                return item.sections.length > 0;
+            },
+            onParentTocResponse: function () {
+                console.log('Toc-Content-View parent path request paramter success.');
+//                this.renderBreadCrumbs = true;
+            },
+            onParentTocError: function () {
+//                this.renderBreadCrumbs = true;
+            },
+        });
+    })();
+</script>
+</dom-module>

@@ -44,12 +44,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         });
 
         page('/', function () {
-            app.route = 'home';
+            app.route = 'content-tree';
+            if (app.params === undefined || app.params === null) app.params = {};
+            app.params.contentId = 'ROOT';
             setFocus(app.route);
         });
 
         page(app.baseUrl, function () {
-            app.route = 'home';
+            app.route = 'content-tree';
+            if (app.params === undefined || app.params === null) app.params = {};
+            app.params.contentId = 'ROOT';
             setFocus(app.route);
         });
 
@@ -63,6 +67,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             app.route = 'share-content';
             setFocus(app.route);
         });
+        // Contents page route
+        page('/content-tree/:contentId', function (data) {
+            app.route = 'content-tree';
+            app.params = data.params;
+            setFocus(app.route);
+        });
         // Network page route
         page('/network/:memberId', function (data) {
             app.route = 'network';
@@ -72,22 +82,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         // About page route
         page('/about', function () {
             app.route = 'about';
-            setFocus(app.route);
-        });
-
-        page('/users', function () {
-            app.route = 'users';
-            setFocus(app.route);
-        });
-
-        page('/users/:name', function (data) {
-            app.route = 'user-info';
-            app.params = data.params;
-            setFocus(app.route);
-        });
-
-        page('/contact', function () {
-            app.route = 'contact';
             setFocus(app.route);
         });
 

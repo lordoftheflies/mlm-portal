@@ -27,7 +27,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </style>
 
         <iron-ajax url="{{baseUrl}}addressbook/{{accountId}}/profile" 
-                   last-response="{{profile}}" auto></iron-ajax>
+                   last-response="{{profile}}"></iron-ajax>
 
         <iron-ajax url="{{baseUrl}}localization/locales" 
 
@@ -76,7 +76,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             Polymer({
                 is: 'profile-view',
                 behaviors: [
-                    PlutoniumBehaviors.WidgetBehavior, 
+                    PlutoniumBehaviors.WidgetBehavior,
 //                    BehaviorsStore.I18nBehavior
                 ],
                 properties: {
@@ -105,7 +105,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     this._init = false;
                 },
                 attached: function () {
-                    
+
                 },
                 onSelect: function (event, details) {
                     if (this._init) {

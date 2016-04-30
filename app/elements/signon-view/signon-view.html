@@ -62,6 +62,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </div>
                 <div class="card-content">
                     <paper-input 
+                        id="registratePhoneNumberLabel" 
+                        name="email" 
+                        label="Phone" 
+                        type="text" 
+                        auto-validate 
+                        pattern="{{phonePattern}}" 
+                        error-message="Invalid phone number.">
+                        <iron-icon icon="account-circle" prefix></iron-icon>
+                    </paper-input>
+                </div>
+                <div class="card-content">
+                    <paper-input 
                         id="registratePasswordLabel" 
                         name="password" 
                         label="Password" 
@@ -75,7 +87,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         id="registratePasswordConfirmLabel" 
                         name="passwordConfirm" 
                         label="Password confirmation" 
-                        type="password"
+                        type="password">
                         <iron-icon icon="lock" prefix></iron-icon>
                     </paper-input>
                 </div>
