@@ -66,6 +66,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <template is="dom-bind" id="app">
 
+            <iron-ajax auto id="login" 
+                       on-response="sessionInfoHandler" 
+                       on-error="sessionInitializationErrorHandler" 
+                       url="{{backEndUrl}}authentication/session?token={{sessionInfo.token}}"
+                       last-response="{{sessionInfo}}">
+            </iron-ajax>
+            
             <paper-drawer-panel id="paperDrawerPanel" responsive-width="840px">
                 <!-- Drawer Scroll Header Panel -->
                 <paper-scroll-header-panel drawer fixed>
