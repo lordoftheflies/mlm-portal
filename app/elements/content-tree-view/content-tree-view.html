@@ -74,25 +74,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <paper-tab text-id="messagesPagePublishedFolderTitle" name="published">Published</paper-tab>
         </paper-tabs>
 
-        <iron-pages 
-            selected="{{selectedContentFolder}}" 
-            attr-for-selected="id">
-            <content-viewer 
-                id="public"
-                base-url="{{baseUrl}}"
-                data="{{data}}">
-            </content-viewer>
-            <content-viewer 
-                id="drafts"
-                base-url="{{baseUrl}}"
-                data="{{data}}">
-            </content-viewer>
-            <content-viewer 
-                id="published"
-                base-url="{{baseUrl}}"
-                data="{{data}}">
-            </content-viewer>
-        </iron-pages>
+        <content-viewer 
+            data="{{data}}">
+        </content-viewer>
     </template>
     <script>
         (function () {
@@ -144,20 +128,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     parentModel: {
                         type: Object,
                         notify: true
+                    },
+                    data: {
+                        type: Object,
+                        notify: true
                     }
                 },
                 observers: [
-                    'computeTocRequestParams(selectedRoot)'
+                    'computeTocRequestParams(selectedRoot, selectedContentFolder)'
                 ],
                 ready: function () {
                     console.log('Toc-Content-view is READY(account-id=' + this.selectedRoot + ')');
                 },
-                computeTocRequestParams: function (selectedRoot) {
+                computeTocRequestParams: function (selectedRoot, selectedContentFolder) {
                     this.tocRequestParams.pageId = selectedRoot;
+                    this.tocRequestParams.tag = selectedContentFolder;
                     this.infoRequestParams.pageId = selectedRoot;
                     console.log('Toc-Content-view toc navigation request parameters updated: ' + JSON.stringify(this.tocRequestParams))
-                    //                if (this.data !== undefined)
-                    //                    this.splice('data.sections', 0, this.data.sections.length);
+                    if (this.data !== undefined)
+                        this.splice('data.sections', 0, this.data.sections.length);
                     this.$.rootModelAjax.generateRequest();
                     this.$.childTocAjax.generateRequest();
                     this.$.parentTocAjax.generateRequest();
@@ -181,10 +170,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     this.selectedContentFolder = 'public';
                     //                this.renderBreadCrumbs = true;
                 },
-                onContentResponse: function() {
+                onContentResponse: function () {
                     console.log('Content fetched for ' + this.selectedRoot);
                 },
-                onContentError: function() {
+                onContentError: function () {
                     console.log('Content fetching failed for ' + this.selectedRoot);
                 }
             });

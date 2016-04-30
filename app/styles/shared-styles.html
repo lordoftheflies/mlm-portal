@@ -12,28 +12,114 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <!-- shared styles for all elements and index.html -->
 <dom-module id="shared-styles">
-  <template>
-    <style>
-      .page-title {
-        @apply(--paper-font-display2);
-      }
+    <template>
+        <style>
+            .page-title {
+                @apply(--paper-font-display2);
+            }
 
-      .app-menu {
-        --paper-menu-selected-item: {
-          color: #fff;
-          background: var(--light-primary-color);
-        }
-      }
+            .app-menu {
+                --paper-menu-selected-item: {
+                    color: #fff;
+                    background: var(--light-primary-color);
+                }
+            }
 
-      paper-menu a > *, paper-menu paper-item > *, paper-menu paper-icon-item > * {
-        pointer-events: none;
-      }
+            paper-menu a > *, paper-menu paper-item > *, paper-menu paper-icon-item > * {
+                pointer-events: none;
+            }
 
-      @media (max-width: 600px) {
-        .page-title {
-          font-size: 24px!important;
-        }
-      }
-    </style>
-  </template>
+
+            [title] {
+                font-weight: 400;
+                margin: 0 0 0 50px;
+            }
+            [condensed-title] {
+                font-weight: 400;
+                margin-left: 30px;
+            }
+            [condensed-title] i {
+                font-style: normal;
+                font-weight: 100;
+            }
+            .container {
+                @apply(--layout-horizontal);
+            }
+            .flexchild {
+                display: inline-block;
+                @apply(--layout-flex);
+            }
+            iron-list {
+                /* padding-top: 148px; */
+                /* margin-top: 64px; */
+                padding-bottom: 16px;
+            }
+            .item {
+                @apply(--layout-horizontal);
+                padding: 20px;
+                border-radius: 8px;
+                background-color: white;
+                border: 1px solid #ddd;
+                /* max-width: 800px; */
+                margin: 16px auto 0 auto;
+            }
+            .item:focus {
+                outline: 0;
+                border-color: #333;
+            }
+
+            .item.unread {
+                outline: 0;
+                background-color: #ddd;
+            }
+
+            .item.selected .star {
+                color: var(--paper-blue-600);
+            }
+
+            .item.selected {
+                background-color: var(--google-grey-300);
+                border-bottom: 1px solid #ccc;
+            }
+
+            .avatar {
+                height: 40px;
+                width: 40px;
+                border-radius: 20px;
+                box-sizing: border-box;
+                background-color: #DDD;
+            }
+            .thumbnail {
+                height: 20px;
+                width: 20px;
+                border-radius: 10px;
+                box-sizing: border-box;
+                background-color: #DDD;
+            }
+            .pad {
+                padding: 0 16px;
+                @apply(--layout-flex);
+                @apply(--layout-vertical);
+            }
+            .primary {
+                font-size: 16px;
+                font-weight: bold;
+            }
+            .secondary {
+                font-size: 14px;
+            }
+            .dim {
+                color: gray;
+            }
+            .spacer {
+                @apply(--layout-flex);
+            }
+
+            @media (max-width: 600px) {
+                .page-title {
+                    font-size: 24px!important;
+                }
+            }
+        </style>
+    </template>
 </dom-module>
