@@ -173,7 +173,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 //                    console.log('Sign-in erroEE: ' + JSON.stringify(dropClasses(event)));
 //                    console.log('Sign-in erroDD: ' + JSON.stringify(dropClasses(details)));
                     console.log('Sign-in erro: ' + JSON.stringify(details.response));
-                    app.$.toast.text = app.locale.error_login;
+                    app.$.toast.text = 'Login failed.';
                     app.$.toast.show();
                 },
                 keydown: function (event, detail, sender) {

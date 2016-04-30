@@ -24,30 +24,30 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 /*@apply(--layout-horizontal);*/
             }
 
-/*            paper-card {
-                @apply(--layout-horizontal);
-                @apply(--layout-flex);
-                width: 100%;
-            }
-
-            #contentDisplay {
-                width: 100%;
-            }*/
+            /*            paper-card {
+                            @apply(--layout-horizontal);
+                            @apply(--layout-flex);
+                            width: 100%;
+                        }
+            
+                        #contentDisplay {
+                            width: 100%;
+                        }*/
         </style>
 
         <template is="dom-if" if="{{!data.leaf}}">
             <paper-card heading$="{{title}}">
                         <div class="card-content">
-                        <iron-list items="{{data.sections}}" as="section"  hidden$="[[!data.sections.length]]">
-                        <template>
-                        <paper-item tabindex$="[[tabIndex]]">
-                                    <label id="articleTitleLabel" title="Navigate to {{baseUrl}}content-tree/{{section.data}}">
-                                <a href$="{{baseUrl}}content-tree/{{section.data}}">[[section.title]]</a>
-                            </label>
-                        </paper-item>
-                    </template>
-                </iron-list>
-                <!--</div>-->
+                    <iron-list items="{{data.sections}}" as="section"  hidden$="[[!data.sections.length]]">
+                               <template>
+                            <paper-item tabindex$="[[tabIndex]]">
+                                        <label id="articleTitleLabel" title="Navigate to {{baseUrl}}content-tree/{{section.data}}">
+                                    <a href$="{{baseUrl}}content-tree/{{section.data}}">[[section.title]]</a>
+                                </label>
+                            </paper-item>
+                        </template>
+                    </iron-list>
+                </div>
             </paper-card>
             <!---->
         </template>
