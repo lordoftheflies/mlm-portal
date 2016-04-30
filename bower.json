@@ -9,7 +9,8 @@
     "platinum-elements": "PolymerElements/platinum-elements#^1.1.0",
     "polymer": "Polymer/polymer#^1.2.0",
     "plutonium-cm-form": "git@github.com:lordoftheflies/plutonium-cm-form.git",
-    "iron-ajax": "polymerelements/iron-ajax#^1.2.0"
+    "iron-ajax": "polymerelements/iron-ajax#^1.2.0",
+    "grapp-breadcrumbs": "^0.1.5"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"

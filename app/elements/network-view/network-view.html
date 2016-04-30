@@ -21,7 +21,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="../../bower_components/paper-badge/paper-badge.html">
 <link rel="import" href="../plutonium-witdget-behavior.html">
-<link rel="import" href="../../bower_components/i18n-behavior/i18n-behavior.html">
+<link rel="import" href="../../bower_components/grapp-breadcrumbs/grapp-breadcrumbs.html">
+<!--<link rel="import" href="../../bower_components/i18n-behavior/i18n-behavior.html">-->
 
 <dom-module id="network-view">
     <template>
@@ -222,15 +223,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </paper-dialog>
 
         <paper-material elevation="2">
-            <iron-selector class="breadcrumbs" id="parentBeadCrumbs" attr-for-selected="nodeid" selected="{{selectedAccount}}">
-                <template is="dom-repeat" items="[[parents]]">
-                    <div nodeid="{{item.id}}" unusedcodes="{{item.codes}}" on-tap="onNavigateToChildren" id="parentName-{{item.id}}">
-                        <iron-image class="thumbnail" sizing="contain" src="[[item.image]]"></iron-image>
-                        <span>[[item.name]]</span>
-                        <!--<paper-badge id="codeBadge-{{item.id}}" for="parentName-{{item.id}}" label="{{item.codes}}" class="blue"></paper-badge>-->
-                    </div>
-                </template>
-            </iron-selector>
+            <!--            <iron-selector class="breadcrumbs" id="parentBeadCrumbs" attr-for-selected="nodeid" selected="{{selectedAccount}}">
+                            <template is="dom-repeat" items="[[parents]]">
+                                <div nodeid="{{item.id}}" unusedcodes="{{item.codes}}" on-tap="onNavigateToChildren" id="parentName-{{item.id}}">
+                                    <iron-image class="thumbnail" sizing="contain" src="[[item.image]]"></iron-image>
+                                    <span>[[item.name]]</span>
+                                    <paper-badge id="codeBadge-{{item.id}}" for="parentName-{{item.id}}" label="{{item.codes}}" class="blue"></paper-badge>
+                                </div>
+                            </template>
+                        </iron-selector>-->
+
+            <template is="dom-repeat" items="{{parents}}">
+                <grapp-breadcrumb href="{{baseUrl}}network/{{item.id}}">[[item.name]]</grapp-breadcrumb>
+            </template>
+
             <div class="card-actions">
                 <paper-icon-button icon="arrow-upward" on-click="onNavigateUp"></paper-icon-button>
                 <paper-icon-button icon="add-circle" on-click="onOpenCreateMember"></paper-icon-button>
@@ -309,8 +315,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     }
                 },
                 observers: [
-                    'computeChildRequestParams(accountId)',
-                    'computeGenocideRequestParams(accountId)',
+                    'computeChildRequestParams(selectedAccount)',
+                    'computeGenocideRequestParams(selectedAccount)',
                     'computeSelected(accountId)'
                 ],
                 listeners: {
@@ -334,6 +340,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     this.$.genocideIronAjax.generateRequest();
                 },
                 computeSelected: function (accountId) {
+                    console.log('Change selected member from ' + this.selectedAccount + ' to ' + accountId);
                     this.selectedAccount = accountId;
                 },
                 onSelectMember: function (event, details) {

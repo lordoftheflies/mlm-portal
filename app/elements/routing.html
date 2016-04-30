@@ -59,8 +59,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             setFocus(app.route);
         });
         // Network page route
-        page('/network', function () {
+        page('/network/:memberId', function (data) {
             app.route = 'network';
+            app.params = data.params;
             setFocus(app.route);
         });
         // About page route
