@@ -35,7 +35,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             @apply(--layout-horizontal);
                         }*/
         </style>
-        <paper-card id="signInForm" heading="{{text.signInFormHeading}}" class="layout horizontal center">
+        <!--<paper-card id="signInForm" heading="Sign-in" class="layout horizontal center">-->
             <form is="iron-form" id="form" 
                   content-type="application/json" 
                   verbose 
@@ -64,7 +64,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     <paper-fab id="signInFormAccept" icon="arrow-forward" title="submit" on-click="onLogin" dialog-confirm></paper-fab>
                 </div>
             </form>
-        </paper-card>
+        <!--</paper-card>-->
     </template>
     <script>
         (function () {
@@ -126,7 +126,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     }
                 },
                 onNavigateToSignOn: function () {
-                    page.redirect(app.baseUrl + "signon");
+//                    app.$.loginDialog.close();
+                    app.$.registrationDialog.open();
                 },
                 onLogin: function () {
                     var credentials = {

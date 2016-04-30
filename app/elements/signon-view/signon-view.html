@@ -29,7 +29,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 @apply(--layout-vertical);
             }
         </style>
-        <paper-card heading="Sign-on" class="layout horizontal center">
+        <!--<paper-card heading="Sign-on" class="layout horizontal center">-->
             <form is="iron-form" id="form" verbose
                   content-type="application/json" 
                   method="post"
@@ -92,12 +92,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     </paper-input>
                 </div>
                 <div class="card-actions">
-                    <paper-button id="registrateSignInButton" raised class="primary"  on-click="onNavigateToSignIn">Signin</paper-button>
+                    <paper-button id="registrateSignInButton" raised class="primary"  on-click="onNavigateToSignIn" dialog-dismiss>Signin</paper-button>
 
                     <paper-fab id="registrateSignOnButton" icon="arrow-forward" title="submit" on-click="onRegistrate" ></paper-fab>
                 </div>
             </form>
-        </paper-card>
+        <!--</paper-card>-->
     </template>
     <script>
         (function () {
@@ -125,7 +125,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     'form.iron-form-error': 'onSignOnError'
                 },
                 onNavigateToSignIn: function () {
-                    page.redirect(app.baseUrl + 'signin');
+//                    app.$.registrationDialog.close();
+                    app.$.loginDialog.open();
                 },
                 onSignOnResponse: function (event, details) {
                     console.log('Sign-on response: ' + JSON.stringify(details.response));
