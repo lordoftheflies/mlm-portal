@@ -114,7 +114,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             <span id="shareContentMenuTitle">Share content</span>
                         </a>
                         
-                        <a data-route="network" href="{{baseUrl}}network">
+                        <a data-route="network" href="{{baseUrl}}network/[[sessionInfo.token]]">
                             <iron-icon icon="supervisor-account"></iron-icon>
                             <span id="networkMenuTitle">Network</span>
                         </a>
@@ -219,7 +219,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             <section data-route="network">
                                 <paper-material elevation="1">
                                     <h2 id="networkViewTitleLabel" class="page-title focus-target" tabindex="-1">Network</h2>
-                                    <network-view account-id="{{sessionInfo.token}}"></network-view>
+                                    <network-view account-id="[[params.memberId]]"></network-view>
                                 </paper-material>
                             </section>
 
