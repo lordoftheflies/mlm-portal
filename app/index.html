@@ -113,6 +113,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             <iron-icon icon="send"></iron-icon>
                             <span id="shareContentMenuTitle">Share content</span>
                         </a>
+                        
+                        <a data-route="network" href="{{baseUrl}}network">
+                            <iron-icon icon="supervisor-account"></iron-icon>
+                            <span id="networkMenuTitle">Network</span>
+                        </a>
 
                         <a data-route="about" href="{{baseUrl}}about">
                             <iron-icon icon="info"></iron-icon>
@@ -208,6 +213,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                 <paper-material elevation="1">
                                     <h2 id="shareContentViewTitleLabel" class="page-title focus-target" tabindex="-1">Share content</h2>
                                     <share-content-view account-id="{{sessionInfo.token}}"></share-content-view>
+                                </paper-material>
+                            </section>
+                            
+                            <section data-route="network">
+                                <paper-material elevation="1">
+                                    <h2 id="networkViewTitleLabel" class="page-title focus-target" tabindex="-1">Network</h2>
+                                    <network-view account-id="{{sessionInfo.token}}"></network-view>
                                 </paper-material>
                             </section>
 

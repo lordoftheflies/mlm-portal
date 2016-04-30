@@ -1,0 +1,399 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/iron-form/iron-form.html">
+<link rel="import" href="../../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../../bower_components/iron-list/iron-list.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../../bower_components/paper-badge/paper-badge.html">
+<link rel="import" href="../plutonium-witdget-behavior.html">
+<link rel="import" href="../../bower_components/i18n-behavior/i18n-behavior.html">
+
+<dom-module id="network-view">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+
+            [title] {
+                font-weight: 400;
+                margin: 0 0 0 50px;
+            }
+            [condensed-title] {
+                font-weight: 400;
+                margin-left: 30px;
+            }
+            [condensed-title] i {
+                font-style: normal;
+                font-weight: 100;
+            }
+            .container {
+                @apply(--layout-horizontal);
+            }
+            .flexchild {
+                display: inline-block;
+                @apply(--layout-flex);
+            }
+            iron-list {
+                /* padding-top: 148px; */
+                /* margin-top: 64px; */
+                padding-bottom: 16px;
+            }
+            .item {
+                @apply(--layout-horizontal);
+                padding: 20px;
+                border-radius: 8px;
+                background-color: white;
+                border: 1px solid #ddd;
+                /* max-width: 800px; */
+                margin: 16px auto 0 auto;
+            }
+            .item:focus {
+                outline: 0;
+                border-color: #333;
+            }
+
+            .item.unread {
+                outline: 0;
+                background-color: #ddd;
+            }
+
+            .item.selected .star {
+                color: var(--paper-blue-600);
+            }
+
+            .item.selected {
+                background-color: var(--google-grey-300);
+                border-bottom: 1px solid #ccc;
+            }
+
+            .avatar {
+                height: 40px;
+                width: 40px;
+                border-radius: 20px;
+                box-sizing: border-box;
+                background-color: #DDD;
+            }
+            .thumbnail {
+                height: 20px;
+                width: 20px;
+                border-radius: 10px;
+                box-sizing: border-box;
+                background-color: #DDD;
+            }
+            .pad {
+                padding: 0 16px;
+                @apply(--layout-flex);
+                @apply(--layout-vertical);
+            }
+            .primary {
+                font-size: 16px;
+                font-weight: bold;
+            }
+            .secondary {
+                font-size: 14px;
+            }
+            .dim {
+                color: gray;
+            }
+            .spacer {
+                @apply(--layout-flex);
+            }
+
+            :host paper-material {
+                background-color: white;
+                height: 40px;
+                @apply(--layout-center);
+                @apply(--layout-horizontal);
+            }
+
+            /* Breadcrumbs */
+            :host .breadcrumbs {
+                @apply(--layout-horizontal);
+                @apply(--layout-flex);
+                list-style-type: none;
+            }
+            :host .breadcrumbs div:first-child:before {
+                content:''; /* Change this to unicode as needed*/
+                margin-left: 1em;
+            }
+            :host .breadcrumbs div:before {
+                content:' >> '; /* Change this to unicode as needed*/
+                margin-left: 1em;
+                margin-right: 1em;
+            }
+
+            paper-material div {
+                @apply(--layout-horizontal);
+            }
+        </style>
+
+        <iron-ajax 
+            id="genocideIronAjax"
+            url="{{apiUrl}}/addressbook/genocide" 
+            params="{{genocideRequestParams}}"
+            last-response="{{parents}}" 
+            auto></iron-ajax>
+        <iron-ajax 
+            id="possibleParentsIronAjax"
+            url="{{apiUrl}}/addressbook/all" 
+            last-response="{{possibleParents}}" 
+            auto></iron-ajax>
+        <iron-ajax 
+            id="childrenIronAjax"
+            url="{{apiUrl}}/addressbook/children" 
+            params="{{childrenRequestParams}}"
+            last-response="{{data}}" 
+            auto></iron-ajax>
+
+        <paper-dialog id="memberDialog" modal>
+            <h2 id="newMemberDialogTitle">New member</h2>
+            <form id="newMemberForm" is="iron-form" class="card-content" verbose 
+                  content-type="application/json" method="post" action="{{apiUrl}}/addressbook/save"
+                  on-response="onCreateMemberResponse"
+                  on-error="onCreateMemberError" 
+                  handle-as="json">
+                <paper-input name="name" label="Name" type="text"></paper-input>
+                <paper-input name="email" label="Email" type="email"></paper-input>
+                <paper-input name="codes" label="Codes" type="number"></paper-input>
+                <input name="parent" type="hidden" value="{{selectedParent}}" />
+                <paper-dropdown-menu label="Parent member">
+                    <paper-menu
+                        class="dropdown-content" selected="{{selectedParent}}" attr-for-selected="value"
+                        attr-for-selected="id">
+                        <template is="dom-repeat" items="{{possibleParents}}">
+                            <paper-item value="{{item.id}}">{{item.name}}</paper-item>
+                        </template>
+                    </paper-menu>
+                </paper-dropdown-menu>
+                <div class="card-actions">
+                    <paper-button id="newMemberDialogCancelButton" dialog-dismiss>Cancel</paper-button>
+                    <paper-button id="newMemberDialogCreateButton" raised class="primary" on-click="onCreateMember" dialog-confirm>Create</paper-button>
+                    <paper-button id="newMemberDialogCreateAndRepeatButton" raised class="primary" on-click="onCreateMemberRepeat" dialog-confirm>Create & repeat</paper-button>
+                </div>
+            </form>
+        </paper-dialog>
+
+        <paper-dialog id="memberEraseConfirm" modal>
+            <h2 id="memberEraseConfirmDialogTitle">Delete member</h2>
+            <div id="memberEraseConfirmDialogText" class="card-content">
+                Are you sure delete member?
+            </div>
+            <div class="card-actions">
+                <paper-button id="memberEraseConfirmDialogCancelButton" dialog-dismiss>Cancel</paper-button>
+                <paper-button id="memberEraseConfirmDialogAcceptButton" dialog-confirm>OK</paper-button>
+            </div>
+        </paper-dialog>
+        <paper-dialog id="promoteAdminDialog" modal>
+            <h2 id="promoteAdminDialogTitle">Promote administrator</h2>
+            <div id="promoteAdminDialogText" class="card-content">
+                Are you surely promote {{item.name}} to administrator?
+            </div>
+            <div class="card-actions">
+                <paper-button id="promoteAdminDialogCancelButton" dialog-dismiss>Cancel</paper-button>
+                <paper-button id="promoteAdminDialogAcceptButton" dialog-confirm>OK</paper-button>
+            </div>
+        </paper-dialog>
+
+        <paper-dialog id="demoteAdminDialog" modal>
+            <h2 id="demoteAdminDialogTitle">Demote administrator</h2>
+            <div id="demoteAdminDialogText" class="card-content">
+                Are you surely demote {{item.name}} to user?
+            </div>
+            <div class="card-actions">
+                <paper-button id="demoteAdminDialogCancelButton" dialog-dismiss>Cancel</paper-button>
+                <paper-button id="demoteAdminDialogAcceptButton" dialog-confirm>OK</paper-button>
+            </div>
+        </paper-dialog>
+
+        <paper-material elevation="2">
+            <iron-selector class="breadcrumbs" id="parentBeadCrumbs" attr-for-selected="nodeid" selected="{{selectedAccount}}">
+                <template is="dom-repeat" items="[[parents]]">
+                    <div nodeid="{{item.id}}" unusedcodes="{{item.codes}}" on-tap="onNavigateToChildren" id="parentName-{{item.id}}">
+                        <iron-image class="thumbnail" sizing="contain" src="[[item.image]]"></iron-image>
+                        <span>[[item.name]]</span>
+                        <!--<paper-badge id="codeBadge-{{item.id}}" for="parentName-{{item.id}}" label="{{item.codes}}" class="blue"></paper-badge>-->
+                    </div>
+                </template>
+            </iron-selector>
+            <div class="card-actions">
+                <paper-icon-button icon="arrow-upward" on-click="onNavigateUp"></paper-icon-button>
+                <paper-icon-button icon="add-circle" on-click="onOpenCreateMember"></paper-icon-button>
+                <paper-icon-button icon="remove-circle" on-click="onConfirmRemoveMember"></paper-icon-button>
+                <paper-icon-button icon="send" on-click="onSendTo"></paper-icon-button>
+                <template is="dom-if" if="">
+                    <paper-icon-button icon="code" on-click="onOpenPromoteAdminPrompt"></paper-icon-button>
+                </template>
+                <template is="dom-if" if="">
+                    <paper-icon-button icon="code" on-click="onOpenDemoteAdminPrompt"></paper-icon-button>
+                </template>
+            </div>
+        </paper-material>
+
+
+        <iron-list id="childrenIronList" items="[[data]]" as="item">
+            <template>
+                <div nodeid="{{item.id}}" on-tap="onNavigateToChildren">
+                    <div  class="item" tabindex$="[[tabIndex]]">
+                          <iron-image class="avatar" sizing="contain" src="[[item.image]]"></iron-image>
+
+                        <div class="pad">
+                            <div id="memberName-{{item.id}}"   class="primary">
+                                <span>[[item.name]]</span>
+                            </div>
+                            <!--<paper-badge for="memberName-{{item.id}}" label="{{item.codes}}" class="blue"></paper-badge>-->
+                            <div class="secondary">
+                                <span>[[item.title]]</span>
+                                <p>[[item.text]]</p>
+                            </div>
+                            <div class="secondary dim">[[item.longText]]</div>
+                        </div>
+
+                    </div>
+                </div>
+            </template>
+        </iron-list>
+    </template>
+    <script>
+        (function () {
+            'use strict';
+
+            Polymer({
+                is: 'network-view',
+                behaviors: [PlutoniumBehaviors.WidgetBehavior],
+                properties: {
+                    genocideRequestParams: {
+                        type: Object,
+                        notify: true,
+                        value: {
+                            childId: null
+                        }
+                    },
+                    childrenRequestParams: {
+                        type: Object,
+                        notify: true,
+                        value: {
+                            parentId: null
+                        }
+                    },
+                    accountId: {
+                        type: String,
+                        notify: true
+                    },
+                    selectedAccount: {
+                        type: String,
+                        notify: true
+                    },
+                    possibleParents: {
+                        type: Array,
+                        notify: true
+                    },
+                    unusedCodes: {
+                        type: Number,
+                        notify: true
+                    }
+                },
+                observers: [
+                    'computeChildRequestParams(accountId)',
+                    'computeGenocideRequestParams(accountId)',
+                    'computeSelected(accountId)'
+                ],
+                listeners: {
+                    'newMemberForm.iron-form-response': 'onCreateMemberResponse',
+                    'newMemberForm.iron-form-error': 'onCreateMemberError',
+                    'parentBeadCrumbs.iron-select': 'onSelectMember',
+                    'network-tree-refresh': 'onRefresh'
+                },
+                ready: function () {
+                    console.log('Network-view is READY(account-id=' + this.accountId);
+                    this.selectedAccount = this.accountId;
+                },
+                computeChildRequestParams: function (accountId) {
+                    this.childrenRequestParams.parentId = accountId;
+                    console.log('Network-view child request parameters updated: ' + JSON.stringify(this.childrenRequestParams))
+                    this.$.childrenIronAjax.generateRequest();
+                },
+                computeGenocideRequestParams: function (accountId) {
+                    this.genocideRequestParams.childId = accountId;
+                    console.log('Network-view genocide request parameters updated: ' + JSON.stringify(this.genocideRequestParams))
+                    this.$.genocideIronAjax.generateRequest();
+                },
+                computeSelected: function (accountId) {
+                    this.selectedAccount = accountId;
+                },
+                onSelectMember: function (event, details) {
+                    console.log('Network-view select account:');
+                    this.unusedCodes = details.item.unusedcodes;
+                },
+                onNavigateToChildren: function (event, details) {
+                    this.accountId = event.currentTarget.nodeid;
+                    this.selectedAccount = this.accountId;
+                    this.$.childrenIronAjax.generateRequest();
+                    this.$.genocideIronAjax.generateRequest();
+                    console.log('Network-view navigate to children ');
+
+                },
+                onNavigateUp: function (event, details) {
+                    this.accountId = this.$.parentBeadCrumbs.children[this.$.parentBeadCrumbs.children.length < 3 ? 0 : this.$.parentBeadCrumbs.children.length - 3].nodeid;
+                    this.selectedAccount = this.accountId;
+                    this.$.childrenIronAjax.generateRequest();
+                    this.$.genocideIronAjax.generateRequest();
+                    console.log('Network-view navigate to children ');
+                },
+                onRefresh: function () {
+                    this.$.childrenIronAjax.generateRequest();
+                    this.$.genocideIronAjax.generateRequest();
+                },
+                onOpenCreateMember: function () {
+                    this.$.memberDialog.open();
+                },
+                onCreateMember: function () {
+                    this.$.newMemberForm.submit();
+                },
+                onCreateMemberRepeat: function () {
+                    this.$.newMemberForm.submit();
+                    this.$.memberDialog.open();
+                },
+                onCreateMemberResponse: function (event, details) {
+                    console.log('Member created successfully: ' + JSON.stringify(details.response));
+                    this.$.childrenIronAjax.generateRequest();
+                    app.$.toast.text = app.locale.success_member_create;
+                    app.$.toast.show();
+                },
+                onCreateMemberError: function (event, details) {
+                    console.log('Create-member error: ' + JSON.stringify(details.response));
+                    app.$.toast.text = app.locale.error_member_create;
+                    app.$.toast.show();
+                },
+                onConfirmRemoveMember: function () {
+                    this.$.possibleParentsIronAjax.generateRequest();
+                    this.$.memberEraseConfirm.open();
+                },
+                onOpenPromoteAdminPrompt: function () {
+                    this.$.promoteAdminDialog.open();
+                },
+                onOpenDemoteAdminPrompt: function () {
+                    this.$.demoteAdminDialog.open();
+                },
+                onSendTo: function () {
+
+                }
+            });
+        })();
+    </script>
+</dom-module>
