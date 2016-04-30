@@ -66,13 +66,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <template is="dom-bind" id="app">
 
-            <iron-ajax auto id="login" 
-                       on-response="sessionInfoHandler" 
-                       on-error="sessionInitializationErrorHandler" 
-                       url="{{backEndUrl}}authentication/session?token={{sessionInfo.token}}"
-                       last-response="{{sessionInfo}}">
+            <iron-ajax 
+                id="login" 
+                on-response="sessionInfoHandler" 
+                on-error="sessionInitializationErrorHandler" 
+                url="{{backEndUrl}}authentication/session?token={{sessionInfo.token}}"
+                last-response="{{sessionInfo}}"
+                auto>
             </iron-ajax>
-            
+            <paper-dialog id="loginDialog" modal>
+                <signin-view base-url="{{backEndUrl}}"></signin-view>
+            </paper-dialog>
+
             <paper-drawer-panel id="paperDrawerPanel" responsive-width="840px">
                 <!-- Drawer Scroll Header Panel -->
                 <paper-scroll-header-panel drawer fixed>
@@ -103,13 +108,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             <iron-icon icon="send"></iron-icon>
                             <span id="shareContentMenuTitle">Share content</span>
                         </a>
-                        
+
                         <a data-route="about" href="{{baseUrl}}about">
                             <iron-icon icon="info"></iron-icon>
                             <span id="aboutMenuTitle">About</span>
                         </a>
 
-                        
+
                     </paper-menu>
                 </paper-scroll-header-panel>
 
@@ -200,7 +205,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                     <share-content-view account-id="{{sessionInfo.token}}"></share-content-view>
                                 </paper-material>
                             </section>
-                            
+
                             <section data-route="about">
                                 <paper-material elevation="1">
                                     <h2 id="aboutViewTitleLabel" class="page-title focus-target" tabindex="-1">About</h2>

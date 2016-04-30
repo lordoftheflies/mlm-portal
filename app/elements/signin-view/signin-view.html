@@ -1,0 +1,186 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../../bower_components/paper-toggle-button/paper-toggle-button.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../bower_components/iron-form/iron-form.html">
+<link rel="import" href="../../styles/shared-styles.html">
+
+<!--<link rel="import" href="../../bower_components/i18n-behavior/i18n-behavior.html">-->
+
+<dom-module id="signin-view">
+    <template>
+        <style include="shared-styles">
+            :host {
+                display: block;
+                /*@apply(--layout-flex);*/
+                @apply(--layout-center);
+                @apply(--layout-vertical);
+            }
+
+            /*            :host .card-actions {
+                            @apply(--layout-center);
+                            @apply(--layout-horizontal);
+                        }*/
+        </style>
+        <paper-card id="signInForm" heading="{{text.signInFormHeading}}" class="layout horizontal center">
+            <form is="iron-form" id="form" 
+                  content-type="application/json" 
+                  verbose 
+                  method="post" 
+                  on-response="onSignInResponse"
+                  on-error="onSignInError" 
+                  action="{{baseUrl}}authentication/signin"
+                  handle-as="json">
+                <div class="card-content">
+                    <!--action="http://localhost:8080/authentication/signin"--> 
+                    <paper-input id="signInFormLoginEmail" label="Email address" name="email" type="email" auto-validate pattern="{{mailPattern}}" error-message="Invalid email address.">
+                        <iron-icon icon="account-circle" prefix></iron-icon>
+                    </paper-input>
+                </div>
+                <div class="card-content">
+                    <paper-input id="signInFormLoginPassword" label="Password" name="password" type="password" auto-validate pattern="{{passPattern}}" error-message="Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number.">
+                        <iron-icon icon="lock" prefix></iron-icon>
+                    </paper-input>
+                </div>
+                <div class="card-content" horizontal layout>
+                    <paper-toggle-button id="signInFormRememberMe" checked>Remember me</paper-toggle-button>
+                </div>
+                <div class="card-actions">
+                    <paper-button id="signInFormRegistrate" raised class="primary"  on-click="onNavigateToSignOn" dialog-dismiss>Sign-on</paper-button>
+
+                    <paper-fab id="signInFormAccept" icon="arrow-forward" title="submit" on-click="onLogin" dialog-confirm></paper-fab>
+                </div>
+            </form>
+        </paper-card>
+    </template>
+    <script>
+        (function () {
+            'use strict';
+
+            Polymer({
+                is: 'signin-view',
+                behaviors: [
+                    PlutoniumBehaviors.WidgetBehavior,
+//                    BehaviorsStore.I18nBehavior
+                ],
+                properties: {
+                    mailPattern: {
+                        type: String,
+                        value: '/[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/'
+                    },
+                    passPattern: {
+                        type: String,
+                        value: '/(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{6,16})$/'
+                    },
+                    foo: {
+                        type: String,
+                        value: 'signin-view',
+                        notify: true
+                    }
+                },
+                listeners: {
+                    'form.iron-form-response': 'onSignInResponse',
+                    'form.iron-form-error': 'onSignInError'
+                },
+//                listeners: {
+//                    'logged': 'logged'
+//                },
+                ready: function () {
+                    this.addEventListener('blur', this.check);
+                    this.addEventListener('keydown', this.keydown);
+                },
+                mailcheck: function (string) {
+                    if (string.match(/[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/) !== null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                },
+                passcheck: function (string) {
+                    if (string.match(/(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{6,16})$/) !== null) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                },
+                check: function () {
+                    if (this.$.user_input.value === "" || this.$.password_input.value === "") {
+                        this.$.core_card_main.className = "yellow";
+                    } else if (this.mailcheck(this.$.user_input.value) && this.passcheck(this.$.password_input.value)) {
+                        this.$.core_card_main.className = "green";
+                    } else {
+                        this.$.core_card_main.className = "red";
+                    }
+                },
+                onNavigateToSignOn: function () {
+                    page.redirect(app.baseUrl + "signon");
+                },
+                onLogin: function () {
+                    var credentials = {
+                        login: this.$.signInFormLoginEmail.value,
+                        password: this.$.signInFormLoginPassword.value,
+                        rememberMe: this.$.signInFormRememberMe.checked
+                    };
+
+                    console.log("Login user " + JSON.stringify(credentials));
+                    this.fire('login', credentials);
+
+
+//                    page.redirect(app.baseUrl);
+                    this.$.form.submit();
+//                    var app = document.querySelector('#app');
+//                    app.userinfo = credentials;
+//                    console.log("Navigate to " + app.route);
+//                    app.$.mainPanel.selected = "home";
+                },
+                onSignInResponse: function (event, details) {
+
+
+                    console.log('Sign-in response: ' + JSON.stringify(details.response));
+                    app.sessionInfo = details.response;
+                    
+                    page.redirect(app.baseUrl);
+                    
+                    app.$.toast.text = app.sessionInfo.userName + ' logged in successfully.';
+                    app.$.toast.show();
+                },
+                onSignInError: function (event, details) {
+//                    var dropClasses = function (o) {
+//
+//                        for (var p in o) {
+//                            if (o[p] instanceof jQuery || o[p] instanceof HTMLElement) {
+//                                o[p] = null;
+//                            } else if (typeof o[p] == 'object')
+//                                JS.dropClasses(o[p]);
+//                        }
+//                    };
+//
+//                    
+//                    console.log('Sign-in erroEE: ' + JSON.stringify(dropClasses(event)));
+//                    console.log('Sign-in erroDD: ' + JSON.stringify(dropClasses(details)));
+                    console.log('Sign-in erro: ' + JSON.stringify(details.response));
+                    app.$.toast.text = app.locale.error_login;
+                    app.$.toast.show();
+                },
+                keydown: function (event, detail, sender) {
+                    if (event.keyCode === 13) {
+                        this.check();
+                    }
+                }
+            });
+        })();
+    </script>
+</dom-module>

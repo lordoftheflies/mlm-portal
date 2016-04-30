@@ -26,6 +26,7 @@
         var error = 'Unknown client error.';
         if (args.request.status === 401) {
             error = 'Session token corrupted or invalid. Navigate to login.';
+            app.$.loginDialog.open();
         } else {
             error = JSON.stringify(args.error);
         }
