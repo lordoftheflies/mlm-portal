@@ -9,6 +9,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../../bower_components/iron-list/iron-list.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../../bower_components/paper-item/paper-item.html">
@@ -23,54 +24,37 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 display: block;
                 /*@apply(--layout-horizontal);*/
             }
-            
+
             :host paper-material {
                 background-color: white;
                 height: 40px;
                 @apply(--layout-center);
                 @apply(--layout-horizontal);
             }
-
-            /*            paper-card {
-                            @apply(--layout-horizontal);
-                            @apply(--layout-flex);
-                            width: 100%;
-                        }
-            
-                        #contentDisplay {
-                            width: 100%;
-                        }*/
         </style>
 
         <template is="dom-if" if="{{!data.leaf}}">
             <!--<paper-card heading$="{{title}}">-->
             <!--<div class="card-content">-->
-            <iron-list items="{{data.sections}}" as="section"  hidden$="[[!data.sections.length]]">
-                       <template>
-                    <!--                            <div nodeid="{{section.data}}" on-tap="onNavigateToChildren">
-                                                    <div  class="item" tabindex$="[[tabIndex]]">
-                                                          <div class="pad">
-                                                            <div class="primary">
-                                                                <span>[[section.title]]</span>
-                                                            </div>
-                                                        </div>
-                    
-                                                    </div>
-                                                </div>-->
+            <iron-list items="{{data.sections}}" as="section"  hidden="[[!data.sections.length]]">
+                <template>
 
+                    <div>
 
-                    <div class="item" tabindex$="[[tabIndex]]">
-                         <div class="pad">
-                            <div id="articleTitleLabel" class="primary" title="Navigate to {{baseUrl}}content-tree/{{section.data}}">
-                                <a href$="{{baseUrl}}content-tree/{{section.data}}">[[section.title]]</a>
-                                <!--<span href="{{baseUrl}}content-tree/{{section.data}}">[[section.title]]</span>-->
+                        <div class="item" tabindex="[[tabIndex]]">
+                            <div class="pad">
+                                <div id="articleTitleLabel" class="primary" title="Navigate to {{baseUrl}}content-tree/{{section.data}}">
+                                    <a href$="{{baseUrl}}content-tree/{{section.data}}">[[section.title]]</a>
+                                    <!--<span href="{{baseUrl}}content-tree/{{section.data}}">[[section.title]]</span>-->
+                                </div>
+                                <div class="secondary">
+                                    <span>[[item.title]]</span>
+                                    <p>[[item.text]]</p>
+                                </div>
+                                <div class="secondary dim">[[item.longText]]</div>
                             </div>
-                            <div class="secondary">
-                                <span>[[item.title]]</span>
-                                <p>[[item.text]]</p>
-                            </div>
-                            <div class="secondary dim">[[item.longText]]</div>
                         </div>
+
                     </div>
                 </template>
             </iron-list>
@@ -79,37 +63,37 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <!---->
         </template>
         <template is="dom-if" if="{{data.leaf}}">
-            <paper-card heading$="{{data.title}}">
-                        <plutonium-cm-section id="contentDisplay"  content-model$="{{data}}">
-            </plutonium-cm-section>
-        </paper-card>
+            <paper-card heading="{{data.title}}">
+                <plutonium-cm-section id="contentDisplay"  content-model="{{data}}">
+                </plutonium-cm-section>
+            </paper-card>
+        </template>
+
     </template>
+    <script>
+        (function () {
+            'use strict';
 
-</template>
-<script>
-    (function () {
-        'use strict';
-
-        Polymer({
-            is: 'content-viewer',
-            behaviors: [PlutoniumBehaviors.WidgetBehavior],
-            properties: {
-                data: {
-                    type: Object,
-                    notify: true
+            Polymer({
+                is: 'content-viewer',
+                behaviors: [PlutoniumBehaviors.WidgetBehavior],
+                properties: {
+                    data: {
+                        type: Object,
+                        notify: true
+                    },
+                    title: {
+                        type: String,
+                        notify: true
+                    }
                 },
-                title: {
-                    type: String,
-                    notify: true
+                observer: [
+                    'computeTitle(data.title)'
+                ],
+                computeTitle: function (data) {
+                    this.title = data.title;
                 }
-            },
-            observer: [
-                'computeTitle(data.title)'
-            ],
-            computeTitle: function (data) {
-                this.title = data.title;
-            }
-        });
-    })();
-</script>
+            });
+        })();
+    </script>
 </dom-module>

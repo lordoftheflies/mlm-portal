@@ -175,6 +175,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     console.log('Sign-in error: ' + JSON.stringify(details.response));
                     app.$.toast.text = 'Login failed.';
                     app.$.toast.show();
+                    app.$.loginDialog.open();
                 },
                 keydown: function (event, detail, sender) {
                     if (event.keyCode === 13) {

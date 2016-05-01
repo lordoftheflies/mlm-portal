@@ -26,7 +26,6 @@
         var error = 'Unknown client error.';
         if (args.request.status === 401) {
             error = 'Session token corrupted or invalid. Navigate to login.';
-            app.$.loginDialog.open();
         } else {
             error = JSON.stringify(args.error);
         }
@@ -34,7 +33,7 @@
         console.log(error);
         app.$.toast.text = error;
         app.$.toast.show();
-        page.redirect(app.baseUrl + "signin");
+        app.$.loginDialog.open();
     };
 
     // Session AJAX success response handler.
