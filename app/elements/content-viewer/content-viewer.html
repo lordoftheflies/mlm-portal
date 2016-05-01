@@ -64,7 +64,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </template>
         <template is="dom-if" if="{{data.leaf}}">
             <paper-card heading="{{data.title}}">
-                <plutonium-cm-section id="contentDisplay"  content-model="{{data}}">
+                
+                <plutonium-cm-section id="contentDisplay" class="card-content"  content-model="{{data}}">
                 </plutonium-cm-section>
             </paper-card>
         </template>
