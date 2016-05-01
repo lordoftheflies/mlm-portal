@@ -1,0 +1,70 @@
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-input/iron-input.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/iron-validatable-behavior/iron-validatable-behavior.html">
+<link rel="import" href="../../bower_components/iron-validator-behavior/iron-validator-behavior.html">
+<link rel="import" href="plutonium-youtube-url-validator.html">
+
+<dom-module id="plutonium-youtube-url-input">
+    <template>
+
+        <style>
+            :host {
+                display: inline-block;
+            }
+            /*            input[is="iron-input"] {
+                            font: inherit;
+                            outline: none;
+                            box-shadow: none;
+                            border: none;
+                            width: auto;
+                            text-align: center;
+                        }*/
+        </style>
+
+        <plutonium-youtube-url-validator></plutonium-youtube-url-validator>
+
+        <paper-input is="iron-input" label='Url' value="{{url}}"
+                     required auto-validate
+                     label='Video url'
+                     error-message="Invalid Youtube url."
+                     pattern=/^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/>
+
+        </paper-input>
+    </template>
+</dom-module>
+
+<script>
+    Polymer({
+        is: 'plutonium-youtube-url-input',
+        behaviors: [
+            Polymer.IronValidatableBehavior
+        ],
+        properties: {
+            value: {
+                notify: true,
+                type: String,
+                value: ''
+            },
+            url: {
+                type: String
+            },
+            validator: {
+                type: String,
+                value: 'plutonium-youtube-url-validator'
+            }
+        },
+        observers: [
+            '_computeValue(url)'
+        ],
+        _computeValue: function (url) {
+            var p = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+            if (url !== null) {
+                var matches = url.match(p);
+                if (matches !== null)
+                    this.value = matches[1];
+            }
+        }
+    });
+</script>

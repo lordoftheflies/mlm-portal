@@ -1,0 +1,148 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-input/paper-textarea.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="plutonium-cm-behavior.html">
+<link rel="import" href="plutonium-cm-shared-styles.html">
+<!--<link rel="import" href="plutonium-youtube-url-input.html">-->
+
+<!--
+An element providing a solution to no problem in particular.
+
+Example:
+
+    <plutonium-cm-editor-text></plutonium-cm-editor-text>
+
+Example:
+
+    <plutonium-cm-editor-text>
+      <h2>Hello plutonium-cm-editor-text</h2>
+    </plutonium-cm-editor-text>
+
+@demo demo/index.html
+@hero hero.svg
+-->
+
+<dom-module id="plutonium-cm-editor-text">
+    <template>
+        <style>
+            :host {
+                display: inline-block;
+                @apply(--layout-horizontal);
+                
+                --plutonium-cm-actions-display: none !important;
+            }
+
+            :host paper-card {
+                display: block;
+                @apply(--layout-flex);
+                /*@apply(--horizontal-end-justified);*/
+            }
+
+            /*            .cm-fab {
+                            @apply(--layout-vertical);
+                            @apply(--layout-centered);
+                        }
+            
+                        #plutonium-cm-actions {
+                            display: var(--plutonium-cm-actions-display);
+                            margin-left: 20px;
+            
+                        }*/
+
+        </style>
+        <template is="dom-if" if="{{!sectionDisplay}}">
+
+            <!--            <paper-input
+                            label="Text"
+                            type="text"
+                            value="{{data}}">
+            
+                        </paper-input>-->
+            <p>{{data}}</p>
+        </template>
+        <template is="dom-if" if="{{sectionDisplay}}">
+            <paper-card heading="{{title}}">
+                <p class="card-content">{{data}}</p>
+            </paper-card>
+        </template>
+
+
+        <!--        <paper-dialog id="textEditorDialog" class="editor">
+                    
+                    
+                    <h2>Edit text properties</h2>
+                    <div class="content">
+                        <paper-input id="title" label="Title" value="{{title}}">
+                    </paper-input>
+                    <paper-textarea id="data" label="Text" value="{{data}}" rows="10" type="text"></paper-textarea>
+        
+                </div>-->
+<!--        <div class="buttons">
+            <paper-button dialog-dismiss>Cancel</paper-button>
+            <paper-button dialog-confirm>Accept</paper-button>
+        </div>
+        </paper-dialog>-->
+    </template>
+
+    <script>
+        (function () {
+            'use strict';
+            Polymer({
+                is: 'plutonium-cm-editor-text',
+                behaviors: [PlutoniumBehaviors.CmBehavior],
+                properties: {
+                    dialogId: {
+                        type: String,
+                        notify: true,
+                        value: 'textEditorDialog'
+                    }
+                },
+                listeners: {
+                    'removeSection': 'removeSection',
+                },
+                // Element Lifecycle
+
+                ready: function () {
+                    // `ready` is called after all elements have been configured, but
+                    // propagates bottom-up. This element's children are ready, but parents
+                    // are not.
+                    //
+                    // This is the point where you should make modifications to the DOM (when
+                    // necessary), or kick off any processes the element wants to perform.
+                },
+                attached: function () {
+                    this.inlineEditor = true;
+                    // `attached` fires once the element and its parents have been inserted
+                    // into a document.
+                    //
+                    // This is a good place to perform any work related to your element's
+                    // visual state or active behavior (measuring sizes, beginning animations,
+                    // loading resources, etc).
+
+                },
+                detached: function () {
+                    // The analog to `attached`, `detached` fires when the element has been
+                    // removed from a document.
+                    //
+                    // Use this to clean up anything you did in `attached`.
+                }
+            });
+        })();
+    </script>
+</dom-module>

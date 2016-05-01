@@ -1,0 +1,531 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-list/iron-list.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../../bower_components/paper-radio-group/paper-radio-group.html">
+<link rel="import" href="../../bower_components/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="../../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../../bower_components/file-upload/file-upload.html">
+
+
+<link rel="import" href="../../bower_components/plutonium-field-recipient/plutonium-field-recipient.html">
+
+<link rel="import" href="plutonium-cm-field.html">
+<link rel="import" href="plutonium-cm-editor-text.html">
+<link rel="import" href="plutonium-cm-editor-image.html">
+<link rel="import" href="plutonium-cm-editor-link.html">
+<link rel="import" href="plutonium-cm-editor-video.html">
+<link rel="import" href="plutonium-cm-field.html">
+<link rel="import" href="plutonium-cm-shared-styles.html">
+
+<!--
+An element providing a solution to no problem in particular.
+
+Example:
+
+    <plutonium-cm-form></plutonium-cm-form>
+
+Example:
+
+    <plutonium-cm-form>
+      <h2>Hello plutonium-cm-form</h2>
+    </plutonium-cm-form>
+
+@demo demo/index.html
+@hero hero.svg
+-->
+
+<dom-module id="plutonium-cm-form">
+    <link rel="import" type="css" href="plutonium-cm.css">
+    <template>
+        <style>
+            :host {
+                display: inline-block;
+                box-sizing: border-box;
+                /*@apply(--layout-vertical);*/
+            }
+
+            paper-dialog {
+                /*@apply(--layout-horizontal);*/
+                width: 50%;
+            }
+
+            paper-fab {
+                --paper-fab: {
+                    @apply(--layout-horizontal);
+                    @apply(--layout-end-justified);
+                }
+            }
+
+            paper-card {
+                /*                @apply(--layout-vertical);
+                                @apply(--layout-centered);*/
+            }
+        </style>
+        <paper-card>
+            <paper-toolbar>
+                <!--<div class="header">-->
+                <!--                    <paper-material elevation="2" id="plutonium-cm-actions" class="layout flex horizontal">
+                
+                
+                                    </paper-material>-->
+
+                <paper-tabs class="flex" selected="{{selectedMetaAction}}" autoselect>
+                    <paper-tab>Share</paper-tab>
+                    <paper-tab>Content</paper-tab>
+                    <paper-tab>Properties</paper-tab>
+                </paper-tabs>
+
+                <paper-fab icon="send" class="horizontal end-justified layout" on-tap="onSend"></paper-fab>
+
+
+
+
+            </paper-toolbar>
+            <div class="card-content">
+
+
+                <iron-pages selected="{{selectedMetaAction}}">
+                    <!--            <paper-card heading="Share with">-->
+
+                    <div>
+                        <plutonium-field-recipient
+                            label="To"
+                            picker-icon="supervisor-account"
+                            picker-title="Contacts"
+                            picker-button-tooltip="Choose contacts."
+                            clear-icon="clear"
+                            clear-button-tooltip="Clear recipients input."
+                            attr-for-selected="id"
+                            as="item"
+                            items="[[contacts]]">
+                            <template is="dom-repeat" items="[[contacts]]">
+                                <paper-item id="[[item.id]]" class="item pad">
+                                    <label>[[item.name]]</label> 
+                                    <label>(<span>[[item.email]]</span>)</label>
+                                </paper-item>
+                            </template>
+                        </plutonium-field-recipient>
+
+                        <paper-input class="bottom title" label="Message" value="{{message}}"></paper-input>
+                    </div>
+
+                    <div class="card-content">
+                        <iron-pages selected="{{contentMode}}" attr-for-selected="id">
+                            <div id="assembled">
+                                <template is="dom-if" if$="{{isEmpty()}}">
+                                          <paper-icon-button on-click="onAddSection" icon="add-circle" title="Embedd video to the message content."></paper-icon-button>
+                                    <paper-icon-button on-click="onEmbedVideo" icon="theaters" title="Embedd video to the message content."></paper-icon-button>
+                                    <paper-icon-button on-click="onEmbedImage" icon="perm-media" title="Embedd image to the message content."></paper-icon-button>
+                                    <paper-icon-button on-click="onEmbedLink" icon="link" title="Embedd a link to another message to the message content."></paper-icon-button>
+                                </template>
+                                <paper-radio-group selected="{{contentMode}}" attr-for-selected="name">
+                                    <paper-radio-button name="embedded">Embed content</paper-radio-button>
+                                    <paper-radio-button name="assembled">Assemble</paper-radio-button>
+                                </paper-radio-group>
+
+
+
+                                <content id="cm">
+
+                                </content>
+
+                                <paper-listbox id="assembled" selected="{{selectedSection}}">
+                                    <template is="dom-repeat" items="{{contentModel.sections}}" as="section">
+                                        <plutonium-cm-field 
+                                            name$="{{computeItemId(section)}}" 
+                                            model="{{section}}" 
+                                            dialog-id="{{computeDialogId(section)}}">
+                                    </plutonium-cm-field>
+                                    <br />
+                                </template>
+                            </paper-listbox>
+                        </div>
+                        <div id="embedded" class="layout vertical">
+                            <paper-radio-group selected="{{contentMode}}" attr-for-selected="name">
+                                <paper-radio-button name="embedded">Embed content</paper-radio-button>
+                                <paper-radio-button name="assembled">Assemble</paper-radio-button>
+                            </paper-radio-group>
+                            <file-upload 
+                                drop-text="Drop any PDF file here."
+                                error-text="File upload failed."
+                                droppable="true" 
+                                raised="true" 
+                                multi="false" 
+                                method="POST"
+                                target="{{fileUploadTarget}}">Choose File</file-upload>
+                        </div>
+                    </iron-pages>
+
+                </div>
+
+                <div class="card-content">
+                    <paper-dropdown-menu label="Parent">
+                        <!--<paper-menu class="layout flex">-->
+                        <paper-listbox id="parentCandidatesList"
+                                       class="dropdown-content"
+                                       attr-for-selected="{{attrForSelected}}"
+                                       multi
+                                       label="Parent"
+                                       items="[[parentCandidates]]"
+                                       as="parent"
+                                       selected="{{selectedParent}}">
+                            <template is="dom-repeat" items="[[parentCandidates]]">
+
+                                <paper-item id="[[item.id]]" class="item pad">
+                                    <label>[[item.title]]</label> 
+                                    <label>(<span>[[item.id]]</span>)</label>
+                                </paper-item>
+                            </template>
+                        </paper-listbox>
+                    </paper-dropdown-menu>
+                    <!---->
+
+                    <paper-input class="bottom title" label="Title" value="{{contentModel.title}}"></paper-input>
+                </div>
+                <!--</paper-card>-->
+            </iron-pages>
+        </div>
+    </paper-card>
+    <br />
+    <!--        <paper-card heading="Edit content">
+                <div class="card-content">
+                    <template is="dom-if" if$="{{isEmpty()}}">
+                              <div class="header">
+                            <paper-material elevation="3" id="plutonium-cm-actions">
+                                <plutonium-cm-field-fabs name$='{{name}}' dialog-id$='{{dialogId}}' ></plutonium-cm-field-fabs>
+                            </paper-material>
+                        </div>
+                    </template>
+    
+                    <content id="cm">
+    
+                    </content>
+    
+                    <paper-listbox selected="0">
+                        <template is="dom-repeat" items="{{contentModel.sections}}" as="section">
+                            <plutonium-cm-field 
+                                id="{{computeItemId(section)}}" 
+                                model="{{section}}" 
+                                dialog-id="{{computeDialogId(section)}}">
+                            </plutonium-cm-field>
+                            <br />
+                        </template>
+                    </paper-listbox>
+                </div>
+            </paper-card>-->
+
+    <content></content>
+</template>
+
+<script>
+    Polymer({
+        is: 'plutonium-cm-form',
+        properties: {
+            fileUploadTarget: {
+                type: String,
+                notify: true
+            },
+            selectedSection: {
+                type: Number,
+                notify: true,
+                value: 0
+            },
+            leaf: {
+                type: Boolean,
+                notify: true,
+                value: false
+            },
+            selectedMetaAction: {
+                type: Number,
+                notify: true,
+                value: 1
+            },
+            parentCandidates: {
+                type: Array,
+                notify: true
+            },
+            contentMode: {
+                type: String,
+                notify: true,
+                value: 'assembled'
+            },
+            /**
+             * Data-model of th form.
+             */
+            contentModel: {
+                type: Object,
+                notify: true
+            },
+            contacts: {
+                type: Object,
+                notify: true
+            },
+            selectedContactIds: {
+                type: Object,
+                notify: true,
+                value: []
+            },
+            editors: {
+                type: Object,
+                notify: true
+            },
+            message: {
+                type: String,
+                notify: true
+            }
+        },
+        listeners: {
+            'create': 'onCreateSectionInParent',
+            'remove': 'onRemoveSectionInParent',
+            'edit': 'onOpenEditorInParent',
+            'iron-items-changed': 'onRefresh',
+            'iron-overlay-closed': 'onApply',
+            'moveupsection': 'onMoveUpSectionInParent',
+            'movedownsection': 'onMoveDownSectionInParent'
+        },
+        observers: [
+            'updateFields(editors, contentModel)',
+            'renderContent(contentModel)',
+            'observeSections(contentModel.sections.splices)'
+        ],
+        // Element Lifecycle
+        ready: function () {
+            // `ready` is called after all elements have been configured, but
+            // propagates bottom-up. This element's children are ready, but parents
+            // are not.
+            //
+            // This is the point where you should make modifications to the DOM (when
+            // necessary), or kick off any processes the element wants to perform.
+            //                this.renderContent(this.contentModel);
+        },
+        attached: function () {
+            // `attached` fires once the element and its parents have been inserted
+            // into a document.
+            //
+            // This is a good place to perform any work related to your element's
+            // visual state or active behavior (measuring sizes, beginning animations,
+            // loading resources, etc).
+        },
+        detached: function () {
+            // The analog to `attached`, `detached` fires when the element has been
+            // removed from a document.
+            //
+            // Use this to clean up anything you did in `attached`.
+        },
+        // Element Behavior
+        isEmpty: function () {
+            return this.contentModel === undefined
+                    || this.contentModel === null
+                    || this.contentModel.sections.length === 0;
+        },
+        computeItemId: function (item) {
+            if (item.name === undefined || item.name === null) {
+                var id = 'section' + this.contentModel.sections.indexOf(item);
+                return id;
+            } else {
+                return item.name;
+            }
+        },
+        computeDialogId: function (item) {
+            return this.editors[item.type];
+        },
+        updateFields: function (editors, contentModel) {
+            console.log('plutonium-cm-form#' + this.id + ': update fields');
+//                this.fire('render', {
+//                    editors: this.editors
+//                });
+            contentModel.sections.forEach(function (item, index) {
+                var element = Polymer.dom(this).querySelector(this.computeItemId(item));
+//                    Polymer.dom(element).setAttribute('dialog-id', editors[item.type]);
+            }, this);
+        },
+        renderContent: function (contentModel) {
+            //            console.log('Render content for content-form(' + this.$.id + '): ');
+            //            contentModel.sections.forEach(function (property, index) {
+            //                var selector = property.type + '[name="' + property.key + '"]';
+            //                var element = Polymer.dom(this).querySelector(selector);
+            //                if (element === undefined || element === null) {
+            //                    element = document.createElement(property.type);
+            //                    Polymer.dom(element).setAttribute('name', property.key);
+            //                    Polymer.dom(element).setAttribute('title', 'Properties of ' + property.key);
+            //                    Polymer.dom(element).setAttribute('data', property.data);
+            //
+            //                    var conteinerItem = Polymer.dom(this.root).querySelector('#section' + index);
+            //                    if (conteinerItem !== undefined && conteinerItem !== null) {
+            //                        console.log('\t- Section #' + index + ': ' + JSON.stringify(property));
+            //                        conteinerItem.appendChild(element);
+            //                    }
+            //
+            //                }
+            //
+            //            }, this);
+            //            Polymer.dom.flush();
+            //            Polymer.updateStyles();
+        },
+        onRefresh: function (e) {
+            this.renderContent(this.contentModel);
+        },
+        observeSections: function (splices) {
+            console.log('Observe content sections.');
+
+        },
+        onCreateSectionInParent: function (e) {
+            console.log('Create new ' + JSON.stringify(e.detail.type) + ' section ' + JSON.stringify(e.detail.type));
+            this.push('contentModel.sections', {
+                type: e.detail.type,
+                name: 'section' + this.contentModel.sections.length,
+                title: '',
+                data: ''
+            });
+//                this.contentModel
+//                var el = document.createElement(e.detail.type);
+//                el.setAttribute('name', "property-" + this.contentModel.sections.length);
+//                el.name = e.detail.key;
+//                Polymer.dom(this.$.cm).appendChild(el);
+//                Polymer.dom.flush()
+        },
+        onRemoveSectionInParent: function (e) {
+            var index = this.indexOfSection(e.detail.name);
+            console.log('Remove section ' + e.detail.name + ' from index ' + index);
+            this.splice('contentModel.sections', index, 1);
+        },
+        onOpenEditorInParent: function (e) {
+            console.log('Open field[' + e.detail.name + '] editor in a dialog ' + e.detail.dialogId + ' with model: ' + JSON.stringify(e.detail.section) + '.');
+
+//                this.$$(e.detail.dialogId).setAttribute('modal', true);
+//                Polymer.dom(this.$$(e.detail.dialogId)).querySelector('[name="title"]').setAttribute('value', e.detail.section.title);
+            document.querySelector('#' + e.detail.dialogId + ' [name="title"]').setAttribute('value', e.detail.section.title);
+//                Polymer.dom(this.$$(e.detail.dialogId)).querySelector('[name="data"]').setAttribute('value', e.detail.section.data);
+            document.querySelector('#' + e.detail.dialogId + ' [name="data"]').setAttribute('value', e.detail.section.data);
+            document.querySelector('#' + e.detail.dialogId + ' [name="name"]').setAttribute('value', e.detail.name);
+            document.querySelector('#' + e.detail.dialogId).open();
+        },
+        onApply: function (e, r) {
+            if (r.confirmed) {
+                var title = document.querySelector('#' + e.target.id + ' [name="title"] ').value;
+                var data = document.querySelector('#' + e.target.id + ' [name="data"] ').value;
+//                var name = document.querySelector('#' + e.target.id + ' [name="name"] ').value;
+                var oldContent = this.contentModel.sections[this.selectedSection / 2];
+
+                document.querySelector('plutonium-cm-field[name="' + oldContent.name + '"] ').model = {
+                    type: oldContent.type,
+                    name: oldContent.name,
+                    title: title,
+                    data: data
+                };
+                var newContent = this.contentModel.sections[this.selectedSection / 2];
+                console.log('Change field model from ' + JSON.stringify(oldContent) + ' to ' + JSON.stringify(newContent));
+            } else {
+                console.log('Cancel edit.');
+            }
+        },
+        onMoveUpSectionInParent: function (e) {
+            var index = this.indexOfSection(e.detail.name);
+            var s = [];
+            if (index - 1 >= 0) {
+                s = this.splice('contentModel.sections', index - 1, this.contentModel.sections.length - index + 1);
+                var first = s[0];
+                var second = s[1];
+                var tail = s.filter(function (value, index, arr) {
+                    return index > 1;
+                }, this);
+                this.push('contentModel.sections', second, first);
+                tail.forEach(function (value, index, arr) {
+                    this.push('contentModel.sections', value);
+                }, this);
+            } else {
+                s = this.splice('contentModel.sections', 0, 1);
+                this.push('contentModel.sections', s[0]);
+            }
+        },
+        onMoveDownSectionInParent: function (e) {
+            var index = this.indexOfSection(e.detail.name);
+            var s = [];
+            if (index < this.contentModel.sections.length - 1) {
+                s = this.splice('contentModel.sections', index, this.contentModel.sections.length - index);
+                var first = s[0];
+                var second = s[1];
+                var tail = s.filter(function (value, index, arr) {
+                    return index > 1;
+                }, this);
+                this.push('contentModel.sections', second, first);
+                tail.forEach(function (value, index, arr) {
+                    this.push('contentModel.sections', value);
+                }, this);
+            } else {
+                s = this.splice('contentModel.sections', 0, this.contentModel.sections.length - 1);
+                s.forEach(function (value, index, arr) {
+                    this.push('contentModel.sections', value);
+                }, this);
+            }
+        },
+        indexOfSection: function (name) {
+            var s = this.contentModel.sections;
+            var index = s.indexOf(
+                    s.filter(function (section) {
+                        return (section.name === name);
+                    }, this)[0]);
+            return index;
+        },
+        onAddSection: function () {
+            console.log('Add section after field[' + 'section' + this.contentModel.sections.length + ']');
+            this.fire('create', {
+                name: 'section' + this.contentModel.sections.length,
+                type: 'plutonium-cm-editor-text'
+            });
+        },
+        onEmbedVideo: function () {
+            console.log('Embed video to after field[' + 'section' + this.contentModel.sections.length + ']');
+            this.fire('create', {
+                name: 'section' + this.contentModel.sections.length,
+                type: 'plutonium-cm-editor-video'
+            });
+        },
+        onEmbedImage: function () {
+            console.log('Embed image to after field[' + 'section' + this.contentModel.sections.length + ']');
+            this.fire('create', {
+                name: this.name,
+                type: 'plutonium-cm-editor-image'
+            });
+        },
+        onEmbedLink: function () {
+            console.log('Embed link to after field[' + 'section' + this.contentModel.sections.length + ']');
+            this.fire('create', {
+                name: 'section' + this.contentModel.sections.length,
+                type: 'plutonium-cm-editor-link'
+            });
+        },
+        onSend: function () {
+            this.fire('share', {
+                content: this.contentModel,
+                recipients: this.selectedContactIds,
+                message: this.message
+            });
+        }
+    });
+</script>
+</dom-module>
