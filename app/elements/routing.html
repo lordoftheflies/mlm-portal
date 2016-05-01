@@ -45,14 +45,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         page('/', function () {
             app.route = 'content-tree';
-            if (app.params === undefined || app.params === null) app.params = {};
+            if (app.params === undefined || app.params === null)
+                app.params = {};
             app.params.contentId = 'ROOT';
             setFocus(app.route);
         });
 
         page(app.baseUrl, function () {
             app.route = 'content-tree';
-            if (app.params === undefined || app.params === null) app.params = {};
+            if (app.params === undefined || app.params === null)
+                app.params = {};
             app.params.contentId = 'ROOT';
             setFocus(app.route);
         });
@@ -77,6 +79,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         page('/network/:memberId', function (data) {
             app.route = 'network';
             app.params = data.params;
+            setFocus(app.route);
+        });
+        // Mailbox page route
+        page('/mailbox', function () {
+            app.route = 'mailbox';
             setFocus(app.route);
         });
         // About page route
