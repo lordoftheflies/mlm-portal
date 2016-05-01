@@ -16,11 +16,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../bower_components/paper-tabs/paper-tabs.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
-<link rel="import" href="../../bower_components/plutonium-cm-form/plutonium-cm-editor-text.html">
-<link rel="import" href="../../bower_components/plutonium-cm-form/plutonium-cm-editor-image.html">
-<link rel="import" href="../../bower_components/plutonium-cm-form/plutonium-cm-editor-link.html">
-<link rel="import" href="../../bower_components/plutonium-cm-form/plutonium-cm-editor-video.html">
-<link rel="import" href="../../bower_components/plutonium-cm-form/plutonium-cm-form.html">
 <!--<link rel="import" href="../../bower_components/i18n-behavior/i18n-behavior.html">-->
 
 <link rel="import" href="../plutonium-witdget-behavior.html">
@@ -84,6 +79,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             contacts="{{contacts}}" 
             content-model="{{sections}}"
             parent-candidates="{{parentCandidates}}"
+            file-upload-target="{{apiUrl}}/fs/upload"
             editors="[[editorMap]]">
             <paper-dialog id="textEditorDialog" modal class="editor">
                 <h2 id="textEditorDialogTitle">Edit text properties</h2>
@@ -235,11 +231,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     this.$.shareAjax.generateRequest();
                 },
                 onShareError: function() {
-                    app.$.toast.text = app.locale.error_share;
+                    app.$.toast.text = 'Content sharing failed.';
                     app.$.toast.show();
                 },
                 onShareResponse: function() {
-                    app.$.toast.text = app.locale.success_share;
+                    app.$.toast.text = 'New content shared successfully.';
                     app.$.toast.show();
                 }
             });

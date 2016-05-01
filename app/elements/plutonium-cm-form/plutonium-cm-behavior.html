@@ -1,0 +1,137 @@
+<script>
+    window.PlutoniumBehaviors = window.PlutoniumBehaviors || {};
+    PlutoniumBehaviors.CmBehavior = {
+        properties: {
+            sectionDisplay: {
+                type: Boolean,
+                notify: true,
+                value: false
+            },
+            actionsDisplay: {
+                type: Boolean,
+                notify: true,
+                value: false,
+                observer: 'showActions'
+            },
+            name: {
+                type: String,
+                notify: true
+            },
+            title: {
+                type: String,
+                notify: true
+            },
+            data: {
+                type: String,
+                notify: true
+            },
+            inlineEditor: {
+                type: Boolean,
+                notify: true,
+                value: false
+            },
+            _edited: {
+                type: Boolean,
+                notify: true,
+                value: false
+            },
+            dialogId: {
+                type: String,
+                notify: true
+            }
+        },
+//        listeners: {
+//            'show-editor': 'onShowEditor',
+//            'on-remove-section': 'onRemoveSection',
+//            'on-add-section': 'onAddSection',
+//            'actionContainer.on-embed-video': 'onEmbedVideo',
+//            'actionContainer.onEmbedImage': 'onEmbedImage',
+//            'onEmbedLink': 'onEmbedLink',
+//            'onHovered': 'onHovered',
+//            'onUnhovered': 'onUnhovered',
+//            'onMoveUpSection': 'onMoveUpSection',
+//            'onMoveDownSection': 'onMoveDownSection'
+//        },
+        ready: function () {
+            this.customStyle['--plutonium-cm-field-display'] = 'inline-block';
+
+        },
+        onRemoveSection: function () {
+            console.log('Remove field[' + this.name + ']');
+            this.fire('remove', {
+                name: this.name
+            });
+        },
+        onShowEditor: function (model) {
+            this._edited = true;
+//            this.data = model;
+            this.fire('edit', {
+                name: this.name,
+                section: this.model,
+                dialogId: this.dialogId
+            })
+        },
+        applyModel: function () {
+            this._edited = false;
+            this.fire('applyModel', {
+                key: this.name,
+                model: this.data
+            });
+            console.log('Show preview.');
+        },
+        onHovered: function () {
+            this.actionsDisplay = true;
+            this.showActions();
+//            console.log('hovered (' + this.getComputedStyleValue('--plutonium-cm-actions-display') + ')');
+        },
+        onUnhovered: function () {
+            this.actionsDisplay = false;
+            this.showActions();
+//            console.log('unhovered (' + this.getComputedStyleValue('--plutonium-cm-actions-display') + ')');
+        },
+        showActions: function (value) {
+            this.customStyle['--plutonium-cm-actions-display'] = (this.actionsDisplay ? 'inline-block' : 'none') + ' !important';
+            this.updateStyles();
+        },
+        onAddSection: function () {
+            console.log('Add section after field[' + this.name + ']');
+            this.fire('create', {
+                name: this.name,
+                type: 'plutonium-cm-editor-text'
+            });
+        },
+        onEmbedVideo: function () {
+            console.log('Embed video to after field[' + this.name + ']');
+            this.fire('create', {
+                name: this.name,
+                type: 'plutonium-cm-editor-video'
+            });
+        },
+        onEmbedImage: function () {
+            console.log('Embed image to after field[' + this.name + ']');
+            this.fire('create', {
+                name: this.name,
+                type: 'plutonium-cm-editor-image'
+            });
+        },
+        onEmbedLink: function () {
+            console.log('Embed link to after field[' + this.name + ']');
+            this.fire('create', {
+                name: this.name,
+                type: 'plutonium-cm-editor-link'
+            });
+        },
+        onMoveUpSection: function () {
+            console.log('Move up field[' + this.name + ']');
+            this.fire('moveupsection', {
+                name: this.name
+            });
+        },
+        onMoveDownSection: function () {
+            console.log('Move down field[' + this.name + ']');
+            this.fire('movedownsection', {
+                name: this.name
+            });
+        }
+    };
+</script>

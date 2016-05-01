@@ -1,6 +1,15 @@
 {
     "elements": {
         "template": {},
+        "plutonium-cm-form": {
+            "attributes": {
+                "content-model": {},
+                "file-upload-target": {},
+                "contacts": {},
+                "editors": {},
+                "parent-candidates": {}
+            }
+        },
         "dom-module": {
             "attributes": {
                 "id": {}
