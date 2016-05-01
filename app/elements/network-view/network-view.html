@@ -32,28 +32,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
 
 
-            :host paper-material {
-                background-color: white;
-                height: 40px;
-                @apply(--layout-center);
-                @apply(--layout-horizontal);
-            }
+            /*            :host paper-material {
+                            background-color: white;
+                            height: 40px;
+                            @apply(--layout-center);
+                            @apply(--layout-horizontal);
+                        }*/
 
-/*             Breadcrumbs 
-            :host .breadcrumbs {
-                @apply(--layout-horizontal);
-                @apply(--layout-flex);
-                list-style-type: none;
-            }
-            :host .breadcrumbs div:first-child:before {
-                content:'';  Change this to unicode as needed
-                margin-left: 1em;
-            }
-            :host .breadcrumbs div:before {
-                content:' >> ';  Change this to unicode as needed
-                margin-left: 1em;
-                margin-right: 1em;
-            }*/
+            /*             Breadcrumbs 
+                        :host .breadcrumbs {
+                            @apply(--layout-horizontal);
+                            @apply(--layout-flex);
+                            list-style-type: none;
+                        }
+                        :host .breadcrumbs div:first-child:before {
+                            content:'';  Change this to unicode as needed
+                            margin-left: 1em;
+                        }
+                        :host .breadcrumbs div:before {
+                            content:' >> ';  Change this to unicode as needed
+                            margin-left: 1em;
+                            margin-right: 1em;
+                        }*/
 
         </style>
 
@@ -161,27 +161,44 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </div>
         </paper-material>
 
+        <!--<div class="folder-content">-->
+        <!--<iron-pages selected="{{selectedMailBoxFolder}}">-->
+        <template is="dom-if" if="{{!isEmpty(data)}}">
 
-        <iron-list id="childrenIronList" items="[[data]]" as="item">
-            <template>
-                <div nodeid="{{item.id}}" on-tap="onNavigateToChildren">
-                    <div  class="item" tabindex$="[[tabIndex]]">
-                          <div class="pad">
-                            <div id="memberName-{{item.id}}"   class="primary">
-                                <span>[[item.name]]</span>
+            <iron-list id="childrenIronList" items="[[data]]" as="item">
+                <template>
+                    <div nodeid="{{item.id}}" on-tap="onNavigateToChildren">
+                        <div  class="item" tabindex$="[[tabIndex]]">
+                              <div class="pad">
+                                <div id="memberName-{{item.id}}"   class="primary">
+                                    <span>[[item.name]]</span>
+                                </div>
+                                <!--<paper-badge for="memberName-{{item.id}}" label="{{item.codes}}" class="blue"></paper-badge>-->
+                                <div class="secondary">
+                                    <span>[[item.title]]</span>
+                                    <p>[[item.text]]</p>
+                                </div>
+                                <div class="secondary dim">[[item.longText]]</div>
                             </div>
-                            <!--<paper-badge for="memberName-{{item.id}}" label="{{item.codes}}" class="blue"></paper-badge>-->
-                            <div class="secondary">
-                                <span>[[item.title]]</span>
-                                <p>[[item.text]]</p>
-                            </div>
-                            <div class="secondary dim">[[item.longText]]</div>
+
                         </div>
-
                     </div>
-                </div>
-            </template>
-        </iron-list>
+                </template>
+            </iron-list>
+        </template>
+        <template is="dom-if" if="{{isEmpty(data)}}">
+            <div class="folder-content">
+                <paper-card elevation="1">
+                    <div class="card-content">
+                        <div id="emptyChildrenText">No children.</div>
+                    </div>
+                </paper-card>
+            </div>
+        </template>
+
+
+
+        <!--</div>-->
     </template>
     <script>
         (function () {
@@ -307,6 +324,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 },
                 onSendTo: function () {
 
+                },
+                isEmpty: function (data) {
+                    return data === undefined || data === null || data.length === 0;
                 }
             });
         })();

@@ -35,36 +35,42 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <paper-tab id="mailBoxPageInboxFolderTitle" name="inbox">Inbox</paper-tab> 
             <paper-tab id="sentItemsPageInboxFolderTitle" name="outbox">Sent items</paper-tab>
         </paper-tabs>
-        <!--<iron-pages selected="{{selectedMailBoxFolder}}">-->
-        <template is="dom-if" if="{{!isEmpty(data)}}">
-            <iron-list items="[[data]]" as="item">
-                <template>
-                    <div>
-                        <div class$="item {{getItemClasses(item)}}" tabindex$="[[tabIndex]]">
-                             <!--<iron-image class="avatar" sizing="contain" src="[[item.image]]"></iron-image>-->
 
-                             <div class="pad">
-                                <div class="primary container">
-                                    <span>[[item.from]]</span>
-                                    <div class="flexchild"></div>
-                                    <span>[[item.ts]]</span>
-                                </div>
-                                <div class="secondary">
-                                    <span>[[item.title]]</span>
+        <div class="folder-content">
+            <!--<iron-pages selected="{{selectedMailBoxFolder}}">-->
+            <template is="dom-if" if="{{!isEmpty(data)}}">
+                <iron-list items="[[data]]" as="item">
+                    <template>
+                        <div>
+                            <div class$="item {{getItemClasses(item)}}" tabindex$="[[tabIndex]]">
+                                 <!--<iron-image class="avatar" sizing="contain" src="[[item.image]]"></iron-image>-->
+
+                                 <div class="pad">
+                                    <div class="primary container">
+                                        <span>[[item.from]]</span>
+                                        <div class="flexchild"></div>
+                                        <span>[[item.ts]]</span>
+                                    </div>
+                                    <div class="secondary">
+                                        <span>[[item.title]]</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </template>
+                </iron-list>
+            </template>
+            <template is="dom-if" if="{{isEmpty(data)}}">
+                <paper-card elevation="1">
+                    <div class="card-content">
+                        <div id="emptyMailBoxFolderText">No messages in the folder.</div>
                     </div>
-                </template>
-            </iron-list>
-        </template>
-        <template is="dom-if" if="{{isEmpty(data)}}">
-            <paper-material elevation="1">
-                <div>
-                    <div id="emptyMailBoxFolderText">No messages in the folder.</div>
-                </div>
-            </paper-material>
-        </template>
+                </paper-card>
+            </template>
+
+
+
+        </div>
         <!--            <iron-list items="[[data]]" as="item">
                         <template>
                             <div>
