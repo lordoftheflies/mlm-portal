@@ -29,13 +29,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
         </style>
         <!--<h2>Mailbox</h2>-->
-        <iron-ajax id="mailBoxAjax" url="{{apiUrl}}/mailbox/{{accountId}}/{{selectedMailBoxFolder}}" last-response="{{data}}" auto></iron-ajax>
+        <iron-ajax id="mailBoxAjax" 
+                   url="{{apiUrl}}/mailbox/{{accountId}}/{{selectedMailBoxFolder}}" 
+                   last-response="{{data}}">
+
+        </iron-ajax>
 
         <paper-tabs selected="{{selectedMailBoxFolder}}" attr-for-selected="name" autoselect>
             <paper-tab id="mailBoxPageInboxFolderTitle" name="inbox">Inbox</paper-tab> 
             <paper-tab id="sentItemsPageInboxFolderTitle" name="outbox">Sent items</paper-tab>
         </paper-tabs>
-
         <div class="folder-content">
             <!--<iron-pages selected="{{selectedMailBoxFolder}}">-->
             <template is="dom-if" if="{{!isEmpty(data)}}">
@@ -61,6 +64,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </iron-list>
             </template>
             <template is="dom-if" if="{{isEmpty(data)}}">
+                <br />
                 <paper-card elevation="1">
                     <div class="card-content">
                         <div id="emptyMailBoxFolderText">No messages in the folder.</div>
@@ -122,7 +126,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 },
                 computeMailboxFolderRequest: function (accountId, selectedMailBoxFolder) {
                     console.log(this.is + ' fetch ' + selectedMailBoxFolder + ' from ' + accountId + '\'s mailbox.');
-//                    this.$.mailBoxAjax.generateRequest();
+                    this.$.mailBoxAjax.generateRequest();
 
                 },
                 isEmpty: function (data) {
