@@ -31,9 +31,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                 @apply(--layout-flex);*/
             }
             /*content-viewer {*/
-/*                width: 100%;
-                @apply(--layout-vertical);
-                @apply(--layout-flex);*/
+            /*                width: 100%;
+                            @apply(--layout-vertical);
+                            @apply(--layout-flex);*/
             /*}*/
         </style>
 
@@ -73,10 +73,26 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <paper-tab text-id="messagesPageMyContentsFolderTitle" name="drafts">Drafts</paper-tab>
             <paper-tab text-id="messagesPagePublishedFolderTitle" name="published">Published</paper-tab>
         </paper-tabs>
+        <div class="mailbox-content">
+            <!--<iron-pages selected="{{selectedMailBoxFolder}}">-->
+            <template is="dom-if" if="{{!isEmpty(data.sections)}}">
+                <content-viewer
+                    data="{{data}}">
+                </content-viewer>
 
-        <content-viewer
-            data="{{data}}">
-        </content-viewer>
+            </template>
+            <template is="dom-if" if="{{isEmpty(data)}}">
+                <paper-card elevation="1">
+                    <div class="card-content">
+                        <div id="emptyContentFolderText">No content in the folder.</div>
+                    </div>
+                </paper-card>
+            </template>
+
+
+
+        </div>
+
     </template>
     <script>
         (function () {
@@ -175,6 +191,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 },
                 onContentError: function () {
                     console.log('Content fetching failed for ' + this.selectedRoot);
+                },
+                isEmpty: function (data) {
+                    return data === undefined || data === null || data.length === 0;
                 }
             });
         })();
