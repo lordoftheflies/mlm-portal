@@ -20,8 +20,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="../../bower_components/paper-badge/paper-badge.html">
-<link rel="import" href="../plutonium-witdget-behavior.html">
 <link rel="import" href="../../bower_components/grapp-breadcrumbs/grapp-breadcrumbs.html">
+
+<link rel="import" href="../plutonium-witdget-behavior.html">
+
 <!--<link rel="import" href="../../bower_components/i18n-behavior/i18n-behavior.html">-->
 
 <dom-module id="network-view">
@@ -30,31 +32,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             :host {
                 display: block;
             }
-
-
-            /*            :host paper-material {
-                            background-color: white;
-                            height: 40px;
-                            @apply(--layout-center);
-                            @apply(--layout-horizontal);
-                        }*/
-
-            /*             Breadcrumbs 
-                        :host .breadcrumbs {
-                            @apply(--layout-horizontal);
-                            @apply(--layout-flex);
-                            list-style-type: none;
-                        }
-                        :host .breadcrumbs div:first-child:before {
-                            content:'';  Change this to unicode as needed
-                            margin-left: 1em;
-                        }
-                        :host .breadcrumbs div:before {
-                            content:' >> ';  Change this to unicode as needed
-                            margin-left: 1em;
-                            margin-right: 1em;
-                        }*/
-
         </style>
 
         <iron-ajax 
@@ -173,7 +150,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                 <div id="memberName-{{item.id}}"   class="primary">
                                     <span>[[item.name]]</span>
                                 </div>
-                                <!--<paper-badge for="memberName-{{item.id}}" label="{{item.codes}}" class="blue"></paper-badge>-->
+                                <paper-badge for="memberName-{{item.id}}" label="{{item.codes}}" class="blue"></paper-badge>
                                 <div class="secondary">
                                     <span>[[item.title]]</span>
                                     <p>[[item.text]]</p>
@@ -187,7 +164,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </iron-list>
         </template>
         <template is="dom-if" if="{{isEmpty(data)}}">
+ 
             <div class="folder-content">
+                <br />
                 <paper-card elevation="1">
                     <div class="card-content">
                         <div id="emptyChildrenText">No children.</div>
@@ -245,9 +224,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     'computeSelected(accountId)'
                 ],
                 listeners: {
-                    'newMemberForm.iron-form-response': 'onCreateMemberResponse',
-                    'newMemberForm.iron-form-error': 'onCreateMemberError',
-                    'parentBeadCrumbs.iron-select': 'onSelectMember',
+                    'iron-form-response': 'onCreateMemberResponse',
+                    'iron-form-error': 'onCreateMemberError',
+                    'iron-select': 'onSelectMember',
                     'network-tree-refresh': 'onRefresh'
                 },
                 ready: function () {

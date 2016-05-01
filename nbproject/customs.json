@@ -1,0 +1,15 @@
+{
+    "elements": {
+        "template": {},
+        "dom-module": {
+            "attributes": {
+                "id": {}
+            }
+        }
+    },
+    "attributes": {
+        "include": {
+            "context": "style"
+        }
+    }
+}
