@@ -32,7 +32,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 @apply(--layout-horizontal);
             }
         </style>
-
         <template is="dom-if" if="{{!data.leaf}}">
             <!--<paper-card heading$="{{title}}">-->
             <!--<div class="card-content">-->
@@ -44,8 +43,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         <div class="item" tabindex="[[tabIndex]]">
                             <div class="pad">
                                 <div id="articleTitleLabel" class="primary" title="Navigate to {{baseUrl}}content-tree/{{section.data}}">
+                                    <template is="dom-if" if="{{section.hasEmbeddedFile}}">
+                                        <a href$="{{baseUrl}}content-tree/{{section.name}}">[[section.title]]</a>
+                                    </template>
+                                    <template is="dom-if" if="{{!section.hasEmbeddedFile}}">
                                     <a href$="{{baseUrl}}content-tree/{{section.data}}">[[section.title]]</a>
-                                    <!--<span href="{{baseUrl}}content-tree/{{section.data}}">[[section.title]]</span>-->
+                                    </template>
                                 </div>
                                 <div class="secondary">
                                     <span>[[item.title]]</span>

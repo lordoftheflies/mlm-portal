@@ -30,6 +30,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 /*                @apply(--layout-vertical);
                                 @apply(--layout-flex);*/
             }
+            
+            iframe {
+                @apply(--layout-vertical);
+                @apply(--layout-flex);
+                width: 100%;
+                height: 500px;
+            }
             /*content-viewer {*/
             /*                width: 100%;
                             @apply(--layout-vertical);
@@ -74,6 +81,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <paper-tab text-id="messagesPagePublishedFolderTitle" name="published">Published</paper-tab>
         </paper-tabs>
         <div class="mailbox-content">
+            <template is="dom-if" if="{{data.hasEmbeddedFile}}">
+                <iframe src$="{{getContentFileUrl(data.embeddedFileName)}}"></iframe>
+                <!--http://localhost/topn_data/[[data.embeddedFileName]]-->
+                <!--<pdf-element src$="{{getContentFileUrl(data.embeddedFileName)}}" elevation="5" downloadable show-file-name width=800 height=600></pdf-element>-->
+            </template>
+
             <!--<iron-pages selected="{{selectedMailBoxFolder}}">-->
             <template is="dom-if" if="{{!isEmpty(data.sections)}}">
                 <content-viewer
@@ -149,6 +162,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     data: {
                         type: Object,
                         notify: true
+                    },
+                    contentRootUrl: {
+                        type: String,
+                        notify: true,
+                        value: 'http://localhost/topn_data/'
                     }
                 },
                 observers: [
@@ -194,7 +212,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     console.log('Content fetching failed for ' + this.selectedRoot);
                 },
                 isEmpty: function (data) {
-                    return data === undefined || data === null || data.length === 0;
+                    return (data === undefined || data === null || data.length === 0);
+                },
+                getContentFileUrl: function (fileName) {
+                    return this.contentRootUrl + fileName;
                 }
             });
         })();

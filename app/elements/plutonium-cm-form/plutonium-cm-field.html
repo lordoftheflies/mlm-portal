@@ -252,7 +252,7 @@ Example:
                         }, this);
 
                         console.log(this.is + ' create child node: ' + selector);
-                            
+
                         element = document.createElement(model.type);
                         Polymer.dom(this).appendChild(element);
                     } else {
@@ -261,7 +261,13 @@ Example:
 
                     Polymer.dom(element).setAttribute('name', model.name);
                     Polymer.dom(element).setAttribute('title', model.title);
-                    Polymer.dom(element).setAttribute('data', model.data);
+                    if (model.hasEmbeddedFile) {
+                        console.log('kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk');
+                        Polymer.dom(element).setAttribute('data', model.id);
+                    } else {
+                        console.log('wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww');
+                        Polymer.dom(element).setAttribute('data', model.data);
+                    }
                     Polymer.dom(element).setAttribute('dialog-id', dialogId);
                 },
                 onRender: function () {

@@ -29,7 +29,8 @@
     "grapp-breadcrumbs": "^0.1.5",
     "paper-radio-button": "polymerelements/paper-radio-button",
     "paper-radio-group": "polymerelements/paper-radio-group",
-    "i18n-behavior": "^1.0.0"
+    "i18n-behavior": "^1.0.0",
+    "pdf-element": "^1.0.5"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"

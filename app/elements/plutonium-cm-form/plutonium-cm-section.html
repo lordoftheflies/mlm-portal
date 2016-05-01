@@ -52,6 +52,14 @@ Example:
         <!--<paper-material  class="horizontal-section">-->
         <content></content>
 
+<!--        <template is="dom-if" if="{{contentModel.hasEmbeddedFile}}">
+            pdf
+            <pdf-element src="../example.pdf" elevation="5" downloadable show-file-name width=800 height=600></pdf-element>
+        </template>
+        -->
+        <!--<template is="dom-if" if="{{!contentModel.hasEmbeddedFile}}">-->
+            
+        
         <paper-listbox id="assembled" selected="{{selectedSection}}">
             <template is="dom-repeat" items="{{contentModel.sections}}" as="section">
                 <plutonium-cm-field 
@@ -64,6 +72,7 @@ Example:
         </paper-listbox>
         <!--</paper-material>-->
 
+        <!--</template>-->
     </template>
 
     <script>
