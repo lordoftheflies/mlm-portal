@@ -74,10 +74,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             url="{{apiUrl}}/addressbook/{{accountId}}/contacts" 
             last-response="{{contacts}}" 
             auto></iron-ajax>
+        <iron-ajax 
+            id="parentCandidatesAjax"
+            url="{{apiUrl}}/content-management/candidates" 
+            last-response="{{parentCandidates}}" 
+            auto></iron-ajax>
 
         <plutonium-cm-form 
             contacts="{{contacts}}" 
             content-model="{{sections}}"
+            parent-candidates="{{parentCandidates}}"
             editors="[[editorMap]]">
             <paper-dialog id="textEditorDialog" modal class="editor">
                 <h2 id="textEditorDialogTitle">Edit text properties</h2>
