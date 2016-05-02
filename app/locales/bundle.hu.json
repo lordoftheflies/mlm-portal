@@ -1,887 +1,240 @@
 {
   "app": {
-    "meta": {
-      "todo": [
-        {
-          "op": "add",
-          "path": "/loginDialogTitle",
-          "value": "Sign-in"
-        },
-        {
-          "op": "add",
-          "path": "/logonDialogTitle",
-          "value": "Sign-on"
-        },
-        {
-          "op": "add",
-          "path": "/mainMenuTitle",
-          "value": "Menu"
-        },
-        {
-          "op": "add",
-          "path": "/shareContentMenuTitle",
-          "value": "Share content"
-        },
-        {
-          "op": "add",
-          "path": "/contentsMenuTitle",
-          "value": "Contents"
-        },
-        {
-          "op": "add",
-          "path": "/mailBoxMenuTitle",
-          "value": "Mailbox"
-        },
-        {
-          "op": "add",
-          "path": "/networkMenuTitle",
-          "value": "Network"
-        },
-        {
-          "op": "add",
-          "path": "/aboutMenuTitle",
-          "value": "About"
-        },
-        {
-          "op": "add",
-          "path": "/profileMenuTitle",
-          "value": "Profile"
-        },
-        {
-          "op": "add",
-          "path": "/logoutButtonLabel",
-          "value": "Logout"
-        },
-        {
-          "op": "add",
-          "path": "/mottoLabel",
-          "value": "The future of the web today"
-        },
-        {
-          "op": "add",
-          "path": "/shareContentViewTitleLabel",
-          "value": "Share content"
-        },
-        {
-          "op": "add",
-          "path": "/contentTreeViewTitleLabel",
-          "value": "Contents"
-        },
-        {
-          "op": "add",
-          "path": "/mailBoxViewTitleLabel",
-          "value": "Mailbox"
-        },
-        {
-          "op": "add",
-          "path": "/networkViewTitleLabel",
-          "value": "Network"
-        },
-        {
-          "op": "add",
-          "path": "/aboutViewTitleLabel",
-          "value": "About"
-        },
-        {
-          "op": "add",
-          "path": "/toastMessageText",
-          "value": "Ok"
-        }
-      ]
-    },
+    "meta": {},
     "model": {},
-    "loginDialogTitle": "Sign-in",
-    "logonDialogTitle": "Sign-on",
-    "mainMenuTitle": "Menu",
-    "shareContentMenuTitle": "Share content",
-    "contentsMenuTitle": "Contents",
-    "mailBoxMenuTitle": "Mailbox",
-    "networkMenuTitle": "Network",
-    "aboutMenuTitle": "About",
-    "profileMenuTitle": "Profile",
-    "logoutButtonLabel": "Logout",
-    "mottoLabel": "The future of the web today",
-    "shareContentViewTitleLabel": "Share content",
-    "contentTreeViewTitleLabel": "Contents",
-    "mailBoxViewTitleLabel": "Mailbox",
-    "networkViewTitleLabel": "Network",
-    "aboutViewTitleLabel": "About",
+    "loginDialogTitle": "Bejelentkezés",
+    "logonDialogTitle": "Regisztráció",
+    "mainMenuTitle": "Menü",
+    "shareContentMenuTitle": "Tartalom megosztása",
+    "contentsMenuTitle": "Tartalmak",
+    "mailBoxMenuTitle": "Postaláda",
+    "networkMenuTitle": "Hálózat",
+    "aboutMenuTitle": "Rólunk",
+    "profileMenuTitle": "Profil",
+    "logoutButtonLabel": "Kijelentkezés",
+    "mottoLabel": "A web jövője ma",
+    "shareContentViewTitleLabel": "Tartalom megosztása",
+    "contentTreeViewTitleLabel": "Tartalmak",
+    "mailBoxViewTitleLabel": "Postaláda",
+    "networkViewTitleLabel": "Hálózat",
+    "aboutViewTitleLabel": "Rólunk",
     "toastMessageText": "Ok"
   },
   "about-view": {
-    "meta": {
-      "todo": [
-        {
-          "op": "add",
-          "path": "/contributorsTitleLabel",
-          "value": "Authors & contributors"
-        },
-        {
-          "op": "add",
-          "path": "/ul_2:template:li/0",
-          "value": " {1} ({2}) "
-        },
-        {
-          "op": "add",
-          "path": "/ul_2:template:li/1",
-          "value": "{{item.name}}"
-        },
-        {
-          "op": "add",
-          "path": "/ul_2:template:li/2",
-          "value": "{{item.email}}"
-        },
-        {
-          "op": "add",
-          "path": "/administrationTitleLabel",
-          "value": "Webmaster & maintenance"
-        },
-        {
-          "op": "add",
-          "path": "/ul_4:template:li/0",
-          "value": " {1} ({2}) "
-        },
-        {
-          "op": "add",
-          "path": "/ul_4:template:li/1",
-          "value": "{{item.name}}"
-        },
-        {
-          "op": "add",
-          "path": "/ul_4:template:li/2",
-          "value": "{{item.email}}"
-        }
-      ]
-    },
+    "meta": {},
     "model": {},
-    "contributorsTitleLabel": "Authors & contributors",
-    "ul_2:template:li": [
-      " {1} ({2}) ",
-      "{{item.name}}",
-      "{{item.email}}"
-    ],
-    "administrationTitleLabel": "Webmaster & maintenance",
-    "ul_4:template:li": [
-      " {1} ({2}) ",
-      "{{item.name}}",
-      "{{item.email}}"
-    ]
+    "contributorsTitleLabel": "Szerzők & közreműködők",
+    "administrationTitleLabel": "Webmester & karbantartás"
   },
   "content-tree-view": {
-    "meta": {
-      "todo": [
-        {
-          "op": "add",
-          "path": "/messagesPagePublicFolderTitle",
-          "value": "Public"
-        },
-        {
-          "op": "add",
-          "path": "/messagesPageMyContentsFolderTitle",
-          "value": "Drafts"
-        },
-        {
-          "op": "add",
-          "path": "/messagesPagePublishedFolderTitle",
-          "value": "Published"
-        },
-        {
-          "op": "add",
-          "path": "/emptyContentFolderText",
-          "value": "No content in the folder."
-        }
-      ]
-    },
+    "meta": {},
     "model": {},
-    "messagesPagePublicFolderTitle": "Public",
-    "messagesPageMyContentsFolderTitle": "Drafts",
-    "messagesPagePublishedFolderTitle": "Published",
-    "emptyContentFolderText": "No content in the folder."
+    "messagesPagePublicFolderTitle": "Publikus",
+    "messagesPageMyContentsFolderTitle": "Saját tartalmak",
+    "messagesPagePublishedFolderTitle": "Publikált",
+    "emptyContentFolderText": "A mappában nincsenek tartalmak."
   },
   "content-viewer": {
-    "meta": {
-      "todo": [
-        {
-          "op": "add",
-          "path": "/model/articleTitleLabel/title",
-          "value": "Navigate to {{baseUrl}}content-tree/{{section.data}}"
-        }
-      ]
-    },
+    "meta": {},
     "model": {
       "articleTitleLabel": {
-        "title": "Navigate to {{baseUrl}}content-tree/{{section.data}}"
+        "title": "Ugrás {{baseUrl}}content-tree/{{section.data}}"
       }
     }
   },
   "mailbox-view": {
-    "meta": {
-      "todo": [
-        {
-          "op": "add",
-          "path": "/mailBoxPageInboxFolderTitle",
-          "value": "Inbox"
-        },
-        {
-          "op": "add",
-          "path": "/sentItemsPageInboxFolderTitle",
-          "value": "Sent items"
-        },
-        {
-          "op": "add",
-          "path": "/emptyMailBoxFolderText",
-          "value": "No messages in the folder."
-        }
-      ]
-    },
+    "meta": {},
     "model": {},
-    "mailBoxPageInboxFolderTitle": "Inbox",
-    "sentItemsPageInboxFolderTitle": "Sent items",
-    "emptyMailBoxFolderText": "No messages in the folder."
+    "mailBoxPageInboxFolderTitle": "Beérkező",
+    "sentItemsPageInboxFolderTitle": "Elküldött",
+    "emptyMailBoxFolderText": "A mappában nincsenek üzenetek."
   },
   "network-view": {
-    "meta": {
-      "todo": [
-        {
-          "op": "add",
-          "path": "/model/newMemberNameLabel/label",
-          "value": "Name"
-        },
-        {
-          "op": "add",
-          "path": "/model/newMemberEmailLabel/label",
-          "value": "Email"
-        },
-        {
-          "op": "add",
-          "path": "/model/newMemberParentLabel/label",
-          "value": "Parent member"
-        },
-        {
-          "op": "add",
-          "path": "/newMemberDialogTitle",
-          "value": "New member"
-        },
-        {
-          "op": "add",
-          "path": "/newMemberDialogCancelButton",
-          "value": "Cancel"
-        },
-        {
-          "op": "add",
-          "path": "/newMemberDialogCreateButton",
-          "value": "Create"
-        },
-        {
-          "op": "add",
-          "path": "/newMemberDialogCreateAndRepeatButton",
-          "value": "Create & repeat"
-        },
-        {
-          "op": "add",
-          "path": "/memberEraseConfirmDialogTitle",
-          "value": "Delete member"
-        },
-        {
-          "op": "add",
-          "path": "/memberEraseConfirmDialogText",
-          "value": " Are you sure delete member? "
-        },
-        {
-          "op": "add",
-          "path": "/memberEraseConfirmDialogCancelButton",
-          "value": "Cancel"
-        },
-        {
-          "op": "add",
-          "path": "/memberEraseConfirmDialogAcceptButton",
-          "value": "OK"
-        },
-        {
-          "op": "add",
-          "path": "/promoteAdminDialogTitle",
-          "value": "Promote administrator"
-        },
-        {
-          "op": "add",
-          "path": "/promoteAdminDialogText/0",
-          "value": " Are you surely promote {1} to administrator? "
-        },
-        {
-          "op": "add",
-          "path": "/promoteAdminDialogText/1",
-          "value": "{{item.name}}"
-        },
-        {
-          "op": "add",
-          "path": "/promoteAdminDialogCancelButton",
-          "value": "Cancel"
-        },
-        {
-          "op": "add",
-          "path": "/promoteAdminDialogAcceptButton",
-          "value": "OK"
-        },
-        {
-          "op": "add",
-          "path": "/demoteAdminDialogTitle",
-          "value": "Demote administrator"
-        },
-        {
-          "op": "add",
-          "path": "/demoteAdminDialogText/0",
-          "value": " Are you surely demote {1} to user? "
-        },
-        {
-          "op": "add",
-          "path": "/demoteAdminDialogText/1",
-          "value": "{{item.name}}"
-        },
-        {
-          "op": "add",
-          "path": "/demoteAdminDialogCancelButton",
-          "value": "Cancel"
-        },
-        {
-          "op": "add",
-          "path": "/demoteAdminDialogAcceptButton",
-          "value": "OK"
-        },
-        {
-          "op": "add",
-          "path": "/emptyChildrenText",
-          "value": "No children."
-        }
-      ]
-    },
+    "meta": {},
     "model": {
       "newMemberNameLabel": {
-        "label": "Name"
+        "label": "Név"
       },
       "newMemberEmailLabel": {
-        "label": "Email"
+        "label": "Email cím"
       },
       "newMemberParentLabel": {
-        "label": "Parent member"
+        "label": "Fölérendelt tag"
       }
     },
-    "newMemberDialogTitle": "New member",
-    "newMemberDialogCancelButton": "Cancel",
-    "newMemberDialogCreateButton": "Create",
-    "newMemberDialogCreateAndRepeatButton": "Create & repeat",
-    "memberEraseConfirmDialogTitle": "Delete member",
-    "memberEraseConfirmDialogText": " Are you sure delete member? ",
-    "memberEraseConfirmDialogCancelButton": "Cancel",
+    "newMemberDialogTitle": "Új tag",
+    "newMemberDialogCancelButton": "Elvetés",
+    "newMemberDialogCreateButton": "Létrehozás",
+    "newMemberDialogCreateAndRepeatButton": "Létrehozás & ismétlés",
+    "memberEraseConfirmDialogTitle": "Tag törlése",
+    "memberEraseConfirmDialogText": "Biztos, hogy törölni akarja a kiválasztott tagot?",
+    "memberEraseConfirmDialogCancelButton": "Elvetés",
     "memberEraseConfirmDialogAcceptButton": "OK",
-    "promoteAdminDialogTitle": "Promote administrator",
+    "promoteAdminDialogTitle": "Előléptetés",
     "promoteAdminDialogText": [
-      " Are you surely promote {1} to administrator? ",
+      " Biztos, hogy elő akarja léptetni {1}-t adminisztrátorrá? ",
       "{{item.name}}"
     ],
-    "promoteAdminDialogCancelButton": "Cancel",
+    "promoteAdminDialogCancelButton": "Elvetés",
     "promoteAdminDialogAcceptButton": "OK",
-    "demoteAdminDialogTitle": "Demote administrator",
+    "demoteAdminDialogTitle": "Lefokozás",
     "demoteAdminDialogText": [
-      " Are you surely demote {1} to user? ",
+      " Biztos, hogy le akarja fokozni {1}-t felhasználóvá?",
       "{{item.name}}"
     ],
-    "demoteAdminDialogCancelButton": "Cancel",
+    "demoteAdminDialogCancelButton": "Elvetés",
     "demoteAdminDialogAcceptButton": "OK",
-    "emptyChildrenText": "No children."
+    "emptyChildrenText": "Nincsenek alárendelt tagok."
   },
   "plutonium-cm-field": {
-    "meta": {
-      "todo": [
-        {
-          "op": "add",
-          "path": "/model/addSectionButton/title",
-          "value": "Embedd video to the message content."
-        },
-        {
-          "op": "add",
-          "path": "/model/addVideoButton/title",
-          "value": "Embedd video to the message content."
-        },
-        {
-          "op": "add",
-          "path": "/model/addImageButton/title",
-          "value": "Embedd image to the message content."
-        },
-        {
-          "op": "add",
-          "path": "/model/addLinkButton/title",
-          "value": "Embedd a link to another message to the message content."
-        }
-      ]
-    },
+    "meta": {},
     "model": {
       "addSectionButton": {
-        "title": "Embedd video to the message content."
+        "title": "Szöveges szekció beágyazása."
       },
       "addVideoButton": {
-        "title": "Embedd video to the message content."
+        "title": "Video szekció beágyazása."
       },
       "addImageButton": {
-        "title": "Embedd image to the message content."
+        "title": "Kép szekció beágyazása."
       },
       "addLinkButton": {
-        "title": "Embedd a link to another message to the message content."
+        "title": "Hivatkozás szekció beágyazása."
       }
     }
   },
   "plutonium-cm-form": {
-    "meta": {
-      "todo": [
-        {
-          "op": "add",
-          "path": "/model/messageInput/label",
-          "value": "Message"
-        },
-        {
-          "op": "add",
-          "path": "/model/addSectionButton/title",
-          "value": "Embedd video to the message content."
-        },
-        {
-          "op": "add",
-          "path": "/model/addVideoButton/title",
-          "value": "Embedd video to the message content."
-        },
-        {
-          "op": "add",
-          "path": "/model/addImageButton/title",
-          "value": "Embedd image to the message content."
-        },
-        {
-          "op": "add",
-          "path": "/model/addLinkButton/title",
-          "value": "Embedd a link to another message to the message content."
-        },
-        {
-          "op": "add",
-          "path": "/model/parentDdLabel/label",
-          "value": "Parent"
-        },
-        {
-          "op": "add",
-          "path": "/model/contentTitleInput/label",
-          "value": "Title"
-        },
-        {
-          "op": "add",
-          "path": "/shareTabLabel",
-          "value": "Share"
-        },
-        {
-          "op": "add",
-          "path": "/contentTabLabel",
-          "value": "Content"
-        },
-        {
-          "op": "add",
-          "path": "/propertiesTabLabel",
-          "value": "Properties"
-        },
-        {
-          "op": "add",
-          "path": "/[[item/id]]:label_1/0",
-          "value": "({1})"
-        },
-        {
-          "op": "add",
-          "path": "/[[item/id]]:label_1/1",
-          "value": "[[item.id]]"
-        },
-        {
-          "op": "add",
-          "path": "/embbeddedContentRadio",
-          "value": "Embed content"
-        },
-        {
-          "op": "add",
-          "path": "/assembledContentRadio",
-          "value": "Assemble"
-        },
-        {
-          "op": "add",
-          "path": "/embedContentRadio",
-          "value": "Embed content"
-        },
-        {
-          "op": "add",
-          "path": "/assembleRadio",
-          "value": "Assemble"
-        },
-        {
-          "op": "add",
-          "path": "/uploadFileText",
-          "value": "Choose File"
-        }
-      ]
-    },
+    "meta": {},
     "model": {
       "messageInput": {
-        "label": "Message"
+        "label": "Üzenet"
       },
       "addSectionButton": {
-        "title": "Embedd video to the message content."
+        "title": "Szöveges szekció beágyazása."
       },
       "addVideoButton": {
-        "title": "Embedd video to the message content."
+        "title": "Video szekció beágyazása."
       },
       "addImageButton": {
-        "title": "Embedd image to the message content."
+        "title": "Kép szekció beágyazása."
       },
       "addLinkButton": {
-        "title": "Embedd a link to another message to the message content."
+        "title": "Hivatkozás szekció beágyazása."
       },
       "parentDdLabel": {
-        "label": "Parent"
+        "label": "Szülő"
       },
       "contentTitleInput": {
-        "label": "Title"
+        "label": "Cím"
       }
     },
-    "shareTabLabel": "Share",
-    "contentTabLabel": "Content",
-    "propertiesTabLabel": "Properties",
-    "[[item": {
-      "id]]:label_1": [
-        "({1})",
-        "[[item.id]]"
-      ]
-    },
-    "embbeddedContentRadio": "Embed content",
-    "assembledContentRadio": "Assemble",
-    "embedContentRadio": "Embed content",
-    "assembleRadio": "Assemble",
-    "uploadFileText": "Choose File"
+    "shareTabLabel": "Megosztás",
+    "contentTabLabel": "Tartalom",
+    "propertiesTabLabel": "Tulajdonságok",
+    "embbeddedContentRadio": "Bináris tartalom",
+    "assembledContentRadio": "Saját tartalom",
+    "embedContentRadio": "Bináris tartalom",
+    "assembleRadio": "Saját tartalom",
+    "uploadFileText": "Fájl kiválasztása"
   },
   "profile-view": {
-    "meta": {
-      "todo": [
-        {
-          "op": "add",
-          "path": "/model/preferredLanguageLabel/label",
-          "value": "Preferred language"
-        },
-        {
-          "op": "add",
-          "path": "/activationDateTitle",
-          "value": "Activation date"
-        },
-        {
-          "op": "add",
-          "path": "/changingDeviceButton",
-          "value": "Changing device"
-        },
-        {
-          "op": "add",
-          "path": "/underDevelopmentText",
-          "value": "Under development ..."
-        }
-      ]
-    },
+    "meta": {},
     "model": {
       "preferredLanguageLabel": {
-        "label": "Preferred language"
+        "label": "Preferált nyelv"
       }
     },
-    "activationDateTitle": "Activation date",
-    "changingDeviceButton": "Changing device",
-    "underDevelopmentText": "Under development ..."
+    "activationDateTitle": "Aktiválva",
+    "changingDeviceButton": "Eszközcsere",
+    "underDevelopmentText": "Fejlesztés alatt ..."
   },
   "share-content-view": {
-    "meta": {
-      "todo": [
-        {
-          "op": "add",
-          "path": "/model/textContentTextLabel/label",
-          "value": "Text"
-        },
-        {
-          "op": "add",
-          "path": "/model/imageContentTitleLabel/label",
-          "value": "Title"
-        },
-        {
-          "op": "add",
-          "path": "/model/imageEditorUrlLabel/label",
-          "value": "Image url"
-        },
-        {
-          "op": "add",
-          "path": "/model/linkEditorDialogTitleLabel/label",
-          "value": "Title"
-        },
-        {
-          "op": "add",
-          "path": "/model/linkEditorReferenceLabel/label",
-          "value": "Reference"
-        },
-        {
-          "op": "add",
-          "path": "/model/videoEditorTitleLabel/label",
-          "value": "Title"
-        },
-        {
-          "op": "add",
-          "path": "/model/videoContentUrlLabel/label",
-          "value": "Video url"
-        },
-        {
-          "op": "add",
-          "path": "/model/videoContentUrlLabel/error-message",
-          "value": "Invalid Youtube url."
-        },
-        {
-          "op": "add",
-          "path": "/textEditorDialogTitle",
-          "value": "Edit text properties"
-        },
-        {
-          "op": "add",
-          "path": "/textEditorDialogAcceptButton",
-          "value": "Accept"
-        },
-        {
-          "op": "add",
-          "path": "/imageEditorDialogTitle",
-          "value": "Edit image properties"
-        },
-        {
-          "op": "add",
-          "path": "/imageEditorDialogCancelButton",
-          "value": "Cancel"
-        },
-        {
-          "op": "add",
-          "path": "/imageEditorDialogAcceptButton",
-          "value": "Accept"
-        },
-        {
-          "op": "add",
-          "path": "/linkEditorDialogTitle",
-          "value": "Edit link properties"
-        },
-        {
-          "op": "add",
-          "path": "/linkEditorDialogCancelButton",
-          "value": "Cancel"
-        },
-        {
-          "op": "add",
-          "path": "/linkEditorDialogAcceptButton",
-          "value": "Accept"
-        },
-        {
-          "op": "add",
-          "path": "/videoEditorDialogTitle",
-          "value": "Edit video properties"
-        },
-        {
-          "op": "add",
-          "path": "/videoEditorDialogCancelButton",
-          "value": "Cancel"
-        },
-        {
-          "op": "add",
-          "path": "/videoEditorDialogAcceptButton",
-          "value": "Accept"
-        }
-      ]
-    },
+    "meta": {},
     "model": {
       "textContentTextLabel": {
-        "label": "Text"
+        "label": "Szöveg"
       },
       "imageContentTitleLabel": {
-        "label": "Title"
+        "label": "Cím"
       },
       "imageEditorUrlLabel": {
-        "label": "Image url"
+        "label": "Kép url"
       },
       "linkEditorDialogTitleLabel": {
-        "label": "Title"
+        "label": "Cím"
       },
       "linkEditorReferenceLabel": {
-        "label": "Reference"
+        "label": "Hivatkozás"
       },
       "videoEditorTitleLabel": {
-        "label": "Title"
+        "label": "Cím"
       },
       "videoContentUrlLabel": {
-        "label": "Video url",
-        "error-message": "Invalid Youtube url."
+        "label": "Videó url",
+        "error-message": "Érvénytelen Youtube videó."
       }
     },
-    "textEditorDialogTitle": "Edit text properties",
-    "textEditorDialogAcceptButton": "Accept",
-    "imageEditorDialogTitle": "Edit image properties",
-    "imageEditorDialogCancelButton": "Cancel",
-    "imageEditorDialogAcceptButton": "Accept",
-    "linkEditorDialogTitle": "Edit link properties",
-    "linkEditorDialogCancelButton": "Cancel",
-    "linkEditorDialogAcceptButton": "Accept",
-    "videoEditorDialogTitle": "Edit video properties",
-    "videoEditorDialogCancelButton": "Cancel",
-    "videoEditorDialogAcceptButton": "Accept"
+    "textEditorDialogTitle": "Szöveg tulajdonságainak szerkesztése",
+    "textEditorDialogAcceptButton": "Elfogadás",
+    "imageEditorDialogTitle": "Kép tulajdonságainak szerkesztése",
+    "imageEditorDialogCancelButton": "Elvetés",
+    "imageEditorDialogAcceptButton": "Elfogadás",
+    "linkEditorDialogTitle": "Hivatkozás tulajdonságainak szerkesztése",
+    "linkEditorDialogCancelButton": "Elvetés",
+    "linkEditorDialogAcceptButton": "Elfogadás",
+    "videoEditorDialogTitle": "Video tulajdonságainak szerkesztése",
+    "videoEditorDialogCancelButton": "Elvetés",
+    "videoEditorDialogAcceptButton": "Elfogadás"
   },
   "signin-view": {
-    "meta": {
-      "todo": [
-        {
-          "op": "add",
-          "path": "/model/signInFormLoginEmail/label",
-          "value": "Email address"
-        },
-        {
-          "op": "add",
-          "path": "/model/signInFormLoginEmail/error-message",
-          "value": "Invalid email address."
-        },
-        {
-          "op": "add",
-          "path": "/model/signInFormLoginPassword/label",
-          "value": "Password"
-        },
-        {
-          "op": "add",
-          "path": "/model/signInFormLoginPassword/error-message",
-          "value": "Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number."
-        },
-        {
-          "op": "add",
-          "path": "/model/signInFormAccept/title",
-          "value": "submit"
-        },
-        {
-          "op": "add",
-          "path": "/signInFormRememberMe",
-          "value": "Remember me"
-        },
-        {
-          "op": "add",
-          "path": "/signInFormRegistrate",
-          "value": "Sign-on"
-        }
-      ]
-    },
+    "meta": {},
     "model": {
       "signInFormLoginEmail": {
-        "label": "Email address",
-        "error-message": "Invalid email address."
+        "label": "Email cím",
+        "error-message": "Érvénytelen email cím."
       },
       "signInFormLoginPassword": {
-        "label": "Password",
-        "error-message": "Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number."
+        "label": "Jelszó",
+        "error-message": "Érvénytelen jelszó. A jelszó egy 6-16 jegyű, legalább egy számot tartalmazó alfanumerikus karaktersorozat."
       },
       "signInFormAccept": {
-        "title": "submit"
+        "title": "Bejelentkezés"
       }
     },
-    "signInFormRememberMe": "Remember me",
-    "signInFormRegistrate": "Sign-on"
+    "signInFormRememberMe": "Emlékezz rám",
+    "signInFormRegistrate": "Regisztráció"
   },
   "signon-view": {
-    "meta": {
-      "todo": [
-        {
-          "op": "add",
-          "path": "/model/registrateTitleLabel/label",
-          "value": "Name"
-        },
-        {
-          "op": "add",
-          "path": "/model/registrateTitleLabel/error-message",
-          "value": "Invalid name."
-        },
-        {
-          "op": "add",
-          "path": "/model/registrateEmailLabel/label",
-          "value": "Email address"
-        },
-        {
-          "op": "add",
-          "path": "/model/registrateEmailLabel/error-message",
-          "value": "Invalid email address."
-        },
-        {
-          "op": "add",
-          "path": "/model/registratePhoneNumberLabel/label",
-          "value": "Phone"
-        },
-        {
-          "op": "add",
-          "path": "/model/registratePhoneNumberLabel/error-message",
-          "value": "Invalid phone number."
-        },
-        {
-          "op": "add",
-          "path": "/model/registratePasswordLabel/label",
-          "value": "Password"
-        },
-        {
-          "op": "add",
-          "path": "/model/registratePasswordLabel/error-message",
-          "value": "Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number."
-        },
-        {
-          "op": "add",
-          "path": "/model/registratePasswordConfirmLabel/label",
-          "value": "Password confirmation"
-        },
-        {
-          "op": "add",
-          "path": "/model/registrateCodeLabel/label",
-          "value": "Activation code"
-        },
-        {
-          "op": "add",
-          "path": "/model/registrateCodeLabel/error-message",
-          "value": "Activation code."
-        },
-        {
-          "op": "add",
-          "path": "/model/registrateSignOnButton/title",
-          "value": "submit"
-        },
-        {
-          "op": "add",
-          "path": "/registrateSignInButton",
-          "value": "Signin"
-        }
-      ]
-    },
+    "meta": {},
     "model": {
       "registrateTitleLabel": {
-        "label": "Name",
-        "error-message": "Invalid name."
+        "label": "Név",
+        "error-message": "Érvénytelen név."
       },
       "registrateEmailLabel": {
-        "label": "Email address",
-        "error-message": "Invalid email address."
+        "label": "Email cím",
+        "error-message": "Érvénytelen email cím."
       },
       "registratePhoneNumberLabel": {
-        "label": "Phone",
-        "error-message": "Invalid phone number."
+        "label": "Telefonszám",
+        "error-message": "Érvénytelen telefonszám."
       },
       "registratePasswordLabel": {
-        "label": "Password",
-        "error-message": "Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number."
+        "label": "Jelszó",
+        "error-message": "Érvénytelen jelszó. A jelszó egy 6-16 jegyű, legalább egy számot tartalmazó alfanumerikus karaktersorozat."
       },
       "registratePasswordConfirmLabel": {
-        "label": "Password confirmation"
+        "label": "Jelszó megerősítés"
       },
       "registrateCodeLabel": {
-        "label": "Activation code",
-        "error-message": "Activation code."
+        "label": "Aktivációs kód",
+        "error-message": "Hibás aktivációs kód."
       },
       "registrateSignOnButton": {
-        "title": "submit"
+        "title": "Regisztráció"
       }
     },
-    "registrateSignInButton": "Signin"
+    "registrateSignInButton": "Bejelentkezés"
   },
   "bundle": true
 }
