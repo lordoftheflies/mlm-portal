@@ -23,17 +23,17 @@
       "label": "Title"
     }
   },
-  "paper-card_1:paper-toolbar:paper-tabs:paper-tab": "Share",
-  "paper-card_1:paper-toolbar:paper-tabs:paper-tab_1": "Content",
-  "paper-card_1:paper-toolbar:paper-tabs:paper-tab_2": "Properties",
+  "shareTabLabel": "Share",
+  "contentTabLabel": "Content",
+  "propertiesTabLabel": "Properties",
   "[[item": {
     "id]]:label_1": [
       "({1})",
       "[[item.id]]"
     ]
   },
-  "assembled:paper-radio-group_1:paper-radio-button": "Embed content",
-  "assembled:paper-radio-group_1:paper-radio-button_1": "Assemble",
+  "embbeddedContentRadio": "Embed content",
+  "assembledContentRadio": "Assemble",
   "embedContentRadio": "Embed content",
   "assembleRadio": "Assemble",
   "uploadFileText": "Choose File"
