@@ -3,12 +3,12 @@
     "todo": [
       {
         "op": "add",
-        "path": "/loginDialog:h2",
+        "path": "/loginDialogTitle",
         "value": "Sign-in"
       },
       {
         "op": "add",
-        "path": "/registrationDialog:h2",
+        "path": "/logonDialogTitle",
         "value": "Sign-on"
       },
       {
@@ -53,7 +53,7 @@
       },
       {
         "op": "add",
-        "path": "/mainToolbar:div_4:div",
+        "path": "/mottoLabel",
         "value": "The future of the web today"
       },
       {
@@ -89,8 +89,8 @@
     ]
   },
   "model": {},
-  "loginDialog:h2": "Sign-in",
-  "registrationDialog:h2": "Sign-on",
+  "loginDialogTitle": "Sign-in",
+  "logonDialogTitle": "Sign-on",
   "mainMenuTitle": "Menu",
   "shareContentMenuTitle": "Share content",
   "contentsMenuTitle": "Contents",
@@ -99,7 +99,7 @@
   "aboutMenuTitle": "About",
   "profileMenuTitle": "Profile",
   "logoutButtonLabel": "Logout",
-  "mainToolbar:div_4:div": "The future of the web today",
+  "mottoLabel": "The future of the web today",
   "shareContentViewTitleLabel": "Share content",
   "contentTreeViewTitleLabel": "Contents",
   "mailBoxViewTitleLabel": "Mailbox",

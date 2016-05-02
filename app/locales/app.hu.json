@@ -1,109 +1,23 @@
 {
   "meta": {
-    "todo": [
-      {
-        "op": "add",
-        "path": "/loginDialog:h2",
-        "value": "Sign-in"
-      },
-      {
-        "op": "add",
-        "path": "/registrationDialog:h2",
-        "value": "Sign-on"
-      },
-      {
-        "op": "add",
-        "path": "/mainMenuTitle",
-        "value": "Menu"
-      },
-      {
-        "op": "add",
-        "path": "/shareContentMenuTitle",
-        "value": "Share content"
-      },
-      {
-        "op": "add",
-        "path": "/contentsMenuTitle",
-        "value": "Contents"
-      },
-      {
-        "op": "add",
-        "path": "/mailBoxMenuTitle",
-        "value": "Mailbox"
-      },
-      {
-        "op": "add",
-        "path": "/networkMenuTitle",
-        "value": "Network"
-      },
-      {
-        "op": "add",
-        "path": "/aboutMenuTitle",
-        "value": "About"
-      },
-      {
-        "op": "add",
-        "path": "/profileMenuTitle",
-        "value": "Profile"
-      },
-      {
-        "op": "add",
-        "path": "/logoutButtonLabel",
-        "value": "Logout"
-      },
-      {
-        "op": "add",
-        "path": "/mainToolbar:div_4:div",
-        "value": "The future of the web today"
-      },
-      {
-        "op": "add",
-        "path": "/shareContentViewTitleLabel",
-        "value": "Share content"
-      },
-      {
-        "op": "add",
-        "path": "/contentTreeViewTitleLabel",
-        "value": "Contents"
-      },
-      {
-        "op": "add",
-        "path": "/mailBoxViewTitleLabel",
-        "value": "Mailbox"
-      },
-      {
-        "op": "add",
-        "path": "/networkViewTitleLabel",
-        "value": "Network"
-      },
-      {
-        "op": "add",
-        "path": "/aboutViewTitleLabel",
-        "value": "About"
-      },
-      {
-        "op": "add",
-        "path": "/toastMessageText",
-        "value": "Ok"
-      }
-    ]
+    "todo": []
   },
   "model": {},
-  "loginDialog:h2": "Sign-in",
-  "registrationDialog:h2": "Sign-on",
-  "mainMenuTitle": "Menu",
-  "shareContentMenuTitle": "Share content",
-  "contentsMenuTitle": "Contents",
-  "mailBoxMenuTitle": "Mailbox",
-  "networkMenuTitle": "Network",
-  "aboutMenuTitle": "About",
-  "profileMenuTitle": "Profile",
-  "logoutButtonLabel": "Logout",
-  "mainToolbar:div_4:div": "The future of the web today",
-  "shareContentViewTitleLabel": "Share content",
-  "contentTreeViewTitleLabel": "Contents",
-  "mailBoxViewTitleLabel": "Mailbox",
-  "networkViewTitleLabel": "Network",
-  "aboutViewTitleLabel": "About",
+  "loginDialogTitle": "Bejelentkezés",
+  "logonDialogTitle": "Regisztráció",
+  "mainMenuTitle": "Menü",
+  "shareContentMenuTitle": "Tartalom megosztása",
+  "contentsMenuTitle": "Tartalmak",
+  "mailBoxMenuTitle": "Postaláda",
+  "networkMenuTitle": "Hálózat",
+  "aboutMenuTitle": "Rólunk",
+  "profileMenuTitle": "Profil",
+  "logoutButtonLabel": "Kijelentkezés",
+  "mottoLabel": "Valami mottó",
+  "shareContentViewTitleLabel": "Tartalom megosztása",
+  "contentTreeViewTitleLabel": "Tartalmak",
+  "mailBoxViewTitleLabel": "Postaláda",
+  "networkViewTitleLabel": "Hálózat",
+  "aboutViewTitleLabel": "Rólunk",
   "toastMessageText": "Ok"
 }
