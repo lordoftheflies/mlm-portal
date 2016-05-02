@@ -17,5 +17,5 @@
   "mailBoxViewTitleLabel": "Mailbox",
   "networkViewTitleLabel": "Network",
   "aboutViewTitleLabel": "About",
-  "toast:span": "Ok"
+  "toastMessageText": "Ok"
 }
