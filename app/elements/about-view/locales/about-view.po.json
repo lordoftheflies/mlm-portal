@@ -44,13 +44,13 @@
     ]
   },
   "model": {},
-  "contributorsTitleLabel": "Authors & contributors",
+  "contributorsTitleLabel": "Autorski & Współtwórcy",
   "ul_2:template:li": [
     " {1} ({2}) ",
     "{{item.name}}",
     "{{item.email}}"
   ],
-  "administrationTitleLabel": "Webmaster & maintenance",
+  "administrationTitleLabel": "Webmaster & konserwacja",
   "ul_4:template:li": [
     " {1} ({2}) ",
     "{{item.name}}",

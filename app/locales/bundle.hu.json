@@ -6,20 +6,20 @@
     "model": {},
     "loginDialogTitle": "Bejelentkezés",
     "logonDialogTitle": "Regisztráció",
-    "mainMenuTitle": "Menü",
+    "mainMenuTitle": "Flavon",
     "shareContentMenuTitle": "Tartalom megosztása",
-    "contentsMenuTitle": "Tartalmak",
+    "contentsMenuTitle": "Menük",
     "mailBoxMenuTitle": "Postaláda",
     "networkMenuTitle": "Hálózat",
     "aboutMenuTitle": "Rólunk",
     "profileMenuTitle": "Profil",
     "logoutButtonLabel": "Kijelentkezés",
-    "mottoLabel": "A web jövője ma",
+    "mottoLabel": "",
     "shareContentViewTitleLabel": "Tartalom megosztása",
     "contentTreeViewTitleLabel": "Tartalmak",
     "mailBoxViewTitleLabel": "Postaláda",
     "networkViewTitleLabel": "Hálózat",
-    "aboutViewTitleLabel": "Rólunk",
+    "aboutViewTitleLabel": "Kapcsolat",
     "toastMessageText": "Ok"
   },
   "about-view": {
@@ -76,9 +76,9 @@
       "todo": []
     },
     "model": {},
-    "messagesPagePublicFolderTitle": "Publikus",
-    "messagesPageMyContentsFolderTitle": "Saját tartalmak",
-    "messagesPagePublishedFolderTitle": "Publikált",
+    "messagesPagePublicFolderTitle": "Nyilvános",
+    "messagesPageMyContentsFolderTitle": "Saját tartalom",
+    "messagesPagePublishedFolderTitle": "Megjelent",
     "emptyContentFolderText": "A mappában nincsenek tartalmak."
   },
   "content-viewer": {
@@ -96,8 +96,8 @@
       "todo": []
     },
     "model": {},
-    "mailBoxPageInboxFolderTitle": "Beérkező",
-    "sentItemsPageInboxFolderTitle": "Elküldött",
+    "mailBoxPageInboxFolderTitle": "Beérkező levelek",
+    "sentItemsPageInboxFolderTitle": "Elküldött levelek",
     "emptyMailBoxFolderText": "A mappában nincsenek üzenetek."
   },
   "network-view": {

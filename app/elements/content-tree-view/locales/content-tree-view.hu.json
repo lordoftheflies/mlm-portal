@@ -3,8 +3,8 @@
     "todo": []
   },
   "model": {},
-  "messagesPagePublicFolderTitle": "Publikus",
-  "messagesPageMyContentsFolderTitle": "Saját tartalmak",
-  "messagesPagePublishedFolderTitle": "Publikált",
+  "messagesPagePublicFolderTitle": "Nyilvános",
+  "messagesPageMyContentsFolderTitle": "Saját tartalom",
+  "messagesPagePublishedFolderTitle": "Megjelent",
   "emptyContentFolderText": "A mappában nincsenek tartalmak."
 }

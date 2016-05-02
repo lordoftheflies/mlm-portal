@@ -115,36 +115,36 @@
   },
   "model": {
     "newMemberNameLabel": {
-      "label": "Name"
+      "label": "Nazwa"
     },
     "newMemberEmailLabel": {
-      "label": "Email"
+      "label": "Adres e-mail"
     },
     "newMemberParentLabel": {
-      "label": "Parent member"
+      "label": "Członek rodzic"
     }
   },
-  "newMemberDialogTitle": "New member",
-  "newMemberDialogCancelButton": "Cancel",
-  "newMemberDialogCreateButton": "Create",
-  "newMemberDialogCreateAndRepeatButton": "Create & repeat",
-  "memberEraseConfirmDialogTitle": "Delete member",
-  "memberEraseConfirmDialogText": " Are you sure delete member? ",
-  "memberEraseConfirmDialogCancelButton": "Cancel",
+  "newMemberDialogTitle": "Nowy członek",
+  "newMemberDialogCancelButton": "Anuluj",
+  "newMemberDialogCreateButton": "Stwórz",
+  "newMemberDialogCreateAndRepeatButton": "Tworzenie i powtórzyć",
+  "memberEraseConfirmDialogTitle": "Usuń element",
+  "memberEraseConfirmDialogText": "Czy na pewno usunąć członkiem?",
+  "memberEraseConfirmDialogCancelButton": "Anuluj",
   "memberEraseConfirmDialogAcceptButton": "OK",
-  "promoteAdminDialogTitle": "Promote administrator",
+  "promoteAdminDialogTitle": "Promuj administratorem",
   "promoteAdminDialogText": [
-    " Are you surely promote {1} to administrator? ",
+    "Czy na pewno promować {1} do administratora?",
     "{{item.name}}"
   ],
-  "promoteAdminDialogCancelButton": "Cancel",
+  "promoteAdminDialogCancelButton": "Anuluj",
   "promoteAdminDialogAcceptButton": "OK",
-  "demoteAdminDialogTitle": "Demote administrator",
+  "demoteAdminDialogTitle": "Obniżanie administratorem",
   "demoteAdminDialogText": [
-    " Are you surely demote {1} to user? ",
+    "Czy na pewno obniżyć {1}, aby użytkownik?",
     "{{item.name}}"
   ],
-  "demoteAdminDialogCancelButton": "Cancel",
+  "demoteAdminDialogCancelButton": "Anuluj",
   "demoteAdminDialogAcceptButton": "OK",
-  "emptyChildrenText": "No children."
+  "emptyChildrenText": "Brak członków dziecko."
 }

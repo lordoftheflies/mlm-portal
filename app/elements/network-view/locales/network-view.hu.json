@@ -10,7 +10,7 @@
       "label": "Email cím"
     },
     "newMemberParentLabel": {
-      "label": "Szülő tag"
+      "label": "Fölérendelt tag"
     }
   },
   "newMemberDialogTitle": "Új tag",

@@ -100,37 +100,37 @@
   },
   "model": {
     "textContentTextLabel": {
-      "label": "Text"
+      "label": "Tekst"
     },
     "imageContentTitleLabel": {
-      "label": "Title"
+      "label": "Tytuł"
     },
     "imageEditorUrlLabel": {
-      "label": "Image url"
+      "label": "URL obrazu"
     },
     "linkEditorDialogTitleLabel": {
-      "label": "Title"
+      "label": "Tytuł"
     },
     "linkEditorReferenceLabel": {
-      "label": "Reference"
+      "label": "Powiązane treści"
     },
     "videoEditorTitleLabel": {
-      "label": "Title"
+      "label": "Tytuł"
     },
     "videoContentUrlLabel": {
-      "label": "Video url",
-      "error-message": "Invalid Youtube url."
+      "label": "Url wideo",
+      "error-message": "Nieprawidłowy url Youtube."
     }
   },
-  "textEditorDialogTitle": "Edit text properties",
-  "textEditorDialogAcceptButton": "Accept",
-  "imageEditorDialogTitle": "Edit image properties",
-  "imageEditorDialogCancelButton": "Cancel",
-  "imageEditorDialogAcceptButton": "Accept",
-  "linkEditorDialogTitle": "Edit link properties",
-  "linkEditorDialogCancelButton": "Cancel",
-  "linkEditorDialogAcceptButton": "Accept",
-  "videoEditorDialogTitle": "Edit video properties",
-  "videoEditorDialogCancelButton": "Cancel",
-  "videoEditorDialogAcceptButton": "Accept"
+  "textEditorDialogTitle": "Właściwości Edycja tekstu.",
+  "textEditorDialogAcceptButton": "Zaakceptować",
+  "imageEditorDialogTitle": "Właściwości Edycja obrazu",
+  "imageEditorDialogCancelButton": "Anuluj",
+  "imageEditorDialogAcceptButton": "Zaakceptować",
+  "linkEditorDialogTitle": "Właściwości link Edytuj",
+  "linkEditorDialogCancelButton": "Anuluj",
+  "linkEditorDialogAcceptButton": "Zaakceptować",
+  "videoEditorDialogTitle": "Właściwości Edycja wideo.",
+  "videoEditorDialogCancelButton": "Anuluj",
+  "videoEditorDialogAcceptButton": "Zaakceptować"
 }

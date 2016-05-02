@@ -19,7 +19,7 @@
     ]
   },
   "model": {},
-  "mailBoxPageInboxFolderTitle": "Inbox",
-  "sentItemsPageInboxFolderTitle": "Sent items",
-  "emptyMailBoxFolderText": "No messages in the folder."
+  "mailBoxPageInboxFolderTitle": "Odebrane listy",
+  "sentItemsPageInboxFolderTitle": "Wysłane listy",
+  "emptyMailBoxFolderText": "Brak wiadomości w folderze."
 }

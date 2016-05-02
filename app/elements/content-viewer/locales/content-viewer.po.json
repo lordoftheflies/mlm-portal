@@ -10,7 +10,7 @@
   },
   "model": {
     "articleTitleLabel": {
-      "title": "Navigate to {{baseUrl}}content-tree/{{section.data}}"
+      "title": "Nawigować do{{baseUrl}}content-tree/{{section.data}}"
     }
   }
 }

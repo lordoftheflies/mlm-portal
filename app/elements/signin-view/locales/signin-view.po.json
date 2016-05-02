@@ -40,17 +40,17 @@
   },
   "model": {
     "signInFormLoginEmail": {
-      "label": "Email address",
-      "error-message": "Invalid email address."
+      "label": "Adres e-mail",
+      "error-message": "Błędny adres e-mail."
     },
     "signInFormLoginPassword": {
-      "label": "Password",
-      "error-message": "Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number."
+      "label": "Hasło",
+      "error-message": "Nieprawidłowe hasło. Hasło musi być 6-16 alphanumercal charakter i minimalna 1 numer."
     },
     "signInFormAccept": {
-      "title": "submit"
+      "title": "Zaloguj"
     }
   },
-  "signInFormRememberMe": "Remember me",
-  "signInFormRegistrate": "Sign-on"
+  "signInFormRememberMe": "Zapamiętaj mnie",
+  "signInFormRegistrate": "Zapisać się"
 }

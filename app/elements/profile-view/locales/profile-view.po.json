@@ -25,10 +25,10 @@
   },
   "model": {
     "preferredLanguageLabel": {
-      "label": "Preferred language"
+      "label": "Preferowany język"
     }
   },
-  "activationDateTitle": "Activation date",
-  "changingDeviceButton": "Changing device",
-  "underDevelopmentText": "Under development ..."
+  "activationDateTitle": "Data aktywacji",
+  "changingDeviceButton": "Zmiana narzędzia",
+  "underDevelopmentText": "W budowie ..."
 }

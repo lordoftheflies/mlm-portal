@@ -24,8 +24,8 @@
     ]
   },
   "model": {},
-  "messagesPagePublicFolderTitle": "Public",
-  "messagesPageMyContentsFolderTitle": "Drafts",
-  "messagesPagePublishedFolderTitle": "Published",
-  "emptyContentFolderText": "No content in the folder."
+  "messagesPagePublicFolderTitle": "Otwarte",
+  "messagesPageMyContentsFolderTitle": "Własny treść",
+  "messagesPagePublishedFolderTitle": "Pojawiło się",
+  "emptyContentFolderText": "Brak zawartości w folderze."
 }

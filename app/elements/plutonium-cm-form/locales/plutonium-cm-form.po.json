@@ -8,11 +8,6 @@
       },
       {
         "op": "add",
-        "path": "/model/addSectionButton/title",
-        "value": "Embedd video to the message content."
-      },
-      {
-        "op": "add",
         "path": "/model/addVideoButton/title",
         "value": "Embedd video to the message content."
       },
@@ -85,44 +80,49 @@
         "op": "add",
         "path": "/uploadFileText",
         "value": "Choose File"
+      },
+      {
+        "op": "replace",
+        "path": "/model/addSectionButton/title",
+        "value": "Embedd video to the message content."
       }
     ]
   },
   "model": {
     "messageInput": {
-      "label": "Message"
+      "label": "Wiadomość"
     },
     "addSectionButton": {
       "title": "Embedd video to the message content."
     },
     "addVideoButton": {
-      "title": "Embedd video to the message content."
+      "title": "Osadzony materiał wideo."
     },
     "addImageButton": {
-      "title": "Embedd image to the message content."
+      "title": "Wbudowany treść obrazu."
     },
     "addLinkButton": {
-      "title": "Embedd a link to another message to the message content."
+      "title": "Osadzonej zawartości Link."
     },
     "parentDdLabel": {
-      "label": "Parent"
+      "label": "Roślina mateczna"
     },
     "contentTitleInput": {
-      "label": "Title"
+      "label": "Tytuł"
     }
   },
-  "shareTabLabel": "Share",
-  "contentTabLabel": "Content",
-  "propertiesTabLabel": "Properties",
+  "shareTabLabel": "Dzielić",
+  "contentTabLabel": "Zadowolony",
+  "propertiesTabLabel": "Nieruchomości",
   "[[item": {
     "id]]:label_1": [
       "({1})",
       "[[item.id]]"
     ]
   },
-  "embbeddedContentRadio": "Embed content",
+  "embbeddedContentRadio": "Doładuj fajl",
   "assembledContentRadio": "Assemble",
   "embedContentRadio": "Embed content",
-  "assembleRadio": "Assemble",
-  "uploadFileText": "Choose File"
+  "assembleRadio": "Edytować",
+  "uploadFileText": "Wybierz fajl"
 }

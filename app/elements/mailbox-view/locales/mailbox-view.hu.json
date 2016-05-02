@@ -3,7 +3,7 @@
     "todo": []
   },
   "model": {},
-  "mailBoxPageInboxFolderTitle": "Beérkező",
-  "sentItemsPageInboxFolderTitle": "Elküldött",
+  "mailBoxPageInboxFolderTitle": "Beérkező levelek",
+  "sentItemsPageInboxFolderTitle": "Elküldött levelek",
   "emptyMailBoxFolderText": "A mappában nincsenek üzenetek."
 }

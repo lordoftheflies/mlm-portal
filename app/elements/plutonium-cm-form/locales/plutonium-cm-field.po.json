@@ -3,11 +3,6 @@
     "todo": [
       {
         "op": "add",
-        "path": "/model/addSectionButton/title",
-        "value": "Embedd video to the message content."
-      },
-      {
-        "op": "add",
         "path": "/model/addVideoButton/title",
         "value": "Embedd video to the message content."
       },
@@ -20,6 +15,11 @@
         "op": "add",
         "path": "/model/addLinkButton/title",
         "value": "Embedd a link to another message to the message content."
+      },
+      {
+        "op": "replace",
+        "path": "/model/addSectionButton/title",
+        "value": "Embedd video to the message content."
       }
     ]
   },
@@ -28,13 +28,13 @@
       "title": "Embedd video to the message content."
     },
     "addVideoButton": {
-      "title": "Embedd video to the message content."
+      "title": "Osadzony materiał wideo"
     },
     "addImageButton": {
-      "title": "Embedd image to the message content."
+      "title": "Wbudowany treść obrazu."
     },
     "addLinkButton": {
-      "title": "Embedd a link to another message to the message content."
+      "title": "Osadzonej zawartości Link"
     }
   }
 }

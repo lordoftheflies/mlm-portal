@@ -70,31 +70,31 @@
   },
   "model": {
     "registrateTitleLabel": {
-      "label": "Name",
-      "error-message": "Invalid name."
+      "label": "Nazwa",
+      "error-message": "Błędna nazwa."
     },
     "registrateEmailLabel": {
-      "label": "Email address",
-      "error-message": "Invalid email address."
+      "label": "Adres e-mail",
+      "error-message": "Błędny adres e-mail."
     },
     "registratePhoneNumberLabel": {
-      "label": "Phone",
-      "error-message": "Invalid phone number."
+      "label": "Numer telefonu",
+      "error-message": "Nieprawidłowy numer telefonu."
     },
     "registratePasswordLabel": {
-      "label": "Password",
-      "error-message": "Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number."
+      "label": "Hasło",
+      "error-message": "Nieprawidłowe hasło. Hasło musi być 6-16 alphanumercal charakter i minimalna 1 numer."
     },
     "registratePasswordConfirmLabel": {
-      "label": "Password confirmation"
+      "label": "Potwierdzenie hasła"
     },
     "registrateCodeLabel": {
-      "label": "Activation code",
-      "error-message": "Activation code."
+      "label": "Kod aktywacyjny",
+      "error-message": "Zły kod aktywacyjny"
     },
     "registrateSignOnButton": {
-      "title": "submit"
+      "title": "Zapisać się"
     }
   },
-  "registrateSignInButton": "Signin"
+  "registrateSignInButton": "Zaloguj"
 }

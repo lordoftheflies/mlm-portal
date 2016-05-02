@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
 <xliff version="1.0">
-  <file source-language="en" target-language="po" datatype="plaintext" original="messages" date="2016-05-02T16:08:03Z" product-name="messages">
+  <file source-language="en" target-language="po" datatype="plaintext" original="messages" date="2016-05-02T21:12:44Z" product-name="messages">
   <header/>
     <body>
       <trans-unit id="app.loginDialogTitle">
@@ -46,7 +46,7 @@
       </trans-unit>
       <trans-unit id="app.mottoLabel">
         <source>The future of the web today</source>
-        <target></target>
+        <target>The future of the web today</target>
       </trans-unit>
       <trans-unit id="app.shareContentViewTitleLabel">
         <source>Share content</source>
@@ -76,9 +76,33 @@
         <source>Authors &amp; contributors</source>
         <target>Autorski &amp; Współtwórcy</target>
       </trans-unit>
+      <trans-unit id="about-view.ul_2:template:li.0">
+        <source> {1} ({2}) </source>
+        <target> {1} ({2}) </target>
+      </trans-unit>
+      <trans-unit id="about-view.ul_2:template:li.1">
+        <source>{{item.name}}</source>
+        <target>{{item.name}}</target>
+      </trans-unit>
+      <trans-unit id="about-view.ul_2:template:li.2">
+        <source>{{item.email}}</source>
+        <target>{{item.email}}</target>
+      </trans-unit>
       <trans-unit id="about-view.administrationTitleLabel">
         <source>Webmaster &amp; maintenance</source>
         <target>Webmaster &amp; konserwacja</target>
+      </trans-unit>
+      <trans-unit id="about-view.ul_4:template:li.0">
+        <source> {1} ({2}) </source>
+        <target> {1} ({2}) </target>
+      </trans-unit>
+      <trans-unit id="about-view.ul_4:template:li.1">
+        <source>{{item.name}}</source>
+        <target>{{item.name}}</target>
+      </trans-unit>
+      <trans-unit id="about-view.ul_4:template:li.2">
+        <source>{{item.email}}</source>
+        <target>{{item.email}}</target>
       </trans-unit>
       <trans-unit id="content-tree-view.messagesPagePublicFolderTitle">
         <source>Public</source>
@@ -164,6 +188,10 @@
         <source> Are you surely promote {1} to administrator? </source>
         <target>Czy na pewno promować {1} do administratora?</target>
       </trans-unit>
+      <trans-unit id="network-view.promoteAdminDialogText.1">
+        <source>{{item.name}}</source>
+        <target>{{item.name}}</target>
+      </trans-unit>
       <trans-unit id="network-view.promoteAdminDialogCancelButton">
         <source>Cancel</source>
         <target>Anuluj</target>
@@ -180,6 +208,10 @@
         <source> Are you surely demote {1} to user? </source>
         <target>Czy na pewno obniżyć {1}, aby użytkownik?</target>
       </trans-unit>
+      <trans-unit id="network-view.demoteAdminDialogText.1">
+        <source>{{item.name}}</source>
+        <target>{{item.name}}</target>
+      </trans-unit>
       <trans-unit id="network-view.demoteAdminDialogCancelButton">
         <source>Cancel</source>
         <target>Anuluj</target>
@@ -194,7 +226,7 @@
       </trans-unit>
       <trans-unit id="plutonium-cm-field.model.addSectionButton.title">
         <source>Embedd video to the message content.</source>
-        <target>Wbudowany treść tekstu.</target>
+        <target>Embedd video to the message content.</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-field.model.addVideoButton.title">
         <source>Embedd video to the message content.</source>
@@ -214,7 +246,7 @@
       </trans-unit>
       <trans-unit id="plutonium-cm-form.model.addSectionButton.title">
         <source>Embedd video to the message content.</source>
-        <target>Wbudowany treść tekstu.</target>
+        <target>Embedd video to the message content.</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.model.addVideoButton.title">
         <source>Embedd video to the message content.</source>
@@ -248,6 +280,14 @@
         <source>Properties</source>
         <target>Nieruchomości</target>
       </trans-unit>
+      <trans-unit id="plutonium-cm-form.[[item.id]]:label_1.0">
+        <source>({1})</source>
+        <target>({1})</target>
+      </trans-unit>
+      <trans-unit id="plutonium-cm-form.[[item.id]]:label_1.1">
+        <source>[[item.id]]</source>
+        <target>[[item.id]]</target>
+      </trans-unit>
       <trans-unit id="plutonium-cm-form.embbeddedContentRadio">
         <source>Embed content</source>
         <target>Doładuj fajl</target>
@@ -279,10 +319,6 @@
       <trans-unit id="profile-view.changingDeviceButton">
         <source>Changing device</source>
         <target>Zmiana narzędzia</target>
-      </trans-unit>
-      <trans-unit id="profile-view.changingDeviceDialogTitle">
-        <source>Changing device</source>
-        <target>Czy na pewno chce Pan/Pani zmienić narzędzie?</target>
       </trans-unit>
       <trans-unit id="profile-view.underDevelopmentText">
         <source>Under development ...</source>

@@ -90,22 +90,22 @@
       ]
     },
     "model": {},
-    "loginDialogTitle": "Sign-in",
-    "logonDialogTitle": "Sign-on",
-    "mainMenuTitle": "Menu",
-    "shareContentMenuTitle": "Share content",
-    "contentsMenuTitle": "Contents",
-    "mailBoxMenuTitle": "Mailbox",
-    "networkMenuTitle": "Network",
-    "aboutMenuTitle": "About",
-    "profileMenuTitle": "Profile",
-    "logoutButtonLabel": "Logout",
-    "mottoLabel": "The future of the web today",
-    "shareContentViewTitleLabel": "Share content",
-    "contentTreeViewTitleLabel": "Contents",
-    "mailBoxViewTitleLabel": "Mailbox",
-    "networkViewTitleLabel": "Network",
-    "aboutViewTitleLabel": "About",
+    "loginDialogTitle": "Zaloguj",
+    "logonDialogTitle": "Zapisać się",
+    "mainMenuTitle": "Flavon",
+    "shareContentMenuTitle": "Udostępnij treść",
+    "contentsMenuTitle": "Menu",
+    "mailBoxMenuTitle": "Skrzynka na listy",
+    "networkMenuTitle": "Sieć",
+    "aboutMenuTitle": "Informacja",
+    "profileMenuTitle": "Profil",
+    "logoutButtonLabel": "Wylogowanie",
+    "mottoLabel": "",
+    "shareContentViewTitleLabel": "Udostępnij treść",
+    "contentTreeViewTitleLabel": "Menu",
+    "mailBoxViewTitleLabel": "Skrzynka na listy",
+    "networkViewTitleLabel": "Sieć",
+    "aboutViewTitleLabel": "Informacja",
     "toastMessageText": "Ok"
   },
   "about-view": {
@@ -154,13 +154,13 @@
       ]
     },
     "model": {},
-    "contributorsTitleLabel": "Authors & contributors",
+    "contributorsTitleLabel": "Autorski & Współtwórcy",
     "ul_2:template:li": [
       " {1} ({2}) ",
       "{{item.name}}",
       "{{item.email}}"
     ],
-    "administrationTitleLabel": "Webmaster & maintenance",
+    "administrationTitleLabel": "Webmaster & konserwacja",
     "ul_4:template:li": [
       " {1} ({2}) ",
       "{{item.name}}",
@@ -193,10 +193,10 @@
       ]
     },
     "model": {},
-    "messagesPagePublicFolderTitle": "Public",
-    "messagesPageMyContentsFolderTitle": "Drafts",
-    "messagesPagePublishedFolderTitle": "Published",
-    "emptyContentFolderText": "No content in the folder."
+    "messagesPagePublicFolderTitle": "Otwarte",
+    "messagesPageMyContentsFolderTitle": "Własny treść",
+    "messagesPagePublishedFolderTitle": "Pojawiło się",
+    "emptyContentFolderText": "Brak zawartości w folderze."
   },
   "content-viewer": {
     "meta": {
@@ -210,7 +210,7 @@
     },
     "model": {
       "articleTitleLabel": {
-        "title": "Navigate to {{baseUrl}}content-tree/{{section.data}}"
+        "title": "Nawigować do{{baseUrl}}content-tree/{{section.data}}"
       }
     }
   },
@@ -235,9 +235,9 @@
       ]
     },
     "model": {},
-    "mailBoxPageInboxFolderTitle": "Inbox",
-    "sentItemsPageInboxFolderTitle": "Sent items",
-    "emptyMailBoxFolderText": "No messages in the folder."
+    "mailBoxPageInboxFolderTitle": "Odebrane listy",
+    "sentItemsPageInboxFolderTitle": "Wysłane listy",
+    "emptyMailBoxFolderText": "Brak wiadomości w folderze."
   },
   "network-view": {
     "meta": {
@@ -356,47 +356,42 @@
     },
     "model": {
       "newMemberNameLabel": {
-        "label": "Name"
+        "label": "Nazwa"
       },
       "newMemberEmailLabel": {
-        "label": "Email"
+        "label": "Adres e-mail"
       },
       "newMemberParentLabel": {
-        "label": "Parent member"
+        "label": "Członek rodzic"
       }
     },
-    "newMemberDialogTitle": "New member",
-    "newMemberDialogCancelButton": "Cancel",
-    "newMemberDialogCreateButton": "Create",
-    "newMemberDialogCreateAndRepeatButton": "Create & repeat",
-    "memberEraseConfirmDialogTitle": "Delete member",
-    "memberEraseConfirmDialogText": " Are you sure delete member? ",
-    "memberEraseConfirmDialogCancelButton": "Cancel",
+    "newMemberDialogTitle": "Nowy członek",
+    "newMemberDialogCancelButton": "Anuluj",
+    "newMemberDialogCreateButton": "Stwórz",
+    "newMemberDialogCreateAndRepeatButton": "Tworzenie i powtórzyć",
+    "memberEraseConfirmDialogTitle": "Usuń element",
+    "memberEraseConfirmDialogText": "Czy na pewno usunąć członkiem?",
+    "memberEraseConfirmDialogCancelButton": "Anuluj",
     "memberEraseConfirmDialogAcceptButton": "OK",
-    "promoteAdminDialogTitle": "Promote administrator",
+    "promoteAdminDialogTitle": "Promuj administratorem",
     "promoteAdminDialogText": [
-      " Are you surely promote {1} to administrator? ",
+      "Czy na pewno promować {1} do administratora?",
       "{{item.name}}"
     ],
-    "promoteAdminDialogCancelButton": "Cancel",
+    "promoteAdminDialogCancelButton": "Anuluj",
     "promoteAdminDialogAcceptButton": "OK",
-    "demoteAdminDialogTitle": "Demote administrator",
+    "demoteAdminDialogTitle": "Obniżanie administratorem",
     "demoteAdminDialogText": [
-      " Are you surely demote {1} to user? ",
+      "Czy na pewno obniżyć {1}, aby użytkownik?",
       "{{item.name}}"
     ],
-    "demoteAdminDialogCancelButton": "Cancel",
+    "demoteAdminDialogCancelButton": "Anuluj",
     "demoteAdminDialogAcceptButton": "OK",
-    "emptyChildrenText": "No children."
+    "emptyChildrenText": "Brak członków dziecko."
   },
   "plutonium-cm-field": {
     "meta": {
       "todo": [
-        {
-          "op": "add",
-          "path": "/model/addSectionButton/title",
-          "value": "Embedd video to the message content."
-        },
         {
           "op": "add",
           "path": "/model/addVideoButton/title",
@@ -411,6 +406,11 @@
           "op": "add",
           "path": "/model/addLinkButton/title",
           "value": "Embedd a link to another message to the message content."
+        },
+        {
+          "op": "replace",
+          "path": "/model/addSectionButton/title",
+          "value": "Embedd video to the message content."
         }
       ]
     },
@@ -419,13 +419,13 @@
         "title": "Embedd video to the message content."
       },
       "addVideoButton": {
-        "title": "Embedd video to the message content."
+        "title": "Osadzony materiał wideo"
       },
       "addImageButton": {
-        "title": "Embedd image to the message content."
+        "title": "Wbudowany treść obrazu."
       },
       "addLinkButton": {
-        "title": "Embedd a link to another message to the message content."
+        "title": "Osadzonej zawartości Link"
       }
     }
   },
@@ -436,11 +436,6 @@
           "op": "add",
           "path": "/model/messageInput/label",
           "value": "Message"
-        },
-        {
-          "op": "add",
-          "path": "/model/addSectionButton/title",
-          "value": "Embedd video to the message content."
         },
         {
           "op": "add",
@@ -516,46 +511,51 @@
           "op": "add",
           "path": "/uploadFileText",
           "value": "Choose File"
+        },
+        {
+          "op": "replace",
+          "path": "/model/addSectionButton/title",
+          "value": "Embedd video to the message content."
         }
       ]
     },
     "model": {
       "messageInput": {
-        "label": "Message"
+        "label": "Wiadomość"
       },
       "addSectionButton": {
         "title": "Embedd video to the message content."
       },
       "addVideoButton": {
-        "title": "Embedd video to the message content."
+        "title": "Osadzony materiał wideo."
       },
       "addImageButton": {
-        "title": "Embedd image to the message content."
+        "title": "Wbudowany treść obrazu."
       },
       "addLinkButton": {
-        "title": "Embedd a link to another message to the message content."
+        "title": "Osadzonej zawartości Link."
       },
       "parentDdLabel": {
-        "label": "Parent"
+        "label": "Roślina mateczna"
       },
       "contentTitleInput": {
-        "label": "Title"
+        "label": "Tytuł"
       }
     },
-    "shareTabLabel": "Share",
-    "contentTabLabel": "Content",
-    "propertiesTabLabel": "Properties",
+    "shareTabLabel": "Dzielić",
+    "contentTabLabel": "Zadowolony",
+    "propertiesTabLabel": "Nieruchomości",
     "[[item": {
       "id]]:label_1": [
         "({1})",
         "[[item.id]]"
       ]
     },
-    "embbeddedContentRadio": "Embed content",
+    "embbeddedContentRadio": "Doładuj fajl",
     "assembledContentRadio": "Assemble",
     "embedContentRadio": "Embed content",
-    "assembleRadio": "Assemble",
-    "uploadFileText": "Choose File"
+    "assembleRadio": "Edytować",
+    "uploadFileText": "Wybierz fajl"
   },
   "profile-view": {
     "meta": {
@@ -584,12 +584,12 @@
     },
     "model": {
       "preferredLanguageLabel": {
-        "label": "Preferred language"
+        "label": "Preferowany język"
       }
     },
-    "activationDateTitle": "Activation date",
-    "changingDeviceButton": "Changing device",
-    "underDevelopmentText": "Under development ..."
+    "activationDateTitle": "Data aktywacji",
+    "changingDeviceButton": "Zmiana narzędzia",
+    "underDevelopmentText": "W budowie ..."
   },
   "share-content-view": {
     "meta": {
@@ -693,39 +693,39 @@
     },
     "model": {
       "textContentTextLabel": {
-        "label": "Text"
+        "label": "Tekst"
       },
       "imageContentTitleLabel": {
-        "label": "Title"
+        "label": "Tytuł"
       },
       "imageEditorUrlLabel": {
-        "label": "Image url"
+        "label": "URL obrazu"
       },
       "linkEditorDialogTitleLabel": {
-        "label": "Title"
+        "label": "Tytuł"
       },
       "linkEditorReferenceLabel": {
-        "label": "Reference"
+        "label": "Powiązane treści"
       },
       "videoEditorTitleLabel": {
-        "label": "Title"
+        "label": "Tytuł"
       },
       "videoContentUrlLabel": {
-        "label": "Video url",
-        "error-message": "Invalid Youtube url."
+        "label": "Url wideo",
+        "error-message": "Nieprawidłowy url Youtube."
       }
     },
-    "textEditorDialogTitle": "Edit text properties",
-    "textEditorDialogAcceptButton": "Accept",
-    "imageEditorDialogTitle": "Edit image properties",
-    "imageEditorDialogCancelButton": "Cancel",
-    "imageEditorDialogAcceptButton": "Accept",
-    "linkEditorDialogTitle": "Edit link properties",
-    "linkEditorDialogCancelButton": "Cancel",
-    "linkEditorDialogAcceptButton": "Accept",
-    "videoEditorDialogTitle": "Edit video properties",
-    "videoEditorDialogCancelButton": "Cancel",
-    "videoEditorDialogAcceptButton": "Accept"
+    "textEditorDialogTitle": "Właściwości Edycja tekstu.",
+    "textEditorDialogAcceptButton": "Zaakceptować",
+    "imageEditorDialogTitle": "Właściwości Edycja obrazu",
+    "imageEditorDialogCancelButton": "Anuluj",
+    "imageEditorDialogAcceptButton": "Zaakceptować",
+    "linkEditorDialogTitle": "Właściwości link Edytuj",
+    "linkEditorDialogCancelButton": "Anuluj",
+    "linkEditorDialogAcceptButton": "Zaakceptować",
+    "videoEditorDialogTitle": "Właściwości Edycja wideo.",
+    "videoEditorDialogCancelButton": "Anuluj",
+    "videoEditorDialogAcceptButton": "Zaakceptować"
   },
   "signin-view": {
     "meta": {
@@ -769,19 +769,19 @@
     },
     "model": {
       "signInFormLoginEmail": {
-        "label": "Email address",
-        "error-message": "Invalid email address."
+        "label": "Adres e-mail",
+        "error-message": "Błędny adres e-mail."
       },
       "signInFormLoginPassword": {
-        "label": "Password",
-        "error-message": "Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number."
+        "label": "Hasło",
+        "error-message": "Nieprawidłowe hasło. Hasło musi być 6-16 alphanumercal charakter i minimalna 1 numer."
       },
       "signInFormAccept": {
-        "title": "submit"
+        "title": "Zaloguj"
       }
     },
-    "signInFormRememberMe": "Remember me",
-    "signInFormRegistrate": "Sign-on"
+    "signInFormRememberMe": "Zapamiętaj mnie",
+    "signInFormRegistrate": "Zapisać się"
   },
   "signon-view": {
     "meta": {
@@ -855,33 +855,33 @@
     },
     "model": {
       "registrateTitleLabel": {
-        "label": "Name",
-        "error-message": "Invalid name."
+        "label": "Nazwa",
+        "error-message": "Błędna nazwa."
       },
       "registrateEmailLabel": {
-        "label": "Email address",
-        "error-message": "Invalid email address."
+        "label": "Adres e-mail",
+        "error-message": "Błędny adres e-mail."
       },
       "registratePhoneNumberLabel": {
-        "label": "Phone",
-        "error-message": "Invalid phone number."
+        "label": "Numer telefonu",
+        "error-message": "Nieprawidłowy numer telefonu."
       },
       "registratePasswordLabel": {
-        "label": "Password",
-        "error-message": "Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number."
+        "label": "Hasło",
+        "error-message": "Nieprawidłowe hasło. Hasło musi być 6-16 alphanumercal charakter i minimalna 1 numer."
       },
       "registratePasswordConfirmLabel": {
-        "label": "Password confirmation"
+        "label": "Potwierdzenie hasła"
       },
       "registrateCodeLabel": {
-        "label": "Activation code",
-        "error-message": "Activation code."
+        "label": "Kod aktywacyjny",
+        "error-message": "Zły kod aktywacyjny"
       },
       "registrateSignOnButton": {
-        "title": "submit"
+        "title": "Zapisać się"
       }
     },
-    "registrateSignInButton": "Signin"
+    "registrateSignInButton": "Zaloguj"
   },
   "bundle": true
 }
