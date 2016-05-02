@@ -1,1 +1,10 @@
-{}
+{
+  "meta": {
+    "todo": []
+  },
+  "model": {},
+  "messagesPagePublicFolderTitle": "Publikus",
+  "messagesPageMyContentsFolderTitle": "Saját tartalmak",
+  "messagesPagePublishedFolderTitle": "Publikált",
+  "emptyContentFolderText": "Ebben a mappában nincsenek tartalmak."
+}
