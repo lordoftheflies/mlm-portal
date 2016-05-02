@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "todo": []
+  },
+  "model": {
+    "newMemberNameLabel": {
+      "label": "Name"
+    },
+    "newMemberEmailLabel": {
+      "label": "Email"
+    },
+    "newMemberParentLabel": {
+      "label": "Parent member"
+    }
+  },
+  "newMemberDialogTitle": "New member",
+  "newMemberDialogCancelButton": "Cancel",
+  "newMemberDialogCreateButton": "Create",
+  "newMemberDialogCreateAndRepeatButton": "Create & repeat",
+  "memberEraseConfirmDialogTitle": "Delete member",
+  "memberEraseConfirmDialogText": " Are you sure delete member? ",
+  "memberEraseConfirmDialogCancelButton": "Cancel",
+  "memberEraseConfirmDialogAcceptButton": "OK",
+  "promoteAdminDialogTitle": "Promote administrator",
+  "promoteAdminDialogText": [
+    " Are you surely promote {1} to administrator? ",
+    "{{item.name}}"
+  ],
+  "promoteAdminDialogCancelButton": "Cancel",
+  "promoteAdminDialogAcceptButton": "OK",
+  "demoteAdminDialogTitle": "Demote administrator",
+  "demoteAdminDialogText": [
+    " Are you surely demote {1} to user? ",
+    "{{item.name}}"
+  ],
+  "demoteAdminDialogCancelButton": "Cancel",
+  "demoteAdminDialogAcceptButton": "OK",
+  "emptyChildrenText": "No children."
+}

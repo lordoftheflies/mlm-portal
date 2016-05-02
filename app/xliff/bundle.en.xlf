@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<xliff version="1.0">
+  <file source-language="en" target-language="en" datatype="plaintext" original="messages" date="2016-05-02T21:23:45Z" product-name="messages">
+  <header/>
+    <body>
+      <trans-unit id="app.loginDialogTitle">
+        <source>Sign-in</source>
+        <target>Sign-in</target>
+      </trans-unit>
+      <trans-unit id="app.logonDialogTitle">
+        <source>Sign-on</source>
+        <target>Sign-on</target>
+      </trans-unit>
+      <trans-unit id="app.mainMenuTitle">
+        <source>Menu</source>
+        <target>Menu</target>
+      </trans-unit>
+      <trans-unit id="app.shareContentMenuTitle">
+        <source>Share content</source>
+        <target>Share content</target>
+      </trans-unit>
+      <trans-unit id="app.contentsMenuTitle">
+        <source>Contents</source>
+        <target>Contents</target>
+      </trans-unit>
+      <trans-unit id="app.mailBoxMenuTitle">
+        <source>Mailbox</source>
+        <target>Mailbox</target>
+      </trans-unit>
+      <trans-unit id="app.networkMenuTitle">
+        <source>Network</source>
+        <target>Network</target>
+      </trans-unit>
+      <trans-unit id="app.aboutMenuTitle">
+        <source>About</source>
+        <target>About</target>
+      </trans-unit>
+      <trans-unit id="app.profileMenuTitle">
+        <source>Profile</source>
+        <target>Profile</target>
+      </trans-unit>
+      <trans-unit id="app.logoutButtonLabel">
+        <source>Logout</source>
+        <target>Logout</target>
+      </trans-unit>
+      <trans-unit id="app.mottoLabel">
+        <source>The future of the web today</source>
+        <target>The future of the web today</target>
+      </trans-unit>
+      <trans-unit id="app.shareContentViewTitleLabel">
+        <source>Share content</source>
+        <target>Share content</target>
+      </trans-unit>
+      <trans-unit id="app.contentTreeViewTitleLabel">
+        <source>Contents</source>
+        <target>Contents</target>
+      </trans-unit>
+      <trans-unit id="app.mailBoxViewTitleLabel">
+        <source>Mailbox</source>
+        <target>Mailbox</target>
+      </trans-unit>
+      <trans-unit id="app.networkViewTitleLabel">
+        <source>Network</source>
+        <target>Network</target>
+      </trans-unit>
+      <trans-unit id="app.aboutViewTitleLabel">
+        <source>About</source>
+        <target>About</target>
+      </trans-unit>
+      <trans-unit id="app.toastMessageText">
+        <source>Ok</source>
+        <target>Ok</target>
+      </trans-unit>
+      <trans-unit id="about-view.contributorsTitleLabel">
+        <source>Authors &amp; contributors</source>
+        <target>Authors &amp; contributors</target>
+      </trans-unit>
+      <trans-unit id="about-view.ul_2:template:li.0">
+        <source> {1} ({2}) </source>
+        <target> {1} ({2}) </target>
+      </trans-unit>
+      <trans-unit id="about-view.ul_2:template:li.1">
+        <source>{{item.name}}</source>
+        <target>{{item.name}}</target>
+      </trans-unit>
+      <trans-unit id="about-view.ul_2:template:li.2">
+        <source>{{item.email}}</source>
+        <target>{{item.email}}</target>
+      </trans-unit>
+      <trans-unit id="about-view.administrationTitleLabel">
+        <source>Webmaster &amp; maintenance</source>
+        <target>Webmaster &amp; maintenance</target>
+      </trans-unit>
+      <trans-unit id="about-view.ul_4:template:li.0">
+        <source> {1} ({2}) </source>
+        <target> {1} ({2}) </target>
+      </trans-unit>
+      <trans-unit id="about-view.ul_4:template:li.1">
+        <source>{{item.name}}</source>
+        <target>{{item.name}}</target>
+      </trans-unit>
+      <trans-unit id="about-view.ul_4:template:li.2">
+        <source>{{item.email}}</source>
+        <target>{{item.email}}</target>
+      </trans-unit>
+      <trans-unit id="content-tree-view.messagesPagePublicFolderTitle">
+        <source>Public</source>
+        <target>Public</target>
+      </trans-unit>
+      <trans-unit id="content-tree-view.messagesPageMyContentsFolderTitle">
+        <source>Drafts</source>
+        <target>Drafts</target>
+      </trans-unit>
+      <trans-unit id="content-tree-view.messagesPagePublishedFolderTitle">
+        <source>Published</source>
+        <target>Published</target>
+      </trans-unit>
+      <trans-unit id="content-tree-view.emptyContentFolderText">
+        <source>No content in the folder.</source>
+        <target>No content in the folder.</target>
+      </trans-unit>
+      <trans-unit id="content-viewer.model.articleTitleLabel.title">
+        <source>Navigate to {{baseUrl}}content-tree/{{section.data}}</source>
+        <target>Navigate to {{baseUrl}}content-tree/{{section.data}}</target>
+      </trans-unit>
+      <trans-unit id="mailbox-view.mailBoxPageInboxFolderTitle">
+        <source>Inbox</source>
+        <target>Inbox</target>
+      </trans-unit>
+      <trans-unit id="mailbox-view.sentItemsPageInboxFolderTitle">
+        <source>Sent items</source>
+        <target>Sent items</target>
+      </trans-unit>
+      <trans-unit id="mailbox-view.emptyMailBoxFolderText">
+        <source>No messages in the folder.</source>
+        <target>No messages in the folder.</target>
+      </trans-unit>
+      <trans-unit id="network-view.model.newMemberNameLabel.label">
+        <source>Name</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="network-view.model.newMemberEmailLabel.label">
+        <source>Email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="network-view.model.newMemberParentLabel.label">
+        <source>Parent member</source>
+        <target>Parent member</target>
+      </trans-unit>
+      <trans-unit id="network-view.newMemberDialogTitle">
+        <source>New member</source>
+        <target>New member</target>
+      </trans-unit>
+      <trans-unit id="network-view.newMemberDialogCancelButton">
+        <source>Cancel</source>
+        <target>Cancel</target>
+      </trans-unit>
+      <trans-unit id="network-view.newMemberDialogCreateButton">
+        <source>Create</source>
+        <target>Create</target>
+      </trans-unit>
+      <trans-unit id="network-view.newMemberDialogCreateAndRepeatButton">
+        <source>Create &amp; repeat</source>
+        <target>Create &amp; repeat</target>
+      </trans-unit>
+      <trans-unit id="network-view.memberEraseConfirmDialogTitle">
+        <source>Delete member</source>
+        <target>Delete member</target>
+      </trans-unit>
+      <trans-unit id="network-view.memberEraseConfirmDialogText">
+        <source> Are you sure delete member? </source>
+        <target> Are you sure delete member? </target>
+      </trans-unit>
+      <trans-unit id="network-view.memberEraseConfirmDialogCancelButton">
+        <source>Cancel</source>
+        <target>Cancel</target>
+      </trans-unit>
+      <trans-unit id="network-view.memberEraseConfirmDialogAcceptButton">
+        <source>OK</source>
+        <target>OK</target>
+      </trans-unit>
+      <trans-unit id="network-view.promoteAdminDialogTitle">
+        <source>Promote administrator</source>
+        <target>Promote administrator</target>
+      </trans-unit>
+      <trans-unit id="network-view.promoteAdminDialogText.0">
+        <source> Are you surely promote {1} to administrator? </source>
+        <target> Are you surely promote {1} to administrator? </target>
+      </trans-unit>
+      <trans-unit id="network-view.promoteAdminDialogText.1">
+        <source>{{item.name}}</source>
+        <target>{{item.name}}</target>
+      </trans-unit>
+      <trans-unit id="network-view.promoteAdminDialogCancelButton">
+        <source>Cancel</source>
+        <target>Cancel</target>
+      </trans-unit>
+      <trans-unit id="network-view.promoteAdminDialogAcceptButton">
+        <source>OK</source>
+        <target>OK</target>
+      </trans-unit>
+      <trans-unit id="network-view.demoteAdminDialogTitle">
+        <source>Demote administrator</source>
+        <target>Demote administrator</target>
+      </trans-unit>
+      <trans-unit id="network-view.demoteAdminDialogText.0">
+        <source> Are you surely demote {1} to user? </source>
+        <target> Are you surely demote {1} to user? </target>
+      </trans-unit>
+      <trans-unit id="network-view.demoteAdminDialogText.1">
+        <source>{{item.name}}</source>
+        <target>{{item.name}}</target>
+      </trans-unit>
+      <trans-unit id="network-view.demoteAdminDialogCancelButton">
+        <source>Cancel</source>
+        <target>Cancel</target>
+      </trans-unit>
+      <trans-unit id="network-view.demoteAdminDialogAcceptButton">
+        <source>OK</source>
+        <target>OK</target>
+      </trans-unit>
+      <trans-unit id="network-view.emptyChildrenText">
+        <source>No children.</source>
+        <target>No children.</target>
+      </trans-unit>
+      <trans-unit id="plutonium-cm-field.model.addSectionButton.title">
+        <source>Embedd video to the message content.</source>
+        <target>Embedd video to the message content.</target>
+      </trans-unit>
+      <trans-unit id="plutonium-cm-field.model.addVideoButton.title">
+        <source>Embedd video to the message content.</source>
+        <target>Embedd video to the message content.</target>
+      </trans-unit>
+      <trans-unit id="plutonium-cm-field.model.addImageButton.title">
+        <source>Embedd image to the message content.</source>
+        <target>Embedd image to the message content.</target>
+      </trans-unit>
+      <trans-unit id="plutonium-cm-field.model.addLinkButton.title">
+        <source>Embedd a link to another message to the message content.</source>
+        <target>Embedd a link to another message to the message content.</target>
+      </trans-unit>
+      <trans-unit id="plutonium-cm-form.model.messageInput.label">
+        <source>Message</source>
+        <target>Message</target>
+      </trans-unit>
+      <trans-unit id="plutonium-cm-form.model.addSectionButton.title">
+        <source>Embedd video to the message content.</source>
+        <target>Embedd video to the message content.</target>
+      </trans-unit>
+      <trans-unit id="plutonium-cm-form.model.addVideoButton.title">
+        <source>Embedd video to the message content.</source>
+        <target>Embedd video to the message content.</target>
+      </trans-unit>
+      <trans-unit id="plutonium-cm-form.model.addImageButton.title">
+        <source>Embedd image to the message content.</source>
+        <target>Embedd image to the message content.</target>
+      </trans-unit>
+      <trans-unit id="plutonium-cm-form.model.addLinkButton.title">
+        <source>Embedd a link to another message to the message content.</source>
+        <target>Embedd a link to another message to the message content.</target>
+      </trans-unit>
+      <trans-unit id="plutonium-cm-form.model.parentDdLabel.label">
+        <source>Parent</source>
+        <target>Parent</target>
+      </trans-unit>
+      <trans-unit id="plutonium-cm-form.model.contentTitleInput.label">
+        <source>Title</source>
+        <target>Title</target>
+      </trans-unit>
+      <trans-unit id="plutonium-cm-form.shareTabLabel">
+        <source>Share</source>
+        <target>Share</target>
+      </trans-unit>
+      <trans-unit id="plutonium-cm-form.contentTabLabel">
+        <source>Content</source>
+        <target>Content</target>
+      </trans-unit>
+      <trans-unit id="plutonium-cm-form.propertiesTabLabel">
+        <source>Properties</source>
+        <target>Properties</target>
+      </trans-unit>
+      <trans-unit id="plutonium-cm-form.[[item.id]]:label_1.0">
+        <source>({1})</source>
+        <target>({1})</target>
+      </trans-unit>
+      <trans-unit id="plutonium-cm-form.[[item.id]]:label_1.1">
+        <source>[[item.id]]</source>
+        <target>[[item.id]]</target>
+      </trans-unit>
+      <trans-unit id="plutonium-cm-form.embbeddedContentRadio">
+        <source>Embed content</source>
+        <target>Embed content</target>
+      </trans-unit>
+      <trans-unit id="plutonium-cm-form.assembledContentRadio">
+        <source>Assemble</source>
+        <target>Assemble</target>
+      </trans-unit>
+      <trans-unit id="plutonium-cm-form.embedContentRadio">
+        <source>Embed content</source>
+        <target>Embed content</target>
+      </trans-unit>
+      <trans-unit id="plutonium-cm-form.assembleRadio">
+        <source>Assemble</source>
+        <target>Assemble</target>
+      </trans-unit>
+      <trans-unit id="plutonium-cm-form.uploadFileText">
+        <source>Choose File</source>
+        <target>Choose File</target>
+      </trans-unit>
+      <trans-unit id="profile-view.model.preferredLanguageLabel.label">
+        <source>Preferred language</source>
+        <target>Preferred language</target>
+      </trans-unit>
+      <trans-unit id="profile-view.activationDateTitle">
+        <source>Activation date</source>
+        <target>Activation date</target>
+      </trans-unit>
+      <trans-unit id="profile-view.changingDeviceButton">
+        <source>Changing device</source>
+        <target>Changing device</target>
+      </trans-unit>
+      <trans-unit id="profile-view.underDevelopmentText">
+        <source>Under development ...</source>
+        <target>Under development ...</target>
+      </trans-unit>
+      <trans-unit id="share-content-view.model.textContentTextLabel.label">
+        <source>Text</source>
+        <target>Text</target>
+      </trans-unit>
+      <trans-unit id="share-content-view.model.imageContentTitleLabel.label">
+        <source>Title</source>
+        <target>Title</target>
+      </trans-unit>
+      <trans-unit id="share-content-view.model.imageEditorUrlLabel.label">
+        <source>Image url</source>
+        <target>Image url</target>
+      </trans-unit>
+      <trans-unit id="share-content-view.model.linkEditorDialogTitleLabel.label">
+        <source>Title</source>
+        <target>Title</target>
+      </trans-unit>
+      <trans-unit id="share-content-view.model.linkEditorReferenceLabel.label">
+        <source>Reference</source>
+        <target>Reference</target>
+      </trans-unit>
+      <trans-unit id="share-content-view.model.videoEditorTitleLabel.label">
+        <source>Title</source>
+        <target>Title</target>
+      </trans-unit>
+      <trans-unit id="share-content-view.model.videoContentUrlLabel.label">
+        <source>Video url</source>
+        <target>Video url</target>
+      </trans-unit>
+      <trans-unit id="share-content-view.model.videoContentUrlLabel.error-message">
+        <source>Invalid Youtube url.</source>
+        <target>Invalid Youtube url.</target>
+      </trans-unit>
+      <trans-unit id="share-content-view.textEditorDialogTitle">
+        <source>Edit text properties</source>
+        <target>Edit text properties</target>
+      </trans-unit>
+      <trans-unit id="share-content-view.textEditorDialogAcceptButton">
+        <source>Accept</source>
+        <target>Accept</target>
+      </trans-unit>
+      <trans-unit id="share-content-view.imageEditorDialogTitle">
+        <source>Edit image properties</source>
+        <target>Edit image properties</target>
+      </trans-unit>
+      <trans-unit id="share-content-view.imageEditorDialogCancelButton">
+        <source>Cancel</source>
+        <target>Cancel</target>
+      </trans-unit>
+      <trans-unit id="share-content-view.imageEditorDialogAcceptButton">
+        <source>Accept</source>
+        <target>Accept</target>
+      </trans-unit>
+      <trans-unit id="share-content-view.linkEditorDialogTitle">
+        <source>Edit link properties</source>
+        <target>Edit link properties</target>
+      </trans-unit>
+      <trans-unit id="share-content-view.linkEditorDialogCancelButton">
+        <source>Cancel</source>
+        <target>Cancel</target>
+      </trans-unit>
+      <trans-unit id="share-content-view.linkEditorDialogAcceptButton">
+        <source>Accept</source>
+        <target>Accept</target>
+      </trans-unit>
+      <trans-unit id="share-content-view.videoEditorDialogTitle">
+        <source>Edit video properties</source>
+        <target>Edit video properties</target>
+      </trans-unit>
+      <trans-unit id="share-content-view.videoEditorDialogCancelButton">
+        <source>Cancel</source>
+        <target>Cancel</target>
+      </trans-unit>
+      <trans-unit id="share-content-view.videoEditorDialogAcceptButton">
+        <source>Accept</source>
+        <target>Accept</target>
+      </trans-unit>
+      <trans-unit id="signin-view.model.signInFormLoginEmail.label">
+        <source>Email address</source>
+        <target>Email address</target>
+      </trans-unit>
+      <trans-unit id="signin-view.model.signInFormLoginEmail.error-message">
+        <source>Invalid email address.</source>
+        <target>Invalid email address.</target>
+      </trans-unit>
+      <trans-unit id="signin-view.model.signInFormLoginPassword.label">
+        <source>Password</source>
+        <target>Password</target>
+      </trans-unit>
+      <trans-unit id="signin-view.model.signInFormLoginPassword.error-message">
+        <source>Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number.</source>
+        <target>Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number.</target>
+      </trans-unit>
+      <trans-unit id="signin-view.model.signInFormAccept.title">
+        <source>submit</source>
+        <target>submit</target>
+      </trans-unit>
+      <trans-unit id="signin-view.signInFormRememberMe">
+        <source>Remember me</source>
+        <target>Remember me</target>
+      </trans-unit>
+      <trans-unit id="signin-view.signInFormRegistrate">
+        <source>Sign-on</source>
+        <target>Sign-on</target>
+      </trans-unit>
+      <trans-unit id="signon-view.model.registrateTitleLabel.label">
+        <source>Name</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="signon-view.model.registrateTitleLabel.error-message">
+        <source>Invalid name.</source>
+        <target>Invalid name.</target>
+      </trans-unit>
+      <trans-unit id="signon-view.model.registrateEmailLabel.label">
+        <source>Email address</source>
+        <target>Email address</target>
+      </trans-unit>
+      <trans-unit id="signon-view.model.registrateEmailLabel.error-message">
+        <source>Invalid email address.</source>
+        <target>Invalid email address.</target>
+      </trans-unit>
+      <trans-unit id="signon-view.model.registratePhoneNumberLabel.label">
+        <source>Phone</source>
+        <target>Phone</target>
+      </trans-unit>
+      <trans-unit id="signon-view.model.registratePhoneNumberLabel.error-message">
+        <source>Invalid phone number.</source>
+        <target>Invalid phone number.</target>
+      </trans-unit>
+      <trans-unit id="signon-view.model.registratePasswordLabel.label">
+        <source>Password</source>
+        <target>Password</target>
+      </trans-unit>
+      <trans-unit id="signon-view.model.registratePasswordLabel.error-message">
+        <source>Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number.</source>
+        <target>Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number.</target>
+      </trans-unit>
+      <trans-unit id="signon-view.model.registratePasswordConfirmLabel.label">
+        <source>Password confirmation</source>
+        <target>Password confirmation</target>
+      </trans-unit>
+      <trans-unit id="signon-view.model.registrateCodeLabel.label">
+        <source>Activation code</source>
+        <target>Activation code</target>
+      </trans-unit>
+      <trans-unit id="signon-view.model.registrateCodeLabel.error-message">
+        <source>Activation code.</source>
+        <target>Activation code.</target>
+      </trans-unit>
+      <trans-unit id="signon-view.model.registrateSignOnButton.title">
+        <source>submit</source>
+        <target>submit</target>
+      </trans-unit>
+      <trans-unit id="signon-view.registrateSignInButton">
+        <source>Signin</source>
+        <target>Signin</target>
+      </trans-unit>
+      
+    </body>
+  </file>
+</xliff>

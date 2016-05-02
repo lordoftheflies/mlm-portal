@@ -1,0 +1,35 @@
+{
+  "meta": {
+  },
+  "model": {
+    "messageInput": {
+      "label": "Wiadomość"
+    },
+    "addSectionButton": {
+      "title": "Embedd video to the message content."
+    },
+    "addVideoButton": {
+      "title": "Osadzony materiał wideo."
+    },
+    "addImageButton": {
+      "title": "Wbudowany treść obrazu."
+    },
+    "addLinkButton": {
+      "title": "Osadzonej zawartości Link."
+    },
+    "parentDdLabel": {
+      "label": "Roślina mateczna"
+    },
+    "contentTitleInput": {
+      "label": "Tytuł"
+    }
+  },
+  "shareTabLabel": "Dzielić",
+  "contentTabLabel": "Zadowolony",
+  "propertiesTabLabel": "Nieruchomości",
+  "embbeddedContentRadio": "Doładuj fajl",
+  "assembledContentRadio": "Assemble",
+  "embedContentRadio": "Embed content",
+  "assembleRadio": "Edytować",
+  "uploadFileText": "Wybierz fajl"
+}

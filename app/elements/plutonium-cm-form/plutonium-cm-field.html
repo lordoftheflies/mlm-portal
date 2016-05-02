@@ -17,6 +17,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../bower_components/iron-icons/editor-icons.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/i18n-behavior/i18n-behavior.html">
 <link rel="import" href="plutonium-cm-behavior.html">
 <link rel="import" href="plutonium-cm-shared-styles.html">
 <!--
@@ -37,7 +38,6 @@ Example:
 -->
 
 <dom-module id="plutonium-cm-field">
-    <link rel="import" type="css" href="plutonium-cm.css">
     <template>
         <style>
             :host {
@@ -119,26 +119,26 @@ Example:
         <template is="dom-if" if="{{!sectionDisplay}}">
             <paper-material elevation="2">
                 <div class="header">
-                    <label label="Title" class="title-text">{{title}}</label>
+                    <label id="secionDisplayTitle" label="Title" class="title-text">{{title}}</label>
                     <!--<plutonium-cm-field-fabs id="actionContainer" name$='{{name}}' dialog-id$='{{dialogId}}' ></plutonium-cm-field-fabs>-->
                     <div id="actionContainer">
 
 
-                        <paper-icon-button on-click="onDecreaseFontSize" icon="unfold-less" raised></paper-icon-button>
-                        <paper-icon-button on-click="onInreaseFontSize" icon="unfold-more" raised></paper-icon-button>
+                        <paper-icon-button id="decreaseSizeButton" on-click="onDecreaseFontSize" icon="unfold-less" raised></paper-icon-button>
+                        <paper-icon-button id="increaseSizeButton" on-click="onInreaseFontSize" icon="unfold-more" raised></paper-icon-button>
 
-                        <paper-icon-button on-click="onAlignLeft" icon="editor:format-align-left" raised></paper-icon-button>
-                        <paper-icon-button on-click="onAlignCenter" icon="editor:format-align-center" raised></paper-icon-button>
-                        <paper-icon-button on-click="onAlignRight" icon="editor:format-align-right" raised></paper-icon-button>
+                        <paper-icon-button id="alignLeftButton" on-click="onAlignLeft" icon="editor:format-align-left" raised></paper-icon-button>
+                        <paper-icon-button id="alignCenterButton" on-click="onAlignCenter" icon="editor:format-align-center" raised></paper-icon-button>
+                        <paper-icon-button id="alignRightButton" on-click="onAlignRight" icon="editor:format-align-right" raised></paper-icon-button>
 
-                        <paper-icon-button on-click="onMoveUpSection" icon="expand-less" raised></paper-icon-button>
-                        <paper-icon-button on-click="onAddSection" icon="add-circle" title="Embedd video to the message content."></paper-icon-button>
-                        <paper-icon-button on-click="onEmbedVideo" icon="theaters" title="Embedd video to the message content."></paper-icon-button>
-                        <paper-icon-button on-click="onEmbedImage" icon="perm-media" title="Embedd image to the message content."></paper-icon-button>
-                        <paper-icon-button on-click="onEmbedLink" icon="link" title="Embedd a link to another message to the message content."></paper-icon-button>
-                        <paper-icon-button on-click="onShowEditor" icon="create" raised></paper-icon-button>
-                        <paper-icon-button on-click="onRemoveSection" icon="delete"></paper-icon-button>
-                        <paper-icon-button on-click="onMoveDownSection" icon="expand-more" raised></paper-icon-button>
+                        <paper-icon-button id="moveUpButton" on-click="onMoveUpSection" icon="expand-less" raised></paper-icon-button>
+                        <paper-icon-button id="addSectionButton" on-click="onAddSection" icon="add-circle" title="Embedd video to the message content."></paper-icon-button>
+                        <paper-icon-button id="addVideoButton" on-click="onEmbedVideo" icon="theaters" title="Embedd video to the message content."></paper-icon-button>
+                        <paper-icon-button id="addImageButton" on-click="onEmbedImage" icon="perm-media" title="Embedd image to the message content."></paper-icon-button>
+                        <paper-icon-button id="addLinkButton" on-click="onEmbedLink" icon="link" title="Embedd a link to another message to the message content."></paper-icon-button>
+                        <paper-icon-button id="showEditorButton" on-click="onShowEditor" icon="create" raised></paper-icon-button>
+                        <paper-icon-button id="removeSectionButton" on-click="onRemoveSection" icon="delete"></paper-icon-button>
+                        <paper-icon-button id="moveDownButton" on-click="onMoveDownSection" icon="expand-more" raised></paper-icon-button>
                     </div>
                 </div>
                 <div class="card-content">
@@ -164,7 +164,10 @@ Example:
             'use strict';
             Polymer({
                 is: 'plutonium-cm-field',
-                behaviors: [PlutoniumBehaviors.CmBehavior],
+                behaviors: [
+                    PlutoniumBehaviors.CmBehavior,
+                    BehaviorsStore.I18nBehavior
+                ],
                 properties: {
                     /**
                      * Field editor dialog id.

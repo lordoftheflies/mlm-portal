@@ -1,0 +1,20 @@
+{
+  "meta": {
+    "todo": []
+  },
+  "model": {
+    "signInFormLoginEmail": {
+      "label": "Email cím",
+      "error-message": "Érvénytelen email cím."
+    },
+    "signInFormLoginPassword": {
+      "label": "Jelszó",
+      "error-message": "Érvénytelen jelszó. A jelszó egy 6-16 jegyű, legalább egy számot tartalmazó alfanumerikus karaktersorozat."
+    },
+    "signInFormAccept": {
+      "title": "Bejelentkezés"
+    }
+  },
+  "signInFormRememberMe": "Emlékezz rám",
+  "signInFormRegistrate": "Regisztráció"
+}

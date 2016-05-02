@@ -1,0 +1,39 @@
+{
+  "meta": {
+  },
+  "model": {
+    "textContentTextLabel": {
+      "label": "Tekst"
+    },
+    "imageContentTitleLabel": {
+      "label": "Tytuł"
+    },
+    "imageEditorUrlLabel": {
+      "label": "URL obrazu"
+    },
+    "linkEditorDialogTitleLabel": {
+      "label": "Tytuł"
+    },
+    "linkEditorReferenceLabel": {
+      "label": "Powiązane treści"
+    },
+    "videoEditorTitleLabel": {
+      "label": "Tytuł"
+    },
+    "videoContentUrlLabel": {
+      "label": "Url wideo",
+      "error-message": "Nieprawidłowy url Youtube."
+    }
+  },
+  "textEditorDialogTitle": "Właściwości Edycja tekstu.",
+  "textEditorDialogAcceptButton": "Zaakceptować",
+  "imageEditorDialogTitle": "Właściwości Edycja obrazu",
+  "imageEditorDialogCancelButton": "Anuluj",
+  "imageEditorDialogAcceptButton": "Zaakceptować",
+  "linkEditorDialogTitle": "Właściwości link Edytuj",
+  "linkEditorDialogCancelButton": "Anuluj",
+  "linkEditorDialogAcceptButton": "Zaakceptować",
+  "videoEditorDialogTitle": "Właściwości Edycja wideo.",
+  "videoEditorDialogCancelButton": "Anuluj",
+  "videoEditorDialogAcceptButton": "Zaakceptować"
+}

@@ -1,0 +1,34 @@
+{
+  "meta": {},
+  "model": {
+    "messageInput": {
+      "label": "Message"
+    },
+    "addSectionButton": {
+      "title": "Embedd text to the message content."
+    },
+    "addVideoButton": {
+      "title": "Embedd video to the message content."
+    },
+    "addImageButton": {
+      "title": "Embedd image to the message content."
+    },
+    "addLinkButton": {
+      "title": "Embedd a link to another message to the message content."
+    },
+    "parentDdLabel": {
+      "label": "Parent"
+    },
+    "contentTitleInput": {
+      "label": "Title"
+    }
+  },
+  "shareTabLabel": "Share",
+  "contentTabLabel": "Content",
+  "propertiesTabLabel": "Properties",
+  "embbeddedContentRadio": "Embed content",
+  "assembledContentRadio": "Assemble",
+  "embedContentRadio": "Embed content",
+  "assembleRadio": "Assemble",
+  "uploadFileText": "Choose File"
+}

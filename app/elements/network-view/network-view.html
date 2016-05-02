@@ -24,7 +24,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../plutonium-witdget-behavior.html">
 
-<!--<link rel="import" href="../../bower_components/i18n-behavior/i18n-behavior.html">-->
+<link rel="import" href="../../bower_components/i18n-behavior/i18n-behavior.html">
 
 <dom-module id="network-view">
     <template>
@@ -56,11 +56,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                   on-response="onCreateMemberResponse"
                   on-error="onCreateMemberError" 
                   handle-as="json">
-                <paper-input name="name" label="Name" type="text"></paper-input>
-                <paper-input name="email" label="Email" type="email"></paper-input>
-                <paper-input name="codes" label="Codes" type="number"></paper-input>
+                <paper-input id="newMemberNameLabel" name="name" label="Name" type="text"></paper-input>
+                <paper-input id="newMemberEmailLabel" name="email" label="Email" type="email"></paper-input>
                 <input name="parent" type="hidden" value="{{selectedParent}}" />
-                <paper-dropdown-menu label="Parent member">
+                <paper-dropdown-menu id="newMemberParentLabel" label="Parent member">
                     <paper-menu
                         class="dropdown-content" selected="{{selectedParent}}" attr-for-selected="value"
                         attr-for-selected="id">
@@ -185,7 +184,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             Polymer({
                 is: 'network-view',
-                behaviors: [PlutoniumBehaviors.WidgetBehavior],
+                behaviors: [
+                    PlutoniumBehaviors.WidgetBehavior,
+                    BehaviorsStore.I18nBehavior
+                ],
                 properties: {
                     genocideRequestParams: {
                         type: Object,

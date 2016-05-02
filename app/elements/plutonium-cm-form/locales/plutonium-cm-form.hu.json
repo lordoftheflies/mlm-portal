@@ -1,0 +1,36 @@
+{
+  "meta": {
+    
+  },
+  "model": {
+    "messageInput": {
+      "label": "Üzenet"
+    },
+    "addSectionButton": {
+      "title": "Szöveges szekció beágyazása."
+    },
+    "addVideoButton": {
+      "title": "Video szekció beágyazása."
+    },
+    "addImageButton": {
+      "title": "Kép szekció beágyazása."
+    },
+    "addLinkButton": {
+      "title": "Hivatkozás szekció beágyazása."
+    },
+    "parentDdLabel": {
+      "label": "Szülő"
+    },
+    "contentTitleInput": {
+      "label": "Cím"
+    }
+  },
+  "shareTabLabel": "Megosztás",
+  "contentTabLabel": "Tartalom",
+  "propertiesTabLabel": "Tulajdonságok",
+  "embbeddedContentRadio": "Bináris tartalom",
+  "assembledContentRadio": "Saját tartalom",
+  "embedContentRadio": "Bináris tartalom",
+  "assembleRadio": "Saját tartalom",
+  "uploadFileText": "Fájl kiválasztása"
+}

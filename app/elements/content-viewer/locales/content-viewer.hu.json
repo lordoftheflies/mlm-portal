@@ -1,0 +1,10 @@
+{
+  "meta": {
+    "todo": []
+  },
+  "model": {
+    "articleTitleLabel": {
+      "title": "Ugrás {{baseUrl}}content-tree/{{section.data}}"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+    "meta": {
+    },
+    "model": {
+        "signInFormLoginEmail": {
+            "label": "Adres e-mail",
+            "error-message": "Błędny adres e-mail."
+        },
+        "signInFormLoginPassword": {
+            "label": "Hasło",
+            "error-message": "Nieprawidłowe hasło. Hasło musi być 6-16 alphanumercal charakter i minimalna 1 numer."
+        },
+        "signInFormAccept": {
+            "title": "Zaloguj"
+        }
+    },
+    "signInFormRememberMe": "Zapamiętaj mnie",
+    "signInFormRegistrate": "Zapisać się"
+}

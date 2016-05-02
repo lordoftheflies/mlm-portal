@@ -1,0 +1,887 @@
+{
+  "app": {
+    "meta": {
+      "todo": [
+        {
+          "op": "add",
+          "path": "/loginDialogTitle",
+          "value": "Sign-in"
+        },
+        {
+          "op": "add",
+          "path": "/logonDialogTitle",
+          "value": "Sign-on"
+        },
+        {
+          "op": "add",
+          "path": "/mainMenuTitle",
+          "value": "Menu"
+        },
+        {
+          "op": "add",
+          "path": "/shareContentMenuTitle",
+          "value": "Share content"
+        },
+        {
+          "op": "add",
+          "path": "/contentsMenuTitle",
+          "value": "Contents"
+        },
+        {
+          "op": "add",
+          "path": "/mailBoxMenuTitle",
+          "value": "Mailbox"
+        },
+        {
+          "op": "add",
+          "path": "/networkMenuTitle",
+          "value": "Network"
+        },
+        {
+          "op": "add",
+          "path": "/aboutMenuTitle",
+          "value": "About"
+        },
+        {
+          "op": "add",
+          "path": "/profileMenuTitle",
+          "value": "Profile"
+        },
+        {
+          "op": "add",
+          "path": "/logoutButtonLabel",
+          "value": "Logout"
+        },
+        {
+          "op": "add",
+          "path": "/mottoLabel",
+          "value": "The future of the web today"
+        },
+        {
+          "op": "add",
+          "path": "/shareContentViewTitleLabel",
+          "value": "Share content"
+        },
+        {
+          "op": "add",
+          "path": "/contentTreeViewTitleLabel",
+          "value": "Contents"
+        },
+        {
+          "op": "add",
+          "path": "/mailBoxViewTitleLabel",
+          "value": "Mailbox"
+        },
+        {
+          "op": "add",
+          "path": "/networkViewTitleLabel",
+          "value": "Network"
+        },
+        {
+          "op": "add",
+          "path": "/aboutViewTitleLabel",
+          "value": "About"
+        },
+        {
+          "op": "add",
+          "path": "/toastMessageText",
+          "value": "Ok"
+        }
+      ]
+    },
+    "model": {},
+    "loginDialogTitle": "Zaloguj",
+    "logonDialogTitle": "Zapisać się",
+    "mainMenuTitle": "Flavon",
+    "shareContentMenuTitle": "Udostępnij treść",
+    "contentsMenuTitle": "Menu",
+    "mailBoxMenuTitle": "Skrzynka na listy",
+    "networkMenuTitle": "Sieć",
+    "aboutMenuTitle": "Informacja",
+    "profileMenuTitle": "Profil",
+    "logoutButtonLabel": "Wylogowanie",
+    "mottoLabel": "",
+    "shareContentViewTitleLabel": "Udostępnij treść",
+    "contentTreeViewTitleLabel": "Menu",
+    "mailBoxViewTitleLabel": "Skrzynka na listy",
+    "networkViewTitleLabel": "Sieć",
+    "aboutViewTitleLabel": "Informacja",
+    "toastMessageText": "Ok"
+  },
+  "about-view": {
+    "meta": {
+      "todo": [
+        {
+          "op": "add",
+          "path": "/contributorsTitleLabel",
+          "value": "Authors & contributors"
+        },
+        {
+          "op": "add",
+          "path": "/ul_2:template:li/0",
+          "value": " {1} ({2}) "
+        },
+        {
+          "op": "add",
+          "path": "/ul_2:template:li/1",
+          "value": "{{item.name}}"
+        },
+        {
+          "op": "add",
+          "path": "/ul_2:template:li/2",
+          "value": "{{item.email}}"
+        },
+        {
+          "op": "add",
+          "path": "/administrationTitleLabel",
+          "value": "Webmaster & maintenance"
+        },
+        {
+          "op": "add",
+          "path": "/ul_4:template:li/0",
+          "value": " {1} ({2}) "
+        },
+        {
+          "op": "add",
+          "path": "/ul_4:template:li/1",
+          "value": "{{item.name}}"
+        },
+        {
+          "op": "add",
+          "path": "/ul_4:template:li/2",
+          "value": "{{item.email}}"
+        }
+      ]
+    },
+    "model": {},
+    "contributorsTitleLabel": "Autorski & Współtwórcy",
+    "ul_2:template:li": [
+      " {1} ({2}) ",
+      "{{item.name}}",
+      "{{item.email}}"
+    ],
+    "administrationTitleLabel": "Webmaster & konserwacja",
+    "ul_4:template:li": [
+      " {1} ({2}) ",
+      "{{item.name}}",
+      "{{item.email}}"
+    ]
+  },
+  "content-tree-view": {
+    "meta": {
+      "todo": [
+        {
+          "op": "add",
+          "path": "/messagesPagePublicFolderTitle",
+          "value": "Public"
+        },
+        {
+          "op": "add",
+          "path": "/messagesPageMyContentsFolderTitle",
+          "value": "Drafts"
+        },
+        {
+          "op": "add",
+          "path": "/messagesPagePublishedFolderTitle",
+          "value": "Published"
+        },
+        {
+          "op": "add",
+          "path": "/emptyContentFolderText",
+          "value": "No content in the folder."
+        }
+      ]
+    },
+    "model": {},
+    "messagesPagePublicFolderTitle": "Otwarte",
+    "messagesPageMyContentsFolderTitle": "Własny treść",
+    "messagesPagePublishedFolderTitle": "Pojawiło się",
+    "emptyContentFolderText": "Brak zawartości w folderze."
+  },
+  "content-viewer": {
+    "meta": {
+      "todo": [
+        {
+          "op": "add",
+          "path": "/model/articleTitleLabel/title",
+          "value": "Navigate to {{baseUrl}}content-tree/{{section.data}}"
+        }
+      ]
+    },
+    "model": {
+      "articleTitleLabel": {
+        "title": "Nawigować do{{baseUrl}}content-tree/{{section.data}}"
+      }
+    }
+  },
+  "mailbox-view": {
+    "meta": {
+      "todo": [
+        {
+          "op": "add",
+          "path": "/mailBoxPageInboxFolderTitle",
+          "value": "Inbox"
+        },
+        {
+          "op": "add",
+          "path": "/sentItemsPageInboxFolderTitle",
+          "value": "Sent items"
+        },
+        {
+          "op": "add",
+          "path": "/emptyMailBoxFolderText",
+          "value": "No messages in the folder."
+        }
+      ]
+    },
+    "model": {},
+    "mailBoxPageInboxFolderTitle": "Odebrane listy",
+    "sentItemsPageInboxFolderTitle": "Wysłane listy",
+    "emptyMailBoxFolderText": "Brak wiadomości w folderze."
+  },
+  "network-view": {
+    "meta": {
+      "todo": [
+        {
+          "op": "add",
+          "path": "/model/newMemberNameLabel/label",
+          "value": "Name"
+        },
+        {
+          "op": "add",
+          "path": "/model/newMemberEmailLabel/label",
+          "value": "Email"
+        },
+        {
+          "op": "add",
+          "path": "/model/newMemberParentLabel/label",
+          "value": "Parent member"
+        },
+        {
+          "op": "add",
+          "path": "/newMemberDialogTitle",
+          "value": "New member"
+        },
+        {
+          "op": "add",
+          "path": "/newMemberDialogCancelButton",
+          "value": "Cancel"
+        },
+        {
+          "op": "add",
+          "path": "/newMemberDialogCreateButton",
+          "value": "Create"
+        },
+        {
+          "op": "add",
+          "path": "/newMemberDialogCreateAndRepeatButton",
+          "value": "Create & repeat"
+        },
+        {
+          "op": "add",
+          "path": "/memberEraseConfirmDialogTitle",
+          "value": "Delete member"
+        },
+        {
+          "op": "add",
+          "path": "/memberEraseConfirmDialogText",
+          "value": " Are you sure delete member? "
+        },
+        {
+          "op": "add",
+          "path": "/memberEraseConfirmDialogCancelButton",
+          "value": "Cancel"
+        },
+        {
+          "op": "add",
+          "path": "/memberEraseConfirmDialogAcceptButton",
+          "value": "OK"
+        },
+        {
+          "op": "add",
+          "path": "/promoteAdminDialogTitle",
+          "value": "Promote administrator"
+        },
+        {
+          "op": "add",
+          "path": "/promoteAdminDialogText/0",
+          "value": " Are you surely promote {1} to administrator? "
+        },
+        {
+          "op": "add",
+          "path": "/promoteAdminDialogText/1",
+          "value": "{{item.name}}"
+        },
+        {
+          "op": "add",
+          "path": "/promoteAdminDialogCancelButton",
+          "value": "Cancel"
+        },
+        {
+          "op": "add",
+          "path": "/promoteAdminDialogAcceptButton",
+          "value": "OK"
+        },
+        {
+          "op": "add",
+          "path": "/demoteAdminDialogTitle",
+          "value": "Demote administrator"
+        },
+        {
+          "op": "add",
+          "path": "/demoteAdminDialogText/0",
+          "value": " Are you surely demote {1} to user? "
+        },
+        {
+          "op": "add",
+          "path": "/demoteAdminDialogText/1",
+          "value": "{{item.name}}"
+        },
+        {
+          "op": "add",
+          "path": "/demoteAdminDialogCancelButton",
+          "value": "Cancel"
+        },
+        {
+          "op": "add",
+          "path": "/demoteAdminDialogAcceptButton",
+          "value": "OK"
+        },
+        {
+          "op": "add",
+          "path": "/emptyChildrenText",
+          "value": "No children."
+        }
+      ]
+    },
+    "model": {
+      "newMemberNameLabel": {
+        "label": "Nazwa"
+      },
+      "newMemberEmailLabel": {
+        "label": "Adres e-mail"
+      },
+      "newMemberParentLabel": {
+        "label": "Członek rodzic"
+      }
+    },
+    "newMemberDialogTitle": "Nowy członek",
+    "newMemberDialogCancelButton": "Anuluj",
+    "newMemberDialogCreateButton": "Stwórz",
+    "newMemberDialogCreateAndRepeatButton": "Tworzenie i powtórzyć",
+    "memberEraseConfirmDialogTitle": "Usuń element",
+    "memberEraseConfirmDialogText": "Czy na pewno usunąć członkiem?",
+    "memberEraseConfirmDialogCancelButton": "Anuluj",
+    "memberEraseConfirmDialogAcceptButton": "OK",
+    "promoteAdminDialogTitle": "Promuj administratorem",
+    "promoteAdminDialogText": [
+      "Czy na pewno promować {1} do administratora?",
+      "{{item.name}}"
+    ],
+    "promoteAdminDialogCancelButton": "Anuluj",
+    "promoteAdminDialogAcceptButton": "OK",
+    "demoteAdminDialogTitle": "Obniżanie administratorem",
+    "demoteAdminDialogText": [
+      "Czy na pewno obniżyć {1}, aby użytkownik?",
+      "{{item.name}}"
+    ],
+    "demoteAdminDialogCancelButton": "Anuluj",
+    "demoteAdminDialogAcceptButton": "OK",
+    "emptyChildrenText": "Brak członków dziecko."
+  },
+  "plutonium-cm-field": {
+    "meta": {
+      "todo": [
+        {
+          "op": "add",
+          "path": "/model/addVideoButton/title",
+          "value": "Embedd video to the message content."
+        },
+        {
+          "op": "add",
+          "path": "/model/addImageButton/title",
+          "value": "Embedd image to the message content."
+        },
+        {
+          "op": "add",
+          "path": "/model/addLinkButton/title",
+          "value": "Embedd a link to another message to the message content."
+        },
+        {
+          "op": "replace",
+          "path": "/model/addSectionButton/title",
+          "value": "Embedd video to the message content."
+        }
+      ]
+    },
+    "model": {
+      "addSectionButton": {
+        "title": "Embedd video to the message content."
+      },
+      "addVideoButton": {
+        "title": "Osadzony materiał wideo"
+      },
+      "addImageButton": {
+        "title": "Wbudowany treść obrazu."
+      },
+      "addLinkButton": {
+        "title": "Osadzonej zawartości Link"
+      }
+    }
+  },
+  "plutonium-cm-form": {
+    "meta": {
+      "todo": [
+        {
+          "op": "add",
+          "path": "/model/messageInput/label",
+          "value": "Message"
+        },
+        {
+          "op": "add",
+          "path": "/model/addVideoButton/title",
+          "value": "Embedd video to the message content."
+        },
+        {
+          "op": "add",
+          "path": "/model/addImageButton/title",
+          "value": "Embedd image to the message content."
+        },
+        {
+          "op": "add",
+          "path": "/model/addLinkButton/title",
+          "value": "Embedd a link to another message to the message content."
+        },
+        {
+          "op": "add",
+          "path": "/model/parentDdLabel/label",
+          "value": "Parent"
+        },
+        {
+          "op": "add",
+          "path": "/model/contentTitleInput/label",
+          "value": "Title"
+        },
+        {
+          "op": "add",
+          "path": "/shareTabLabel",
+          "value": "Share"
+        },
+        {
+          "op": "add",
+          "path": "/contentTabLabel",
+          "value": "Content"
+        },
+        {
+          "op": "add",
+          "path": "/propertiesTabLabel",
+          "value": "Properties"
+        },
+        {
+          "op": "add",
+          "path": "/[[item/id]]:label_1/0",
+          "value": "({1})"
+        },
+        {
+          "op": "add",
+          "path": "/[[item/id]]:label_1/1",
+          "value": "[[item.id]]"
+        },
+        {
+          "op": "add",
+          "path": "/embbeddedContentRadio",
+          "value": "Embed content"
+        },
+        {
+          "op": "add",
+          "path": "/assembledContentRadio",
+          "value": "Assemble"
+        },
+        {
+          "op": "add",
+          "path": "/embedContentRadio",
+          "value": "Embed content"
+        },
+        {
+          "op": "add",
+          "path": "/assembleRadio",
+          "value": "Assemble"
+        },
+        {
+          "op": "add",
+          "path": "/uploadFileText",
+          "value": "Choose File"
+        },
+        {
+          "op": "replace",
+          "path": "/model/addSectionButton/title",
+          "value": "Embedd video to the message content."
+        }
+      ]
+    },
+    "model": {
+      "messageInput": {
+        "label": "Wiadomość"
+      },
+      "addSectionButton": {
+        "title": "Embedd video to the message content."
+      },
+      "addVideoButton": {
+        "title": "Osadzony materiał wideo."
+      },
+      "addImageButton": {
+        "title": "Wbudowany treść obrazu."
+      },
+      "addLinkButton": {
+        "title": "Osadzonej zawartości Link."
+      },
+      "parentDdLabel": {
+        "label": "Roślina mateczna"
+      },
+      "contentTitleInput": {
+        "label": "Tytuł"
+      }
+    },
+    "shareTabLabel": "Dzielić",
+    "contentTabLabel": "Zadowolony",
+    "propertiesTabLabel": "Nieruchomości",
+    "[[item": {
+      "id]]:label_1": [
+        "({1})",
+        "[[item.id]]"
+      ]
+    },
+    "embbeddedContentRadio": "Doładuj fajl",
+    "assembledContentRadio": "Assemble",
+    "embedContentRadio": "Embed content",
+    "assembleRadio": "Edytować",
+    "uploadFileText": "Wybierz fajl"
+  },
+  "profile-view": {
+    "meta": {
+      "todo": [
+        {
+          "op": "add",
+          "path": "/model/preferredLanguageLabel/label",
+          "value": "Preferred language"
+        },
+        {
+          "op": "add",
+          "path": "/activationDateTitle",
+          "value": "Activation date"
+        },
+        {
+          "op": "add",
+          "path": "/changingDeviceButton",
+          "value": "Changing device"
+        },
+        {
+          "op": "add",
+          "path": "/underDevelopmentText",
+          "value": "Under development ..."
+        }
+      ]
+    },
+    "model": {
+      "preferredLanguageLabel": {
+        "label": "Preferowany język"
+      }
+    },
+    "activationDateTitle": "Data aktywacji",
+    "changingDeviceButton": "Zmiana narzędzia",
+    "underDevelopmentText": "W budowie ..."
+  },
+  "share-content-view": {
+    "meta": {
+      "todo": [
+        {
+          "op": "add",
+          "path": "/model/textContentTextLabel/label",
+          "value": "Text"
+        },
+        {
+          "op": "add",
+          "path": "/model/imageContentTitleLabel/label",
+          "value": "Title"
+        },
+        {
+          "op": "add",
+          "path": "/model/imageEditorUrlLabel/label",
+          "value": "Image url"
+        },
+        {
+          "op": "add",
+          "path": "/model/linkEditorDialogTitleLabel/label",
+          "value": "Title"
+        },
+        {
+          "op": "add",
+          "path": "/model/linkEditorReferenceLabel/label",
+          "value": "Reference"
+        },
+        {
+          "op": "add",
+          "path": "/model/videoEditorTitleLabel/label",
+          "value": "Title"
+        },
+        {
+          "op": "add",
+          "path": "/model/videoContentUrlLabel/label",
+          "value": "Video url"
+        },
+        {
+          "op": "add",
+          "path": "/model/videoContentUrlLabel/error-message",
+          "value": "Invalid Youtube url."
+        },
+        {
+          "op": "add",
+          "path": "/textEditorDialogTitle",
+          "value": "Edit text properties"
+        },
+        {
+          "op": "add",
+          "path": "/textEditorDialogAcceptButton",
+          "value": "Accept"
+        },
+        {
+          "op": "add",
+          "path": "/imageEditorDialogTitle",
+          "value": "Edit image properties"
+        },
+        {
+          "op": "add",
+          "path": "/imageEditorDialogCancelButton",
+          "value": "Cancel"
+        },
+        {
+          "op": "add",
+          "path": "/imageEditorDialogAcceptButton",
+          "value": "Accept"
+        },
+        {
+          "op": "add",
+          "path": "/linkEditorDialogTitle",
+          "value": "Edit link properties"
+        },
+        {
+          "op": "add",
+          "path": "/linkEditorDialogCancelButton",
+          "value": "Cancel"
+        },
+        {
+          "op": "add",
+          "path": "/linkEditorDialogAcceptButton",
+          "value": "Accept"
+        },
+        {
+          "op": "add",
+          "path": "/videoEditorDialogTitle",
+          "value": "Edit video properties"
+        },
+        {
+          "op": "add",
+          "path": "/videoEditorDialogCancelButton",
+          "value": "Cancel"
+        },
+        {
+          "op": "add",
+          "path": "/videoEditorDialogAcceptButton",
+          "value": "Accept"
+        }
+      ]
+    },
+    "model": {
+      "textContentTextLabel": {
+        "label": "Tekst"
+      },
+      "imageContentTitleLabel": {
+        "label": "Tytuł"
+      },
+      "imageEditorUrlLabel": {
+        "label": "URL obrazu"
+      },
+      "linkEditorDialogTitleLabel": {
+        "label": "Tytuł"
+      },
+      "linkEditorReferenceLabel": {
+        "label": "Powiązane treści"
+      },
+      "videoEditorTitleLabel": {
+        "label": "Tytuł"
+      },
+      "videoContentUrlLabel": {
+        "label": "Url wideo",
+        "error-message": "Nieprawidłowy url Youtube."
+      }
+    },
+    "textEditorDialogTitle": "Właściwości Edycja tekstu.",
+    "textEditorDialogAcceptButton": "Zaakceptować",
+    "imageEditorDialogTitle": "Właściwości Edycja obrazu",
+    "imageEditorDialogCancelButton": "Anuluj",
+    "imageEditorDialogAcceptButton": "Zaakceptować",
+    "linkEditorDialogTitle": "Właściwości link Edytuj",
+    "linkEditorDialogCancelButton": "Anuluj",
+    "linkEditorDialogAcceptButton": "Zaakceptować",
+    "videoEditorDialogTitle": "Właściwości Edycja wideo.",
+    "videoEditorDialogCancelButton": "Anuluj",
+    "videoEditorDialogAcceptButton": "Zaakceptować"
+  },
+  "signin-view": {
+    "meta": {
+      "todo": [
+        {
+          "op": "add",
+          "path": "/model/signInFormLoginEmail/label",
+          "value": "Email address"
+        },
+        {
+          "op": "add",
+          "path": "/model/signInFormLoginEmail/error-message",
+          "value": "Invalid email address."
+        },
+        {
+          "op": "add",
+          "path": "/model/signInFormLoginPassword/label",
+          "value": "Password"
+        },
+        {
+          "op": "add",
+          "path": "/model/signInFormLoginPassword/error-message",
+          "value": "Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number."
+        },
+        {
+          "op": "add",
+          "path": "/model/signInFormAccept/title",
+          "value": "submit"
+        },
+        {
+          "op": "add",
+          "path": "/signInFormRememberMe",
+          "value": "Remember me"
+        },
+        {
+          "op": "add",
+          "path": "/signInFormRegistrate",
+          "value": "Sign-on"
+        }
+      ]
+    },
+    "model": {
+      "signInFormLoginEmail": {
+        "label": "Adres e-mail",
+        "error-message": "Błędny adres e-mail."
+      },
+      "signInFormLoginPassword": {
+        "label": "Hasło",
+        "error-message": "Nieprawidłowe hasło. Hasło musi być 6-16 alphanumercal charakter i minimalna 1 numer."
+      },
+      "signInFormAccept": {
+        "title": "Zaloguj"
+      }
+    },
+    "signInFormRememberMe": "Zapamiętaj mnie",
+    "signInFormRegistrate": "Zapisać się"
+  },
+  "signon-view": {
+    "meta": {
+      "todo": [
+        {
+          "op": "add",
+          "path": "/model/registrateTitleLabel/label",
+          "value": "Name"
+        },
+        {
+          "op": "add",
+          "path": "/model/registrateTitleLabel/error-message",
+          "value": "Invalid name."
+        },
+        {
+          "op": "add",
+          "path": "/model/registrateEmailLabel/label",
+          "value": "Email address"
+        },
+        {
+          "op": "add",
+          "path": "/model/registrateEmailLabel/error-message",
+          "value": "Invalid email address."
+        },
+        {
+          "op": "add",
+          "path": "/model/registratePhoneNumberLabel/label",
+          "value": "Phone"
+        },
+        {
+          "op": "add",
+          "path": "/model/registratePhoneNumberLabel/error-message",
+          "value": "Invalid phone number."
+        },
+        {
+          "op": "add",
+          "path": "/model/registratePasswordLabel/label",
+          "value": "Password"
+        },
+        {
+          "op": "add",
+          "path": "/model/registratePasswordLabel/error-message",
+          "value": "Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number."
+        },
+        {
+          "op": "add",
+          "path": "/model/registratePasswordConfirmLabel/label",
+          "value": "Password confirmation"
+        },
+        {
+          "op": "add",
+          "path": "/model/registrateCodeLabel/label",
+          "value": "Activation code"
+        },
+        {
+          "op": "add",
+          "path": "/model/registrateCodeLabel/error-message",
+          "value": "Activation code."
+        },
+        {
+          "op": "add",
+          "path": "/model/registrateSignOnButton/title",
+          "value": "submit"
+        },
+        {
+          "op": "add",
+          "path": "/registrateSignInButton",
+          "value": "Signin"
+        }
+      ]
+    },
+    "model": {
+      "registrateTitleLabel": {
+        "label": "Nazwa",
+        "error-message": "Błędna nazwa."
+      },
+      "registrateEmailLabel": {
+        "label": "Adres e-mail",
+        "error-message": "Błędny adres e-mail."
+      },
+      "registratePhoneNumberLabel": {
+        "label": "Numer telefonu",
+        "error-message": "Nieprawidłowy numer telefonu."
+      },
+      "registratePasswordLabel": {
+        "label": "Hasło",
+        "error-message": "Nieprawidłowe hasło. Hasło musi być 6-16 alphanumercal charakter i minimalna 1 numer."
+      },
+      "registratePasswordConfirmLabel": {
+        "label": "Potwierdzenie hasła"
+      },
+      "registrateCodeLabel": {
+        "label": "Kod aktywacyjny",
+        "error-message": "Zły kod aktywacyjny"
+      },
+      "registrateSignOnButton": {
+        "title": "Zapisać się"
+      }
+    },
+    "registrateSignInButton": "Zaloguj"
+  },
+  "bundle": true
+}

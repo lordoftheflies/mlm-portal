@@ -1,0 +1,19 @@
+{
+  "meta": {
+    
+  },
+  "model": {
+    "addSectionButton": {
+      "title": "Embedd video to the message content."
+    },
+    "addVideoButton": {
+      "title": "Video szekció beágyazása."
+    },
+    "addImageButton": {
+      "title": "Kép szekció beágyazása."
+    },
+    "addLinkButton": {
+      "title": "Hivatkozás szekció beágyazása."
+    }
+  }
+}

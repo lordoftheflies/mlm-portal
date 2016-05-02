@@ -1,0 +1,8 @@
+{
+  "meta": {},
+  "model": {
+    "articleTitleLabel": {
+      "title": "Navigate to {{baseUrl}}content-tree/{{section.data}}"
+    }
+  }
+}

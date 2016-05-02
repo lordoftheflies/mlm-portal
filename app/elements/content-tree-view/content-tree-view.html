@@ -20,7 +20,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../bower_components/paper-tabs/paper-tabs.html">
 <link rel="import" href="../../bower_components/grapp-breadcrumbs/grapp-breadcrumbs.html">
 
-<!--<link rel="import" href="../../bower_components/i18n-behavior/i18n-behavior.html">-->
+<link rel="import" href="../../bower_components/i18n-behavior/i18n-behavior.html">
 
 <dom-module id="content-tree-view">
     <template>
@@ -30,7 +30,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 /*                @apply(--layout-vertical);
                                 @apply(--layout-flex);*/
             }
-            
+
             iframe {
                 @apply(--layout-vertical);
                 @apply(--layout-flex);
@@ -116,7 +116,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 is: 'content-tree-view',
                 behaviors: [
                     PlutoniumBehaviors.WidgetBehavior,
-                            //                BehaviorsStore.I18nBehavior
+                    BehaviorsStore.I18nBehavior
                 ],
                 properties: {
                     tocRequestParams: {

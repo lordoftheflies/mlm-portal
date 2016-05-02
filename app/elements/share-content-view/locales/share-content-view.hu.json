@@ -1,0 +1,40 @@
+{
+  "meta": {
+    "todo": []
+  },
+  "model": {
+    "textContentTextLabel": {
+      "label": "Szöveg"
+    },
+    "imageContentTitleLabel": {
+      "label": "Cím"
+    },
+    "imageEditorUrlLabel": {
+      "label": "Kép url"
+    },
+    "linkEditorDialogTitleLabel": {
+      "label": "Cím"
+    },
+    "linkEditorReferenceLabel": {
+      "label": "Hivatkozás"
+    },
+    "videoEditorTitleLabel": {
+      "label": "Cím"
+    },
+    "videoContentUrlLabel": {
+      "label": "Videó url",
+      "error-message": "Érvénytelen Youtube videó."
+    }
+  },
+  "textEditorDialogTitle": "Szöveg tulajdonságainak szerkesztése",
+  "textEditorDialogAcceptButton": "Elfogadás",
+  "imageEditorDialogTitle": "Kép tulajdonságainak szerkesztése",
+  "imageEditorDialogCancelButton": "Elvetés",
+  "imageEditorDialogAcceptButton": "Elfogadás",
+  "linkEditorDialogTitle": "Hivatkozás tulajdonságainak szerkesztése",
+  "linkEditorDialogCancelButton": "Elvetés",
+  "linkEditorDialogAcceptButton": "Elfogadás",
+  "videoEditorDialogTitle": "Video tulajdonságainak szerkesztése",
+  "videoEditorDialogCancelButton": "Elvetés",
+  "videoEditorDialogAcceptButton": "Elfogadás"
+}

@@ -1,0 +1,9 @@
+{
+  "meta": {
+    "todo": []
+  },
+  "model": {},
+  "mailBoxPageInboxFolderTitle": "Beérkező levelek",
+  "sentItemsPageInboxFolderTitle": "Elküldött levelek",
+  "emptyMailBoxFolderText": "A mappában nincsenek üzenetek."
+}

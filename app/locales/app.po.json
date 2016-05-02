@@ -1,0 +1,109 @@
+{
+  "meta": {
+    "todo": [
+      {
+        "op": "add",
+        "path": "/loginDialogTitle",
+        "value": "Sign-in"
+      },
+      {
+        "op": "add",
+        "path": "/logonDialogTitle",
+        "value": "Sign-on"
+      },
+      {
+        "op": "add",
+        "path": "/mainMenuTitle",
+        "value": "Menu"
+      },
+      {
+        "op": "add",
+        "path": "/shareContentMenuTitle",
+        "value": "Share content"
+      },
+      {
+        "op": "add",
+        "path": "/contentsMenuTitle",
+        "value": "Contents"
+      },
+      {
+        "op": "add",
+        "path": "/mailBoxMenuTitle",
+        "value": "Mailbox"
+      },
+      {
+        "op": "add",
+        "path": "/networkMenuTitle",
+        "value": "Network"
+      },
+      {
+        "op": "add",
+        "path": "/aboutMenuTitle",
+        "value": "About"
+      },
+      {
+        "op": "add",
+        "path": "/profileMenuTitle",
+        "value": "Profile"
+      },
+      {
+        "op": "add",
+        "path": "/logoutButtonLabel",
+        "value": "Logout"
+      },
+      {
+        "op": "add",
+        "path": "/mottoLabel",
+        "value": "The future of the web today"
+      },
+      {
+        "op": "add",
+        "path": "/shareContentViewTitleLabel",
+        "value": "Share content"
+      },
+      {
+        "op": "add",
+        "path": "/contentTreeViewTitleLabel",
+        "value": "Contents"
+      },
+      {
+        "op": "add",
+        "path": "/mailBoxViewTitleLabel",
+        "value": "Mailbox"
+      },
+      {
+        "op": "add",
+        "path": "/networkViewTitleLabel",
+        "value": "Network"
+      },
+      {
+        "op": "add",
+        "path": "/aboutViewTitleLabel",
+        "value": "About"
+      },
+      {
+        "op": "add",
+        "path": "/toastMessageText",
+        "value": "Ok"
+      }
+    ]
+  },
+  "model": {},
+  "loginDialogTitle": "Zaloguj",
+  "logonDialogTitle": "Zapisać się",
+  "mainMenuTitle": "Flavon",
+  "shareContentMenuTitle": "Udostępnij treść",
+  "contentsMenuTitle": "Menu",
+  "mailBoxMenuTitle": "Skrzynka na listy",
+  "networkMenuTitle": "Sieć",
+  "aboutMenuTitle": "Informacja",
+  "profileMenuTitle": "Profil",
+  "logoutButtonLabel": "Wylogowanie",
+  "mottoLabel": "",
+  "shareContentViewTitleLabel": "Udostępnij treść",
+  "contentTreeViewTitleLabel": "Menu",
+  "mailBoxViewTitleLabel": "Skrzynka na listy",
+  "networkViewTitleLabel": "Sieć",
+  "aboutViewTitleLabel": "Informacja",
+  "toastMessageText": "Ok"
+}

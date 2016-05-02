@@ -38,6 +38,7 @@
 
     // Session AJAX success response handler.
     app.sessionInfoHandler = function (event, details) {
+        document.querySelector('html').setAttribute('lang', app.sessionInfo.preferredLanguage);
         console.log('Session initialization info.' + JSON.stringify(details.reponse));// + '|' + JSON.stringify(a) + '|' + JSON.stringify(a));
     };
 

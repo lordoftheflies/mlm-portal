@@ -1,0 +1,18 @@
+{
+  "meta": {
+  },
+  "model": {
+    "addSectionButton": {
+      "title": "Embedd video to the message content."
+    },
+    "addVideoButton": {
+      "title": "Osadzony materiał wideo"
+    },
+    "addImageButton": {
+      "title": "Wbudowany treść obrazu."
+    },
+    "addLinkButton": {
+      "title": "Osadzonej zawartości Link"
+    }
+  }
+}

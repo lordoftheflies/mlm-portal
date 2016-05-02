@@ -1,0 +1,23 @@
+{
+  "meta": {
+    "todo": []
+  },
+  "model": {},
+  "loginDialogTitle": "Sign-in",
+  "logonDialogTitle": "Sign-on",
+  "mainMenuTitle": "Menu",
+  "shareContentMenuTitle": "Share content",
+  "contentsMenuTitle": "Contents",
+  "mailBoxMenuTitle": "Mailbox",
+  "networkMenuTitle": "Network",
+  "aboutMenuTitle": "About",
+  "profileMenuTitle": "Profile",
+  "logoutButtonLabel": "Logout",
+  "mottoLabel": "The future of the web today",
+  "shareContentViewTitleLabel": "Share content",
+  "contentTreeViewTitleLabel": "Contents",
+  "mailBoxViewTitleLabel": "Mailbox",
+  "networkViewTitleLabel": "Network",
+  "aboutViewTitleLabel": "About",
+  "toastMessageText": "Ok"
+}

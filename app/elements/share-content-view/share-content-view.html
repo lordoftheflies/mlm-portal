@@ -16,7 +16,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../bower_components/paper-tabs/paper-tabs.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
-<!--<link rel="import" href="../../bower_components/i18n-behavior/i18n-behavior.html">-->
+<link rel="import" href="../../bower_components/i18n-behavior/i18n-behavior.html">
 
 <link rel="import" href="../plutonium-witdget-behavior.html">
 
@@ -85,9 +85,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <h2 id="textEditorDialogTitle">Edit text properties</h2>
                 <div class="content">
                     <input type="hidden" name="name">
-                    <paper-input name="title" label="{{text.textEditorTitlePlaceholder}}">
+                    <paper-input id="textContentTitleLabel" name="title" label="{{text.textEditorTitlePlaceholder}}">
                     </paper-input>
-                    <paper-textarea name="data" label="Text" rows="10" type="text"></paper-textarea>
+                    <paper-textarea  id="textContentTextLabel" name="data" label="Text" rows="10" type="text"></paper-textarea>
 
                 </div>
                 <div class="buttons">
@@ -100,9 +100,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <h2 id="imageEditorDialogTitle">Edit image properties</h2>
                 <div class="content">
                     <input type="hidden" name="name">
-                    <paper-input name="title" label="Title"></paper-input>
+                    <paper-input id="imageContentTitleLabel" name="title" label="Title"></paper-input>
 
-                    <paper-input name="data" required auto-validate
+                    <paper-input id="imageEditorUrlLabel" name="data" required auto-validate
                                  label="Image url">
 
                     </paper-input>
@@ -142,10 +142,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <h2 id="videoEditorDialogTitle">Edit video properties</h2>
                 <div class="content">
                     <input type="hidden" name="name">
-                    <paper-input name="title" label='Title' value="{{title}}">
+                    <paper-input  id="videoEditorTitleLabel" name="title" label='Title' value="{{title}}">
 
                     </paper-input>
-                    <paper-input name="data" required auto-validate
+                    <paper-input 
+                        id="videoContentUrlLabel"
+                        name="data" required auto-validate
                                  label='Video url'
                                  error-message='Invalid Youtube url.'
                                  value="{{url}}">
@@ -175,6 +177,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 is: 'share-content-view',
                 behaviors: [
                     PlutoniumBehaviors.WidgetBehavior,
+                    BehaviorsStore.I18nBehavior
                     
                 ],
                 properties: {

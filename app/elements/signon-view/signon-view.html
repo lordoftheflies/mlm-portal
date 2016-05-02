@@ -21,7 +21,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../plutonium-witdget-behavior.html">
 
-<!--<link rel="import" href="../../bower_components/i18n-behavior/i18n-behavior.html">-->
+<link rel="import" href="../../bower_components/i18n-behavior/i18n-behavior.html">
 
 <dom-module id="signon-view">
     <template>
@@ -121,7 +121,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             Polymer({
                 is: 'signon-view',
-                behaviors: [PlutoniumBehaviors.WidgetBehavior],
+                behaviors: [
+                    PlutoniumBehaviors.WidgetBehavior,
+                    BehaviorsStore.I18nBehavior
+                ],
                 properties: {
                     mailPattern: {
                         type: String,

@@ -1,0 +1,23 @@
+{
+  "meta": {
+    "todo": []
+  },
+  "model": {},
+  "loginDialogTitle": "Bejelentkezés",
+  "logonDialogTitle": "Regisztráció",
+  "mainMenuTitle": "Flavon",
+  "shareContentMenuTitle": "Tartalom megosztása",
+  "contentsMenuTitle": "Menük",
+  "mailBoxMenuTitle": "Postaláda",
+  "networkMenuTitle": "Hálózat",
+  "aboutMenuTitle": "Rólunk",
+  "profileMenuTitle": "Profil",
+  "logoutButtonLabel": "Kijelentkezés",
+  "mottoLabel": "",
+  "shareContentViewTitleLabel": "Tartalom megosztása",
+  "contentTreeViewTitleLabel": "Tartalmak",
+  "mailBoxViewTitleLabel": "Postaláda",
+  "networkViewTitleLabel": "Hálózat",
+  "aboutViewTitleLabel": "Kapcsolat",
+  "toastMessageText": "Ok"
+}

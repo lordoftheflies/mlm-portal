@@ -64,7 +64,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <span id="browser-sync-binding"></span>
         <!-- endbuild -->
 
-        <template is="dom-bind" id="app">
+        <template is="i18n-dom-bind" id="app">
 
             <iron-ajax 
                 id="login" 
@@ -75,11 +75,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 auto>
             </iron-ajax>
             <paper-dialog id="loginDialog" modal>
-                <h2>Sign-in</h2>
+                <h2 id="loginDialogTitle">Sign-in</h2>
                 <signin-view base-url="{{backEndUrl}}"></signin-view>
             </paper-dialog>
             <paper-dialog id="registrationDialog" modal>
-                <h2>Sign-on</h2>
+                <h2 id="logonDialogTitle">Sign-on</h2>
                 <signon-view base-url="{{backEndUrl}}"></signon-view>
             </paper-dialog>
 
@@ -158,7 +158,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                         <!-- Application sub title -->
                         <div class="bottom bottom-container">
-                            <div class="bottom-title">The future of the web today</div>
+                            <div id="mottoLabel" class="bottom-title">The future of the web today</div>
                         </div>
                     </paper-toolbar>
 
@@ -210,7 +210,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </paper-drawer-panel>
 
             <paper-toast id="toast">
-                <span class="toast-hide-button" role="button" tabindex="0" onclick="app.$.toast.hide()">Ok</span>
+                <span id="toastMessageText" class="toast-hide-button" role="button" tabindex="0" onclick="app.$.toast.hide()">Ok</span>
             </paper-toast>
 
             <!-- Uncomment next block to enable Service Worker support (1/2) -->
