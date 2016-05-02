@@ -113,6 +113,7 @@ Example:
 
                     <div>
                         <plutonium-field-recipient
+                            id="recipientsFieldInput"
                             label="To"
                             picker-icon="supervisor-account"
                             picker-title="Contacts"
@@ -130,17 +131,17 @@ Example:
                             </template>
                         </plutonium-field-recipient>
 
-                        <paper-input class="bottom title" label="Message" value="{{message}}"></paper-input>
+                        <paper-input id="messageInput" class="bottom title" label="Message" value="{{message}}"></paper-input>
                     </div>
 
                     <div class="card-content">
                         <iron-pages selected="{{contentMode}}" attr-for-selected="id">
                             <div id="assembled">
                                 <template is="dom-if" if$="{{isEmpty()}}">
-                                          <paper-icon-button on-click="onAddSection" icon="add-circle" title="Embedd video to the message content."></paper-icon-button>
-                                    <paper-icon-button on-click="onEmbedVideo" icon="theaters" title="Embedd video to the message content."></paper-icon-button>
-                                    <paper-icon-button on-click="onEmbedImage" icon="perm-media" title="Embedd image to the message content."></paper-icon-button>
-                                    <paper-icon-button on-click="onEmbedLink" icon="link" title="Embedd a link to another message to the message content."></paper-icon-button>
+                                          <paper-icon-button id="addSectionButton" on-click="onAddSection" icon="add-circle" title="Embedd video to the message content."></paper-icon-button>
+                                    <paper-icon-button id="addVideoButton" on-click="onEmbedVideo" icon="theaters" title="Embedd video to the message content."></paper-icon-button>
+                                    <paper-icon-button id="addImageButton" on-click="onEmbedImage" icon="perm-media" title="Embedd image to the message content."></paper-icon-button>
+                                    <paper-icon-button id="addLinkButton" on-click="onEmbedLink" icon="link" title="Embedd a link to another message to the message content."></paper-icon-button>
                                 </template>
                                 <paper-radio-group selected="{{contentMode}}" attr-for-selected="name">
                                     <paper-radio-button name="embedded">Embed content</paper-radio-button>
@@ -166,10 +167,11 @@ Example:
                         </div>
                         <div id="embedded" class="layout vertical">
                             <paper-radio-group selected="{{contentMode}}" attr-for-selected="name">
-                                <paper-radio-button name="embedded">Embed content</paper-radio-button>
-                                <paper-radio-button name="assembled">Assemble</paper-radio-button>
+                                <paper-radio-button id="embedContentRadio" name="embedded">Embed content</paper-radio-button>
+                                <paper-radio-button id="assembleRadio" name="assembled">Assemble</paper-radio-button>
                             </paper-radio-group>
                             <file-upload 
+                                id="uploadFileText"
                                 drop-text="Drop any PDF file here."
                                 error-text="File upload failed."
                                 droppable="true" 
@@ -183,7 +185,9 @@ Example:
                 </div>
 
                 <div class="card-content">
-                    <paper-dropdown-menu label="Parent">
+                    <paper-dropdown-menu 
+                        id="parentDdLabel"
+                        label="Parent">
                         <!--<paper-menu class="layout flex">-->
                         <paper-listbox id="parentCandidatesList"
                                        class="dropdown-content"
@@ -204,7 +208,7 @@ Example:
                     </paper-dropdown-menu>
                     <!---->
 
-                    <paper-input class="bottom title" label="Title" value="{{contentModel.title}}"></paper-input>
+                    <paper-input id="contentTitleInput" class="bottom title" label="Title" value="{{contentModel.title}}"></paper-input>
                 </div>
                 <!--</paper-card>-->
             </iron-pages>
