@@ -142,10 +142,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <h2 id="videoEditorDialogTitle">Edit video properties</h2>
                 <div class="content">
                     <input type="hidden" name="name">
-                    <paper-input name="title" label='Title' value="{{title}}">
+                    <paper-input  id="videoEditorTitleLabel" name="title" label='Title' value="{{title}}">
 
                     </paper-input>
-                    <paper-input name="data" required auto-validate
+                    <paper-input 
+                        id="videoContentUrlLabel"
+                        name="data" required auto-validate
                                  label='Video url'
                                  error-message='Invalid Youtube url.'
                                  value="{{url}}">

@@ -1,13 +1,13 @@
 {
   "meta": {},
   "model": {
-    "plutonium-cm-form_3:textEditorDialog:div_1:paper-textarea_2": {
+    "textContentTextLabel": {
       "label": "Text"
     },
     "imageContentTitleLabel": {
       "label": "Title"
     },
-    "imageEditorDialog:div_1:paper-input_2": {
+    "imageEditorUrlLabel": {
       "label": "Image url"
     },
     "linkEditorDialogTitleLabel": {
