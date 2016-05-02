@@ -4,7 +4,7 @@
     "plutonium-cm-form_3:textEditorDialog:div_1:paper-textarea_2": {
       "label": "Text"
     },
-    "imageEditorDialog:div_1:paper-input_1": {
+    "imageContentTitleLabel": {
       "label": "Title"
     },
     "imageEditorDialog:div_1:paper-input_2": {
