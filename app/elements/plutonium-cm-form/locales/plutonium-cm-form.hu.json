@@ -1,6 +1,6 @@
 {
   "meta": {
-    "todo": []
+    
   },
   "model": {
     "messageInput": {
@@ -16,21 +16,21 @@
       "title": "Kép szekció beágyazása."
     },
     "addLinkButton": {
-      "title": "Hivatkozott szekció beágyazása."
+      "title": "Hivatkozás szekció beágyazása."
     },
     "parentDdLabel": {
       "label": "Szülő"
     },
     "contentTitleInput": {
-      "label": "Címsor"
+      "label": "Cím"
     }
   },
   "shareTabLabel": "Megosztás",
   "contentTabLabel": "Tartalom",
   "propertiesTabLabel": "Tulajdonságok",
   "embbeddedContentRadio": "Bináris tartalom",
-  "assembledContentRadio": "Beágyazott tartalom",
+  "assembledContentRadio": "Saját tartalom",
   "embedContentRadio": "Bináris tartalom",
-  "assembleRadio": "Beágyazott tartalom",
+  "assembleRadio": "Saját tartalom",
   "uploadFileText": "Fájl kiválasztása"
 }

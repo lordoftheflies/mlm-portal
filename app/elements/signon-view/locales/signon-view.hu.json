@@ -5,19 +5,19 @@
   "model": {
     "registrateTitleLabel": {
       "label": "Név",
-      "error-message": "Événytelen név."
+      "error-message": "Érvénytelen név."
     },
     "registrateEmailLabel": {
-      "label": "Email address",
+      "label": "Email cím",
       "error-message": "Érvénytelen email cím."
     },
     "registratePhoneNumberLabel": {
-      "label": "Phone",
+      "label": "Telefonszám",
       "error-message": "Érvénytelen telefonszám."
     },
     "registratePasswordLabel": {
-      "label": "Password",
-      "error-message": "Érvénytelen jelszó. A jelszó egy 6-16 jegyű alfanumerikus karakter, minimum egy számjeggyel."
+      "label": "Jelszó",
+      "error-message": "Érvénytelen jelszó. A jelszó egy 6-16 jegyű, legalább egy számot tartalmazó alfanumerikus karaktersorozat."
     },
     "registratePasswordConfirmLabel": {
       "label": "Jelszó megerősítés"

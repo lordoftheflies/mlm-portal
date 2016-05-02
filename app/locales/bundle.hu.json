@@ -1,6 +1,8 @@
 {
   "app": {
-    "meta": {},
+    "meta": {
+      "todo": []
+    },
     "model": {},
     "loginDialogTitle": "Bejelentkezés",
     "logonDialogTitle": "Regisztráció",
@@ -21,13 +23,58 @@
     "toastMessageText": "Ok"
   },
   "about-view": {
-    "meta": {},
+    "meta": {
+      "todo": [
+        {
+          "op": "add",
+          "path": "/ul_2:template:li/0",
+          "value": " {1} ({2}) "
+        },
+        {
+          "op": "add",
+          "path": "/ul_2:template:li/1",
+          "value": "{{item.name}}"
+        },
+        {
+          "op": "add",
+          "path": "/ul_2:template:li/2",
+          "value": "{{item.email}}"
+        },
+        {
+          "op": "add",
+          "path": "/ul_4:template:li/0",
+          "value": " {1} ({2}) "
+        },
+        {
+          "op": "add",
+          "path": "/ul_4:template:li/1",
+          "value": "{{item.name}}"
+        },
+        {
+          "op": "add",
+          "path": "/ul_4:template:li/2",
+          "value": "{{item.email}}"
+        }
+      ]
+    },
     "model": {},
     "contributorsTitleLabel": "Szerzők & közreműködők",
-    "administrationTitleLabel": "Webmester & karbantartás"
+    "ul_2:template:li": [
+      " {1} ({2}) ",
+      "{{item.name}}",
+      "{{item.email}}"
+    ],
+    "administrationTitleLabel": "Webmester & karbantartás",
+    "ul_4:template:li": [
+      " {1} ({2}) ",
+      "{{item.name}}",
+      "{{item.email}}"
+    ]
   },
   "content-tree-view": {
-    "meta": {},
+    "meta": {
+      "todo": []
+    },
     "model": {},
     "messagesPagePublicFolderTitle": "Publikus",
     "messagesPageMyContentsFolderTitle": "Saját tartalmak",
@@ -35,7 +82,9 @@
     "emptyContentFolderText": "A mappában nincsenek tartalmak."
   },
   "content-viewer": {
-    "meta": {},
+    "meta": {
+      "todo": []
+    },
     "model": {
       "articleTitleLabel": {
         "title": "Ugrás {{baseUrl}}content-tree/{{section.data}}"
@@ -43,14 +92,18 @@
     }
   },
   "mailbox-view": {
-    "meta": {},
+    "meta": {
+      "todo": []
+    },
     "model": {},
     "mailBoxPageInboxFolderTitle": "Beérkező",
     "sentItemsPageInboxFolderTitle": "Elküldött",
     "emptyMailBoxFolderText": "A mappában nincsenek üzenetek."
   },
   "network-view": {
-    "meta": {},
+    "meta": {
+      "todo": []
+    },
     "model": {
       "newMemberNameLabel": {
         "label": "Név"
@@ -87,10 +140,18 @@
     "emptyChildrenText": "Nincsenek alárendelt tagok."
   },
   "plutonium-cm-field": {
-    "meta": {},
+    "meta": {
+      "todo": [
+        {
+          "op": "replace",
+          "path": "/model/addSectionButton/title",
+          "value": "Embedd video to the message content."
+        }
+      ]
+    },
     "model": {
       "addSectionButton": {
-        "title": "Szöveges szekció beágyazása."
+        "title": "Embedd video to the message content."
       },
       "addVideoButton": {
         "title": "Video szekció beágyazása."
@@ -104,13 +165,31 @@
     }
   },
   "plutonium-cm-form": {
-    "meta": {},
+    "meta": {
+      "todo": [
+        {
+          "op": "add",
+          "path": "/[[item/id]]:label_1/0",
+          "value": "({1})"
+        },
+        {
+          "op": "add",
+          "path": "/[[item/id]]:label_1/1",
+          "value": "[[item.id]]"
+        },
+        {
+          "op": "replace",
+          "path": "/model/addSectionButton/title",
+          "value": "Embedd video to the message content."
+        }
+      ]
+    },
     "model": {
       "messageInput": {
         "label": "Üzenet"
       },
       "addSectionButton": {
-        "title": "Szöveges szekció beágyazása."
+        "title": "Embedd video to the message content."
       },
       "addVideoButton": {
         "title": "Video szekció beágyazása."
@@ -131,6 +210,12 @@
     "shareTabLabel": "Megosztás",
     "contentTabLabel": "Tartalom",
     "propertiesTabLabel": "Tulajdonságok",
+    "[[item": {
+      "id]]:label_1": [
+        "({1})",
+        "[[item.id]]"
+      ]
+    },
     "embbeddedContentRadio": "Bináris tartalom",
     "assembledContentRadio": "Saját tartalom",
     "embedContentRadio": "Bináris tartalom",
@@ -138,7 +223,9 @@
     "uploadFileText": "Fájl kiválasztása"
   },
   "profile-view": {
-    "meta": {},
+    "meta": {
+      "todo": []
+    },
     "model": {
       "preferredLanguageLabel": {
         "label": "Preferált nyelv"
@@ -149,7 +236,9 @@
     "underDevelopmentText": "Fejlesztés alatt ..."
   },
   "share-content-view": {
-    "meta": {},
+    "meta": {
+      "todo": []
+    },
     "model": {
       "textContentTextLabel": {
         "label": "Szöveg"
@@ -187,7 +276,9 @@
     "videoEditorDialogAcceptButton": "Elfogadás"
   },
   "signin-view": {
-    "meta": {},
+    "meta": {
+      "todo": []
+    },
     "model": {
       "signInFormLoginEmail": {
         "label": "Email cím",
@@ -205,7 +296,9 @@
     "signInFormRegistrate": "Regisztráció"
   },
   "signon-view": {
-    "meta": {},
+    "meta": {
+      "todo": []
+    },
     "model": {
       "registrateTitleLabel": {
         "label": "Név",

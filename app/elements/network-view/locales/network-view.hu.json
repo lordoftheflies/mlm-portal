@@ -18,22 +18,22 @@
   "newMemberDialogCreateButton": "Létrehozás",
   "newMemberDialogCreateAndRepeatButton": "Létrehozás & ismétlés",
   "memberEraseConfirmDialogTitle": "Tag törlése",
-  "memberEraseConfirmDialogText": "Biztosan törölni akarja a kiválasztott tagot?",
+  "memberEraseConfirmDialogText": "Biztos, hogy törölni akarja a kiválasztott tagot?",
   "memberEraseConfirmDialogCancelButton": "Elvetés",
-  "memberEraseConfirmDialogAcceptButton": "Ok",
+  "memberEraseConfirmDialogAcceptButton": "OK",
   "promoteAdminDialogTitle": "Előléptetés",
   "promoteAdminDialogText": [
-    "Biztos, hogy elő akarja léptetni {1}-t adminisztrátorrá? ",
+    " Biztos, hogy elő akarja léptetni {1}-t adminisztrátorrá? ",
     "{{item.name}}"
   ],
   "promoteAdminDialogCancelButton": "Elvetés",
-  "promoteAdminDialogAcceptButton": "Ok",
+  "promoteAdminDialogAcceptButton": "OK",
   "demoteAdminDialogTitle": "Lefokozás",
   "demoteAdminDialogText": [
-    "Biztos, hogy le akarja fokozni {1}-t felhasználóvá?",
+    " Biztos, hogy le akarja fokozni {1}-t felhasználóvá?",
     "{{item.name}}"
   ],
   "demoteAdminDialogCancelButton": "Elvetés",
-  "demoteAdminDialogAcceptButton": "Ok",
+  "demoteAdminDialogAcceptButton": "OK",
   "emptyChildrenText": "Nincsenek alárendelt tagok."
 }

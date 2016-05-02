@@ -9,12 +9,12 @@
     },
     "signInFormLoginPassword": {
       "label": "Jelszó",
-      "error-message": "Érvénytelen jelszó."
+      "error-message": "Érvénytelen jelszó. A jelszó egy 6-16 jegyű, legalább egy számot tartalmazó alfanumerikus karaktersorozat."
     },
     "signInFormAccept": {
-      "title": "submit"
+      "title": "Bejelentkezés"
     }
   },
   "signInFormRememberMe": "Emlékezz rám",
-  "signInFormRegistrate": "Bejelentkezés"
+  "signInFormRegistrate": "Regisztráció"
 }

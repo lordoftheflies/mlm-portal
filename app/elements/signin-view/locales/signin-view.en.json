@@ -9,7 +9,7 @@
     },
     "signInFormLoginPassword": {
       "label": "Password",
-      "error-message": "Invalid password."
+      "error-message": "Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number."
     },
     "signInFormAccept": {
       "title": "submit"

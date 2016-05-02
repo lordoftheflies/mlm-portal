@@ -1,6 +1,7 @@
 {
-  "meta": {},
+  "meta": {
+    "todo": [
   "model": {},
-  "contributorsTitleLabel": "Szerzők és közreműködők",
-  "administrationTitleLabel": "Webmester & karbantartás"
+  "contributorsTitleLabel": "Szerzők & közreműködők",
+  "administrationTitleLabel": "Webmester & karbantartás",
 }

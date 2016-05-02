@@ -1,6 +1,8 @@
 {
   "app": {
-    "meta": {},
+    "meta": {
+      "todo": []
+    },
     "model": {},
     "loginDialogTitle": "Sign-in",
     "logonDialogTitle": "Sign-on",
@@ -21,13 +23,58 @@
     "toastMessageText": "Ok"
   },
   "about-view": {
-    "meta": {},
+    "meta": {
+      "todo": [
+        {
+          "op": "add",
+          "path": "/ul_2:template:li/0",
+          "value": " {1} ({2}) "
+        },
+        {
+          "op": "add",
+          "path": "/ul_2:template:li/1",
+          "value": "{{item.name}}"
+        },
+        {
+          "op": "add",
+          "path": "/ul_2:template:li/2",
+          "value": "{{item.email}}"
+        },
+        {
+          "op": "add",
+          "path": "/ul_4:template:li/0",
+          "value": " {1} ({2}) "
+        },
+        {
+          "op": "add",
+          "path": "/ul_4:template:li/1",
+          "value": "{{item.name}}"
+        },
+        {
+          "op": "add",
+          "path": "/ul_4:template:li/2",
+          "value": "{{item.email}}"
+        }
+      ]
+    },
     "model": {},
     "contributorsTitleLabel": "Authors & contributors",
-    "administrationTitleLabel": "Webmaster & maintenance"
+    "ul_2:template:li": [
+      " {1} ({2}) ",
+      "{{item.name}}",
+      "{{item.email}}"
+    ],
+    "administrationTitleLabel": "Webmaster & maintenance",
+    "ul_4:template:li": [
+      " {1} ({2}) ",
+      "{{item.name}}",
+      "{{item.email}}"
+    ]
   },
   "content-tree-view": {
-    "meta": {},
+    "meta": {
+      "todo": []
+    },
     "model": {},
     "messagesPagePublicFolderTitle": "Public",
     "messagesPageMyContentsFolderTitle": "Drafts",
@@ -35,7 +82,9 @@
     "emptyContentFolderText": "No content in the folder."
   },
   "content-viewer": {
-    "meta": {},
+    "meta": {
+      "todo": []
+    },
     "model": {
       "articleTitleLabel": {
         "title": "Navigate to {{baseUrl}}content-tree/{{section.data}}"
@@ -43,14 +92,18 @@
     }
   },
   "mailbox-view": {
-    "meta": {},
+    "meta": {
+      "todo": []
+    },
     "model": {},
     "mailBoxPageInboxFolderTitle": "Inbox",
     "sentItemsPageInboxFolderTitle": "Sent items",
     "emptyMailBoxFolderText": "No messages in the folder."
   },
   "network-view": {
-    "meta": {},
+    "meta": {
+      "todo": []
+    },
     "model": {
       "newMemberNameLabel": {
         "label": "Name"
@@ -87,7 +140,9 @@
     "emptyChildrenText": "No children."
   },
   "plutonium-cm-field": {
-    "meta": {},
+    "meta": {
+      "todo": []
+    },
     "model": {
       "addSectionButton": {
         "title": "Embedd video to the message content."
@@ -104,7 +159,20 @@
     }
   },
   "plutonium-cm-form": {
-    "meta": {},
+    "meta": {
+      "todo": [
+        {
+          "op": "add",
+          "path": "/[[item/id]]:label_1/0",
+          "value": "({1})"
+        },
+        {
+          "op": "add",
+          "path": "/[[item/id]]:label_1/1",
+          "value": "[[item.id]]"
+        }
+      ]
+    },
     "model": {
       "messageInput": {
         "label": "Message"
@@ -131,6 +199,12 @@
     "shareTabLabel": "Share",
     "contentTabLabel": "Content",
     "propertiesTabLabel": "Properties",
+    "[[item": {
+      "id]]:label_1": [
+        "({1})",
+        "[[item.id]]"
+      ]
+    },
     "embbeddedContentRadio": "Embed content",
     "assembledContentRadio": "Assemble",
     "embedContentRadio": "Embed content",
@@ -138,7 +212,9 @@
     "uploadFileText": "Choose File"
   },
   "profile-view": {
-    "meta": {},
+    "meta": {
+      "todo": []
+    },
     "model": {
       "preferredLanguageLabel": {
         "label": "Preferred language"
@@ -149,7 +225,9 @@
     "underDevelopmentText": "Under development ..."
   },
   "share-content-view": {
-    "meta": {},
+    "meta": {
+      "todo": []
+    },
     "model": {
       "textContentTextLabel": {
         "label": "Text"
@@ -187,7 +265,9 @@
     "videoEditorDialogAcceptButton": "Accept"
   },
   "signin-view": {
-    "meta": {},
+    "meta": {
+      "todo": []
+    },
     "model": {
       "signInFormLoginEmail": {
         "label": "Email address",
@@ -205,7 +285,9 @@
     "signInFormRegistrate": "Sign-on"
   },
   "signon-view": {
-    "meta": {},
+    "meta": {
+      "todo": []
+    },
     "model": {
       "registrateTitleLabel": {
         "label": "Name",

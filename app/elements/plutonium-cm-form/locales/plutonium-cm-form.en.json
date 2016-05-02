@@ -1,7 +1,5 @@
 {
-  "meta": {
-    "todo": []
-  },
+  "meta": {},
   "model": {
     "messageInput": {
       "label": "Message"

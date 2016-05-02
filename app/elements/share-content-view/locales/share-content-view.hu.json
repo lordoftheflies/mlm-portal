@@ -10,7 +10,7 @@
       "label": "Cím"
     },
     "imageEditorUrlLabel": {
-      "label": "Kép URL"
+      "label": "Kép url"
     },
     "linkEditorDialogTitleLabel": {
       "label": "Cím"
@@ -22,19 +22,19 @@
       "label": "Cím"
     },
     "videoContentUrlLabel": {
-      "label": "Videó URL",
-      "error-message": "Érvénytelen Youtube URL."
+      "label": "Videó url",
+      "error-message": "Érvénytelen Youtube videó."
     }
   },
-  "textEditorDialogTitle": "Szöveg tulajdonságainak szerkesztése.",
+  "textEditorDialogTitle": "Szöveg tulajdonságainak szerkesztése",
   "textEditorDialogAcceptButton": "Elfogadás",
-  "imageEditorDialogTitle": "Kép tulajdonságainak szerkesztése.",
+  "imageEditorDialogTitle": "Kép tulajdonságainak szerkesztése",
   "imageEditorDialogCancelButton": "Elvetés",
   "imageEditorDialogAcceptButton": "Elfogadás",
-  "linkEditorDialogTitle": "Link tulajdonságainak szerkesztése.",
+  "linkEditorDialogTitle": "Hivatkozás tulajdonságainak szerkesztése",
   "linkEditorDialogCancelButton": "Elvetés",
   "linkEditorDialogAcceptButton": "Elfogadás",
-  "videoEditorDialogTitle": "Video tulajdonságainak szerkesztése.",
+  "videoEditorDialogTitle": "Video tulajdonságainak szerkesztése",
   "videoEditorDialogCancelButton": "Elvetés",
   "videoEditorDialogAcceptButton": "Elfogadás"
 }

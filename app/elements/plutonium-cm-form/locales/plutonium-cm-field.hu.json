@@ -1,10 +1,10 @@
 {
   "meta": {
-    "todo": []
+    
   },
   "model": {
     "addSectionButton": {
-      "title": "Szöveges szekció beágyazása."
+      "title": "Embedd video to the message content."
     },
     "addVideoButton": {
       "title": "Video szekció beágyazása."
@@ -13,7 +13,7 @@
       "title": "Kép szekció beágyazása."
     },
     "addLinkButton": {
-      "title": "Hivatkozott szekció beágyazása."
+      "title": "Hivatkozás szekció beágyazása."
     }
   }
 }
