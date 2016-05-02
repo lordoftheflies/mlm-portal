@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
 <xliff version="1.0">
-  <file source-language="en" target-language="hu" datatype="plaintext" original="messages" date="2016-05-02T11:33:53Z" product-name="messages">
+  <file source-language="en" target-language="hu" datatype="plaintext" original="messages" date="2016-05-02T15:22:57Z" product-name="messages">
   <header/>
     <body>
-      <trans-unit id="app.loginDialog:h2">
+      <trans-unit id="app.loginDialogTitle">
         <source>Sign-in</source>
         <target>Sign-in</target>
       </trans-unit>
-      <trans-unit id="app.registrationDialog:h2">
+      <trans-unit id="app.logonDialogTitle">
         <source>Sign-on</source>
         <target>Sign-on</target>
       </trans-unit>
@@ -44,7 +44,7 @@
         <source>Logout</source>
         <target>Logout</target>
       </trans-unit>
-      <trans-unit id="app.mainToolbar:div_4:div">
+      <trans-unit id="app.mottoLabel">
         <source>The future of the web today</source>
         <target>The future of the web today</target>
       </trans-unit>
