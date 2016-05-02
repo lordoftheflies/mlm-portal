@@ -14,7 +14,7 @@
       </trans-unit>
       <trans-unit id="app.mainMenuTitle">
         <source>Menu</source>
-        <target>Menü</target>
+        <target>Flavon</target>
       </trans-unit>
       <trans-unit id="app.shareContentMenuTitle">
         <source>Share content</source>
@@ -22,7 +22,7 @@
       </trans-unit>
       <trans-unit id="app.contentsMenuTitle">
         <source>Contents</source>
-        <target>Tartalmak</target>
+        <target>Menük</target>
       </trans-unit>
       <trans-unit id="app.mailBoxMenuTitle">
         <source>Mailbox</source>
@@ -46,7 +46,7 @@
       </trans-unit>
       <trans-unit id="app.mottoLabel">
         <source>The future of the web today</source>
-        <target>A web jövője ma</target>
+        <target></target>
       </trans-unit>
       <trans-unit id="app.shareContentViewTitleLabel">
         <source>Share content</source>
@@ -66,7 +66,7 @@
       </trans-unit>
       <trans-unit id="app.aboutViewTitleLabel">
         <source>About</source>
-        <target>Rólunk</target>
+        <target>Kapcsolat</target>
       </trans-unit>
       <trans-unit id="app.toastMessageText">
         <source>Ok</source>
@@ -106,15 +106,15 @@
       </trans-unit>-->
       <trans-unit id="content-tree-view.messagesPagePublicFolderTitle">
         <source>Public</source>
-        <target>Publikus</target>
+        <target>Nyilvános</target>
       </trans-unit>
       <trans-unit id="content-tree-view.messagesPageMyContentsFolderTitle">
         <source>Drafts</source>
-        <target>Saját tartalmak</target>
+        <target>Saját tartalom</target>
       </trans-unit>
       <trans-unit id="content-tree-view.messagesPagePublishedFolderTitle">
         <source>Published</source>
-        <target>Publikált</target>
+        <target>Megjelent</target>
       </trans-unit>
       <trans-unit id="content-tree-view.emptyContentFolderText">
         <source>No content in the folder.</source>
@@ -126,11 +126,11 @@
       </trans-unit>
       <trans-unit id="mailbox-view.mailBoxPageInboxFolderTitle">
         <source>Inbox</source>
-        <target>Beérkező</target>
+        <target>Beérkező levelek</target>
       </trans-unit>
       <trans-unit id="mailbox-view.sentItemsPageInboxFolderTitle">
         <source>Sent items</source>
-        <target>Elküldött</target>
+        <target>Elküldött levelek</target>
       </trans-unit>
       <trans-unit id="mailbox-view.emptyMailBoxFolderText">
         <source>No messages in the folder.</source>

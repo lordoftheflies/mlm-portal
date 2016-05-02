@@ -6,67 +6,67 @@
     <body>
       <trans-unit id="app.loginDialogTitle">
         <source>Sign-in</source>
-        <target>Sign-in</target>
+        <target>Zaloguj</target>
       </trans-unit>
       <trans-unit id="app.logonDialogTitle">
         <source>Sign-on</source>
-        <target>Sign-on</target>
+        <target>Zapisać się</target>
       </trans-unit>
       <trans-unit id="app.mainMenuTitle">
         <source>Menu</source>
-        <target>Menu</target>
+        <target>Flavon</target>
       </trans-unit>
       <trans-unit id="app.shareContentMenuTitle">
         <source>Share content</source>
-        <target>Share content</target>
+        <target>Udostępnij treść</target>
       </trans-unit>
       <trans-unit id="app.contentsMenuTitle">
         <source>Contents</source>
-        <target>Contents</target>
+        <target>Menu</target>
       </trans-unit>
       <trans-unit id="app.mailBoxMenuTitle">
         <source>Mailbox</source>
-        <target>Mailbox</target>
+        <target>Skrzynka na listy</target>
       </trans-unit>
       <trans-unit id="app.networkMenuTitle">
         <source>Network</source>
-        <target>Network</target>
+        <target>Sieć</target>
       </trans-unit>
       <trans-unit id="app.aboutMenuTitle">
         <source>About</source>
-        <target>About</target>
+        <target>Informacja</target>
       </trans-unit>
       <trans-unit id="app.profileMenuTitle">
         <source>Profile</source>
-        <target>Profile</target>
+        <target>Profil</target>
       </trans-unit>
       <trans-unit id="app.logoutButtonLabel">
         <source>Logout</source>
-        <target>Logout</target>
+        <target>Wylogowanie</target>
       </trans-unit>
       <trans-unit id="app.mottoLabel">
         <source>The future of the web today</source>
-        <target>The future of the web today</target>
+        <target></target>
       </trans-unit>
       <trans-unit id="app.shareContentViewTitleLabel">
         <source>Share content</source>
-        <target>Share content</target>
+        <target>Udostępnij treść</target>
       </trans-unit>
       <trans-unit id="app.contentTreeViewTitleLabel">
         <source>Contents</source>
-        <target>Contents</target>
+        <target>Menu</target>
       </trans-unit>
       <trans-unit id="app.mailBoxViewTitleLabel">
         <source>Mailbox</source>
-        <target>Mailbox</target>
+        <target>Skrzynka na listy</target>
       </trans-unit>
       <trans-unit id="app.networkViewTitleLabel">
         <source>Network</source>
-        <target>Network</target>
+        <target>Sieć</target>
       </trans-unit>
       <trans-unit id="app.aboutViewTitleLabel">
         <source>About</source>
-        <target>About</target>
+        <target>Informacja</target>
       </trans-unit>
       <trans-unit id="app.toastMessageText">
         <source>Ok</source>
@@ -74,107 +74,83 @@
       </trans-unit>
       <trans-unit id="about-view.contributorsTitleLabel">
         <source>Authors &amp; contributors</source>
-        <target>Authors &amp; contributors</target>
-      </trans-unit>
-      <trans-unit id="about-view.ul_2:template:li.0">
-        <source> {1} ({2}) </source>
-        <target> {1} ({2}) </target>
-      </trans-unit>
-      <trans-unit id="about-view.ul_2:template:li.1">
-        <source>{{item.name}}</source>
-        <target>{{item.name}}</target>
-      </trans-unit>
-      <trans-unit id="about-view.ul_2:template:li.2">
-        <source>{{item.email}}</source>
-        <target>{{item.email}}</target>
+        <target>Autorski &amp; Współtwórcy</target>
       </trans-unit>
       <trans-unit id="about-view.administrationTitleLabel">
         <source>Webmaster &amp; maintenance</source>
-        <target>Webmaster &amp; maintenance</target>
-      </trans-unit>
-      <trans-unit id="about-view.ul_4:template:li.0">
-        <source> {1} ({2}) </source>
-        <target> {1} ({2}) </target>
-      </trans-unit>
-      <trans-unit id="about-view.ul_4:template:li.1">
-        <source>{{item.name}}</source>
-        <target>{{item.name}}</target>
-      </trans-unit>
-      <trans-unit id="about-view.ul_4:template:li.2">
-        <source>{{item.email}}</source>
-        <target>{{item.email}}</target>
+        <target>Webmaster &amp; konserwacja</target>
       </trans-unit>
       <trans-unit id="content-tree-view.messagesPagePublicFolderTitle">
         <source>Public</source>
-        <target>Public</target>
+        <target>Otwarte</target>
       </trans-unit>
       <trans-unit id="content-tree-view.messagesPageMyContentsFolderTitle">
         <source>Drafts</source>
-        <target>Drafts</target>
+        <target>Własny treść</target>
       </trans-unit>
       <trans-unit id="content-tree-view.messagesPagePublishedFolderTitle">
         <source>Published</source>
-        <target>Published</target>
+        <target>Pojawiło się</target>
       </trans-unit>
       <trans-unit id="content-tree-view.emptyContentFolderText">
         <source>No content in the folder.</source>
-        <target>No content in the folder.</target>
+        <target>Brak zawartości w folderze.</target>
       </trans-unit>
       <trans-unit id="content-viewer.model.articleTitleLabel.title">
         <source>Navigate to {{baseUrl}}content-tree/{{section.data}}</source>
-        <target>Navigate to {{baseUrl}}content-tree/{{section.data}}</target>
+        <target>Nawigować do{{baseUrl}}content-tree/{{section.data}}</target>
       </trans-unit>
       <trans-unit id="mailbox-view.mailBoxPageInboxFolderTitle">
         <source>Inbox</source>
-        <target>Inbox</target>
+        <target>Odebrane listy</target>
       </trans-unit>
       <trans-unit id="mailbox-view.sentItemsPageInboxFolderTitle">
         <source>Sent items</source>
-        <target>Sent items</target>
+        <target>Wysłane listy</target>
       </trans-unit>
       <trans-unit id="mailbox-view.emptyMailBoxFolderText">
         <source>No messages in the folder.</source>
-        <target>No messages in the folder.</target>
+        <target>Brak wiadomości w folderze.</target>
       </trans-unit>
       <trans-unit id="network-view.model.newMemberNameLabel.label">
         <source>Name</source>
-        <target>Name</target>
+        <target>Nazwa</target>
       </trans-unit>
       <trans-unit id="network-view.model.newMemberEmailLabel.label">
         <source>Email</source>
-        <target>Email</target>
+        <target>Adres e-mail</target>
       </trans-unit>
       <trans-unit id="network-view.model.newMemberParentLabel.label">
         <source>Parent member</source>
-        <target>Parent member</target>
+        <target>Członek rodzic</target>
       </trans-unit>
       <trans-unit id="network-view.newMemberDialogTitle">
         <source>New member</source>
-        <target>New member</target>
+        <target>Nowy członek</target>
       </trans-unit>
       <trans-unit id="network-view.newMemberDialogCancelButton">
         <source>Cancel</source>
-        <target>Cancel</target>
+        <target>Anuluj</target>
       </trans-unit>
       <trans-unit id="network-view.newMemberDialogCreateButton">
         <source>Create</source>
-        <target>Create</target>
+        <target>Stwórz</target>
       </trans-unit>
       <trans-unit id="network-view.newMemberDialogCreateAndRepeatButton">
         <source>Create &amp; repeat</source>
-        <target>Create &amp; repeat</target>
+        <target>Tworzenie i powtórzyć</target>
       </trans-unit>
       <trans-unit id="network-view.memberEraseConfirmDialogTitle">
         <source>Delete member</source>
-        <target>Delete member</target>
+        <target>Usuń element</target>
       </trans-unit>
       <trans-unit id="network-view.memberEraseConfirmDialogText">
         <source> Are you sure delete member? </source>
-        <target> Are you sure delete member? </target>
+        <target>Czy na pewno usunąć członkiem?</target>
       </trans-unit>
       <trans-unit id="network-view.memberEraseConfirmDialogCancelButton">
         <source>Cancel</source>
-        <target>Cancel</target>
+        <target>Anuluj</target>
       </trans-unit>
       <trans-unit id="network-view.memberEraseConfirmDialogAcceptButton">
         <source>OK</source>
@@ -182,19 +158,15 @@
       </trans-unit>
       <trans-unit id="network-view.promoteAdminDialogTitle">
         <source>Promote administrator</source>
-        <target>Promote administrator</target>
+        <target>Promuj administratorem</target>
       </trans-unit>
       <trans-unit id="network-view.promoteAdminDialogText.0">
         <source> Are you surely promote {1} to administrator? </source>
-        <target> Are you surely promote {1} to administrator? </target>
-      </trans-unit>
-      <trans-unit id="network-view.promoteAdminDialogText.1">
-        <source>{{item.name}}</source>
-        <target>{{item.name}}</target>
+        <target>Czy na pewno promować {1} do administratora?</target>
       </trans-unit>
       <trans-unit id="network-view.promoteAdminDialogCancelButton">
         <source>Cancel</source>
-        <target>Cancel</target>
+        <target>Anuluj</target>
       </trans-unit>
       <trans-unit id="network-view.promoteAdminDialogAcceptButton">
         <source>OK</source>
@@ -202,19 +174,15 @@
       </trans-unit>
       <trans-unit id="network-view.demoteAdminDialogTitle">
         <source>Demote administrator</source>
-        <target>Demote administrator</target>
+        <target>Obniżanie administratorem</target>
       </trans-unit>
       <trans-unit id="network-view.demoteAdminDialogText.0">
         <source> Are you surely demote {1} to user? </source>
-        <target> Are you surely demote {1} to user? </target>
-      </trans-unit>
-      <trans-unit id="network-view.demoteAdminDialogText.1">
-        <source>{{item.name}}</source>
-        <target>{{item.name}}</target>
+        <target>Czy na pewno obniżyć {1}, aby użytkownik?</target>
       </trans-unit>
       <trans-unit id="network-view.demoteAdminDialogCancelButton">
         <source>Cancel</source>
-        <target>Cancel</target>
+        <target>Anuluj</target>
       </trans-unit>
       <trans-unit id="network-view.demoteAdminDialogAcceptButton">
         <source>OK</source>
@@ -222,75 +190,67 @@
       </trans-unit>
       <trans-unit id="network-view.emptyChildrenText">
         <source>No children.</source>
-        <target>No children.</target>
+        <target>Brak członków dziecko.</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-field.model.addSectionButton.title">
         <source>Embedd video to the message content.</source>
-        <target>Embedd video to the message content.</target>
+        <target>Wbudowany treść tekstu.</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-field.model.addVideoButton.title">
         <source>Embedd video to the message content.</source>
-        <target>Embedd video to the message content.</target>
+        <target>Osadzony materiał wideo</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-field.model.addImageButton.title">
         <source>Embedd image to the message content.</source>
-        <target>Embedd image to the message content.</target>
+        <target>Wbudowany treść obrazu.</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-field.model.addLinkButton.title">
         <source>Embedd a link to another message to the message content.</source>
-        <target>Embedd a link to another message to the message content.</target>
+        <target>Osadzonej zawartości Link</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.model.messageInput.label">
         <source>Message</source>
-        <target>Message</target>
+        <target>Wiadomość</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.model.addSectionButton.title">
         <source>Embedd video to the message content.</source>
-        <target>Embedd video to the message content.</target>
+        <target>Wbudowany treść tekstu.</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.model.addVideoButton.title">
         <source>Embedd video to the message content.</source>
-        <target>Embedd video to the message content.</target>
+        <target>Osadzony materiał wideo.</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.model.addImageButton.title">
         <source>Embedd image to the message content.</source>
-        <target>Embedd image to the message content.</target>
+        <target>Wbudowany treść obrazu.</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.model.addLinkButton.title">
         <source>Embedd a link to another message to the message content.</source>
-        <target>Embedd a link to another message to the message content.</target>
+        <target>Osadzonej zawartości Link.</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.model.parentDdLabel.label">
         <source>Parent</source>
-        <target>Parent</target>
+        <target>Roślina mateczna</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.model.contentTitleInput.label">
         <source>Title</source>
-        <target>Title</target>
+        <target>Tytuł</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.shareTabLabel">
         <source>Share</source>
-        <target>Share</target>
+        <target>Dzielić</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.contentTabLabel">
         <source>Content</source>
-        <target>Content</target>
+        <target>Zadowolony</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.propertiesTabLabel">
         <source>Properties</source>
-        <target>Properties</target>
-      </trans-unit>
-      <trans-unit id="plutonium-cm-form.[[item.id]]:label_1.0">
-        <source>({1})</source>
-        <target>({1})</target>
-      </trans-unit>
-      <trans-unit id="plutonium-cm-form.[[item.id]]:label_1.1">
-        <source>[[item.id]]</source>
-        <target>[[item.id]]</target>
+        <target>Nieruchomości</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.embbeddedContentRadio">
         <source>Embed content</source>
-        <target>Embed content</target>
+        <target>Doładuj fajl</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.assembledContentRadio">
         <source>Assemble</source>
@@ -302,183 +262,187 @@
       </trans-unit>
       <trans-unit id="plutonium-cm-form.assembleRadio">
         <source>Assemble</source>
-        <target>Assemble</target>
+        <target>Edytować</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.uploadFileText">
         <source>Choose File</source>
-        <target>Choose File</target>
+        <target>Wybierz fajl</target>
       </trans-unit>
       <trans-unit id="profile-view.model.preferredLanguageLabel.label">
         <source>Preferred language</source>
-        <target>Preferred language</target>
+        <target>Preferowany język</target>
       </trans-unit>
       <trans-unit id="profile-view.activationDateTitle">
         <source>Activation date</source>
-        <target>Activation date</target>
+        <target>Data aktywacji</target>
       </trans-unit>
       <trans-unit id="profile-view.changingDeviceButton">
         <source>Changing device</source>
-        <target>Changing device</target>
+        <target>Zmiana narzędzia</target>
+      </trans-unit>
+      <trans-unit id="profile-view.changingDeviceDialogTitle">
+        <source>Changing device</source>
+        <target>Czy na pewno chce Pan/Pani zmienić narzędzie?</target>
       </trans-unit>
       <trans-unit id="profile-view.underDevelopmentText">
         <source>Under development ...</source>
-        <target>Under development ...</target>
+        <target>W budowie ...</target>
       </trans-unit>
       <trans-unit id="share-content-view.model.textContentTextLabel.label">
         <source>Text</source>
-        <target>Text</target>
+        <target>Tekst</target>
       </trans-unit>
       <trans-unit id="share-content-view.model.imageContentTitleLabel.label">
         <source>Title</source>
-        <target>Title</target>
+        <target>Tytuł</target>
       </trans-unit>
       <trans-unit id="share-content-view.model.imageEditorUrlLabel.label">
         <source>Image url</source>
-        <target>Image url</target>
+        <target>URL obrazu</target>
       </trans-unit>
       <trans-unit id="share-content-view.model.linkEditorDialogTitleLabel.label">
         <source>Title</source>
-        <target>Title</target>
+        <target>Tytuł</target>
       </trans-unit>
       <trans-unit id="share-content-view.model.linkEditorReferenceLabel.label">
         <source>Reference</source>
-        <target>Reference</target>
+        <target>Powiązane treści</target>
       </trans-unit>
       <trans-unit id="share-content-view.model.videoEditorTitleLabel.label">
         <source>Title</source>
-        <target>Title</target>
+        <target>Tytuł</target>
       </trans-unit>
       <trans-unit id="share-content-view.model.videoContentUrlLabel.label">
         <source>Video url</source>
-        <target>Video url</target>
+        <target>Url wideo</target>
       </trans-unit>
       <trans-unit id="share-content-view.model.videoContentUrlLabel.error-message">
         <source>Invalid Youtube url.</source>
-        <target>Invalid Youtube url.</target>
+        <target>Nieprawidłowy url Youtube.</target>
       </trans-unit>
       <trans-unit id="share-content-view.textEditorDialogTitle">
         <source>Edit text properties</source>
-        <target>Edit text properties</target>
+        <target>Właściwości Edycja tekstu.</target>
       </trans-unit>
       <trans-unit id="share-content-view.textEditorDialogAcceptButton">
         <source>Accept</source>
-        <target>Accept</target>
+        <target>Zaakceptować</target>
       </trans-unit>
       <trans-unit id="share-content-view.imageEditorDialogTitle">
         <source>Edit image properties</source>
-        <target>Edit image properties</target>
+        <target>Właściwości Edycja obrazu</target>
       </trans-unit>
       <trans-unit id="share-content-view.imageEditorDialogCancelButton">
         <source>Cancel</source>
-        <target>Cancel</target>
+        <target>Anuluj</target>
       </trans-unit>
       <trans-unit id="share-content-view.imageEditorDialogAcceptButton">
         <source>Accept</source>
-        <target>Accept</target>
+        <target>Zaakceptować</target>
       </trans-unit>
       <trans-unit id="share-content-view.linkEditorDialogTitle">
         <source>Edit link properties</source>
-        <target>Edit link properties</target>
+        <target>Właściwości link Edytuj</target>
       </trans-unit>
       <trans-unit id="share-content-view.linkEditorDialogCancelButton">
         <source>Cancel</source>
-        <target>Cancel</target>
+        <target>Anuluj</target>
       </trans-unit>
       <trans-unit id="share-content-view.linkEditorDialogAcceptButton">
         <source>Accept</source>
-        <target>Accept</target>
+        <target>Zaakceptować</target>
       </trans-unit>
       <trans-unit id="share-content-view.videoEditorDialogTitle">
         <source>Edit video properties</source>
-        <target>Edit video properties</target>
+        <target>Właściwości Edycja wideo.</target>
       </trans-unit>
       <trans-unit id="share-content-view.videoEditorDialogCancelButton">
         <source>Cancel</source>
-        <target>Cancel</target>
+        <target>Anuluj</target>
       </trans-unit>
       <trans-unit id="share-content-view.videoEditorDialogAcceptButton">
         <source>Accept</source>
-        <target>Accept</target>
+        <target>Zaakceptować</target>
       </trans-unit>
       <trans-unit id="signin-view.model.signInFormLoginEmail.label">
         <source>Email address</source>
-        <target>Email address</target>
+        <target>Adres e-mail</target>
       </trans-unit>
       <trans-unit id="signin-view.model.signInFormLoginEmail.error-message">
         <source>Invalid email address.</source>
-        <target>Invalid email address.</target>
+        <target>Błędny adres e-mail.</target>
       </trans-unit>
       <trans-unit id="signin-view.model.signInFormLoginPassword.label">
         <source>Password</source>
-        <target>Password</target>
+        <target>Hasło</target>
       </trans-unit>
       <trans-unit id="signin-view.model.signInFormLoginPassword.error-message">
         <source>Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number.</source>
-        <target>Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number.</target>
+        <target>Nieprawidłowe hasło. Hasło musi być 6-16 alphanumercal charakter i minimalna 1 numer.</target>
       </trans-unit>
       <trans-unit id="signin-view.model.signInFormAccept.title">
         <source>submit</source>
-        <target>submit</target>
+        <target>Zaloguj</target>
       </trans-unit>
       <trans-unit id="signin-view.signInFormRememberMe">
         <source>Remember me</source>
-        <target>Remember me</target>
+        <target>Zapamiętaj mnie</target>
       </trans-unit>
       <trans-unit id="signin-view.signInFormRegistrate">
         <source>Sign-on</source>
-        <target>Sign-on</target>
+        <target>Zapisać się</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registrateTitleLabel.label">
         <source>Name</source>
-        <target>Name</target>
+        <target>Nazwa</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registrateTitleLabel.error-message">
         <source>Invalid name.</source>
-        <target>Invalid name.</target>
+        <target>Błędna nazwa.</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registrateEmailLabel.label">
         <source>Email address</source>
-        <target>Email address</target>
+        <target>Adres e-mail</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registrateEmailLabel.error-message">
         <source>Invalid email address.</source>
-        <target>Invalid email address.</target>
+        <target>Błędny adres e-mail.</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registratePhoneNumberLabel.label">
         <source>Phone</source>
-        <target>Phone</target>
+        <target>Numer telefonu</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registratePhoneNumberLabel.error-message">
         <source>Invalid phone number.</source>
-        <target>Invalid phone number.</target>
+        <target>Nieprawidłowy numer telefonu.</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registratePasswordLabel.label">
         <source>Password</source>
-        <target>Password</target>
+        <target>Hasło</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registratePasswordLabel.error-message">
         <source>Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number.</source>
-        <target>Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number.</target>
+        <target>Nieprawidłowe hasło. Hasło musi być 6-16 alphanumercal charakter i minimalna 1 numer.</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registratePasswordConfirmLabel.label">
         <source>Password confirmation</source>
-        <target>Password confirmation</target>
+        <target>Potwierdzenie hasła</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registrateCodeLabel.label">
         <source>Activation code</source>
-        <target>Activation code</target>
+        <target>Kod aktywacyjny</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registrateCodeLabel.error-message">
         <source>Activation code.</source>
-        <target>Activation code.</target>
+        <target>Zły kod aktywacyjny</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registrateSignOnButton.title">
         <source>submit</source>
-        <target>submit</target>
+        <target>Zapisać się</target>
       </trans-unit>
       <trans-unit id="signon-view.registrateSignInButton">
         <source>Signin</source>
-        <target>Signin</target>
+        <target>Zaloguj</target>
       </trans-unit>
       
     </body>
