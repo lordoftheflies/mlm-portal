@@ -6,67 +6,67 @@
     <body>
       <trans-unit id="app.loginDialogTitle">
         <source>Sign-in</source>
-        <target>Sign-in</target>
+        <target>Bejelentkezés</target>
       </trans-unit>
       <trans-unit id="app.logonDialogTitle">
         <source>Sign-on</source>
-        <target>Sign-on</target>
+        <target>Regisztráció</target>
       </trans-unit>
       <trans-unit id="app.mainMenuTitle">
         <source>Menu</source>
-        <target>Menu</target>
+        <target>Menü</target>
       </trans-unit>
       <trans-unit id="app.shareContentMenuTitle">
         <source>Share content</source>
-        <target>Share content</target>
+        <target>Tartalom megosztása</target>
       </trans-unit>
       <trans-unit id="app.contentsMenuTitle">
         <source>Contents</source>
-        <target>Contents</target>
+        <target>Tartalmak</target>
       </trans-unit>
       <trans-unit id="app.mailBoxMenuTitle">
         <source>Mailbox</source>
-        <target>Mailbox</target>
+        <target>Postaláda</target>
       </trans-unit>
       <trans-unit id="app.networkMenuTitle">
         <source>Network</source>
-        <target>Network</target>
+        <target>Hálózat</target>
       </trans-unit>
       <trans-unit id="app.aboutMenuTitle">
         <source>About</source>
-        <target>About</target>
+        <target>Rólunk</target>
       </trans-unit>
       <trans-unit id="app.profileMenuTitle">
         <source>Profile</source>
-        <target>Profile</target>
+        <target>Profil</target>
       </trans-unit>
       <trans-unit id="app.logoutButtonLabel">
         <source>Logout</source>
-        <target>Logout</target>
+        <target>Kijelentkezés</target>
       </trans-unit>
       <trans-unit id="app.mottoLabel">
         <source>The future of the web today</source>
-        <target>The future of the web today</target>
+        <target>A web jövője ma</target>
       </trans-unit>
       <trans-unit id="app.shareContentViewTitleLabel">
         <source>Share content</source>
-        <target>Share content</target>
+        <target>Tartalom megosztása</target>
       </trans-unit>
       <trans-unit id="app.contentTreeViewTitleLabel">
         <source>Contents</source>
-        <target>Contents</target>
+        <target>Tartalmak</target>
       </trans-unit>
       <trans-unit id="app.mailBoxViewTitleLabel">
         <source>Mailbox</source>
-        <target>Mailbox</target>
+        <target>Postaláda</target>
       </trans-unit>
       <trans-unit id="app.networkViewTitleLabel">
         <source>Network</source>
-        <target>Network</target>
+        <target>Hálózat</target>
       </trans-unit>
       <trans-unit id="app.aboutViewTitleLabel">
         <source>About</source>
-        <target>About</target>
+        <target>Rólunk</target>
       </trans-unit>
       <trans-unit id="app.toastMessageText">
         <source>Ok</source>
@@ -74,9 +74,9 @@
       </trans-unit>
       <trans-unit id="about-view.contributorsTitleLabel">
         <source>Authors &amp; contributors</source>
-        <target>Authors &amp; contributors</target>
+        <target>Szerzők &amp; közreműködők</target>
       </trans-unit>
-      <trans-unit id="about-view.ul_2:template:li.0">
+<!--      <trans-unit id="about-view.ul_2:template:li.0">
         <source> {1} ({2}) </source>
         <target> {1} ({2}) </target>
       </trans-unit>
@@ -87,12 +87,12 @@
       <trans-unit id="about-view.ul_2:template:li.2">
         <source>{{item.email}}</source>
         <target>{{item.email}}</target>
-      </trans-unit>
+      </trans-unit>-->
       <trans-unit id="about-view.administrationTitleLabel">
         <source>Webmaster &amp; maintenance</source>
-        <target>Webmaster &amp; maintenance</target>
+        <target>Webmester &amp; karbantartás</target>
       </trans-unit>
-      <trans-unit id="about-view.ul_4:template:li.0">
+<!--      <trans-unit id="about-view.ul_4:template:li.0">
         <source> {1} ({2}) </source>
         <target> {1} ({2}) </target>
       </trans-unit>
@@ -103,78 +103,78 @@
       <trans-unit id="about-view.ul_4:template:li.2">
         <source>{{item.email}}</source>
         <target>{{item.email}}</target>
-      </trans-unit>
+      </trans-unit>-->
       <trans-unit id="content-tree-view.messagesPagePublicFolderTitle">
         <source>Public</source>
-        <target>Public</target>
+        <target>Publikus</target>
       </trans-unit>
       <trans-unit id="content-tree-view.messagesPageMyContentsFolderTitle">
         <source>Drafts</source>
-        <target>Drafts</target>
+        <target>Saját tartalmak</target>
       </trans-unit>
       <trans-unit id="content-tree-view.messagesPagePublishedFolderTitle">
         <source>Published</source>
-        <target>Published</target>
+        <target>Publikált</target>
       </trans-unit>
       <trans-unit id="content-tree-view.emptyContentFolderText">
         <source>No content in the folder.</source>
-        <target>No content in the folder.</target>
+        <target>A mappában nincsenek tartalmak.</target>
       </trans-unit>
       <trans-unit id="content-viewer.model.articleTitleLabel.title">
         <source>Navigate to {{baseUrl}}content-tree/{{section.data}}</source>
-        <target>Navigate to {{baseUrl}}content-tree/{{section.data}}</target>
+        <target>Ugrás {{baseUrl}}content-tree/{{section.data}}</target>
       </trans-unit>
       <trans-unit id="mailbox-view.mailBoxPageInboxFolderTitle">
         <source>Inbox</source>
-        <target>Inbox</target>
+        <target>Beérkező</target>
       </trans-unit>
       <trans-unit id="mailbox-view.sentItemsPageInboxFolderTitle">
         <source>Sent items</source>
-        <target>Sent items</target>
+        <target>Elküldött</target>
       </trans-unit>
       <trans-unit id="mailbox-view.emptyMailBoxFolderText">
         <source>No messages in the folder.</source>
-        <target>No messages in the folder.</target>
+        <target>A mappában nincsenek üzenetek.</target>
       </trans-unit>
       <trans-unit id="network-view.model.newMemberNameLabel.label">
         <source>Name</source>
-        <target>Name</target>
+        <target>Név</target>
       </trans-unit>
       <trans-unit id="network-view.model.newMemberEmailLabel.label">
         <source>Email</source>
-        <target>Email</target>
+        <target>Email cím</target>
       </trans-unit>
       <trans-unit id="network-view.model.newMemberParentLabel.label">
         <source>Parent member</source>
-        <target>Parent member</target>
+        <target>Fölérendelt tag</target>
       </trans-unit>
       <trans-unit id="network-view.newMemberDialogTitle">
         <source>New member</source>
-        <target>New member</target>
+        <target>Új tag</target>
       </trans-unit>
       <trans-unit id="network-view.newMemberDialogCancelButton">
         <source>Cancel</source>
-        <target>Cancel</target>
+        <target>Elvetés</target>
       </trans-unit>
       <trans-unit id="network-view.newMemberDialogCreateButton">
         <source>Create</source>
-        <target>Create</target>
+        <target>Létrehozás</target>
       </trans-unit>
       <trans-unit id="network-view.newMemberDialogCreateAndRepeatButton">
         <source>Create &amp; repeat</source>
-        <target>Create &amp; repeat</target>
+        <target>Létrehozás &amp; ismétlés</target>
       </trans-unit>
       <trans-unit id="network-view.memberEraseConfirmDialogTitle">
         <source>Delete member</source>
-        <target>Delete member</target>
+        <target>Tag törlése</target>
       </trans-unit>
       <trans-unit id="network-view.memberEraseConfirmDialogText">
         <source> Are you sure delete member? </source>
-        <target> Are you sure delete member? </target>
+        <target>Biztos, hogy törölni akarja a kiválasztott tagot?</target>
       </trans-unit>
       <trans-unit id="network-view.memberEraseConfirmDialogCancelButton">
         <source>Cancel</source>
-        <target>Cancel</target>
+        <target>Elvetés</target>
       </trans-unit>
       <trans-unit id="network-view.memberEraseConfirmDialogAcceptButton">
         <source>OK</source>
@@ -182,19 +182,19 @@
       </trans-unit>
       <trans-unit id="network-view.promoteAdminDialogTitle">
         <source>Promote administrator</source>
-        <target>Promote administrator</target>
+        <target>Előléptetés</target>
       </trans-unit>
       <trans-unit id="network-view.promoteAdminDialogText.0">
         <source> Are you surely promote {1} to administrator? </source>
-        <target> Are you surely promote {1} to administrator? </target>
+        <target> Biztos, hogy elő akarja léptetni {1}-t adminisztrátorrá? </target>
       </trans-unit>
-      <trans-unit id="network-view.promoteAdminDialogText.1">
+<!--      <trans-unit id="network-view.promoteAdminDialogText.1">
         <source>{{item.name}}</source>
         <target>{{item.name}}</target>
-      </trans-unit>
+      </trans-unit>-->
       <trans-unit id="network-view.promoteAdminDialogCancelButton">
         <source>Cancel</source>
-        <target>Cancel</target>
+        <target>Elvetés</target>
       </trans-unit>
       <trans-unit id="network-view.promoteAdminDialogAcceptButton">
         <source>OK</source>
@@ -202,19 +202,19 @@
       </trans-unit>
       <trans-unit id="network-view.demoteAdminDialogTitle">
         <source>Demote administrator</source>
-        <target>Demote administrator</target>
+        <target>Lefokozás</target>
       </trans-unit>
       <trans-unit id="network-view.demoteAdminDialogText.0">
         <source> Are you surely demote {1} to user? </source>
-        <target> Are you surely demote {1} to user? </target>
+        <target> Biztos, hogy le akarja fokozni {1}-t felhasználóvá?</target>
       </trans-unit>
-      <trans-unit id="network-view.demoteAdminDialogText.1">
+<!--      <trans-unit id="network-view.demoteAdminDialogText.1">
         <source>{{item.name}}</source>
         <target>{{item.name}}</target>
-      </trans-unit>
+      </trans-unit>-->
       <trans-unit id="network-view.demoteAdminDialogCancelButton">
         <source>Cancel</source>
-        <target>Cancel</target>
+        <target>Elvetés</target>
       </trans-unit>
       <trans-unit id="network-view.demoteAdminDialogAcceptButton">
         <source>OK</source>
@@ -222,263 +222,263 @@
       </trans-unit>
       <trans-unit id="network-view.emptyChildrenText">
         <source>No children.</source>
-        <target>No children.</target>
+        <target>Nincsenek alárendelt tagok.</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-field.model.addSectionButton.title">
         <source>Embedd video to the message content.</source>
-        <target>Embedd video to the message content.</target>
+        <target>Szöveges szekció beágyazása.</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-field.model.addVideoButton.title">
         <source>Embedd video to the message content.</source>
-        <target>Embedd video to the message content.</target>
+        <target>Video szekció beágyazása.</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-field.model.addImageButton.title">
         <source>Embedd image to the message content.</source>
-        <target>Embedd image to the message content.</target>
+        <target>Kép szekció beágyazása.</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-field.model.addLinkButton.title">
         <source>Embedd a link to another message to the message content.</source>
-        <target>Embedd a link to another message to the message content.</target>
+        <target>Hivatkozás szekció beágyazása.</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.model.messageInput.label">
         <source>Message</source>
-        <target>Message</target>
+        <target>Üzenet</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.model.addSectionButton.title">
         <source>Embedd video to the message content.</source>
-        <target>Embedd video to the message content.</target>
+        <target>Szöveges szekció beágyazása.</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.model.addVideoButton.title">
         <source>Embedd video to the message content.</source>
-        <target>Embedd video to the message content.</target>
+        <target>Video szekció beágyazása.</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.model.addImageButton.title">
         <source>Embedd image to the message content.</source>
-        <target>Embedd image to the message content.</target>
+        <target>Kép szekció beágyazása.</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.model.addLinkButton.title">
         <source>Embedd a link to another message to the message content.</source>
-        <target>Embedd a link to another message to the message content.</target>
+        <target>Hivatkozás szekció beágyazása.</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.model.parentDdLabel.label">
         <source>Parent</source>
-        <target>Parent</target>
+        <target>Szülő</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.model.contentTitleInput.label">
         <source>Title</source>
-        <target>Title</target>
+        <target>Cím</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.shareTabLabel">
         <source>Share</source>
-        <target>Share</target>
+        <target>Megosztás</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.contentTabLabel">
         <source>Content</source>
-        <target>Content</target>
+        <target>Tartalom</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.propertiesTabLabel">
         <source>Properties</source>
-        <target>Properties</target>
+        <target>Tulajdonságok</target>
       </trans-unit>
-      <trans-unit id="plutonium-cm-form.[[item.id]]:label_1.0">
+<!--      <trans-unit id="plutonium-cm-form.[[item.id]]:label_1.0">
         <source>({1})</source>
         <target>({1})</target>
-      </trans-unit>
-      <trans-unit id="plutonium-cm-form.[[item.id]]:label_1.1">
+      </trans-unit>-->
+<!--      <trans-unit id="plutonium-cm-form.[[item.id]]:label_1.1">
         <source>[[item.id]]</source>
         <target>[[item.id]]</target>
-      </trans-unit>
+      </trans-unit>-->
       <trans-unit id="plutonium-cm-form.embbeddedContentRadio">
         <source>Embed content</source>
-        <target>Embed content</target>
+        <target>Bináris tartalom</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.assembledContentRadio">
         <source>Assemble</source>
-        <target>Assemble</target>
+        <target>Saját tartalom</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.embedContentRadio">
         <source>Embed content</source>
-        <target>Embed content</target>
+        <target>Bináris tartalom</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.assembleRadio">
         <source>Assemble</source>
-        <target>Assemble</target>
+        <target>Saját tartalom</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.uploadFileText">
         <source>Choose File</source>
-        <target>Choose File</target>
+        <target>Fájl kiválasztása</target>
       </trans-unit>
       <trans-unit id="profile-view.model.preferredLanguageLabel.label">
         <source>Preferred language</source>
-        <target>Preferred language</target>
+        <target>Preferált nyelv</target>
       </trans-unit>
       <trans-unit id="profile-view.activationDateTitle">
         <source>Activation date</source>
-        <target>Activation date</target>
+        <target>Aktiválva</target>
       </trans-unit>
       <trans-unit id="profile-view.changingDeviceButton">
         <source>Changing device</source>
-        <target>Changing device</target>
+        <target>Eszközcsere</target>
       </trans-unit>
       <trans-unit id="profile-view.underDevelopmentText">
         <source>Under development ...</source>
-        <target>Under development ...</target>
+        <target>Fejlesztés alatt ...</target>
       </trans-unit>
       <trans-unit id="share-content-view.model.textContentTextLabel.label">
         <source>Text</source>
-        <target>Text</target>
+        <target>Szöveg</target>
       </trans-unit>
       <trans-unit id="share-content-view.model.imageContentTitleLabel.label">
         <source>Title</source>
-        <target>Title</target>
+        <target>Cím</target>
       </trans-unit>
       <trans-unit id="share-content-view.model.imageEditorUrlLabel.label">
         <source>Image url</source>
-        <target>Image url</target>
+        <target>Kép url</target>
       </trans-unit>
       <trans-unit id="share-content-view.model.linkEditorDialogTitleLabel.label">
         <source>Title</source>
-        <target>Title</target>
+        <target>Cím</target>
       </trans-unit>
       <trans-unit id="share-content-view.model.linkEditorReferenceLabel.label">
         <source>Reference</source>
-        <target>Reference</target>
+        <target>Hivatkozás</target>
       </trans-unit>
       <trans-unit id="share-content-view.model.videoEditorTitleLabel.label">
         <source>Title</source>
-        <target>Title</target>
+        <target>Cím</target>
       </trans-unit>
       <trans-unit id="share-content-view.model.videoContentUrlLabel.label">
         <source>Video url</source>
-        <target>Video url</target>
+        <target>Videó url</target>
       </trans-unit>
       <trans-unit id="share-content-view.model.videoContentUrlLabel.error-message">
         <source>Invalid Youtube url.</source>
-        <target>Invalid Youtube url.</target>
+        <target>Érvénytelen Youtube videó.</target>
       </trans-unit>
       <trans-unit id="share-content-view.textEditorDialogTitle">
         <source>Edit text properties</source>
-        <target>Edit text properties</target>
+        <target>Szöveg tulajdonságainak szerkesztése</target>
       </trans-unit>
       <trans-unit id="share-content-view.textEditorDialogAcceptButton">
         <source>Accept</source>
-        <target>Accept</target>
+        <target>Elfogadás</target>
       </trans-unit>
       <trans-unit id="share-content-view.imageEditorDialogTitle">
         <source>Edit image properties</source>
-        <target>Edit image properties</target>
+        <target>Kép tulajdonságainak szerkesztése</target>
       </trans-unit>
       <trans-unit id="share-content-view.imageEditorDialogCancelButton">
         <source>Cancel</source>
-        <target>Cancel</target>
+        <target>Elvetés</target>
       </trans-unit>
       <trans-unit id="share-content-view.imageEditorDialogAcceptButton">
         <source>Accept</source>
-        <target>Accept</target>
+        <target>Elfogadás</target>
       </trans-unit>
       <trans-unit id="share-content-view.linkEditorDialogTitle">
         <source>Edit link properties</source>
-        <target>Edit link properties</target>
+        <target>Hivatkozás tulajdonságainak szerkesztése</target>
       </trans-unit>
       <trans-unit id="share-content-view.linkEditorDialogCancelButton">
         <source>Cancel</source>
-        <target>Cancel</target>
+        <target>Elvetés</target>
       </trans-unit>
       <trans-unit id="share-content-view.linkEditorDialogAcceptButton">
         <source>Accept</source>
-        <target>Accept</target>
+        <target>Elfogadás</target>
       </trans-unit>
       <trans-unit id="share-content-view.videoEditorDialogTitle">
         <source>Edit video properties</source>
-        <target>Edit video properties</target>
+        <target>Video tulajdonságainak szerkesztése</target>
       </trans-unit>
       <trans-unit id="share-content-view.videoEditorDialogCancelButton">
         <source>Cancel</source>
-        <target>Cancel</target>
+        <target>Elvetés</target>
       </trans-unit>
       <trans-unit id="share-content-view.videoEditorDialogAcceptButton">
         <source>Accept</source>
-        <target>Accept</target>
+        <target>Elfogadás</target>
       </trans-unit>
       <trans-unit id="signin-view.model.signInFormLoginEmail.label">
         <source>Email address</source>
-        <target>Email address</target>
+        <target>Email cím</target>
       </trans-unit>
       <trans-unit id="signin-view.model.signInFormLoginEmail.error-message">
         <source>Invalid email address.</source>
-        <target>Invalid email address.</target>
+        <target>Érvénytelen email cím.</target>
       </trans-unit>
       <trans-unit id="signin-view.model.signInFormLoginPassword.label">
         <source>Password</source>
-        <target>Password</target>
+        <target>Jelszó</target>
       </trans-unit>
       <trans-unit id="signin-view.model.signInFormLoginPassword.error-message">
         <source>Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number.</source>
-        <target>Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number.</target>
+        <target>Érvénytelen jelszó. A jelszó egy 6-16 jegyű, legalább egy számot tartalmazó alfanumerikus karaktersorozat.</target>
       </trans-unit>
       <trans-unit id="signin-view.model.signInFormAccept.title">
         <source>submit</source>
-        <target>submit</target>
+        <target>Bejelentkezés</target>
       </trans-unit>
       <trans-unit id="signin-view.signInFormRememberMe">
         <source>Remember me</source>
-        <target>Remember me</target>
+        <target>Emlékezz rám</target>
       </trans-unit>
       <trans-unit id="signin-view.signInFormRegistrate">
         <source>Sign-on</source>
-        <target>Sign-on</target>
+        <target>Regisztráció</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registrateTitleLabel.label">
         <source>Name</source>
-        <target>Name</target>
+        <target>Név</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registrateTitleLabel.error-message">
         <source>Invalid name.</source>
-        <target>Invalid name.</target>
+        <target>Érvénytelen név.</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registrateEmailLabel.label">
         <source>Email address</source>
-        <target>Email address</target>
+        <target>Email cím</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registrateEmailLabel.error-message">
         <source>Invalid email address.</source>
-        <target>Invalid email address.</target>
+        <target>Érvénytelen email cím.</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registratePhoneNumberLabel.label">
         <source>Phone</source>
-        <target>Phone</target>
+        <target>Telefonszám</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registratePhoneNumberLabel.error-message">
         <source>Invalid phone number.</source>
-        <target>Invalid phone number.</target>
+        <target>Érvénytelen telefonszám.</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registratePasswordLabel.label">
         <source>Password</source>
-        <target>Password</target>
+        <target>Jelszó</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registratePasswordLabel.error-message">
         <source>Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number.</source>
-        <target>Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number.</target>
+        <target>Érvénytelen jelszó. A jelszó egy 6-16 jegyű, legalább egy számot tartalmazó alfanumerikus karaktersorozat.</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registratePasswordConfirmLabel.label">
         <source>Password confirmation</source>
-        <target>Password confirmation</target>
+        <target>Jelszó megerősítés</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registrateCodeLabel.label">
         <source>Activation code</source>
-        <target>Activation code</target>
+        <target>Aktivációs kód</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registrateCodeLabel.error-message">
         <source>Activation code.</source>
-        <target>Activation code.</target>
+        <target>Hibás aktivációs kód.</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registrateSignOnButton.title">
         <source>submit</source>
-        <target>submit</target>
+        <target>Regisztráció</target>
       </trans-unit>
       <trans-unit id="signon-view.registrateSignInButton">
         <source>Signin</source>
-        <target>Signin</target>
+        <target>Bejelentkezés</target>
       </trans-unit>
       
     </body>
