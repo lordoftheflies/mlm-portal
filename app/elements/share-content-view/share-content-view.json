@@ -16,10 +16,10 @@
     "linkEditorReferenceLabel": {
       "label": "Reference"
     },
-    "videoEditorDialog:div_1:paper-input_1": {
+    "videoEditorTitleLabel": {
       "label": "Title"
     },
-    "videoEditorDialog:div_1:paper-input_2": {
+    "videoContentUrlLabel": {
       "label": "Video url",
       "error-message": "Invalid Youtube url."
     }
