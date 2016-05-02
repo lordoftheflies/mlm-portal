@@ -85,7 +85,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <h2 id="textEditorDialogTitle">Edit text properties</h2>
                 <div class="content">
                     <input type="hidden" name="name">
-                    <paper-input name="title" label="{{text.textEditorTitlePlaceholder}}">
+                    <paper-input id="textContentTitleLabel" name="title" label="{{text.textEditorTitlePlaceholder}}">
                     </paper-input>
                     <paper-textarea name="data" label="Text" rows="10" type="text"></paper-textarea>
 
@@ -100,7 +100,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <h2 id="imageEditorDialogTitle">Edit image properties</h2>
                 <div class="content">
                     <input type="hidden" name="name">
-                    <paper-input name="title" label="Title"></paper-input>
+                    <paper-input id="imageContentTitleLabel" name="title" label="Title"></paper-input>
 
                     <paper-input name="data" required auto-validate
                                  label="Image url">
