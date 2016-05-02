@@ -1,0 +1,32 @@
+{
+  "meta": {},
+  "model": {
+    "registrateTitleLabel": {
+      "label": "Name",
+      "error-message": "Invalid name."
+    },
+    "registrateEmailLabel": {
+      "label": "Email address",
+      "error-message": "Invalid email address."
+    },
+    "registratePhoneNumberLabel": {
+      "label": "Phone",
+      "error-message": "Invalid phone number."
+    },
+    "registratePasswordLabel": {
+      "label": "Password",
+      "error-message": "Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number."
+    },
+    "registratePasswordConfirmLabel": {
+      "label": "Password confirmation"
+    },
+    "registrateCodeLabel": {
+      "label": "Activation code",
+      "error-message": "Activation code."
+    },
+    "registrateSignOnButton": {
+      "title": "submit"
+    }
+  },
+  "registrateSignInButton": "Signin"
+}

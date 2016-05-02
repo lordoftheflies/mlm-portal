@@ -1,0 +1,11 @@
+{
+  "meta": {},
+  "model": {
+    "preferredLanguageLabel": {
+      "label": "Preferred language"
+    }
+  },
+  "activationDateTitle": "Activation date",
+  "changingDeviceButton": "Changing device",
+  "underDevelopmentText": "Under development ..."
+}
