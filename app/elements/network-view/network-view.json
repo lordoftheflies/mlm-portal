@@ -1,16 +1,13 @@
 {
   "meta": {},
   "model": {
-    "newMemberForm:paper-input": {
+    "newMemberNameLabel": {
       "label": "Name"
     },
-    "newMemberForm:paper-input_1": {
+    "newMemberEmailLabel": {
       "label": "Email"
     },
-    "newMemberForm:paper-input_2": {
-      "label": "Codes"
-    },
-    "newMemberForm:paper-dropdown-menu_4": {
+    "newMemberParentLabel": {
       "label": "Parent member"
     }
   },
