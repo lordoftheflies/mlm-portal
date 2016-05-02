@@ -17,6 +17,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../bower_components/iron-icons/editor-icons.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/i18n-behavior/i18n-behavior.html">
 <link rel="import" href="plutonium-cm-behavior.html">
 <link rel="import" href="plutonium-cm-shared-styles.html">
 <!--
@@ -164,7 +165,10 @@ Example:
             'use strict';
             Polymer({
                 is: 'plutonium-cm-field',
-                behaviors: [PlutoniumBehaviors.CmBehavior],
+                behaviors: [
+                    PlutoniumBehaviors.CmBehavior,
+                    BehaviorsStore.I18nBehavior
+                ],
                 properties: {
                     /**
                      * Field editor dialog id.

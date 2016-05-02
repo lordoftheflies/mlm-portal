@@ -30,6 +30,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../bower_components/paper-toolbar/paper-toolbar.html">
 <link rel="import" href="../../bower_components/file-upload/file-upload.html">
 
+<link rel="import" href="../../bower_components/i18n-behavior/i18n-behavior.html">
+
 
 <link rel="import" href="../../bower_components/plutonium-field-recipient/plutonium-field-recipient.html">
 
@@ -248,6 +250,9 @@ Example:
 <script>
     Polymer({
         is: 'plutonium-cm-form',
+        behaviors: [
+            BehaviorsStore.I18nBehavior
+        ],
         properties: {
             fileUploadTarget: {
                 type: String,

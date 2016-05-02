@@ -185,7 +185,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             Polymer({
                 is: 'network-view',
-                behaviors: [PlutoniumBehaviors.WidgetBehavior],
+                behaviors: [
+                    PlutoniumBehaviors.WidgetBehavior,
+                    BehaviorsStore.I18nBehavior
+                ],
                 properties: {
                     genocideRequestParams: {
                         type: Object,
