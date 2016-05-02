@@ -95,9 +95,9 @@ Example:
                                     </paper-material>-->
 
                 <paper-tabs class="flex" selected="{{selectedMetaAction}}" autoselect>
-                    <paper-tab>Share</paper-tab>
-                    <paper-tab>Content</paper-tab>
-                    <paper-tab>Properties</paper-tab>
+                    <paper-tab id="shareTabLabel">Share</paper-tab>
+                    <paper-tab id="contentTabLabel">Content</paper-tab>
+                    <paper-tab id="propertiesTabLabel">Properties</paper-tab>
                 </paper-tabs>
 
                 <paper-fab icon="send" class="horizontal end-justified layout" on-tap="onSend"></paper-fab>
@@ -145,8 +145,8 @@ Example:
                                     <paper-icon-button id="addLinkButton" on-click="onEmbedLink" icon="link" title="Embedd a link to another message to the message content."></paper-icon-button>
                                 </template>
                                 <paper-radio-group selected="{{contentMode}}" attr-for-selected="name">
-                                    <paper-radio-button name="embedded">Embed content</paper-radio-button>
-                                    <paper-radio-button name="assembled">Assemble</paper-radio-button>
+                                    <paper-radio-button id="embbeddedContentRadio" name="embedded">Embed content</paper-radio-button>
+                                    <paper-radio-button id="assembledContentRadio" name="assembled">Assemble</paper-radio-button>
                                 </paper-radio-group>
 
 
