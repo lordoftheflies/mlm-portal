@@ -1,1 +1,39 @@
-{}
+{
+  "meta": {
+    "todo": []
+  },
+  "model": {
+    "newMemberNameLabel": {
+      "label": "Név"
+    },
+    "newMemberEmailLabel": {
+      "label": "Email cím"
+    },
+    "newMemberParentLabel": {
+      "label": "Szülő tag"
+    }
+  },
+  "newMemberDialogTitle": "Új tag",
+  "newMemberDialogCancelButton": "Elvetés",
+  "newMemberDialogCreateButton": "Létrehozás",
+  "newMemberDialogCreateAndRepeatButton": "Létrehozás & ismétlés",
+  "memberEraseConfirmDialogTitle": "Tag törlése",
+  "memberEraseConfirmDialogText": "Biztosan törölni akarja a kiválasztott tagot?",
+  "memberEraseConfirmDialogCancelButton": "Elvetés",
+  "memberEraseConfirmDialogAcceptButton": "Ok",
+  "promoteAdminDialogTitle": "Előléptetés",
+  "promoteAdminDialogText": [
+    "Biztos, hogy elő akarja léptetni {1}-t adminisztrátorrá? ",
+    "{{item.name}}"
+  ],
+  "promoteAdminDialogCancelButton": "Elvetés",
+  "promoteAdminDialogAcceptButton": "Ok",
+  "demoteAdminDialogTitle": "Lefokozás",
+  "demoteAdminDialogText": [
+    "Biztos, hogy le akarja fokozni {1}-t felhasználóvá?",
+    "{{item.name}}"
+  ],
+  "demoteAdminDialogCancelButton": "Elvetés",
+  "demoteAdminDialogAcceptButton": "Ok",
+  "emptyChildrenText": "Nincsenek alárendelt tagok."
+}

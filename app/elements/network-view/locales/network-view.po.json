@@ -1,1 +1,150 @@
-{}
+{
+  "meta": {
+    "todo": [
+      {
+        "op": "add",
+        "path": "/model/newMemberNameLabel/label",
+        "value": "Name"
+      },
+      {
+        "op": "add",
+        "path": "/model/newMemberEmailLabel/label",
+        "value": "Email"
+      },
+      {
+        "op": "add",
+        "path": "/model/newMemberParentLabel/label",
+        "value": "Parent member"
+      },
+      {
+        "op": "add",
+        "path": "/newMemberDialogTitle",
+        "value": "New member"
+      },
+      {
+        "op": "add",
+        "path": "/newMemberDialogCancelButton",
+        "value": "Cancel"
+      },
+      {
+        "op": "add",
+        "path": "/newMemberDialogCreateButton",
+        "value": "Create"
+      },
+      {
+        "op": "add",
+        "path": "/newMemberDialogCreateAndRepeatButton",
+        "value": "Create & repeat"
+      },
+      {
+        "op": "add",
+        "path": "/memberEraseConfirmDialogTitle",
+        "value": "Delete member"
+      },
+      {
+        "op": "add",
+        "path": "/memberEraseConfirmDialogText",
+        "value": " Are you sure delete member? "
+      },
+      {
+        "op": "add",
+        "path": "/memberEraseConfirmDialogCancelButton",
+        "value": "Cancel"
+      },
+      {
+        "op": "add",
+        "path": "/memberEraseConfirmDialogAcceptButton",
+        "value": "OK"
+      },
+      {
+        "op": "add",
+        "path": "/promoteAdminDialogTitle",
+        "value": "Promote administrator"
+      },
+      {
+        "op": "add",
+        "path": "/promoteAdminDialogText/0",
+        "value": " Are you surely promote {1} to administrator? "
+      },
+      {
+        "op": "add",
+        "path": "/promoteAdminDialogText/1",
+        "value": "{{item.name}}"
+      },
+      {
+        "op": "add",
+        "path": "/promoteAdminDialogCancelButton",
+        "value": "Cancel"
+      },
+      {
+        "op": "add",
+        "path": "/promoteAdminDialogAcceptButton",
+        "value": "OK"
+      },
+      {
+        "op": "add",
+        "path": "/demoteAdminDialogTitle",
+        "value": "Demote administrator"
+      },
+      {
+        "op": "add",
+        "path": "/demoteAdminDialogText/0",
+        "value": " Are you surely demote {1} to user? "
+      },
+      {
+        "op": "add",
+        "path": "/demoteAdminDialogText/1",
+        "value": "{{item.name}}"
+      },
+      {
+        "op": "add",
+        "path": "/demoteAdminDialogCancelButton",
+        "value": "Cancel"
+      },
+      {
+        "op": "add",
+        "path": "/demoteAdminDialogAcceptButton",
+        "value": "OK"
+      },
+      {
+        "op": "add",
+        "path": "/emptyChildrenText",
+        "value": "No children."
+      }
+    ]
+  },
+  "model": {
+    "newMemberNameLabel": {
+      "label": "Name"
+    },
+    "newMemberEmailLabel": {
+      "label": "Email"
+    },
+    "newMemberParentLabel": {
+      "label": "Parent member"
+    }
+  },
+  "newMemberDialogTitle": "New member",
+  "newMemberDialogCancelButton": "Cancel",
+  "newMemberDialogCreateButton": "Create",
+  "newMemberDialogCreateAndRepeatButton": "Create & repeat",
+  "memberEraseConfirmDialogTitle": "Delete member",
+  "memberEraseConfirmDialogText": " Are you sure delete member? ",
+  "memberEraseConfirmDialogCancelButton": "Cancel",
+  "memberEraseConfirmDialogAcceptButton": "OK",
+  "promoteAdminDialogTitle": "Promote administrator",
+  "promoteAdminDialogText": [
+    " Are you surely promote {1} to administrator? ",
+    "{{item.name}}"
+  ],
+  "promoteAdminDialogCancelButton": "Cancel",
+  "promoteAdminDialogAcceptButton": "OK",
+  "demoteAdminDialogTitle": "Demote administrator",
+  "demoteAdminDialogText": [
+    " Are you surely demote {1} to user? ",
+    "{{item.name}}"
+  ],
+  "demoteAdminDialogCancelButton": "Cancel",
+  "demoteAdminDialogAcceptButton": "OK",
+  "emptyChildrenText": "No children."
+}
