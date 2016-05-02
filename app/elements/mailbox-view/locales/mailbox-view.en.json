@@ -1,1 +1,9 @@
-{}
+{
+  "meta": {
+    "todo": []
+  },
+  "model": {},
+  "mailBoxPageInboxFolderTitle": "Inbox",
+  "sentItemsPageInboxFolderTitle": "Sent items",
+  "emptyMailBoxFolderText": "No messages in the folder."
+}

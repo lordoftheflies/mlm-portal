@@ -1,1 +1,25 @@
-{}
+{
+  "meta": {
+    "todo": [
+      {
+        "op": "add",
+        "path": "/mailBoxPageInboxFolderTitle",
+        "value": "Inbox"
+      },
+      {
+        "op": "add",
+        "path": "/sentItemsPageInboxFolderTitle",
+        "value": "Sent items"
+      },
+      {
+        "op": "add",
+        "path": "/emptyMailBoxFolderText",
+        "value": "No messages in the folder."
+      }
+    ]
+  },
+  "model": {},
+  "mailBoxPageInboxFolderTitle": "Inbox",
+  "sentItemsPageInboxFolderTitle": "Sent items",
+  "emptyMailBoxFolderText": "No messages in the folder."
+}
