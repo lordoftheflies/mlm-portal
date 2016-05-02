@@ -1,1 +1,40 @@
-{}
+{
+  "meta": {
+    "todo": []
+  },
+  "model": {
+    "textContentTextLabel": {
+      "label": "Text"
+    },
+    "imageContentTitleLabel": {
+      "label": "Title"
+    },
+    "imageEditorUrlLabel": {
+      "label": "Image url"
+    },
+    "linkEditorDialogTitleLabel": {
+      "label": "Title"
+    },
+    "linkEditorReferenceLabel": {
+      "label": "Reference"
+    },
+    "videoEditorTitleLabel": {
+      "label": "Title"
+    },
+    "videoContentUrlLabel": {
+      "label": "Video url",
+      "error-message": "Invalid Youtube url."
+    }
+  },
+  "textEditorDialogTitle": "Edit text properties",
+  "textEditorDialogAcceptButton": "Accept",
+  "imageEditorDialogTitle": "Edit image properties",
+  "imageEditorDialogCancelButton": "Cancel",
+  "imageEditorDialogAcceptButton": "Accept",
+  "linkEditorDialogTitle": "Edit link properties",
+  "linkEditorDialogCancelButton": "Cancel",
+  "linkEditorDialogAcceptButton": "Accept",
+  "videoEditorDialogTitle": "Edit video properties",
+  "videoEditorDialogCancelButton": "Cancel",
+  "videoEditorDialogAcceptButton": "Accept"
+}
