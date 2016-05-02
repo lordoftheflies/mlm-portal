@@ -14,7 +14,7 @@
       </trans-unit>
       <trans-unit id="app.mainMenuTitle">
         <source>Menu</source>
-        <target>Menu</target>
+        <target></target>
       </trans-unit>
       <trans-unit id="app.shareContentMenuTitle">
         <source>Share content</source>

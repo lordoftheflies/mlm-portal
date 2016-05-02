@@ -46,7 +46,7 @@
     app.baseUrl = '/';
     // Sets app backend REST interface
     app.backEndUrl = 'http://localhost:8080/';
-    app.applicationTitle = 'FlavonTeam';
+    app.applicationTitle = 'TopFlavon';
 
     if (window.location.port === '') {  // if production
         // Uncomment app.baseURL below and
