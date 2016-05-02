@@ -1,1 +1,13 @@
-{}
+{
+  "meta": {
+    "todo": []
+  },
+  "model": {
+    "preferredLanguageLabel": {
+      "label": "Preferált nyelv"
+    }
+  },
+  "activationDateTitle": "Aktiválva",
+  "changingDeviceButton": "Eszközcsere",
+  "underDevelopmentText": "Fejlesztés alatt ..."
+}

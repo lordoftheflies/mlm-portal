@@ -1,1 +1,34 @@
-{}
+{
+  "meta": {
+    "todo": [
+      {
+        "op": "add",
+        "path": "/model/preferredLanguageLabel/label",
+        "value": "Preferred language"
+      },
+      {
+        "op": "add",
+        "path": "/activationDateTitle",
+        "value": "Activation date"
+      },
+      {
+        "op": "add",
+        "path": "/changingDeviceButton",
+        "value": "Changing device"
+      },
+      {
+        "op": "add",
+        "path": "/underDevelopmentText",
+        "value": "Under development ..."
+      }
+    ]
+  },
+  "model": {
+    "preferredLanguageLabel": {
+      "label": "Preferred language"
+    }
+  },
+  "activationDateTitle": "Activation date",
+  "changingDeviceButton": "Changing device",
+  "underDevelopmentText": "Under development ..."
+}
