@@ -1,100 +1,33 @@
 {
-  "meta": {
-    "todo": [
-      {
-        "op": "add",
-        "path": "/model/registrateTitleLabel/label",
-        "value": "Name"
-      },
-      {
-        "op": "add",
-        "path": "/model/registrateTitleLabel/error-message",
-        "value": "Invalid name."
-      },
-      {
-        "op": "add",
-        "path": "/model/registrateEmailLabel/label",
-        "value": "Email address"
-      },
-      {
-        "op": "add",
-        "path": "/model/registrateEmailLabel/error-message",
-        "value": "Invalid email address."
-      },
-      {
-        "op": "add",
-        "path": "/model/registratePhoneNumberLabel/label",
-        "value": "Phone"
-      },
-      {
-        "op": "add",
-        "path": "/model/registratePhoneNumberLabel/error-message",
-        "value": "Invalid phone number."
-      },
-      {
-        "op": "add",
-        "path": "/model/registratePasswordLabel/label",
-        "value": "Password"
-      },
-      {
-        "op": "add",
-        "path": "/model/registratePasswordLabel/error-message",
-        "value": "Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number."
-      },
-      {
-        "op": "add",
-        "path": "/model/registratePasswordConfirmLabel/label",
-        "value": "Password confirmation"
-      },
-      {
-        "op": "add",
-        "path": "/model/registrateCodeLabel/label",
-        "value": "Activation code"
-      },
-      {
-        "op": "add",
-        "path": "/model/registrateCodeLabel/error-message",
-        "value": "Activation code."
-      },
-      {
-        "op": "add",
-        "path": "/model/registrateSignOnButton/title",
-        "value": "submit"
-      },
-      {
-        "op": "add",
-        "path": "/registrateSignInButton",
-        "value": "Signin"
-      }
-    ]
-  },
-  "model": {
-    "registrateTitleLabel": {
-      "label": "Nazwa",
-      "error-message": "Błędna nazwa."
+    "meta": {
     },
-    "registrateEmailLabel": {
-      "label": "Adres e-mail",
-      "error-message": "Błędny adres e-mail."
+    "model": {
+        "registrateTitleLabel": {
+            "label": "Nazwa",
+            "error-message": "Błędna nazwa."
+        },
+        "registrateEmailLabel": {
+            "label": "Adres e-mail",
+            "error-message": "Błędny adres e-mail."
+        },
+        "registratePhoneNumberLabel": {
+            "label": "Numer telefonu",
+            "error-message": "Nieprawidłowy numer telefonu."
+        },
+        "registratePasswordLabel": {
+            "label": "Hasło",
+            "error-message": "Nieprawidłowe hasło. Hasło musi być 6-16 alphanumercal charakter i minimalna 1 numer."
+        },
+        "registratePasswordConfirmLabel": {
+            "label": "Potwierdzenie hasła"
+        },
+        "registrateCodeLabel": {
+            "label": "Kod aktywacyjny",
+            "error-message": "Zły kod aktywacyjny"
+        },
+        "registrateSignOnButton": {
+            "title": "Zapisać się"
+        }
     },
-    "registratePhoneNumberLabel": {
-      "label": "Numer telefonu",
-      "error-message": "Nieprawidłowy numer telefonu."
-    },
-    "registratePasswordLabel": {
-      "label": "Hasło",
-      "error-message": "Nieprawidłowe hasło. Hasło musi być 6-16 alphanumercal charakter i minimalna 1 numer."
-    },
-    "registratePasswordConfirmLabel": {
-      "label": "Potwierdzenie hasła"
-    },
-    "registrateCodeLabel": {
-      "label": "Kod aktywacyjny",
-      "error-message": "Zły kod aktywacyjny"
-    },
-    "registrateSignOnButton": {
-      "title": "Zapisać się"
-    }
-  },
-  "registrateSignInButton": "Zaloguj"
+    "registrateSignInButton": "Zaloguj"
 }

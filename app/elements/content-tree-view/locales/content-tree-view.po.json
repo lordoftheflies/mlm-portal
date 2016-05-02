@@ -1,31 +1,9 @@
 {
-  "meta": {
-    "todo": [
-      {
-        "op": "add",
-        "path": "/messagesPagePublicFolderTitle",
-        "value": "Public"
-      },
-      {
-        "op": "add",
-        "path": "/messagesPageMyContentsFolderTitle",
-        "value": "Drafts"
-      },
-      {
-        "op": "add",
-        "path": "/messagesPagePublishedFolderTitle",
-        "value": "Published"
-      },
-      {
-        "op": "add",
-        "path": "/emptyContentFolderText",
-        "value": "No content in the folder."
-      }
-    ]
-  },
-  "model": {},
-  "messagesPagePublicFolderTitle": "Otwarte",
-  "messagesPageMyContentsFolderTitle": "Własny treść",
-  "messagesPagePublishedFolderTitle": "Pojawiło się",
-  "emptyContentFolderText": "Brak zawartości w folderze."
+    "meta": {
+    },
+    "model": {},
+    "messagesPagePublicFolderTitle": "Otwarte",
+    "messagesPageMyContentsFolderTitle": "Własny treść",
+    "messagesPagePublishedFolderTitle": "Pojawiło się",
+    "emptyContentFolderText": "Brak zawartości w folderze."
 }

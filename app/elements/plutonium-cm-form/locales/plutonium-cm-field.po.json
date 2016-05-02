@@ -1,27 +1,5 @@
 {
   "meta": {
-    "todo": [
-      {
-        "op": "add",
-        "path": "/model/addVideoButton/title",
-        "value": "Embedd video to the message content."
-      },
-      {
-        "op": "add",
-        "path": "/model/addImageButton/title",
-        "value": "Embedd image to the message content."
-      },
-      {
-        "op": "add",
-        "path": "/model/addLinkButton/title",
-        "value": "Embedd a link to another message to the message content."
-      },
-      {
-        "op": "replace",
-        "path": "/model/addSectionButton/title",
-        "value": "Embedd video to the message content."
-      }
-    ]
   },
   "model": {
     "addSectionButton": {

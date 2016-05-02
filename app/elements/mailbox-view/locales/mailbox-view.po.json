@@ -1,25 +1,8 @@
 {
-  "meta": {
-    "todo": [
-      {
-        "op": "add",
-        "path": "/mailBoxPageInboxFolderTitle",
-        "value": "Inbox"
-      },
-      {
-        "op": "add",
-        "path": "/sentItemsPageInboxFolderTitle",
-        "value": "Sent items"
-      },
-      {
-        "op": "add",
-        "path": "/emptyMailBoxFolderText",
-        "value": "No messages in the folder."
-      }
-    ]
-  },
-  "model": {},
-  "mailBoxPageInboxFolderTitle": "Odebrane listy",
-  "sentItemsPageInboxFolderTitle": "Wysłane listy",
-  "emptyMailBoxFolderText": "Brak wiadomości w folderze."
+    "meta": {
+    },
+    "model": {},
+    "mailBoxPageInboxFolderTitle": "Odebrane listy",
+    "sentItemsPageInboxFolderTitle": "Wysłane listy",
+    "emptyMailBoxFolderText": "Brak wiadomości w folderze."
 }
