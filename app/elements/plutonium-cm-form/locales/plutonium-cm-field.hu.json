@@ -1,1 +1,19 @@
-{}
+{
+  "meta": {
+    "todo": []
+  },
+  "model": {
+    "addSectionButton": {
+      "title": "Szöveges szekció beágyazása."
+    },
+    "addVideoButton": {
+      "title": "Video szekció beágyazása."
+    },
+    "addImageButton": {
+      "title": "Kép szekció beágyazása."
+    },
+    "addLinkButton": {
+      "title": "Hivatkozott szekció beágyazása."
+    }
+  }
+}

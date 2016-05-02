@@ -1,1 +1,128 @@
-{}
+{
+  "meta": {
+    "todo": [
+      {
+        "op": "add",
+        "path": "/model/messageInput/label",
+        "value": "Message"
+      },
+      {
+        "op": "add",
+        "path": "/model/addSectionButton/title",
+        "value": "Embedd video to the message content."
+      },
+      {
+        "op": "add",
+        "path": "/model/addVideoButton/title",
+        "value": "Embedd video to the message content."
+      },
+      {
+        "op": "add",
+        "path": "/model/addImageButton/title",
+        "value": "Embedd image to the message content."
+      },
+      {
+        "op": "add",
+        "path": "/model/addLinkButton/title",
+        "value": "Embedd a link to another message to the message content."
+      },
+      {
+        "op": "add",
+        "path": "/model/parentDdLabel/label",
+        "value": "Parent"
+      },
+      {
+        "op": "add",
+        "path": "/model/contentTitleInput/label",
+        "value": "Title"
+      },
+      {
+        "op": "add",
+        "path": "/shareTabLabel",
+        "value": "Share"
+      },
+      {
+        "op": "add",
+        "path": "/contentTabLabel",
+        "value": "Content"
+      },
+      {
+        "op": "add",
+        "path": "/propertiesTabLabel",
+        "value": "Properties"
+      },
+      {
+        "op": "add",
+        "path": "/[[item/id]]:label_1/0",
+        "value": "({1})"
+      },
+      {
+        "op": "add",
+        "path": "/[[item/id]]:label_1/1",
+        "value": "[[item.id]]"
+      },
+      {
+        "op": "add",
+        "path": "/embbeddedContentRadio",
+        "value": "Embed content"
+      },
+      {
+        "op": "add",
+        "path": "/assembledContentRadio",
+        "value": "Assemble"
+      },
+      {
+        "op": "add",
+        "path": "/embedContentRadio",
+        "value": "Embed content"
+      },
+      {
+        "op": "add",
+        "path": "/assembleRadio",
+        "value": "Assemble"
+      },
+      {
+        "op": "add",
+        "path": "/uploadFileText",
+        "value": "Choose File"
+      }
+    ]
+  },
+  "model": {
+    "messageInput": {
+      "label": "Message"
+    },
+    "addSectionButton": {
+      "title": "Embedd video to the message content."
+    },
+    "addVideoButton": {
+      "title": "Embedd video to the message content."
+    },
+    "addImageButton": {
+      "title": "Embedd image to the message content."
+    },
+    "addLinkButton": {
+      "title": "Embedd a link to another message to the message content."
+    },
+    "parentDdLabel": {
+      "label": "Parent"
+    },
+    "contentTitleInput": {
+      "label": "Title"
+    }
+  },
+  "shareTabLabel": "Share",
+  "contentTabLabel": "Content",
+  "propertiesTabLabel": "Properties",
+  "[[item": {
+    "id]]:label_1": [
+      "({1})",
+      "[[item.id]]"
+    ]
+  },
+  "embbeddedContentRadio": "Embed content",
+  "assembledContentRadio": "Assemble",
+  "embedContentRadio": "Embed content",
+  "assembleRadio": "Assemble",
+  "uploadFileText": "Choose File"
+}

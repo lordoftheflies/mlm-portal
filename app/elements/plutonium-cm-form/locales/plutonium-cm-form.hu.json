@@ -1,1 +1,36 @@
-{}
+{
+  "meta": {
+    "todo": []
+  },
+  "model": {
+    "messageInput": {
+      "label": "Üzenet"
+    },
+    "addSectionButton": {
+      "title": "Szöveges szekció beágyazása."
+    },
+    "addVideoButton": {
+      "title": "Video szekció beágyazása."
+    },
+    "addImageButton": {
+      "title": "Kép szekció beágyazása."
+    },
+    "addLinkButton": {
+      "title": "Hivatkozott szekció beágyazása."
+    },
+    "parentDdLabel": {
+      "label": "Szülő"
+    },
+    "contentTitleInput": {
+      "label": "Címsor"
+    }
+  },
+  "shareTabLabel": "Megosztás",
+  "contentTabLabel": "Tartalom",
+  "propertiesTabLabel": "Tulajdonságok",
+  "embbeddedContentRadio": "Bináris tartalom",
+  "assembledContentRadio": "Beágyazott tartalom",
+  "embedContentRadio": "Bináris tartalom",
+  "assembleRadio": "Beágyazott tartalom",
+  "uploadFileText": "Fájl kiválasztása"
+}

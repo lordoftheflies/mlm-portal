@@ -5,7 +5,7 @@
       "label": "Message"
     },
     "addSectionButton": {
-      "title": "Embedd video to the message content."
+      "title": "Embedd text to the message content."
     },
     "addVideoButton": {
       "title": "Embedd video to the message content."
@@ -26,12 +26,6 @@
   "shareTabLabel": "Share",
   "contentTabLabel": "Content",
   "propertiesTabLabel": "Properties",
-  "[[item": {
-    "id]]:label_1": [
-      "({1})",
-      "[[item.id]]"
-    ]
-  },
   "embbeddedContentRadio": "Embed content",
   "assembledContentRadio": "Assemble",
   "embedContentRadio": "Embed content",
