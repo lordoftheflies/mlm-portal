@@ -25,6 +25,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 /*@apply(--layout-horizontal);*/
             }
 
+            :host a{ 
+                text-decoration: none;
+                color: var(--primary-text-color);
+            }
+
             :host paper-material {
                 background-color: white;
                 height: 40px;
@@ -47,7 +52,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                         <a href$="{{baseUrl}}content-tree/{{section.name}}">[[section.title]]</a>
                                     </template>
                                     <template is="dom-if" if="{{!section.hasEmbeddedFile}}">
-                                    <a href$="{{baseUrl}}content-tree/{{section.data}}">[[section.title]]</a>
+                                        <a href$="{{baseUrl}}content-tree/{{section.data}}">[[section.title]]</a>
                                     </template>
                                 </div>
                                 <div class="secondary">
@@ -67,7 +72,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </template>
         <template is="dom-if" if="{{data.leaf}}">
             <paper-card heading="{{data.title}}">
-                
+
                 <plutonium-cm-section id="contentDisplay" class="card-content"  content-model="{{data}}">
                 </plutonium-cm-section>
             </paper-card>
