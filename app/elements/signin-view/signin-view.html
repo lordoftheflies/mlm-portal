@@ -35,10 +35,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 @apply(--layout-vertical);
             }
 
-            /*            :host .card-actions {
-                            @apply(--layout-center);
-                            @apply(--layout-horizontal);
-                        }*/
+            :host .card-actions {
+                @apply(--layout-center);
+                @apply(--layout-horizontal);
+            }
+            
+            #signInFormRememberMe {
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
         </style>
         <!--<paper-card id="signInForm" heading="Sign-in" class="layout horizontal center">-->
         <form is="iron-form" id="form" 
@@ -54,17 +59,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <paper-input id="signInFormLoginEmail" label="Email address" name="email" type="email" auto-validate pattern="{{mailPattern}}" error-message="Invalid email address.">
                     <iron-icon icon="account-circle" prefix></iron-icon>
                 </paper-input>
-            </div>
-            <div class="card-content">
                 <paper-input id="signInFormLoginPassword" label="Password" name="password" type="password" auto-validate pattern="{{passPattern}}" error-message="Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number.">
                     <iron-icon icon="lock" prefix></iron-icon>
                 </paper-input>
-            </div>
-            <div class="card-content" horizontal layout>
                 <paper-toggle-button id="signInFormRememberMe" checked>Remember me</paper-toggle-button>
             </div>
             <div class="card-actions">
-                <paper-button id="signInFormRegistrate" raised class="primary"  on-click="onNavigateToSignOn" dialog-dismiss>Sign-on</paper-button>
+                <paper-button id="signInFormRegistrate" raised  on-click="onNavigateToSignOn" dialog-dismiss>Sign-on</paper-button>
 
                 <paper-fab id="signInFormAccept" icon="arrow-forward" title="submit" on-click="onLogin" dialog-confirm></paper-fab>
             </div>

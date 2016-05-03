@@ -32,6 +32,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 @apply(--layout-center);
                 @apply(--layout-vertical);
             }
+            
+            :host .card-actions {
+                @apply(--layout-center);
+                @apply(--layout-horizontal);
+            }
+            
+            
+            #signInFormRememberMe {
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+            
+            
         </style>
         <!--<paper-card heading="Sign-on" class="layout horizontal center">-->
             <form is="iron-form" id="form" verbose
@@ -51,8 +64,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         pattern="{{namePattern}}" 
                         error-message="Invalid name.">
                     </paper-input>
-                </div>
-                <div class="card-content">
                     <paper-input 
                         id="registrateEmailLabel" 
                         name="email" 
@@ -63,8 +74,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         error-message="Invalid email address.">
                         <iron-icon icon="account-circle" prefix></iron-icon>
                     </paper-input>
-                </div>
-                <div class="card-content">
                     <paper-input 
                         id="registratePhoneNumberLabel" 
                         name="email" 
@@ -75,8 +84,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         error-message="Invalid phone number.">
                         <iron-icon icon="account-circle" prefix></iron-icon>
                     </paper-input>
-                </div>
-                <div class="card-content">
                     <paper-input 
                         id="registratePasswordLabel" 
                         name="password" 
@@ -94,8 +101,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         type="password">
                         <iron-icon icon="lock" prefix></iron-icon>
                     </paper-input>
-                </div>
-                <div class="card-content">
                     <paper-input 
                         id="registrateCodeLabel" 
                         name="code" 
