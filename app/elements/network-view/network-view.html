@@ -13,6 +13,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../bower_components/iron-form/iron-form.html">
 <link rel="import" href="../../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../../bower_components/iron-list/iron-list.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/paper-material/paper-material.html">
 <link rel="import" href="../../bower_components/paper-card/paper-card.html">
@@ -83,7 +85,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </div>
             <div class="card-actions">
                 <paper-button id="memberEraseConfirmDialogCancelButton" dialog-dismiss>Cancel</paper-button>
-                <paper-button id="memberEraseConfirmDialogAcceptButton" dialog-confirm>OK</paper-button>
+                <paper-button id="memberEraseConfirmDialogAcceptButton" dialog-confirm raised>OK</paper-button>
             </div>
         </paper-dialog>
         <paper-dialog id="promoteAdminDialog" modal>
@@ -93,7 +95,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </div>
             <div class="card-actions">
                 <paper-button id="promoteAdminDialogCancelButton" dialog-dismiss>Cancel</paper-button>
-                <paper-button id="promoteAdminDialogAcceptButton" dialog-confirm>OK</paper-button>
+                <paper-button id="promoteAdminDialogAcceptButton" dialog-confirm raised>OK</paper-button>
             </div>
         </paper-dialog>
 
@@ -104,7 +106,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </div>
             <div class="card-actions">
                 <paper-button id="demoteAdminDialogCancelButton" dialog-dismiss>Cancel</paper-button>
-                <paper-button id="demoteAdminDialogAcceptButton" dialog-confirm>OK</paper-button>
+                <paper-button id="demoteAdminDialogAcceptButton" dialog-confirm raised>OK</paper-button>
             </div>
         </paper-dialog>
 
@@ -129,10 +131,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <paper-icon-button icon="remove-circle" on-click="onConfirmRemoveMember"></paper-icon-button>
                 <paper-icon-button icon="send" on-click="onSendTo"></paper-icon-button>
                 <template is="dom-if" if="">
-                    <paper-icon-button icon="code" on-click="onOpenPromoteAdminPrompt"></paper-icon-button>
+                    <paper-icon-button icon="star" on-click="onOpenPromoteAdminPrompt"></paper-icon-button>
                 </template>
                 <template is="dom-if" if="">
-                    <paper-icon-button icon="code" on-click="onOpenDemoteAdminPrompt"></paper-icon-button>
+                    <paper-icon-button icon="star-border" on-click="onOpenDemoteAdminPrompt"></paper-icon-button>
                 </template>
             </div>
         </paper-material>
@@ -146,15 +148,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     <div nodeid="{{item.id}}" on-tap="onNavigateToChildren">
                         <div  class="item" tabindex$="[[tabIndex]]">
                               <div class="pad">
-                                <div id="memberName-{{item.id}}"   class="primary">
-                                    <span>[[item.name]]</span>
+                                <div id="memberName-{{item.id}}"   class="primary layout horizontal">
+                                    
+                                    <span class="flex">[[item.name]]</span>
+                                    <iron-icon class="end-justified" icon="star"></iron-icon>
                                 </div>
-                                <paper-badge for="memberName-{{item.id}}" label="{{item.codes}}" class="blue"></paper-badge>
-                                <div class="secondary">
-                                    <span>[[item.title]]</span>
-                                    <p>[[item.text]]</p>
-                                </div>
-                                <div class="secondary dim">[[item.longText]]</div>
                             </div>
 
                         </div>
