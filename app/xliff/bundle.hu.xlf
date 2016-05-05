@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
 <xliff version="1.0">
-  <file source-language="en" target-language="hu" datatype="plaintext" original="messages" date="2016-05-02T22:11:47Z" product-name="messages">
+  <file source-language="en" target-language="hu" datatype="plaintext" original="messages" date="2016-05-05T11:01:08Z" product-name="messages">
   <header/>
     <body>
       <trans-unit id="app.loginDialogTitle">
@@ -427,6 +427,10 @@
       <trans-unit id="signin-view.signInFormRegistrate">
         <source>Sign-on</source>
         <target>Regisztráció</target>
+      </trans-unit>
+      <trans-unit id="signin-view.signInFormForgotPassword">
+        <source>Forgot password</source>
+        <target>Elfelejtett jelszó</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registrateTitleLabel.label">
         <source>Name</source>
