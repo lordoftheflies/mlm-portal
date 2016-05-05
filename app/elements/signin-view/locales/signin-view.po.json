@@ -15,5 +15,6 @@
         }
     },
     "signInFormRememberMe": "Zapamiętaj mnie",
-    "signInFormRegistrate": "Zapisać się"
+    "signInFormRegistrate": "Zapisać się",
+    "signInFormForgotPassword": "Zapomniałeś hasła"
 }

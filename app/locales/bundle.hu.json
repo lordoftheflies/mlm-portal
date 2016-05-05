@@ -293,7 +293,8 @@
       }
     },
     "signInFormRememberMe": "Emlékezz rám",
-    "signInFormRegistrate": "Regisztráció"
+    "signInFormRegistrate": "Regisztráció",
+    "signInFormForgotPassword": "Elfelejtett jelszó"
   },
   "signon-view": {
     "meta": {

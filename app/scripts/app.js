@@ -45,8 +45,8 @@
     // Sets app default base URL
     app.baseUrl = '/';
     // Sets app backend REST interface
-    app.backEndUrl = 'http://185.51.67.30:8080/flavonteam/';
-//    app.backEndUrl = 'http://localhost:8080/';
+//    app.backEndUrl = 'http://185.51.67.30:8080/flavonteam/';
+    app.backEndUrl = 'http://localhost:8080/christeam-server/';
     app.applicationTitle = 'TopFlavon';
 
     if (window.location.port === '') {  // if production
