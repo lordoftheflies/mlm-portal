@@ -1,8 +1,13 @@
 
 <script>
     window.PlutoniumBehaviors = window.PlutoniumBehaviors || {};
-        PlutoniumBehaviors.WidgetBehavior = {
+    PlutoniumBehaviors.WidgetBehavior = {
         properties: {
+            admin: {
+                type: Boolean,
+                notify: true,
+                value: false
+            },
             apiUrl: {
                 type: String,
                 notify: true,

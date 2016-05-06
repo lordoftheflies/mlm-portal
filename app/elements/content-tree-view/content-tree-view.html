@@ -75,7 +75,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <template is="dom-repeat" items="{{parentModel.sections}}">
             <grapp-breadcrumb href="{{baseUrl}}content-tree/{{item.data}}">[[item.title]]</grapp-breadcrumb>
         </template>
-        <paper-tabs selected="{{selectedContentFolder}}" attr-for-selected="name" autoselect>
+        <paper-tabs hidden="[[!admin]]" selected="{{selectedContentFolder}}" attr-for-selected="name" autoselect>
             <paper-tab text-id="messagesPagePublicFolderTitle" name="public">Public</paper-tab>
             <paper-tab text-id="messagesPageMyContentsFolderTitle" name="drafts">Drafts</paper-tab>
             <paper-tab text-id="messagesPagePublishedFolderTitle" name="published">Published</paper-tab>
