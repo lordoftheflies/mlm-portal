@@ -1,8 +1,8 @@
 {
-    "meta": {
-    },
-    "model": {},
-    "mailBoxPageInboxFolderTitle": "Odebrane listy",
-    "sentItemsPageInboxFolderTitle": "Wysłane listy",
-    "emptyMailBoxFolderText": "Brak wiadomości w folderze."
+  "meta": {
+  },
+  "model": {},
+  "mailBoxPageInboxFolderTitle": "Odebrane listy",
+  "sentItemsPageInboxFolderTitle": "Wysłane listy",
+  "emptyMailBoxFolderText": "Brak wiadomości w folderze."
 }

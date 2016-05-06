@@ -14,9 +14,9 @@
     }
   },
   "newMemberDialogTitle": "Új tag",
-  "newMemberTypeUserTitle": "User",
-  "newMemberTypeGroupTitle": "Group",
-  "newMemberTypeAdminTitle": "Admin",
+  "newMemberTypeUserTitle": "Felhasználó",
+  "newMemberTypeGroupTitle": "Csoport",
+  "newMemberTypeAdminTitle": "Adminisztrátor",
   "newMemberDialogCancelButton": "Elvetés",
   "newMemberDialogCreateButton": "Létrehozás",
   "newMemberDialogCreateAndRepeatButton": "Létrehozás & ismétlés",

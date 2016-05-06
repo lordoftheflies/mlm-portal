@@ -16,7 +16,7 @@
   "newMemberDialogTitle": "New member",
   "newMemberTypeUserTitle": "User",
   "newMemberTypeGroupTitle": "Group",
-  "newMemberTypeAdminTitle": "Admin",
+  "newMemberTypeAdminTitle": "Administrator",
   "newMemberDialogCancelButton": "Cancel",
   "newMemberDialogCreateButton": "Create",
   "newMemberDialogCreateAndRepeatButton": "Create & repeat",
