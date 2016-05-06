@@ -366,6 +366,9 @@
       }
     },
     "newMemberDialogTitle": "Nowy członek",
+    "newMemberTypeUserTitle": "User",
+    "newMemberTypeGroupTitle": "Group",
+    "newMemberTypeAdminTitle": "Admin",
     "newMemberDialogCancelButton": "Anuluj",
     "newMemberDialogCreateButton": "Stwórz",
     "newMemberDialogCreateAndRepeatButton": "Tworzenie i powtórzyć",
