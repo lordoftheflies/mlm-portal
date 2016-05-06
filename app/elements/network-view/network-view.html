@@ -60,6 +60,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                   handle-as="json">
                 <paper-input id="newMemberNameLabel" name="name" label="Name" type="text"></paper-input>
                 <paper-input id="newMemberEmailLabel" name="email" label="Email" type="email"></paper-input>
+
+                <paper-radio-group label="Type" name="role" attr-for-selected="name">
+                    <paper-radio-button id="newMemberTypeUserTitle" name="user">User</paper-radio-button>
+                    <paper-radio-button id="newMemberTypeGroupTitle" name="group">Group</paper-radio-button>
+                    <paper-radio-button id="newMemberTypeAdminTitle" name="admin">Admin</paper-radio-button>
+                </paper-radio-group>
+
                 <input name="parent" type="hidden" value="{{selectedParent}}" />
                 <paper-dropdown-menu id="newMemberParentLabel" label="Parent member">
                     <paper-menu
@@ -149,7 +156,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         <div  class="item" tabindex$="[[tabIndex]]">
                               <div class="pad">
                                 <div id="memberName-{{item.id}}"   class="primary layout horizontal">
-                                    
+
                                     <span class="flex">[[item.name]]</span>
                                     <iron-icon class="end-justified" icon="star"></iron-icon>
                                 </div>
@@ -161,7 +168,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </iron-list>
         </template>
         <template is="dom-if" if="{{isEmpty(data)}}">
- 
+
             <div class="folder-content">
                 <br />
                 <paper-card elevation="1">
