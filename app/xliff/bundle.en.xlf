@@ -162,7 +162,7 @@
       </trans-unit>
       <trans-unit id="network-view.newMemberTypeAdminTitle">
         <source>Admin</source>
-        <target>Admin</target>
+        <target>Administrator</target>
       </trans-unit>
       <trans-unit id="network-view.newMemberDialogCancelButton">
         <source>Cancel</source>

@@ -154,15 +154,15 @@
       </trans-unit>
       <trans-unit id="network-view.newMemberTypeUserTitle">
         <source>User</source>
-        <target>User</target>
+        <target>Użytkownik</target>
       </trans-unit>
       <trans-unit id="network-view.newMemberTypeGroupTitle">
         <source>Group</source>
-        <target>Group</target>
+        <target>Grupa</target>
       </trans-unit>
       <trans-unit id="network-view.newMemberTypeAdminTitle">
         <source>Admin</source>
-        <target>Admin</target>
+        <target>Administrator</target>
       </trans-unit>
       <trans-unit id="network-view.newMemberDialogCancelButton">
         <source>Cancel</source>
