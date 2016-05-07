@@ -6,6 +6,7 @@
     "model": {},
     "loginDialogTitle": "Sign-in",
     "logonDialogTitle": "Sign-on",
+    "forgottenPasswordDialogTitle": "Ask password reset",
     "mainMenuTitle": "",
     "shareContentMenuTitle": "Share content",
     "contentsMenuTitle": "Contents",
@@ -285,8 +286,8 @@
       }
     },
     "signInFormRememberMe": "Remember me",
-    "signInFormRegistrate": "Sign-on",
-    "signInFormForgotPassword": "Forgot password"
+    "signInFormForgotPassword": "Forgot password",
+    "signInFormRegistrate": "Sign-on"
   },
   "signon-view": {
     "meta": {

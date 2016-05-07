@@ -6,6 +6,7 @@
     "model": {},
     "loginDialogTitle": "Bejelentkezés",
     "logonDialogTitle": "Regisztráció",
+    "forgottenPasswordDialogTitle": "Jelszóváltoztatás kérése",
     "mainMenuTitle": "",
     "shareContentMenuTitle": "Tartalom megosztása",
     "contentsMenuTitle": "Menük",
@@ -296,8 +297,8 @@
       }
     },
     "signInFormRememberMe": "Emlékezz rám",
-    "signInFormRegistrate": "Regisztráció",
-    "signInFormForgotPassword": "Elfelejtett jelszó"
+    "signInFormForgotPassword": "Elfelejtett jelszó",
+    "signInFormRegistrate": "Regisztráció"
   },
   "signon-view": {
     "meta": {

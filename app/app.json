@@ -3,6 +3,7 @@
   "model": {},
   "loginDialogTitle": "Sign-in",
   "logonDialogTitle": "Sign-on",
+  "forgottenPasswordDialogTitle": "Ask password reset",
   "mainMenuTitle": "Menu",
   "shareContentMenuTitle": "Share content",
   "contentsMenuTitle": "Contents",
