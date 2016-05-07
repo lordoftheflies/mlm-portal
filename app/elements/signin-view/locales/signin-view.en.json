@@ -1,22 +1,21 @@
 {
-    "meta": {
-        "todo": [
-        ]
+  "meta": {
+    "todo": []
+  },
+  "model": {
+    "signInFormLoginEmail": {
+      "label": "Email address",
+      "error-message": "Invalid email address."
     },
-    "model": {
-        "signInFormLoginEmail": {
-            "label": "Email address",
-            "error-message": "Invalid email address."
-        },
-        "signInFormLoginPassword": {
-            "label": "Password",
-            "error-message": "Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number."
-        },
-        "signInFormAccept": {
-            "title": "submit"
-        }
+    "signInFormLoginPassword": {
+      "label": "Password",
+      "error-message": "Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number."
     },
-    "signInFormRememberMe": "Remember me",
-    "signInFormRegistrate": "Sign-on",
-    "signInFormForgotPassword": "Forgot password"
+    "signInFormAccept": {
+      "title": "submit"
+    }
+  },
+  "signInFormRememberMe": "Remember me",
+  "signInFormForgotPassword": "Forgot password",
+  "signInFormRegistrate": "Sign-on"
 }

@@ -1,33 +1,34 @@
 {
-    "meta": {
+  "meta": {
+    "todo": []
+  },
+  "model": {
+    "registrateTitleLabel": {
+      "label": "Nazwa",
+      "error-message": "Błędna nazwa."
     },
-    "model": {
-        "registrateTitleLabel": {
-            "label": "Nazwa",
-            "error-message": "Błędna nazwa."
-        },
-        "registrateEmailLabel": {
-            "label": "Adres e-mail",
-            "error-message": "Błędny adres e-mail."
-        },
-        "registratePhoneNumberLabel": {
-            "label": "Numer telefonu",
-            "error-message": "Nieprawidłowy numer telefonu."
-        },
-        "registratePasswordLabel": {
-            "label": "Hasło",
-            "error-message": "Nieprawidłowe hasło. Hasło musi być 6-16 alphanumercal charakter i minimalna 1 numer."
-        },
-        "registratePasswordConfirmLabel": {
-            "label": "Potwierdzenie hasła"
-        },
-        "registrateCodeLabel": {
-            "label": "Kod aktywacyjny",
-            "error-message": "Zły kod aktywacyjny"
-        },
-        "registrateSignOnButton": {
-            "title": "Zapisać się"
-        }
+    "registrateEmailLabel": {
+      "label": "Adres e-mail",
+      "error-message": "Błędny adres e-mail."
     },
-    "registrateSignInButton": "Zaloguj"
+    "registratePhoneNumberLabel": {
+      "label": "Numer telefonu",
+      "error-message": "Nieprawidłowy numer telefonu."
+    },
+    "registratePasswordLabel": {
+      "label": "Hasło",
+      "error-message": "Nieprawidłowe hasło. Hasło musi być 6-16 alphanumercal charakter i minimalna 1 numer."
+    },
+    "registratePasswordConfirmLabel": {
+      "label": "Potwierdzenie hasła"
+    },
+    "registrateCodeLabel": {
+      "label": "Kod aktywacyjny",
+      "error-message": "Zły kod aktywacyjny"
+    },
+    "registrateSignOnButton": {
+      "title": "Zapisać się"
+    }
+  },
+  "registrateSignInButton": "Zaloguj"
 }

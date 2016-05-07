@@ -14,6 +14,6 @@
     }
   },
   "signInFormRememberMe": "Remember me",
-  "signInFormRegistrate": "Sign-on",
-  "signInFormForgotPassword": "Forgot password"
+  "signInFormForgotPassword": "Forgot password",
+  "signInFormRegistrate": "Sign-on"
 }

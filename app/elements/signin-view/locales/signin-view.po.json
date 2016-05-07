@@ -1,20 +1,20 @@
 {
-    "meta": {
+  "meta": {
+  },
+  "model": {
+    "signInFormLoginEmail": {
+      "label": "Adres e-mail",
+      "error-message": "Błędny adres e-mail."
     },
-    "model": {
-        "signInFormLoginEmail": {
-            "label": "Adres e-mail",
-            "error-message": "Błędny adres e-mail."
-        },
-        "signInFormLoginPassword": {
-            "label": "Hasło",
-            "error-message": "Nieprawidłowe hasło. Hasło musi być 6-16 alphanumercal charakter i minimalna 1 numer."
-        },
-        "signInFormAccept": {
-            "title": "Zaloguj"
-        }
+    "signInFormLoginPassword": {
+      "label": "Hasło",
+      "error-message": "Nieprawidłowe hasło. Hasło musi być 6-16 alphanumercal charakter i minimalna 1 numer."
     },
-    "signInFormRememberMe": "Zapamiętaj mnie",
-    "signInFormRegistrate": "Zapisać się",
-    "signInFormForgotPassword": "Zapomniałeś hasła"
+    "signInFormAccept": {
+      "title": "Zaloguj"
+    }
+  },
+  "signInFormRememberMe": "Zapamiętaj mnie",
+  "signInFormForgotPassword": "Zapomniałeś hasła",
+  "signInFormRegistrate": "Zapisać się"
 }

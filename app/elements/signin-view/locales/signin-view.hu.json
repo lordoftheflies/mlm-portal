@@ -16,6 +16,6 @@
     }
   },
   "signInFormRememberMe": "Emlékezz rám",
-  "signInFormRegistrate": "Regisztráció",
-  "signInFormForgotPassword": "Elfelejtett jelszó"
+  "signInFormForgotPassword": "Elfelejtett jelszó",
+  "signInFormRegistrate": "Regisztráció"
 }
