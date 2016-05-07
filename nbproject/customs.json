@@ -1,6 +1,12 @@
 {
     "elements": {
         "template": {},
+        "gold-email-input": {
+            "attributes": {
+                "label": {},
+                "value": {}
+            }
+        },
         "plutonium-cm-form": {
             "attributes": {
                 "content-model": {},
@@ -8,6 +14,23 @@
                 "contacts": {},
                 "editors": {},
                 "parent-candidates": {}
+            }
+        },
+        "paper-button": {
+            "attributes": {
+                "dialog-dismiss": {},
+                "on-click": {},
+                "raised": {},
+                "id": {}
+            }
+        },
+        "paper-fab": {
+            "attributes": {
+                "on-click": {},
+                "icon": {},
+                "dialog-confirm": {},
+                "id": {},
+                "title": {}
             }
         },
         "dom-module": {
@@ -19,6 +42,9 @@
     "attributes": {
         "include": {
             "context": "style"
+        },
+        "is": {
+            "context": "form"
         }
     }
 }

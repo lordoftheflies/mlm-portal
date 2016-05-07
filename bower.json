@@ -30,7 +30,8 @@
     "paper-radio-button": "polymerelements/paper-radio-button",
     "paper-radio-group": "polymerelements/paper-radio-group",
     "i18n-behavior": "^1.0.0",
-    "pdf-element": "^1.0.5"
+    "pdf-element": "^1.0.5",
+    "gold-email-input": "PolymerElements/gold-email-input#^1.0.7"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"

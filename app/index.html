@@ -82,6 +82,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <h2 id="logonDialogTitle">Sign-on</h2>
                 <signon-view base-url="{{backEndUrl}}"></signon-view>
             </paper-dialog>
+            <paper-dialog id="forgottenPasswordDialog" modal>
+                <h2 id="forgottenPasswordDialogTitle">Ask password reset</h2>
+                <password-reset-view base-url="{{backEndUrl}}" model="{{sessionInfo.token}}"></password-reset-view>
+            </paper-dialog>
 
             <paper-drawer-panel id="paperDrawerPanel" responsive-width="840px">
                 <!-- Drawer Scroll Header Panel -->

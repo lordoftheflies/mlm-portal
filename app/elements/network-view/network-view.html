@@ -67,16 +67,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     <paper-radio-button id="newMemberTypeAdminTitle" name="admin">Admin</paper-radio-button>
                 </paper-radio-group>
 
-                <input name="parent" type="hidden" value="{{selectedParent}}" />
-                <paper-dropdown-menu id="newMemberParentLabel" label="Parent member">
-                    <paper-menu
-                        class="dropdown-content" selected="{{selectedParent}}" attr-for-selected="value"
-                        attr-for-selected="id">
-                        <template is="dom-repeat" items="{{possibleParents}}">
-                            <paper-item value="{{item.id}}">{{item.name}}</paper-item>
-                        </template>
-                    </paper-menu>
-                </paper-dropdown-menu>
+                <div>
+                    <input name="parent" type="hidden" value="{{selectedParent}}" />
+                    <paper-dropdown-menu id="newMemberParentLabel" label="Parent member">
+                        <paper-menu
+                            class="dropdown-content" selected="{{selectedParent}}" attr-for-selected="value"
+                            attr-for-selected="id">
+                            <template is="dom-repeat" items="{{possibleParents}}">
+                                <paper-item value="{{item.id}}">{{item.name}}</paper-item>
+                            </template>
+                        </paper-menu>
+                    </paper-dropdown-menu>
+                </div>
                 <div class="card-actions">
                     <paper-button id="newMemberDialogCancelButton" dialog-dismiss>Cancel</paper-button>
                     <paper-button id="newMemberDialogCreateButton" raised class="primary" on-click="onCreateMember" dialog-confirm>Create</paper-button>
