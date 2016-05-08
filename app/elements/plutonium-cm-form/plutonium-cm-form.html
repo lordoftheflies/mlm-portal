@@ -138,10 +138,10 @@ Example:
                         <iron-pages selected="{{contentMode}}" attr-for-selected="id">
                             <div id="assembled">
                                 <template is="dom-if" if$="{{isEmpty()}}">
-                                          <paper-icon-button id="addSectionButton" on-click="onAddSection" icon="add-circle" title="Embedd video to the message content."></paper-icon-button>
-                                    <paper-icon-button id="addVideoButton" on-click="onEmbedVideo" icon="theaters" title="Embedd video to the message content."></paper-icon-button>
-                                    <paper-icon-button id="addImageButton" on-click="onEmbedImage" icon="perm-media" title="Embedd image to the message content."></paper-icon-button>
-                                    <paper-icon-button id="addLinkButton" on-click="onEmbedLink" icon="link" title="Embedd a link to another message to the message content."></paper-icon-button>
+                                          <paper-icon-button id="addSectionButton" on-tap="onAddSection" icon="add-circle" title="Embedd video to the message content."></paper-icon-button>
+                                    <paper-icon-button id="addVideoButton" on-tap="onEmbedVideo" icon="theaters" title="Embedd video to the message content."></paper-icon-button>
+                                    <paper-icon-button id="addImageButton" on-tap="onEmbedImage" icon="perm-media" title="Embedd image to the message content."></paper-icon-button>
+                                    <paper-icon-button id="addLinkButton" on-tap="onEmbedLink" icon="link" title="Embedd a link to another message to the message content."></paper-icon-button>
                                 </template>
                                 <paper-radio-group selected="{{contentMode}}" attr-for-selected="name">
                                     <paper-radio-button id="embbeddedContentRadio" name="embedded">Embed content</paper-radio-button>
