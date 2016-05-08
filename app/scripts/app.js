@@ -55,6 +55,12 @@
         // app.baseUrl = '/polymer-starter-kit/';
     }
 
+    app.onLogout = function () {
+        app.$.toast.text = app.sessionInfo.userName + ' logged in successfully.';
+        app.$.toast.show();
+        app.sessionInfo = null;
+    };
+
     app.displayInstalledToast = function () {
         // Check to make sure caching is actually enabled—it won't be in the dev environment.
         if (!Polymer.dom(document).querySelector('platinum-sw-cache').disabled) {

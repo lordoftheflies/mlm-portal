@@ -35,6 +35,11 @@
                 "title": {}
             }
         },
+        "paper-toast": {
+            "attributes": {
+                "id": {}
+            }
+        },
         "dom-module": {
             "attributes": {
                 "id": {}
