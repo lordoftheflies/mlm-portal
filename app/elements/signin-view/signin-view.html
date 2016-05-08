@@ -61,13 +61,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                 <paper-toggle-button id="signInFormRememberMe" checked>Remember me</paper-toggle-button>
 
-                <a id="signInFormForgotPassword" on-click="onNavigateToForgottenPassword">Forgot password</a>
+                <a id="signInFormForgotPassword" on-tap="onNavigateToForgottenPassword">Forgot password</a>
 
             </div>
             <div class="card-actions">
-                <paper-button id="signInFormRegistrate" raised  on-click="onNavigateToSignOn" dialog-dismiss>Sign-on</paper-button>
+                <paper-button id="signInFormRegistrate" raised  on-tap="onNavigateToSignOn" dialog-dismiss>Sign-on</paper-button>
 
-                <paper-fab id="signInFormAccept" icon="arrow-forward" title="submit" on-click="onLogin" dialog-confirm></paper-fab>
+                <paper-fab id="signInFormAccept" icon="arrow-forward" title="submit" on-tap="onLogin" dialog-confirm></paper-fab>
             </div>
         </form>
         <!--</paper-card>-->

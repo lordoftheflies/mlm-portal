@@ -21,7 +21,8 @@
                 "dialog-dismiss": {},
                 "on-click": {},
                 "raised": {},
-                "id": {}
+                "id": {},
+                "on-tap": {}
             }
         },
         "paper-fab": {
@@ -30,6 +31,7 @@
                 "icon": {},
                 "dialog-confirm": {},
                 "id": {},
+                "on-tap": {},
                 "title": {}
             }
         },

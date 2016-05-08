@@ -39,14 +39,14 @@
     // Session AJAX success response handler.
     app.sessionInfoHandler = function (event, details) {
         document.querySelector('html').setAttribute('lang', app.sessionInfo.preferredLanguage);
-        console.log('Session initialization info.' + JSON.stringify(details.reponse));// + '|' + JSON.stringify(a) + '|' + JSON.stringify(a));
+        console.log('Session initialization info. ' + JSON.stringify(details.reponse));// + '|' + JSON.stringify(a) + '|' + JSON.stringify(a));
     };
 
     // Sets app default base URL
     app.baseUrl = '/';
     // Sets app backend REST interface
-    app.backEndUrl = 'http://185.51.67.30:8080/flavonteam/';
-//    app.backEndUrl = 'http://localhost:8080/christeam-server/';
+//    app.backEndUrl = 'http://185.51.67.30:8080/flavonteam/';
+    app.backEndUrl = 'http://localhost:8080/topflavon-backend/';
     app.applicationTitle = 'TopFlavon';
 
     if (window.location.port === '') {  // if production
