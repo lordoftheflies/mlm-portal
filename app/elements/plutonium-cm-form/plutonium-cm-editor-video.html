@@ -41,6 +41,9 @@ Example:
     <template>
         <style>
             :host {
+                --plutonium-cm-actions-display: none !important;
+                --plutonium-cm-field-display: inline-block;
+                
                 display: inline-block;
                 position: relative;
                 box-sizing: border-box;
@@ -54,8 +57,7 @@ Example:
                 @apply(--layout-vertical);
                 /*@apply(--layout-horizontal);*/
                 /*@apply(--layout-flex);*/
-                --plutonium-cm-actions-display: none !important;
-                --plutonium-cm-field-display: inline-block;
+                
             }
 
             :host > div {

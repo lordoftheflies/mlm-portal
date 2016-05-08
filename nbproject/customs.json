@@ -1,6 +1,12 @@
 {
     "elements": {
-        "template": {},
+        "template": {
+            "attributes": {
+                "as": {},
+                "if": {},
+                "items": {}
+            }
+        },
         "password-reset-view": {
             "attributes": {
                 "api-url": {},
@@ -10,6 +16,28 @@
         "share-content-view": {
             "attributes": {
                 "account-id": {}
+            }
+        },
+        "google-youtube": {
+            "attributes": {
+                "width": {},
+                "rel": {},
+                "start": {},
+                "video-id": {},
+                "autoplay": {},
+                "height": {}
+            }
+        },
+        "paper-radio-group": {
+            "attributes": {
+                "attr-for-selected": {},
+                "selected": {}
+            }
+        },
+        "paper-radio-button": {
+            "attributes": {
+                "name": {},
+                "id": {}
             }
         },
         "signin-view": {
@@ -25,6 +53,11 @@
                 "on-response": {},
                 "id": {},
                 "url": {}
+            }
+        },
+        "content": {
+            "attributes": {
+                "id": {}
             }
         },
         "gold-email-input": {
@@ -60,6 +93,12 @@
                 "id": {}
             }
         },
+        "plutonium-field-recipient": {
+            "attributes": {
+                "id": {},
+                "label": {}
+            }
+        },
         "mailbox-view": {
             "attributes": {
                 "account-id": {}
@@ -80,9 +119,25 @@
                 "paper-drawer-toggle": {}
             }
         },
+        "paper-tab": {
+            "attributes": {
+                "id": {}
+            }
+        },
         "paper-material": {
             "attributes": {
                 "elevation": {}
+            }
+        },
+        "paper-card": {
+            "attributes": {
+                "heading": {}
+            }
+        },
+        "paper-item": {
+            "attributes": {
+                "id": {},
+                "class": {}
             }
         },
         "signon-view": {
@@ -103,6 +158,7 @@
                 "modal": {}
             }
         },
+        "plutonium-cm-field": {},
         "paper-button": {
             "attributes": {
                 "dialog-dismiss": {},
@@ -124,7 +180,8 @@
                 "dialog-confirm": {},
                 "id": {},
                 "on-tap": {},
-                "title": {}
+                "title": {},
+                "class": {}
             }
         },
         "paper-drawer-panel": {
@@ -160,9 +217,36 @@
                 "account-id": {}
             }
         },
+        "iron-image": {
+            "attributes": {
+                "src": {},
+                "class": {}
+            }
+        },
+        "paper-input": {
+            "attributes": {
+                "id": {},
+                "label": {},
+                "class": {},
+                "value": {}
+            }
+        },
+        "paper-listbox": {
+            "attributes": {
+                "id": {},
+                "selected": {}
+            }
+        },
         "paper-toolbar": {
             "attributes": {
                 "id": {}
+            }
+        },
+        "paper-tabs": {
+            "attributes": {
+                "class": {},
+                "selected": {},
+                "autoselect": {}
             }
         }
     },
@@ -172,6 +256,9 @@
         },
         "unresolved": {
             "context": "body"
+        },
+        "href$": {
+            "context": "a"
         },
         "is": {
             "context": "form"
