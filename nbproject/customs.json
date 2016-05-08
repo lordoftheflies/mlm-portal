@@ -1,10 +1,44 @@
 {
     "elements": {
         "template": {},
+        "password-reset-view": {
+            "attributes": {
+                "api-url": {},
+                "model": {}
+            }
+        },
+        "share-content-view": {
+            "attributes": {
+                "account-id": {}
+            }
+        },
+        "signin-view": {
+            "attributes": {
+                "api-url": {}
+            }
+        },
+        "iron-ajax": {
+            "attributes": {
+                "last-response": {},
+                "auto": {},
+                "on-error": {},
+                "on-response": {},
+                "id": {},
+                "url": {}
+            }
+        },
         "gold-email-input": {
             "attributes": {
                 "label": {},
                 "value": {}
+            }
+        },
+        "content-tree-view": {
+            "attributes": {
+                "base-url": {},
+                "selected-root": {},
+                "api-url": {},
+                "admin": {}
             }
         },
         "plutonium-cm-form": {
@@ -16,6 +50,59 @@
                 "parent-candidates": {}
             }
         },
+        "iron-icon": {
+            "attributes": {
+                "icon": {}
+            }
+        },
+        "dom-module": {
+            "attributes": {
+                "id": {}
+            }
+        },
+        "mailbox-view": {
+            "attributes": {
+                "account-id": {}
+            }
+        },
+        "paper-menu": {
+            "attributes": {
+                "attr-for-selected": {},
+                "class": {},
+                "selected": {}
+            }
+        },
+        "about-view": {},
+        "paper-icon-button": {
+            "attributes": {
+                "icon": {},
+                "id": {},
+                "paper-drawer-toggle": {}
+            }
+        },
+        "paper-material": {
+            "attributes": {
+                "elevation": {}
+            }
+        },
+        "signon-view": {
+            "attributes": {
+                "api-url": {}
+            }
+        },
+        "iron-dropdown": {
+            "attributes": {
+                "vertical-align": {},
+                "id": {},
+                "horizontal-align": {}
+            }
+        },
+        "paper-dialog": {
+            "attributes": {
+                "id": {},
+                "modal": {}
+            }
+        },
         "paper-button": {
             "attributes": {
                 "dialog-dismiss": {},
@@ -23,6 +110,11 @@
                 "raised": {},
                 "id": {},
                 "on-tap": {}
+            }
+        },
+        "network-view": {
+            "attributes": {
+                "account-id": {}
             }
         },
         "paper-fab": {
@@ -35,12 +127,40 @@
                 "title": {}
             }
         },
+        "paper-drawer-panel": {
+            "attributes": {
+                "responsive-width": {},
+                "id": {}
+            }
+        },
+        "iron-pages": {
+            "attributes": {
+                "attr-for-selected": {},
+                "selected": {}
+            }
+        },
         "paper-toast": {
             "attributes": {
                 "id": {}
             }
         },
-        "dom-module": {
+        "paper-scroll-header-panel": {
+            "attributes": {
+                "condenses": {},
+                "drawer": {},
+                "keep-condensed-header": {},
+                "fixed": {},
+                "main": {},
+                "id": {}
+            }
+        },
+        "profile-view": {
+            "attributes": {
+                "api-url": {},
+                "account-id": {}
+            }
+        },
+        "paper-toolbar": {
             "attributes": {
                 "id": {}
             }
@@ -50,8 +170,14 @@
         "include": {
             "context": "style"
         },
+        "unresolved": {
+            "context": "body"
+        },
         "is": {
             "context": "form"
+        },
+        "on-tap": {
+            "context": "a"
         }
     }
 }

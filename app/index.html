@@ -76,15 +76,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </iron-ajax>
             <paper-dialog id="loginDialog" modal>
                 <h2 id="loginDialogTitle">Sign-in</h2>
-                <signin-view base-url="{{backEndUrl}}"></signin-view>
+                <signin-view api-url="{{backEndUrl}}"></signin-view>
             </paper-dialog>
             <paper-dialog id="registrationDialog" modal>
                 <h2 id="logonDialogTitle">Sign-on</h2>
-                <signon-view base-url="{{backEndUrl}}"></signon-view>
+                <signon-view api-url="{{backEndUrl}}"></signon-view>
             </paper-dialog>
             <paper-dialog id="forgottenPasswordDialog" modal>
                 <h2 id="forgottenPasswordDialogTitle">Ask password reset</h2>
-                <password-reset-view base-url="{{backEndUrl}}" model="{{sessionInfo.token}}"></password-reset-view>
+                <password-reset-view api-url="{{backEndUrl}}" model="{{sessionInfo.token}}"></password-reset-view>
             </paper-dialog>
 
             <paper-drawer-panel id="paperDrawerPanel" responsive-width="840px">
@@ -145,8 +145,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                 <span>{{sessionInfo.userName}}</span>
                             </paper-button>
                             <iron-dropdown id="userNavigation" horizontal-align="right" vertical-align="top">
-
-                                <!--<paper-material class="dropdown-content">-->
                                 <paper-menu attr-for-selected="data-route" selected="[[route]]" class="dropdown-content">
                                     <a data-route="profile" href="{{baseUrl}}profile">
                                         <iron-icon icon="account-circle"></iron-icon>
@@ -172,7 +170,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             <section data-route="profile">
                                 <!--<paper-material elevation="1">-->
                                 <h2 id="shareContentViewTitleLabel" class="page-title focus-target" tabindex="-1">Profile</h2>
-                                <profile-view account-id="{{sessionInfo.token}}" base-url="{{backEndUrl}}"></profile-view>
+                                <profile-view account-id="{{sessionInfo.token}}" api-url="{{backEndUrl}}"></profile-view>
                                 <!--</paper-material>-->
                             </section>
 
