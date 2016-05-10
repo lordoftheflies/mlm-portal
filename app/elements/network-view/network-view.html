@@ -103,8 +103,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </div>
                 <div class="card-actions">
                     <paper-button id="newMemberDialogCancelButton" dialog-dismiss>Cancel</paper-button>
-                    <paper-button id="newMemberDialogCreateButton" raised class="primary" on-click="onCreateMember" dialog-confirm>Create</paper-button>
-                    <paper-button id="newMemberDialogCreateAndRepeatButton" raised class="primary" on-click="onCreateMemberRepeat" dialog-confirm>Create & repeat</paper-button>
+                    <paper-button id="newMemberDialogCreateButton" raised class="primary" on-tap="onCreateMember" dialog-confirm>Create</paper-button>
+                    <paper-button id="newMemberDialogCreateAndRepeatButton" raised class="primary" on-tap="onCreateMemberRepeat" dialog-confirm>Create & repeat</paper-button>
                 </div>
             </form>
         </paper-dialog>
@@ -161,15 +161,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
             <div class="layout end-justified">
-                <paper-icon-button icon="arrow-upward" on-click="onNavigateUp"></paper-icon-button>
-                <paper-icon-button icon="add-circle" on-click="onOpenCreateMember"></paper-icon-button>
-                <paper-icon-button icon="remove-circle" on-click="onConfirmRemoveMember"></paper-icon-button>
-                <paper-icon-button icon="send" on-click="onSendTo"></paper-icon-button>
+                <paper-icon-button icon="arrow-upward" on-tap="onNavigateUp"></paper-icon-button>
+                <paper-icon-button icon="add-circle" on-tap="onOpenCreateMember"></paper-icon-button>
+                <paper-icon-button icon="remove-circle" on-tap="onConfirmRemoveMember"></paper-icon-button>
+                <paper-icon-button icon="send" on-tap="onSendTo"></paper-icon-button>
                 <template is="dom-if" if="">
-                    <paper-icon-button icon="star" on-click="onOpenPromoteAdminPrompt"></paper-icon-button>
+                    <paper-icon-button icon="star" on-tap="onOpenPromoteAdminPrompt"></paper-icon-button>
                 </template>
                 <template is="dom-if" if="">
-                    <paper-icon-button icon="star-border" on-click="onOpenDemoteAdminPrompt"></paper-icon-button>
+                    <paper-icon-button icon="star-border" on-tap="onOpenDemoteAdminPrompt"></paper-icon-button>
                 </template>
             </div>
 
