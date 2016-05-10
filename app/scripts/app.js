@@ -17,9 +17,7 @@
     var app = document.querySelector('#app');
 
     // Session information object.
-    app.sessionInfo = {
-        token: null
-    };
+    app.sessionInfo = null;
 
     // Session AJAX error response handler.
     app.sessionInitializationErrorHandler = function (event, args) {
@@ -29,7 +27,7 @@
         } else {
             error = JSON.stringify(args.error);
         }
-
+        app.sessionInfo = null;
         console.log(error);
         app.$.toast.text = error;
         app.$.toast.show();
@@ -60,6 +58,11 @@
         app.$.toast.text = app.sessionInfo.userName + ' logged in successfully.';
         app.$.toast.show();
         app.sessionInfo = null;
+    };
+    
+    app.isVisible = function () {
+//        console.log('PPPPPPPPPPPPPP:' + app.sessionInfo.powerUser);
+        return app.sessionInfo === undefined || app.sessionInfo === null || app.sessionInfo.powerUser; 
     };
 
     app.displayInstalledToast = function () {

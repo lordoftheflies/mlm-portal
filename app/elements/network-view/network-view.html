@@ -66,7 +66,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                   on-error="onCreateMemberError" 
                   handle-as="json">
                 <paper-input id="newMemberNameLabel" name="name" label="Name" type="text"></paper-input>
-                <paper-input id="newMemberEmailLabel" name="email" label="Email" type="email"></paper-input>
+                <paper-input hidden="[[isGroup(selectedType)]]" id="newMemberEmailLabel" name="email" label="Email" type="email"></paper-input>
 
                 <input name="role" type="hidden" value="{{selectedType}}" />
                 <paper-radio-group label="Type" attr-for-selected="name" selected="{{selectedType}}">
@@ -180,7 +180,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                 <div id="memberName-{{item.id}}"   class="primary layout horizontal">
 
                                     <span class="flex">[[item.name]]</span>
-                                    <iron-icon class="end-justified" icon="star"></iron-icon>
+                                    <iron-icon class="end-justified" icon="[[getIcon(item.role)]]"></iron-icon>
                                 </div>
                             </div>
 
@@ -245,6 +245,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     unusedCodes: {
                         type: Number,
                         notify: true
+                    },
+                    selectedType: {
+                        type: String,
+                        notify: true,
+                        value: 'USER'
                     }
                 },
                 observers: [
@@ -335,6 +340,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 },
                 isEmpty: function (data) {
                     return data === undefined || data === null || data.length === 0;
+                },
+                isGroup: function (data) {
+                    return data === 'GROUP';
+                },
+                getIcon: function (data) {
+                    if (data === 'GROUP') {
+                        return 'supervisor-account';
+                    } else if (data === 'USER') {
+                        return 'star-border';
+                    } else if (data === 'ADMIN') {
+                        return 'star';
+                    }
                 }
             });
         })();

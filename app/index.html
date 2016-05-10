@@ -93,12 +93,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                     <!-- Drawer Toolbar -->
                     <paper-toolbar id="drawerToolbar">
+                        
                         <span id="mainMenuTitle" class="menu-name">Menu</span>
                     </paper-toolbar>
 
+                    
+                    
                     <!-- Drawer Content -->
                     <paper-menu class="app-menu" attr-for-selected="data-route" selected="[[route]]">
-                        <a hidden="[[!sessionInfo]]" data-route="share-content" href="{{baseUrl}}share-content">
+                        <a hidden="[[!sessionInfo.powerUser]]" data-route="share-content" href="{{baseUrl}}share-content">
                             <iron-icon icon="send"></iron-icon>
                             <span id="shareContentMenuTitle">Share content</span>
                         </a>
@@ -108,12 +111,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             <span id="contentsMenuTitle">Contents</span>
                         </a>
 
-                        <a hidden="[[!sessionInfo]]" data-route="mailbox" href="{{baseUrl}}mailbox">
+                        <a hidden="[[!sessionInfo.powerUser]]" data-route="mailbox" href="{{baseUrl}}mailbox">
                             <iron-icon icon="markunread-mailbox"></iron-icon>
                             <span id="mailBoxMenuTitle">Mailbox</span>
                         </a>
 
-                        <a  hidden="[[!sessionInfo]]" data-route="network" href="{{baseUrl}}network/[[sessionInfo.token]]">
+                        <a  hidden="[[!sessionInfo.powerUser]]" data-route="network" href="{{baseUrl}}network/[[sessionInfo.token]]">
                             <iron-icon icon="supervisor-account"></iron-icon>
                             <span id="networkMenuTitle">Network</span>
                         </a>
@@ -184,7 +187,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                 <!--<paper-material elevation="1">-->
                                 <h2 id="contentTreeViewTitleLabel" class="page-title focus-target" tabindex="-1">Contents</h2>
                                 <content-tree-view 
-                                    admin="{{sessionInfo.powerUser}}"
+                                    admin="[[sessionInfo.powerUser]]"
                                     selected-root="[[params.contentId]]" 
                                     base-url="/" 
                                     api-url="{{backEndUrl}}"></content-tree-view>

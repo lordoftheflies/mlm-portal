@@ -61,11 +61,15 @@ Example:
                 margin-left: 20px;
 
             }
+            
+            .thumbnail {
+                --iron-image-width: 100%;
+            }
 
         </style>
 
         <template is="dom-if" if="{{!sectionDisplay}}">
-            <iron-image src="{{data}}"></iron-image>
+            <iron-image class="thumbnail" src="{{data}}"></iron-image>
         </template>
         <template is="dom-if" if="{{sectionDisplay}}">
             <paper-card heading="{{title}}">
