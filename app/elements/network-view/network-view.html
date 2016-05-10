@@ -35,9 +35,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 display: block;
             }
 
-            :host grapp-breadcrumb span a.grapp-breadcrumb {
-                text-decoration: none !important;
+            :host paper-material div {
+                display: inline-block;
             }
+
+
         </style>
 
         <iron-ajax 
@@ -149,12 +151,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         </template>
                     </iron-selector>-->
 
-        <template is="dom-repeat" items="{{parents}}">
-            <grapp-breadcrumb href="{{baseUrl}}network/{{item.id}}">[[item.name]]</grapp-breadcrumb>
-        </template>
+        <paper-material elevation="1" class="layout horizontal center">
 
-        <paper-material elevation="1" class="layout end-justified">
-            <div class="card-actions">
+
+
+            <!--        <template is="dom-repeat" items="{{parents}}">
+                        <grapp-breadcrumb href="{{baseUrl}}network/{{item.id}}">[[item.name]]</grapp-breadcrumb>
+                    </template>-->
+
+
+            <div class="layout end-justified">
                 <paper-icon-button icon="arrow-upward" on-click="onNavigateUp"></paper-icon-button>
                 <paper-icon-button icon="add-circle" on-click="onOpenCreateMember"></paper-icon-button>
                 <paper-icon-button icon="remove-circle" on-click="onConfirmRemoveMember"></paper-icon-button>
@@ -166,6 +172,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     <paper-icon-button icon="star-border" on-click="onOpenDemoteAdminPrompt"></paper-icon-button>
                 </template>
             </div>
+
+            <paper-tabs selected="{{selectedAccount}}" scrollable attr-for-selected="id">
+                <template is="dom-repeat" items="{{parents}}">
+                    <paper-tab id="[[item.id]]" href="{{baseUrl}}network/{{item.id}}">
+                        <a href="{{baseUrl}}network/{{item.id}}">[[item.name]]</a>
+                    </paper-tab>
+                </template>
+            </paper-tabs>
         </paper-material>
 
         <!--<div class="folder-content">-->

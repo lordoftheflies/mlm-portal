@@ -30,6 +30,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 /*                @apply(--layout-vertical);
                                 @apply(--layout-flex);*/
             }
+           
 
             iframe {
                 @apply(--layout-vertical);
@@ -72,9 +73,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             last-response="{{data}}">
         </iron-ajax>
 
-        <template is="dom-repeat" items="{{parentModel.sections}}">
+<!--        <template is="dom-repeat" items="{{parentModel.sections}}">
             <grapp-breadcrumb href="{{baseUrl}}content-tree/{{item.data}}">[[item.title]]</grapp-breadcrumb>
-        </template>
+        </template>-->
+
+        <paper-tabs selected="{{selectedRoot}}" scrollable attr-for-selected="id">
+            <template is="dom-repeat" items="{{parentModel.sections}}">
+                <paper-tab id="[[item.name]]" href="{{baseUrl}}content-tree/{{item.data}}">
+                    <a href="{{baseUrl}}content-tree/{{item.data}}">[[item.title]]</a>
+                </paper-tab>
+            </template>
+        </paper-tabs>
+
         <paper-tabs hidden="[[!admin]]" selected="{{selectedContentFolder}}" attr-for-selected="name" autoselect>
             <paper-tab text-id="messagesPagePublicFolderTitle" name="public">Public</paper-tab>
             <paper-tab text-id="messagesPageMyContentsFolderTitle" name="drafts">Drafts</paper-tab>
