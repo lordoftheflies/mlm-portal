@@ -177,7 +177,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             <section data-route="share-content">
                                 <!--<paper-material elevation="1">-->
                                 <h2 id="shareContentViewTitleLabel" class="page-title focus-target" tabindex="-1">Share content</h2>
-                                <share-content-view account-id="{{sessionInfo.token}}"></share-content-view>
+                                <share-content-view account-id="{{sessionInfo.token}}" api-url="{{backEndUrl}}"></share-content-view>
                                 <!--</paper-material>-->
                             </section>
                             <section data-route="content-tree">
@@ -192,12 +192,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             </section>
                             <section data-route="mailbox">
                                 <h2 id="mailBoxViewTitleLabel" class="page-title focus-target" tabindex="-1">Mailbox</h2>
-                                <mailbox-view account-id="{{sessionInfo.token}}"></mailbox-view>
+                                <mailbox-view account-id="{{sessionInfo.token}}" api-url="{{backEndUrl}}"></mailbox-view>
                             </section>
                             <section data-route="network">
                                 <!--<paper-material elevation="1">-->
                                 <h2 id="networkViewTitleLabel" class="page-title focus-target" tabindex="-1">Network</h2>
-                                <network-view account-id="[[params.memberId]]"></network-view>
+                                <network-view account-id="[[params.memberId]]" api-url="{{backEndUrl}}"></network-view>
                                 <!--</paper-material>-->
                             </section>
 
