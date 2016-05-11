@@ -80,7 +80,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </paper-dialog>
             <paper-dialog id="registrationDialog" modal>
                 <h2 id="logonDialogTitle">Sign-on</h2>
-                <signon-view api-url="{{backEndUrl}}"></signon-view>
+                <signon-view api-url="{{backEndUrl}}" activation-code="{{activationCode}}"></signon-view>
             </paper-dialog>
             <paper-dialog id="forgottenPasswordDialog" modal>
                 <h2 id="forgottenPasswordDialogTitle">Ask password reset</h2>
@@ -93,12 +93,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                     <!-- Drawer Toolbar -->
                     <paper-toolbar id="drawerToolbar">
-                        
+
                         <span id="mainMenuTitle" class="menu-name">Menu</span>
                     </paper-toolbar>
 
-                    
-                    
+
+
                     <!-- Drawer Content -->
                     <paper-menu class="app-menu" attr-for-selected="data-route" selected="[[route]]">
                         <a hidden="[[!sessionInfo.powerUser]]" data-route="share-content" href="{{baseUrl}}share-content">
@@ -210,6 +210,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                     <about-view></about-view>
                                 </paper-material>
                             </section>
+                            <section data-route="registrate">
+                                <div class="page-title focus-target"></div>
+                                <!--                                <paper-material elevation="1">
+                                                                    <h2 id="logonDialogTitle" class="page-title focus-target" tabindex="-1">Sign-on</h2>
+                                                                    <signon-view api-url="{{backEndUrl}}"></signon-view>
+                                                                </paper-material>-->
+
+                                <!--                                <paper-dialog id="registrationDialog" modal >
+                                                                    <h2 id="logonDialogTitle" class="page-title focus-target">Sign-on</h2>
+                                                                    <signon-view api-url="{{backEndUrl}}"></signon-view>
+                                                                </paper-dialog>-->
+                            </section>
+
+
                         </iron-pages>
                     </div>
                 </paper-scroll-header-panel>

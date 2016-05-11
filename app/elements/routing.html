@@ -91,6 +91,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             app.route = 'about';
             setFocus(app.route);
         });
+        
+        page('/registrate*', function (data) {
+            app.route = 'registrate';
+//            ctx.query = qs.parse(location.search.slice(1));
+            app.activationCode = data.querystring.split('=')[1];
+            app.$.loginDialog.close();
+            app.$.registrationDialog.open();
+            setFocus(app.route);
+//            console.log('kaka--------------');
+        });
 
         // 404
         page('*', function () {

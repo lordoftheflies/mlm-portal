@@ -108,7 +108,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         type="text" 
                         auto-validate 
                         pattern="{{passPattern}}" 
-                        error-message="Activation code.">
+                        error-message="Activation code."
+                        value="{{activationCode}}">
                         <iron-icon icon="lock" prefix></iron-icon>
                     </paper-input>
                 </div>
@@ -142,6 +143,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     namePattern: {
                         type: String,
                         value: '/[a-zA-Z]*/'
+                    },
+                    activationCode: {
+                        type: String,
+                        notify: true
                     }
                 },
                 listeners: {

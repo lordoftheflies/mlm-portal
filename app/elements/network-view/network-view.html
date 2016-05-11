@@ -323,6 +323,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 computeSelected: function (accountId) {
                     console.log('Change selected member from ' + this.selectedAccount + ' to ' + accountId);
                     this.selectedAccount = accountId;
+                    this.childrenRequestParams.parentId = this.selectedAccount;
+                    this.genocideRequestParams.childId = this.selectedAccount;
                     this.$.childrenIronAjax.generateRequest();
                     this.$.genocideIronAjax.generateRequest();
                 },
@@ -330,11 +332,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     console.log('Network-view select account:');
                     this.unusedCodes = details.item.unusedcodes;
                     this.selectedRole = details.item.role;
-                    this.childrenRequestParams.parentId = accountId;
-                    this.genocideRequestParams.childId = accountId;
-                    this.$.childrenIronAjax.generateRequest();
-                    this.$.genocideIronAjax.generateRequest();
-                    
+//                    this.$.childrenIronAjax.generateRequest();
+//                    this.$.genocideIronAjax.generateRequest();
+//                    
                 },
                 onNavigateToChildren: function (event, details) {
                     this.accountId = event.currentTarget.nodeid;
