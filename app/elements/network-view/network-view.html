@@ -188,27 +188,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
             <div class="layout end-justified">
-                <paper-icon-button icon="arrow-upward" on-tap="onNavigateUp"></paper-icon-button>
+                <!--<paper-icon-button icon="arrow-upward" on-tap="onNavigateUp"></paper-icon-button>-->
                 <paper-icon-button icon="add-circle" on-tap="onOpenCreateMember"></paper-icon-button>
                 <paper-icon-button icon="remove-circle" on-tap="onConfirmRemoveMember"></paper-icon-button>
                 <paper-icon-button icon="send" on-tap="onSendTo"></paper-icon-button>
-                <template is="dom-if" if="">
+                <template is="dom-if" if="[[isUser(selectedRole)]]">
                     <paper-icon-button icon="star" on-tap="onOpenPromoteAdminPrompt"></paper-icon-button>
                 </template>
-                <template is="dom-if" if="">
+                <template is="dom-if" if="[[isAdmin(selectedRole)]]">
                     <paper-icon-button icon="star-border" on-tap="onOpenDemoteAdminPrompt"></paper-icon-button>
                 </template>
             </div>
 
             <paper-tabs selected="{{selectedAccount}}" scrollable attr-for-selected="id">
                 <template is="dom-repeat" items="{{parents}}">
-                    <paper-tab id="[[item.id]]" href="{{baseUrl}}network/{{item.id}}">
+                    <paper-tab id="[[item.id]]" role="{{item.role}}" href="{{baseUrl}}network/{{item.id}}">
                         <a href="{{baseUrl}}network/{{item.id}}">[[item.name]]</a>
                     </paper-tab>
                 </template>
             </paper-tabs>
         </paper-material>
 
+        <!--S: {{selectedMember.role}}-->
+        
         <!--<div class="folder-content">-->
         <!--<iron-pages selected="{{selectedMailBoxFolder}}">-->
         <template is="dom-if" if="{{!isEmpty(data)}}">
@@ -283,6 +285,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         type: String,
                         notify: true
                     },
+                    selectedRole: {
+                        type: String,
+                        notify: true
+                    },
                     possibleParents: {
                         type: Array,
                         notify: true
@@ -331,10 +337,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 computeSelected: function (accountId) {
                     console.log('Change selected member from ' + this.selectedAccount + ' to ' + accountId);
                     this.selectedAccount = accountId;
+                    this.$.childrenIronAjax.generateRequest();
+                    this.$.genocideIronAjax.generateRequest();
                 },
                 onSelectMember: function (event, details) {
                     console.log('Network-view select account:');
                     this.unusedCodes = details.item.unusedcodes;
+                    this.selectedRole = details.item.role;
                 },
                 onNavigateToChildren: function (event, details) {
                     this.accountId = event.currentTarget.nodeid;
@@ -439,6 +448,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 },
                 isGroup: function (data) {
                     return data === 'GROUP';
+                },
+                isAdmin: function (data) {
+                    return data === 'ADMIN';
+                },
+                isUser: function (data) {
+                    return data === 'USER';
                 },
                 getIcon: function (data) {
                     if (data === 'GROUP') {
