@@ -31,7 +31,7 @@
         console.log(error);
         app.$.toast.text = error;
         app.$.toast.show();
-        app.$.loginDialog.open();
+        if (!app.activationCode) app.$.loginDialog.open();
     };
 
     // Session AJAX success response handler.
@@ -44,8 +44,8 @@
     app.baseUrl = '/';
     // Sets app backend REST interface
 //    app.backEndUrl = 'http://185.51.67.30:8080/flavonteam/';
-//    app.backEndUrl = 'http://185.51.67.30:8080/topflavon-backend/';
-    app.backEndUrl = 'http://localhost:8080/topflavon-backend/';
+    app.backEndUrl = 'http://185.51.67.30:8080/topflavon-backend/';
+//    app.backEndUrl = 'http://localhost:8080/topflavon-backend/';
     app.applicationTitle = 'TopFlavon';
 
     if (window.location.port === '') {  // if production
