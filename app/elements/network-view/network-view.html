@@ -44,16 +44,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <iron-ajax 
             id="genocideIronAjax"
-            url="{{apiUrl}}/addressbook/genocide" 
+            url="{{apiUrl}}addressbook/genocide" 
             params="{{genocideRequestParams}}"
             last-response="{{parents}}"></iron-ajax>
         <iron-ajax 
             id="possibleParentsIronAjax"
-            url="{{apiUrl}}/addressbook/all" 
+            url="{{apiUrl}}addressbook/all" 
             last-response="{{possibleParents}}" auto></iron-ajax>
         <iron-ajax 
             id="childrenIronAjax"
-            url="{{apiUrl}}/addressbook/children" 
+            url="{{apiUrl}}addressbook/children" 
             params="{{childrenRequestParams}}"
             last-response="{{data}}"></iron-ajax>
         <iron-ajax url="{{apiUrl}}localization/locales" 
@@ -168,24 +168,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </form>
         </paper-dialog>
 
-        <!--            <iron-selector class="breadcrumbs" id="parentBeadCrumbs" attr-for-selected="nodeid" selected="{{selectedAccount}}">
-                        <template is="dom-repeat" items="[[parents]]">
-                            <div nodeid="{{item.id}}" unusedcodes="{{item.codes}}" on-tap="onNavigateToChildren" id="parentName-{{item.id}}">
-                                <iron-image class="thumbnail" sizing="contain" src="[[item.image]]"></iron-image>
-                                <span>[[item.name]]</span>
-                                <paper-badge id="codeBadge-{{item.id}}" for="parentName-{{item.id}}" label="{{item.codes}}" class="blue"></paper-badge>
-                            </div>
-                        </template>
-                    </iron-selector>-->
-
         <paper-material elevation="1" class="layout horizontal center">
-
-
-
-            <!--        <template is="dom-repeat" items="{{parents}}">
-                        <grapp-breadcrumb href="{{baseUrl}}network/{{item.id}}">[[item.name]]</grapp-breadcrumb>
-                    </template>-->
-
 
             <div class="layout end-justified">
                 <!--<paper-icon-button icon="arrow-upward" on-tap="onNavigateUp"></paper-icon-button>-->
@@ -217,9 +200,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         
         <!--<div class="folder-content">-->
         <!--<iron-pages selected="{{selectedMailBoxFolder}}">-->
-        <template is="dom-if" if="{{!isEmpty(data)}}">
-
-            <iron-list id="childrenIronList" items="[[data]]" as="item">
+        <!--<template is="dom-if" if="{{!isEmpty(data)}}">-->
+            <iron-list id="childrenIronList" items="[[data]]" as="item" hidden="{{isEmpty(data)}}">
                 <template>
                     <div nodeid="{{item.id}}" on-tap="onNavigateToChildren">
                         <div  class="item" tabindex$="[[tabIndex]]">
@@ -235,10 +217,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     </div>
                 </template>
             </iron-list>
-        </template>
-        <template is="dom-if" if="{{isEmpty(data)}}">
+        <!--</template>-->
+        <!--<template is="dom-if" if="">-->
 
-            <div class="folder-content">
+            <div class="folder-content" hidden="{{!isEmpty(data)}}">
                 <br />
                 <paper-card elevation="1">
                     <div class="card-content">
@@ -246,7 +228,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     </div>
                 </paper-card>
             </div>
-        </template>
+        <!--</template>-->
 
 
 
@@ -348,12 +330,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     console.log('Network-view select account:');
                     this.unusedCodes = details.item.unusedcodes;
                     this.selectedRole = details.item.role;
+                    this.childrenRequestParams.parentId = accountId;
+                    this.genocideRequestParams.childId = accountId;
+                    this.$.childrenIronAjax.generateRequest();
+                    this.$.genocideIronAjax.generateRequest();
+                    
                 },
                 onNavigateToChildren: function (event, details) {
                     this.accountId = event.currentTarget.nodeid;
                     this.selectedAccount = this.accountId;
-                    this.$.childrenIronAjax.generateRequest();
-                    this.$.genocideIronAjax.generateRequest();
+                    
                     console.log('Network-view navigate to children ');
 
                 },

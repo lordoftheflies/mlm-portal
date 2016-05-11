@@ -37,10 +37,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 @apply(--layout-horizontal);
             }
         </style>
-        <template is="dom-if" if="{{!data.leaf}}">
+        <!--<template is="dom-if" if="{{!data.leaf}}">-->
             <!--<paper-card heading$="{{title}}">-->
             <!--<div class="card-content">-->
-            <iron-list items="{{data.sections}}" as="section"  hidden="[[!data.sections.length]]">
+            <iron-list items="{{data.sections}}" as="section"  hidden="[[data.leaf]]">
                 <template>
 
                     <div>
@@ -69,14 +69,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <!--</div>-->
             <!--</paper-card>-->
             <!---->
-        </template>
-        <template is="dom-if" if="{{data.leaf}}">
-            <paper-card heading="{{data.title}}">
+        <!--</template>-->
+        <!--<template is="dom-if" if="{{data.leaf}}">-->
+        <paper-card heading="{{data.title}}" hidden="{{!data.leaf}}">
 
-                <plutonium-cm-section id="contentDisplay" class="card-content"  content-model="{{data}}">
-                </plutonium-cm-section>
-            </paper-card>
-        </template>
+            <plutonium-cm-section id="contentDisplay" class="card-content"  content-model="{{data}}">
+            </plutonium-cm-section>
+        </paper-card>
+        <!--</template>-->
 
     </template>
     <script>
