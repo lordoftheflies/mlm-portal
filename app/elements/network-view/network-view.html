@@ -60,6 +60,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                    last-response="{{locales}}" auto></iron-ajax>
 
+
+
         <paper-dialog id="memberDialog" modal>
             <h2 id="newMemberDialogTitle">New member</h2>
             <form id="newMemberForm" is="iron-form" class="card-content" verbose 
@@ -111,34 +113,59 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <paper-dialog id="memberEraseConfirm" modal>
             <h2 id="memberEraseConfirmDialogTitle">Delete member</h2>
-            <div id="memberEraseConfirmDialogText" class="card-content">
-                Are you sure delete member?
-            </div>
-            <div class="card-actions">
-                <paper-button id="memberEraseConfirmDialogCancelButton" dialog-dismiss>Cancel</paper-button>
-                <paper-button id="memberEraseConfirmDialogAcceptButton" dialog-confirm raised>OK</paper-button>
-            </div>
+            <form id="deleteMemberForm" is="iron-form" 
+                  verbose 
+                  content-type="application/json" 
+                  method="post" action="{{apiUrl}}addressbook/delete"
+                  handle-as="json">
+                <div id="memberEraseConfirmDialogText" class="card-content">
+                    Are you sure delete member?
+                </div>
+                <input name="owner" type="hidden" value="{{ownerId}}" />
+                <input name="subject" type="hidden" value="{{selectedAccount}}" />
+                <div class="card-actions">
+                    <paper-button id="memberEraseConfirmDialogCancelButton" dialog-dismiss>Cancel</paper-button>
+                    <paper-button id="memberEraseConfirmDialogAcceptButton" dialog-confirm raised on-tap="onDeleteMemberPrompted">OK</paper-button>
+                </div>
+            </form>
         </paper-dialog>
         <paper-dialog id="promoteAdminDialog" modal>
             <h2 id="promoteAdminDialogTitle">Promote administrator</h2>
-            <div id="promoteAdminDialogText" class="card-content">
-                Are you surely promote {{item.name}} to administrator?
-            </div>
-            <div class="card-actions">
-                <paper-button id="promoteAdminDialogCancelButton" dialog-dismiss>Cancel</paper-button>
-                <paper-button id="promoteAdminDialogAcceptButton" dialog-confirm raised>OK</paper-button>
-            </div>
+            <form id="promoteMemberForm" is="iron-form" 
+                  verbose 
+                  content-type="application/json" 
+                  method="post" action="{{apiUrl}}addressbook/promote"
+                  handle-as="json">
+                <div id="promoteAdminDialogText" class="card-content">
+                    Are you surely promote {{item.name}} to administrator?
+                </div>
+                
+                <input name="owner" type="hidden" value="{{ownerId}}" />
+                <input name="subject" type="hidden" value="{{selectedAccount}}" />
+                <div class="card-actions">
+                    <paper-button id="promoteAdminDialogCancelButton" dialog-dismiss>Cancel</paper-button>
+                    <paper-button id="promoteAdminDialogAcceptButton" dialog-confirm raised on-tap="onPromoteMemberPrompted">OK</paper-button>
+                </div>
+            </form>
         </paper-dialog>
 
         <paper-dialog id="demoteAdminDialog" modal>
             <h2 id="demoteAdminDialogTitle">Demote administrator</h2>
-            <div id="demoteAdminDialogText" class="card-content">
-                Are you surely demote {{item.name}} to user?
-            </div>
-            <div class="card-actions">
-                <paper-button id="demoteAdminDialogCancelButton" dialog-dismiss>Cancel</paper-button>
-                <paper-button id="demoteAdminDialogAcceptButton" dialog-confirm raised>OK</paper-button>
-            </div>
+            <form id="demoteMemberForm" is="iron-form" 
+                  verbose 
+                  content-type="application/json" 
+                  method="post" action="{{apiUrl}}addressbook/demote"
+                  handle-as="json">
+                <div id="demoteAdminDialogText" class="card-content">
+                    Are you surely demote {{item.name}} to user?
+                </div>
+                <input name="owner" type="hidden" value="{{ownerId}}" />
+                <input name="subject" type="hidden" value="{{selectedAccount}}" />
+                <div class="card-actions">
+                    <paper-button id="demoteAdminDialogCancelButton" dialog-dismiss>Cancel</paper-button>
+                    <paper-button id="demoteAdminDialogAcceptButton" dialog-confirm raised on-tap="onDemoteMemberPrompted">OK</paper-button>
+                </div>
+            </form>
         </paper-dialog>
 
         <!--            <iron-selector class="breadcrumbs" id="parentBeadCrumbs" attr-for-selected="nodeid" selected="{{selectedAccount}}">
@@ -248,6 +275,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         type: String,
                         notify: true
                     },
+                    ownerId: {
+                        type: String,
+                        notify: true
+                    },
                     selectedAccount: {
                         type: String,
                         notify: true
@@ -272,8 +303,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     'computeSelected(accountId)'
                 ],
                 listeners: {
-                    'iron-form-response': 'onCreateMemberResponse',
-                    'iron-form-error': 'onCreateMemberError',
+                    'newMemberForm.iron-form-response': 'onCreateMemberResponse',
+                    'newMemberForm.iron-form-error': 'onCreateMemberError',
+                    'deleteMemberForm.iron-form-response': 'onDeleteMemberResponse',
+                    'deleteMemberForm.iron-form-error': 'onDeleteMemberError',
+                    'promoteMemberForm.iron-form-response': 'onPromoteMemberResponse',
+                    'promoteMemberForm.iron-form-error': 'onPromoteMemberError',
+                    'demoteMemberForm.iron-form-response': 'onDemoteMemberResponse',
+                    'demoteMemberForm.iron-form-error': 'onDemoteMemberError',
                     'iron-select': 'onSelectMember',
                     'network-tree-refresh': 'onRefresh'
                 },
@@ -331,26 +368,71 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 onCreateMemberResponse: function (event, details) {
                     console.log('Member created successfully: ' + JSON.stringify(details.response));
                     this.$.childrenIronAjax.generateRequest();
-                    app.$.toast.text = app.locale.success_member_create;
+                    app.$.toast.text = 'Member created successfully';
                     app.$.toast.show();
                 },
                 onCreateMemberError: function (event, details) {
                     console.log('Create-member error: ' + JSON.stringify(details.response));
-                    app.$.toast.text = app.locale.error_member_create;
+                    app.$.toast.text = 'Member creation failed.';
+                    app.$.toast.show();
+                },
+                onDeleteMemberResponse: function (event, details) {
+                    console.log('Member removed successfully: ' + JSON.stringify(details.response));
+                    this.$.childrenIronAjax.generateRequest();
+                    app.$.toast.text = 'Member removed successfully';
+                    app.$.toast.show();
+                },
+                onDeleteMemberError: function (event, details) {
+                    console.log('Remove-member error: ' + JSON.stringify(details.response));
+                    app.$.toast.text = 'Member removing failed.';
+                    app.$.toast.show();
+                },
+                onPromoteMemberResponse: function (event, details) {
+                    console.log('Member promoted successfully: ' + JSON.stringify(details.response));
+                    this.$.childrenIronAjax.generateRequest();
+                    app.$.toast.text = 'Member promoted successfully';
+                    app.$.toast.show();
+                },
+                onPromoteMemberError: function (event, details) {
+                    console.log('Promote-member error: ' + JSON.stringify(details.response));
+                    app.$.toast.text = 'Member promoting failed.';
+                    app.$.toast.show();
+                },
+                onDemoteMemberResponse: function (event, details) {
+                    console.log('Member demoted successfully: ' + JSON.stringify(details.response));
+                    this.$.childrenIronAjax.generateRequest();
+                    app.$.toast.text = 'Member demoted successfully';
+                    app.$.toast.show();
+                },
+                onDemoteMemberError: function (event, details) {
+                    console.log('Demote-member error: ' + JSON.stringify(details.response));
+                    app.$.toast.text = 'Member demoting failed.';
                     app.$.toast.show();
                 },
                 onConfirmRemoveMember: function () {
                     this.$.possibleParentsIronAjax.generateRequest();
                     this.$.memberEraseConfirm.open();
                 },
+                onDeleteMemberPrompted: function () {
+                    this.$.deleteMemberForm.submit();
+                    console.log('Delete member prompted.');
+                },
                 onOpenPromoteAdminPrompt: function () {
                     this.$.promoteAdminDialog.open();
+                },
+                onPromoteMemberPrompted: function () {
+                    this.$.promoteMemberForm.submit();
+                    console.log('Promote member prompted.');
                 },
                 onOpenDemoteAdminPrompt: function () {
                     this.$.demoteAdminDialog.open();
                 },
+                onDemoteMemberPrompted: function () {
+                    this.$.demoteMemberForm.submit();
+                    console.log('Demote member prompted.');
+                },
                 onSendTo: function () {
-
+                    page.redirect(app.baseUrl + 'share-content');
                 },
                 isEmpty: function (data) {
                     return data === undefined || data === null || data.length === 0;
@@ -366,6 +448,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     } else if (data === 'ADMIN') {
                         return 'star';
                     }
+                },
+                getOwnerAccount: function () {
+                    if (app.sessionInfo)
+                        return app.sessionInfo.token;
+                    else
+                        return null;
                 }
             });
         })();
