@@ -200,7 +200,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             <section data-route="network">
                                 <!--<paper-material elevation="1">-->
                                 <h2 id="networkViewTitleLabel" class="page-title focus-target" tabindex="-1">Network</h2>
-                                <network-view account-id="[[params.memberId]]" api-url="{{backEndUrl}}"></network-view>
+                                <network-view account-id="[[params.memberId]]" api-url="{{backEndUrl}}" owner-id="{{sessionInfo.token}}"></network-view>
                                 <!--</paper-material>-->
                             </section>
 

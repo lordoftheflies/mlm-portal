@@ -60,6 +60,7 @@
                 "id": {}
             }
         },
+        "iron-list": {},
         "gold-email-input": {
             "attributes": {
                 "label": {},
@@ -119,6 +120,7 @@
                 "paper-drawer-toggle": {}
             }
         },
+        "paper-dropdown-menu": {},
         "paper-tab": {
             "attributes": {
                 "id": {}
