@@ -39,6 +39,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 @apply(--layout-center);
                 @apply(--layout-horizontal);
             }
+            
+/*            :host .card-actions paper-fab {
+                @apply(--layout-end-justified);
+            }*/
+            
+            #signInFormRememberMe, #signInFormForgotPassword {
+                padding-bottom: 8px;
+                padding-top: 8px;
+            }
         </style>
         <!--<paper-card id="signInForm" heading="Sign-in" class="layout horizontal center">-->
         <form is="iron-form" id="form" 
