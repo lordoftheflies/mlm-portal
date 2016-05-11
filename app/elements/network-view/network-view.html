@@ -203,7 +203,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <paper-tabs selected="{{selectedAccount}}" scrollable attr-for-selected="id">
                 <template is="dom-repeat" items="{{parents}}">
                     <paper-tab id="[[item.id]]" role="{{item.role}}" href="{{baseUrl}}network/{{item.id}}">
-                        <a href="{{baseUrl}}network/{{item.id}}">[[item.name]]</a>
+                        <iron-icon class="end-justified" icon="[[getIcon(item.role)]]"></iron-icon>
+                        <a href="{{baseUrl}}network/{{item.id}}">
+                            
+                            [[item.name]]
+                        </a>
                     </paper-tab>
                 </template>
             </paper-tabs>
