@@ -144,11 +144,11 @@
       "addLinkButton": {
         "title": "Hivatkozás szekció beágyazása."
       },
-      "contentTitleInput": {
-        "label": "Cím"
-      },
       "parentDdLabel": {
         "label": "Szülő"
+      },
+      "contentTitleInput": {
+        "label": "Cím"
       }
     },
     "shareTabLabel": "Megosztás",

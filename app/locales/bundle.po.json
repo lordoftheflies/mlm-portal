@@ -144,11 +144,11 @@
       "addLinkButton": {
         "title": "Osadzonej zawartości Link."
       },
-      "contentTitleInput": {
-        "label": "Tytuł"
-      },
       "parentDdLabel": {
         "label": "Roślina mateczna"
+      },
+      "contentTitleInput": {
+        "label": "Tytuł"
       }
     },
     "shareTabLabel": "Dzielić",

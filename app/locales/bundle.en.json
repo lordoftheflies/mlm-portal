@@ -25,52 +25,11 @@
   },
   "about-view": {
     "meta": {
-      "todo": [
-        {
-          "op": "add",
-          "path": "/ul_2:template:li/0",
-          "value": " {1} ({2}) "
-        },
-        {
-          "op": "add",
-          "path": "/ul_2:template:li/1",
-          "value": "{{item.name}}"
-        },
-        {
-          "op": "add",
-          "path": "/ul_2:template:li/2",
-          "value": "{{item.email}}"
-        },
-        {
-          "op": "add",
-          "path": "/ul_4:template:li/0",
-          "value": " {1} ({2}) "
-        },
-        {
-          "op": "add",
-          "path": "/ul_4:template:li/1",
-          "value": "{{item.name}}"
-        },
-        {
-          "op": "add",
-          "path": "/ul_4:template:li/2",
-          "value": "{{item.email}}"
-        }
-      ]
+      "todo": []
     },
     "model": {},
     "contributorsTitleLabel": "Authors & contributors",
-    "ul_2:template:li": [
-      " {1} ({2}) ",
-      "{{item.name}}",
-      "{{item.email}}"
-    ],
-    "administrationTitleLabel": "Webmaster & maintenance",
-    "ul_4:template:li": [
-      " {1} ({2}) ",
-      "{{item.name}}",
-      "{{item.email}}"
-    ]
+    "administrationTitleLabel": "Webmaster & maintenance"
   },
   "content-tree-view": {
     "meta": {
@@ -103,13 +62,7 @@
   },
   "network-view": {
     "meta": {
-      "todo": [
-        {
-          "op": "add",
-          "path": "/model/preferredLanguageLabel/label",
-          "value": "Preferred language"
-        }
-      ]
+      "todo": []
     },
     "model": {
       "newMemberNameLabel": {
@@ -173,18 +126,7 @@
   },
   "plutonium-cm-form": {
     "meta": {
-      "todo": [
-        {
-          "op": "add",
-          "path": "/[[item/id]]:label_1/0",
-          "value": "({1})"
-        },
-        {
-          "op": "add",
-          "path": "/[[item/id]]:label_1/1",
-          "value": "[[item.id]]"
-        }
-      ]
+      "todo": []
     },
     "model": {
       "messageInput": {
@@ -202,11 +144,11 @@
       "addLinkButton": {
         "title": "Embedd a link to another message to the message content."
       },
-      "contentTitleInput": {
-        "label": "Title"
-      },
       "parentDdLabel": {
         "label": "Parent"
+      },
+      "contentTitleInput": {
+        "label": "Title"
       }
     },
     "shareTabLabel": "Share",
@@ -216,13 +158,7 @@
     "assembledContentRadio": "Assemble",
     "embedContentRadio": "Embed content",
     "assembleRadio": "Assemble",
-    "uploadFileText": "Choose File",
-    "[[item": {
-      "id]]:label_1": [
-        "({1})",
-        "[[item.id]]"
-      ]
-    }
+    "uploadFileText": "Choose File"
   },
   "profile-view": {
     "meta": {
