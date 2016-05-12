@@ -267,6 +267,9 @@
         },
         "on-tap": {
             "context": "a"
+        },
+        "href": {
+            "context": "div"
         }
     }
 }

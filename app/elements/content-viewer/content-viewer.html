@@ -32,43 +32,56 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             :host paper-material {
                 background-color: white;
-                height: 40px;
-                @apply(--layout-center);
-                @apply(--layout-horizontal);
+                /*height: 40px;*/
+                /*@apply(--layout-center);*/
+                /*@apply(--layout-horizontal);*/
+                margin-top: 16px;
+                padding: 20px;
+            }
+            
+            :host paper-card {
+                margin-top: 16px;
             }
         </style>
         <!--<template is="dom-if" if="{{!data.leaf}}">-->
-            <!--<paper-card heading$="{{title}}">-->
-            <!--<div class="card-content">-->
-            <iron-list items="{{data.sections}}" as="section"  hidden="[[data.leaf]]">
-                <template>
+        <!--<paper-card heading$="{{title}}">-->
+        <!--<div class="card-content">-->
+        <iron-list items="{{data.sections}}" as="section"  hidden="[[data.leaf]]">
+            <template>
 
-                    <div>
+                <!--                <paper-material elevation="1" tabindex="[[tabIndex]]"
+                                                >-->
 
-                        <div class="item" tabindex="[[tabIndex]]">
-                            <div class="pad">
-                                <div id="articleTitleLabel" class="primary" title="Navigate to {{baseUrl}}content-tree/{{section.data}}">
-                                    <template is="dom-if" if="{{section.hasEmbeddedFile}}">
-                                        <a href$="{{baseUrl}}content-tree/{{section.name}}">[[section.title]]</a>
-                                    </template>
-                                    <template is="dom-if" if="{{!section.hasEmbeddedFile}}">
-                                        <a href$="{{baseUrl}}content-tree/{{section.data}}">[[section.title]]</a>
-                                    </template>
-                                </div>
-                                <div class="secondary">
-                                    <span>[[item.title]]</span>
-                                    <p>[[item.text]]</p>
-                                </div>
-                                <div class="secondary dim">[[item.longText]]</div>
-                            </div>
-                        </div>
+                <!--<div class="item" tabindex="[[tabIndex]]">-->
+                <div >
+                    <paper-material elevation="1" 
+                                    href="{{section.name}}" 
+                                    on-tap="onNavigate" 
+                                    hidden="[[!section.hasEmbeddedFile]]" 
+                                    id="articleTitleLabel" 
+                                    class="item"
+                                    title="Navigate to {{baseUrl}}content-tree/{{section.data}}">
+                        <span>[[section.title]]</span>
+                    </paper-material>
 
-                    </div>
-                </template>
-            </iron-list>
-            <!--</div>-->
-            <!--</paper-card>-->
-            <!---->
+                    <paper-material elevation="1"
+                                    href="{{section.data}}" 
+                                    on-tap="onNavigate" 
+                                    hidden="[[section.hasEmbeddedFile]]" 
+                                    id="articleTitleLabel"
+                                    class="item"
+                                    title="Navigate to {{baseUrl}}content-tree/{{section.data}}">
+                        <span>[[section.title]]</span>
+                    </paper-material>
+                </div>
+                <!--</div>-->
+
+                <!--</paper-material>-->
+            </template>
+        </iron-list>
+        <!--</div>-->
+        <!--</paper-card>-->
+        <!---->
         <!--</template>-->
         <!--<template is="dom-if" if="{{data.leaf}}">-->
         <paper-card heading="{{data.title}}" hidden="{{!data.leaf}}">
@@ -101,6 +114,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 ],
                 computeTitle: function (data) {
                     this.title = data.title;
+                },
+                onNavigate: function (event, details) {
+                    page.redirect(app.baseUrl + 'content-tree/' + details.sourceEvent.currentTarget.href);
                 }
             });
         })();
