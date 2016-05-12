@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
 <xliff version="1.0">
-  <file source-language="en" target-language="po" datatype="plaintext" original="messages" date="2016-05-07T18:21:14Z" product-name="messages">
+  <file source-language="en" target-language="po" datatype="plaintext" original="messages" date="2016-05-12T18:11:37Z" product-name="messages">
   <header/>
     <body>
       <trans-unit id="app.loginDialogTitle">
@@ -152,6 +152,10 @@
         <source>Parent member</source>
         <target>Członek rodzic</target>
       </trans-unit>
+      <trans-unit id="network-view.model.preferredLanguageLabel.label">
+        <source>Preferred language</source>
+        <target>Preferowany język</target>
+      </trans-unit>
       <trans-unit id="network-view.newMemberDialogTitle">
         <source>New member</source>
         <target>Nowy członek</target>
@@ -296,14 +300,6 @@
         <source>Properties</source>
         <target>Nieruchomości</target>
       </trans-unit>
-      <trans-unit id="plutonium-cm-form.[[item.id]]:label_1.0">
-        <source>({1})</source>
-        <target>({1})</target>
-      </trans-unit>
-      <trans-unit id="plutonium-cm-form.[[item.id]]:label_1.1">
-        <source>[[item.id]]</source>
-        <target>[[item.id]]</target>
-      </trans-unit>
       <trans-unit id="plutonium-cm-form.embbeddedContentRadio">
         <source>Embed content</source>
         <target>Doładuj fajl</target>
@@ -427,10 +423,6 @@
       <trans-unit id="signin-view.model.signInFormLoginPassword.label">
         <source>Password</source>
         <target>Hasło</target>
-      </trans-unit>
-      <trans-unit id="signin-view.model.signInFormLoginPassword.error-message">
-        <source>Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number.</source>
-        <target>Nieprawidłowe hasło. Hasło musi być 6-16 alphanumercal charakter i minimalna 1 numer.</target>
       </trans-unit>
       <trans-unit id="signin-view.model.signInFormAccept.title">
         <source>submit</source>

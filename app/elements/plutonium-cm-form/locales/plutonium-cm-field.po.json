@@ -1,9 +1,10 @@
 {
   "meta": {
+    "todo": []
   },
   "model": {
     "addSectionButton": {
-      "title": "Embedd video to the message content."
+      "title": "Ttworzenia zawartości tekstowej."
     },
     "addVideoButton": {
       "title": "Osadzony materiał wideo"

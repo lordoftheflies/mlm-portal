@@ -25,52 +25,11 @@
   },
   "about-view": {
     "meta": {
-      "todo": [
-        {
-          "op": "add",
-          "path": "/ul_2:template:li/0",
-          "value": " {1} ({2}) "
-        },
-        {
-          "op": "add",
-          "path": "/ul_2:template:li/1",
-          "value": "{{item.name}}"
-        },
-        {
-          "op": "add",
-          "path": "/ul_2:template:li/2",
-          "value": "{{item.email}}"
-        },
-        {
-          "op": "add",
-          "path": "/ul_4:template:li/0",
-          "value": " {1} ({2}) "
-        },
-        {
-          "op": "add",
-          "path": "/ul_4:template:li/1",
-          "value": "{{item.name}}"
-        },
-        {
-          "op": "add",
-          "path": "/ul_4:template:li/2",
-          "value": "{{item.email}}"
-        }
-      ]
+      "todo": []
     },
     "model": {},
     "contributorsTitleLabel": "Szerzők & közreműködők",
-    "ul_2:template:li": [
-      " {1} ({2}) ",
-      "{{item.name}}",
-      "{{item.email}}"
-    ],
-    "administrationTitleLabel": "Webmester & karbantartás",
-    "ul_4:template:li": [
-      " {1} ({2}) ",
-      "{{item.name}}",
-      "{{item.email}}"
-    ]
+    "administrationTitleLabel": "Webmester & karbantartás"
   },
   "content-tree-view": {
     "meta": {
@@ -114,6 +73,9 @@
       },
       "newMemberParentLabel": {
         "label": "Fölérendelt tag"
+      },
+      "preferredLanguageLabel": {
+        "label": "Preferált nyelv"
       }
     },
     "newMemberDialogTitle": "Új tag",
@@ -145,17 +107,11 @@
   },
   "plutonium-cm-field": {
     "meta": {
-      "todo": [
-        {
-          "op": "replace",
-          "path": "/model/addSectionButton/title",
-          "value": "Embedd video to the message content."
-        }
-      ]
+      "todo": []
     },
     "model": {
       "addSectionButton": {
-        "title": "Embedd video to the message content."
+        "title": "Szöveges szekció beágyazása."
       },
       "addVideoButton": {
         "title": "Video szekció beágyazása."
@@ -170,30 +126,14 @@
   },
   "plutonium-cm-form": {
     "meta": {
-      "todo": [
-        {
-          "op": "add",
-          "path": "/[[item/id]]:label_1/0",
-          "value": "({1})"
-        },
-        {
-          "op": "add",
-          "path": "/[[item/id]]:label_1/1",
-          "value": "[[item.id]]"
-        },
-        {
-          "op": "replace",
-          "path": "/model/addSectionButton/title",
-          "value": "Embedd video to the message content."
-        }
-      ]
+      "todo": []
     },
     "model": {
       "messageInput": {
         "label": "Üzenet"
       },
       "addSectionButton": {
-        "title": "Embedd video to the message content."
+        "title": "Szöveges szekció beágyazása."
       },
       "addVideoButton": {
         "title": "Video szekció beágyazása."
@@ -204,22 +144,16 @@
       "addLinkButton": {
         "title": "Hivatkozás szekció beágyazása."
       },
-      "parentDdLabel": {
-        "label": "Szülő"
-      },
       "contentTitleInput": {
         "label": "Cím"
+      },
+      "parentDdLabel": {
+        "label": "Szülő"
       }
     },
     "shareTabLabel": "Megosztás",
     "contentTabLabel": "Tartalom",
     "propertiesTabLabel": "Tulajdonságok",
-    "[[item": {
-      "id]]:label_1": [
-        "({1})",
-        "[[item.id]]"
-      ]
-    },
     "embbeddedContentRadio": "Bináris tartalom",
     "assembledContentRadio": "Saját tartalom",
     "embedContentRadio": "Bináris tartalom",
@@ -285,12 +219,10 @@
     },
     "model": {
       "signInFormLoginEmail": {
-        "label": "Email cím",
-        "error-message": "Érvénytelen email cím."
+        "label": "Email cím"
       },
       "signInFormLoginPassword": {
-        "label": "Jelszó",
-        "error-message": "Érvénytelen jelszó. A jelszó egy 6-16 jegyű, legalább egy számot tartalmazó alfanumerikus karaktersorozat."
+        "label": "Jelszó"
       },
       "signInFormAccept": {
         "title": "Bejelentkezés"
@@ -308,10 +240,6 @@
       "registrateTitleLabel": {
         "label": "Név",
         "error-message": "Érvénytelen név."
-      },
-      "registrateEmailLabel": {
-        "label": "Email cím",
-        "error-message": "Érvénytelen email cím."
       },
       "registratePhoneNumberLabel": {
         "label": "Telefonszám",

@@ -1,14 +1,13 @@
 {
   "meta": {
+    "todo": []
   },
   "model": {
     "signInFormLoginEmail": {
-      "label": "Adres e-mail",
-      "error-message": "Błędny adres e-mail."
+      "label": "Adres e-mail"
     },
     "signInFormLoginPassword": {
-      "label": "Hasło",
-      "error-message": "Nieprawidłowe hasło. Hasło musi być 6-16 alphanumercal charakter i minimalna 1 numer."
+      "label": "Hasło"
     },
     "signInFormAccept": {
       "title": "Zaloguj"

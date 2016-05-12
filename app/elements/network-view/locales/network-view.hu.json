@@ -11,6 +11,9 @@
     },
     "newMemberParentLabel": {
       "label": "Fölérendelt tag"
+    },
+    "preferredLanguageLabel": {
+      "label": "Preferált nyelv"
     }
   },
   "newMemberDialogTitle": "Új tag",

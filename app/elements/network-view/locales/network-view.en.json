@@ -11,6 +11,9 @@
     },
     "newMemberParentLabel": {
       "label": "Parent member"
+    },
+    "preferredLanguageLabel": {
+      "label": "Preferred language"
     }
   },
   "newMemberDialogTitle": "New member",

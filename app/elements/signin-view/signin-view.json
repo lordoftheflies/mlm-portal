@@ -2,12 +2,10 @@
   "meta": {},
   "model": {
     "signInFormLoginEmail": {
-      "label": "Email address",
-      "error-message": "Invalid email address."
+      "label": "Email address"
     },
     "signInFormLoginPassword": {
-      "label": "Password",
-      "error-message": "Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number."
+      "label": "Password"
     },
     "signInFormAccept": {
       "title": "submit"

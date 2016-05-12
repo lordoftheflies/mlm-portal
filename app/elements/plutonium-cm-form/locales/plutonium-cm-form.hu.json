@@ -1,6 +1,6 @@
 {
   "meta": {
-    
+    "todo": []
   },
   "model": {
     "messageInput": {
@@ -18,11 +18,11 @@
     "addLinkButton": {
       "title": "Hivatkozás szekció beágyazása."
     },
-    "parentDdLabel": {
-      "label": "Szülő"
-    },
     "contentTitleInput": {
       "label": "Cím"
+    },
+    "parentDdLabel": {
+      "label": "Szülő"
     }
   },
   "shareTabLabel": "Megosztás",

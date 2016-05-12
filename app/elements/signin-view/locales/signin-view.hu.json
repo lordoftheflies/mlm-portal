@@ -4,12 +4,10 @@
   },
   "model": {
     "signInFormLoginEmail": {
-      "label": "Email cím",
-      "error-message": "Érvénytelen email cím."
+      "label": "Email cím"
     },
     "signInFormLoginPassword": {
-      "label": "Jelszó",
-      "error-message": "Érvénytelen jelszó. A jelszó egy 6-16 jegyű, legalább egy számot tartalmazó alfanumerikus karaktersorozat."
+      "label": "Jelszó"
     },
     "signInFormAccept": {
       "title": "Bejelentkezés"

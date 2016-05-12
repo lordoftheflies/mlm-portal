@@ -1,12 +1,13 @@
 {
   "meta": {
+    "todo": []
   },
   "model": {
     "messageInput": {
       "label": "Wiadomość"
     },
     "addSectionButton": {
-      "title": "Embedd video to the message content."
+      "title": "Ttworzenia zawartości tekstowej."
     },
     "addVideoButton": {
       "title": "Osadzony materiał wideo."
@@ -17,11 +18,11 @@
     "addLinkButton": {
       "title": "Osadzonej zawartości Link."
     },
-    "parentDdLabel": {
-      "label": "Roślina mateczna"
-    },
     "contentTitleInput": {
       "label": "Tytuł"
+    },
+    "parentDdLabel": {
+      "label": "Roślina mateczna"
     }
   },
   "shareTabLabel": "Dzielić",

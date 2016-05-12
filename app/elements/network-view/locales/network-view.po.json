@@ -1,5 +1,6 @@
 {
   "meta": {
+    "todo": []
   },
   "model": {
     "newMemberNameLabel": {
@@ -10,6 +11,9 @@
     },
     "newMemberParentLabel": {
       "label": "Członek rodzic"
+    },
+    "preferredLanguageLabel": {
+      "label": "Preferowany język"
     }
   },
   "newMemberDialogTitle": "Nowy członek",
