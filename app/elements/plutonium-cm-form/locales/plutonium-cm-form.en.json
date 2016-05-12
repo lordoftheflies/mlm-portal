@@ -1,17 +1,6 @@
 {
   "meta": {
-    "todo": [
-      {
-        "op": "add",
-        "path": "/[[item/id]]:label_1/0",
-        "value": "({1})"
-      },
-      {
-        "op": "add",
-        "path": "/[[item/id]]:label_1/1",
-        "value": "[[item.id]]"
-      }
-    ]
+    "todo": []
   },
   "model": {
     "messageInput": {
