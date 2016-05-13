@@ -169,9 +169,9 @@
         "label": "Preferowany język"
       }
     },
-    "changeDeviceDialogTitle": "Change device request",
-    "memberEraseConfirmDialogText": " Are you surely change device? After login, until your inviter not approve you could not log in to the application. ",
-    "memberEraseConfirmDialogCancelButton": "Cancel",
+    "changeDeviceDialogTitle": "Żądanie zmiany urządzenie",
+    "memberEraseConfirmDialogText": " Czy na pewno zmienić urządzenie? Po zalogowaniu się , dopóki nie zatwierdzi zapraszający nie można zalogować się do aplikacji. ",
+    "memberEraseConfirmDialogCancelButton": "Anuluj",
     "memberEraseConfirmDialogAcceptButton": "OK",
     "activationDateTitle": "Data aktywacji",
     "changingDeviceButton": "Zmiana narzędzia",

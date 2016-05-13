@@ -169,9 +169,9 @@
         "label": "Preferált nyelv"
       }
     },
-    "changeDeviceDialogTitle": "Change device request",
-    "memberEraseConfirmDialogText": " Are you surely change device? After login, until your inviter not approve you could not log in to the application. ",
-    "memberEraseConfirmDialogCancelButton": "Cancel",
+    "changeDeviceDialogTitle": "Eszközcsere kérése",
+    "memberEraseConfirmDialogText": " Biztosan cserélni akarja eszközét? Kijelentkezés után, amíg az Önt meghívó személy nem hagyja jóvá, nem fog tudni bejelentkezni. ",
+    "memberEraseConfirmDialogCancelButton": "Mégse",
     "memberEraseConfirmDialogAcceptButton": "OK",
     "activationDateTitle": "Aktiválva",
     "changingDeviceButton": "Eszközcsere",
