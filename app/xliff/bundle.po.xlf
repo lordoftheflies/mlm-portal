@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
 <xliff version="1.0">
-  <file source-language="en" target-language="po" datatype="plaintext" original="messages" date="2016-05-12T18:54:17Z" product-name="messages">
+  <file source-language="en" target-language="po" datatype="plaintext" original="messages" date="2016-05-13T12:51:42Z" product-name="messages">
   <header/>
     <body>
       <trans-unit id="app.loginDialogTitle">
@@ -324,6 +324,22 @@
         <source>Preferred language</source>
         <target>Preferowany język</target>
       </trans-unit>
+      <trans-unit id="profile-view.changeDeviceDialogTitle">
+        <source>Change device request</source>
+        <target>Żądanie zmiany urządzenie</target>
+      </trans-unit>
+      <trans-unit id="profile-view.memberEraseConfirmDialogText">
+        <source> Are you surely change device? After login, until your inviter not approve you could not log in to the application. </source>
+        <target> Czy na pewno zmienić urządzenie? Po zalogowaniu się , dopóki nie zatwierdzi zapraszający nie można zalogować się do aplikacji. </target>
+      </trans-unit>
+      <trans-unit id="profile-view.memberEraseConfirmDialogCancelButton">
+        <source>Cancel</source>
+        <target>Anuluj</target>
+      </trans-unit>
+      <trans-unit id="profile-view.memberEraseConfirmDialogAcceptButton">
+        <source>OK</source>
+        <target>OK</target>
+      </trans-unit>
       <trans-unit id="profile-view.activationDateTitle">
         <source>Activation date</source>
         <target>Data aktywacji</target>
@@ -416,10 +432,6 @@
         <source>Email address</source>
         <target>Adres e-mail</target>
       </trans-unit>
-      <trans-unit id="signin-view.model.signInFormLoginEmail.error-message">
-        <source>Invalid email address.</source>
-        <target>Błędny adres e-mail.</target>
-      </trans-unit>
       <trans-unit id="signin-view.model.signInFormLoginPassword.label">
         <source>Password</source>
         <target>Hasło</target>
@@ -447,14 +459,6 @@
       <trans-unit id="signon-view.model.registrateTitleLabel.error-message">
         <source>Invalid name.</source>
         <target>Błędna nazwa.</target>
-      </trans-unit>
-      <trans-unit id="signon-view.model.registrateEmailLabel.label">
-        <source>Email address</source>
-        <target>Adres e-mail</target>
-      </trans-unit>
-      <trans-unit id="signon-view.model.registrateEmailLabel.error-message">
-        <source>Invalid email address.</source>
-        <target>Błędny adres e-mail.</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registratePhoneNumberLabel.label">
         <source>Phone</source>

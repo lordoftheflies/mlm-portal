@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
 <xliff version="1.0">
-  <file source-language="en" target-language="hu" datatype="plaintext" original="messages" date="2016-05-12T18:54:17Z" product-name="messages">
+  <file source-language="en" target-language="hu" datatype="plaintext" original="messages" date="2016-05-13T12:51:42Z" product-name="messages">
   <header/>
     <body>
       <trans-unit id="app.loginDialogTitle">
@@ -324,6 +324,22 @@
         <source>Preferred language</source>
         <target>Preferált nyelv</target>
       </trans-unit>
+      <trans-unit id="profile-view.changeDeviceDialogTitle">
+        <source>Change device request</source>
+        <target>Eszközcsere kérése</target>
+      </trans-unit>
+      <trans-unit id="profile-view.memberEraseConfirmDialogText">
+        <source> Are you surely change device? After login, until your inviter not approve you could not log in to the application. </source>
+        <target> Biztosan cserélni akarja eszközét? Kijelentkezés után, amíg az Önt meghívó személy nem hagyja jóvá, nem fog tudni bejelentkezni. </target>
+      </trans-unit>
+      <trans-unit id="profile-view.memberEraseConfirmDialogCancelButton">
+        <source>Cancel</source>
+        <target>Mégse</target>
+      </trans-unit>
+      <trans-unit id="profile-view.memberEraseConfirmDialogAcceptButton">
+        <source>OK</source>
+        <target>OK</target>
+      </trans-unit>
       <trans-unit id="profile-view.activationDateTitle">
         <source>Activation date</source>
         <target>Aktiválva</target>
@@ -443,14 +459,6 @@
       <trans-unit id="signon-view.model.registrateTitleLabel.error-message">
         <source>Invalid name.</source>
         <target>Érvénytelen név.</target>
-      </trans-unit>
-      <trans-unit id="signon-view.model.registrateEmailLabel.label">
-        <source>Email address</source>
-        <target>Email cím</target>
-      </trans-unit>
-      <trans-unit id="signon-view.model.registrateEmailLabel.error-message">
-        <source>Invalid email address.</source>
-        <target>Érvénytelen email cím.</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registratePhoneNumberLabel.label">
         <source>Phone</source>
