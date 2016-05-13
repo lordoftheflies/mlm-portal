@@ -139,7 +139,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <div id="promoteAdminDialogText" class="card-content">
                     Are you surely promote {{item.name}} to administrator?
                 </div>
-                
+
                 <input name="owner" type="hidden" value="{{ownerId}}" />
                 <input name="subject" type="hidden" value="{{selectedAccount}}" />
                 <div class="card-actions">
@@ -188,7 +188,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     <paper-tab id="[[item.id]]" role="{{item.role}}" href="{{baseUrl}}network/{{item.id}}">
                         <iron-icon class="end-justified" icon="[[getIcon(item.role)]]"></iron-icon>
                         <a href="{{baseUrl}}network/{{item.id}}">
-                            
+
                             [[item.name]]
                         </a>
                     </paper-tab>
@@ -197,37 +197,37 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </paper-material>
 
         <!--S: {{selectedMember.role}}-->
-        
+
         <!--<div class="folder-content">-->
         <!--<iron-pages selected="{{selectedMailBoxFolder}}">-->
         <!--<template is="dom-if" if="{{!isEmpty(data)}}">-->
-            <iron-list id="childrenIronList" items="[[data]]" as="item" hidden="{{isEmpty(data)}}">
-                <template>
-                    <div nodeid="{{item.id}}" on-tap="onNavigateToChildren">
-                        <div  class="item" tabindex$="[[tabIndex]]">
-                              <div class="pad">
-                                <div id="memberName-{{item.id}}"   class="primary layout horizontal">
+        <iron-list id="childrenIronList" items="[[data]]" as="item" hidden="{{isEmpty(data)}}">
+            <template>
+                <div nodeid="{{item.id}}" on-tap="onNavigateToChildren">
+                    <div  class="item" tabindex$="[[tabIndex]]">
+                          <div class="pad">
+                            <div id="memberName-{{item.id}}"   class="primary layout horizontal">
 
-                                    <span class="flex">[[item.name]]</span>
-                                    <iron-icon class="end-justified" icon="[[getIcon(item.role)]]"></iron-icon>
-                                </div>
+                                <span class="flex">[[item.name]]</span>
+                                <iron-icon class="end-justified" icon="[[getIcon(item.role)]]"></iron-icon>
                             </div>
-
                         </div>
+
                     </div>
-                </template>
-            </iron-list>
+                </div>
+            </template>
+        </iron-list>
         <!--</template>-->
         <!--<template is="dom-if" if="">-->
 
-            <div class="folder-content" hidden="{{!isEmpty(data)}}">
-                <br />
-                <paper-card elevation="1">
-                    <div class="card-content">
-                        <div id="emptyChildrenText">No children.</div>
-                    </div>
-                </paper-card>
-            </div>
+        <div class="folder-content" hidden="{{!isEmpty(data)}}">
+            <br />
+            <paper-card elevation="1">
+                <div class="card-content">
+                    <div id="emptyChildrenText">No children.</div>
+                </div>
+            </paper-card>
+        </div>
         <!--</template>-->
 
 
@@ -339,7 +339,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 onNavigateToChildren: function (event, details) {
                     this.accountId = event.currentTarget.nodeid;
                     this.selectedAccount = this.accountId;
-                    
+
                     console.log('Network-view navigate to children ');
 
                 },
@@ -432,6 +432,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 },
                 onSendTo: function () {
                     page.redirect(app.baseUrl + 'share-content');
+                    app.$.scv.$.pcf.$.recipientsFieldInput.push('selectedItemIds', this.accountId);
                 },
                 isEmpty: function (data) {
                     return data === undefined || data === null || data.length === 0;
