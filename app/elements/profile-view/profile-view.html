@@ -40,6 +40,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                    on-response="handleChangeLanguageResponse"
                    on-error="handleChangeLanguageError"
                    body="{{_changeLanguageModel}}"></iron-ajax>
+        
+        <paper-dialog id="changeDeviceDialog" modal>
+            <h2 id="changeDeviceDialogTitle">Change device request</h2>
+            <form id="changeDeviceForm" is="iron-form" 
+                  verbose 
+                  content-type="application/json" 
+                  method="post" action="{{apiUrl}}authentication/change"
+                  handle-as="json">
+                <div id="memberEraseConfirmDialogText" class="card-content">
+                    Are you surely change device? After login, until your inviter not approve you could not log in to the application.
+                </div>
+                <input name="owner" type="hidden" value="{{ownerId}}" />
+                <div class="card-actions">
+                    <paper-button id="memberEraseConfirmDialogCancelButton" dialog-dismiss>Cancel</paper-button>
+                    <paper-button id="memberEraseConfirmDialogAcceptButton" dialog-confirm raised on-tap="onDeviceChangePrompted">OK</paper-button>
+                </div>
+            </form>
+        </paper-dialog>
 
         <paper-card id="accountHeading" heading="Account" class="layout horizontal flex">
             <div class="card-content">
@@ -60,7 +78,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </div>
             </div>
             <div class="card-actions">
-                <paper-button id="changingDeviceButton" raised>Changing device</paper-button>
+                <paper-button id="changingDeviceButton" raised on-tap="openChangeDevicePrompt">Changing device</paper-button>
             </div>
         </paper-card>
         <br />
@@ -136,6 +154,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     console.log(msg);
                     app.$.toast.text = msg;
                     app.$.toast.show();
+                },
+                onDeviceChangePrompted: function() {
+                    app.$.toast.text = 'Device changing request sent. Wait for your inviter\'s approval.';
+                    app.$.toast.show();
+                },
+                openChangeDevicePrompt: function() {
+                    this.$.changeDeviceDialog.open();
                 }
             });
         })();
