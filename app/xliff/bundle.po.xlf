@@ -246,7 +246,7 @@
       </trans-unit>
       <trans-unit id="plutonium-cm-field.model.addSectionButton.title">
         <source>Embedd video to the message content.</source>
-        <target>Embedd video to the message content.</target>
+        <target>Ttworzenia zawartości tekstowej.</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-field.model.addVideoButton.title">
         <source>Embedd video to the message content.</source>

@@ -266,7 +266,7 @@
       </trans-unit>
       <trans-unit id="plutonium-cm-form.model.addSectionButton.title">
         <source>Embedd video to the message content.</source>
-        <target>Embedd video to the message content.</target>
+        <target>Szöveges szekció beágyazása.</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.model.addVideoButton.title">
         <source>Embedd video to the message content.</source>
