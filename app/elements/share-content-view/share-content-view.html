@@ -30,6 +30,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 /*@apply(--layout-center);*/
             }
 
+
+
             plutonium-cm-form {
                 display: block;
                 @apply(--layout-vertical);
@@ -85,10 +87,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <paper-dialog id="textEditorDialog" modal class="editor">
                 <h2 id="textEditorDialogTitle">Edit text properties</h2>
                 <div class="content">
+                    <paper-icon-button id="decreaseSizeButton" on-tap="onDecreaseFontSize" icon="unfold-less" raised></paper-icon-button>
+                    <paper-icon-button id="increaseSizeButton" on-tap="onInreaseFontSize" icon="unfold-more" raised></paper-icon-button>
+                    <paper-icon-button id="alignLeftButton" on-tap="onAlignLeft" icon="editor:format-align-left" raised></paper-icon-button>
+                    <paper-icon-button id="alignCenterButton" on-tap="onAlignCenter" icon="editor:format-align-center" raised></paper-icon-button>
+                    <paper-icon-button id="alignRightButton" on-tap="onAlignRight" icon="editor:format-align-right" raised></paper-icon-button>
+                </div>
+                <div class="content">
                     <input type="hidden" name="name">
                     <paper-input id="textContentTitleLabel" name="title" label="{{text.textEditorTitlePlaceholder}}">
                     </paper-input>
-                    <paper-textarea  id="textContentTextLabel" name="data" label="Text" rows="10" type="text"></paper-textarea>
+                    <paper-textarea  
+                        id="textContentTextLabel" 
+                        name="data" 
+                        label="Text" 
+                        rows="10" 
+                        type="text"  
+                        char-counter maxlength="10000">
+                    </paper-textarea>
 
                 </div>
                 <div class="buttons">
@@ -149,9 +165,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     <paper-input 
                         id="videoContentUrlLabel"
                         name="data" required auto-validate
-                                 label='Video url'
-                                 error-message='Invalid Youtube url.'
-                                 value="{{url}}">
+                        label='Video url'
+                        error-message='Invalid Youtube url.'
+                        value="{{url}}">
 
                     </paper-input>
                 </div>
@@ -179,11 +195,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 behaviors: [
                     PlutoniumBehaviors.WidgetBehavior,
                     BehaviorsStore.I18nBehavior
-                    
+
                 ],
                 properties: {
                     shareAjaxRequest: {
-                        
                     },
                     pageDto: {
                         type: Object,
@@ -229,18 +244,34 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     this.pageDto = {
                     };
                 },
-                onShare: function(e, details) {
+                onShare: function (e, details) {
                     console.log('Save content: ' + JSON.stringify(details));
                     this.pageDto = details.content;
                     this.$.shareAjax.generateRequest();
                 },
-                onShareError: function() {
+                onShareError: function () {
                     app.$.toast.text = 'Content sharing failed.';
                     app.$.toast.show();
                 },
-                onShareResponse: function() {
+                onShareResponse: function () {
                     app.$.toast.text = 'New content shared successfully.';
                     app.$.toast.show();
+                },
+                onDecreaseFontSize: function (e) {
+                    console.log('Decrease font size.');
+                },
+                onInreaseFontSize: function (e) {
+                    console.log('Increase font size.');
+                    textEditorDialogAcceptButton
+                },
+                onAlignLeft: function (e) {
+                    console.log('Change align to left.');
+                },
+                onAlignCenter: function (e) {
+                    console.log('Change align to center.');
+                },
+                onAlignRight: function (e) {
+                    console.log('Change align to right.');
                 }
             });
         })();

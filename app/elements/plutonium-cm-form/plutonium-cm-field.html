@@ -122,15 +122,6 @@ Example:
                     <label id="secionDisplayTitle" label="Title" class="title-text">{{title}}</label>
                     <!--<plutonium-cm-field-fabs id="actionContainer" name$='{{name}}' dialog-id$='{{dialogId}}' ></plutonium-cm-field-fabs>-->
                     <div id="actionContainer">
-
-
-                        <paper-icon-button id="decreaseSizeButton" on-tap="onDecreaseFontSize" icon="unfold-less" raised></paper-icon-button>
-                        <paper-icon-button id="increaseSizeButton" on-tap="onInreaseFontSize" icon="unfold-more" raised></paper-icon-button>
-
-                        <paper-icon-button id="alignLeftButton" on-tap="onAlignLeft" icon="editor:format-align-left" raised></paper-icon-button>
-                        <paper-icon-button id="alignCenterButton" on-tap="onAlignCenter" icon="editor:format-align-center" raised></paper-icon-button>
-                        <paper-icon-button id="alignRightButton" on-tap="onAlignRight" icon="editor:format-align-right" raised></paper-icon-button>
-
                         <paper-icon-button id="moveUpButton" on-tap="onMoveUpSection" icon="expand-less" raised></paper-icon-button>
                         <paper-icon-button id="moveDownButton" on-tap="onMoveDownSection" icon="expand-more" raised></paper-icon-button>
                         
@@ -291,21 +282,6 @@ Example:
                         model: this.data
                     });
                     console.log('Show preview(dialogId=' + this.dialogId + ', name=' + this.name + ', title=' + this.title + ', data=' + this.data + ')');
-                },
-                onDecreaseFontSize: function (e) {
-                    console.log('Decrease font size.');
-                },
-                onInreaseFontSize: function (e) {
-                    console.log('Increase font size.');
-                },
-                onAlignLeft: function (e) {
-                    console.log('Change align to left.');
-                },
-                onAlignCenter: function (e) {
-                    console.log('Change align to center.');
-                },
-                onAlignRight: function (e) {
-                    console.log('Change align to right.');
                 }
             });
         })();

@@ -92,6 +92,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     </paper-tab>
                 </template>
             </paper-tabs>
+            
+            <paper-icon-button icon="create" hidden="{{!isDraftSelected(selectedContentFolder)}}"></paper-icon-button>
+            <paper-icon-button icon="delete" hidden="{{!isDraftSelected(selectedContentFolder)}}"></paper-icon-button>
+            <paper-icon-button icon="file-upload" hidden="{{!isDraftSelected(selectedContentFolder)}}"></paper-icon-button>
+            <paper-icon-button icon="file-download" hidden="{{!isDraftSelected(selectedContentFolder)}}"></paper-icon-button>
         </paper-material>
 
 
@@ -231,6 +236,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 },
                 getContentFileUrl: function (fileName) {
                     return this.contentRootUrl + fileName;
+                },
+                isDraftSelected: function(selectedContentFolder) {
+                    console.log('Fasz');
+                    return selectedContentFolder === 'drafts';
                 }
             });
         })();
