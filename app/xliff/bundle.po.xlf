@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
 <xliff version="1.0">
-  <file source-language="en" target-language="po" datatype="plaintext" original="messages" date="2016-05-13T13:04:05Z" product-name="messages">
+  <file source-language="en" target-language="po" datatype="plaintext" original="messages" date="2016-05-17T17:19:10Z" product-name="messages">
   <header/>
     <body>
       <trans-unit id="app.loginDialogTitle">
@@ -266,7 +266,7 @@
       </trans-unit>
       <trans-unit id="plutonium-cm-form.model.addSectionButton.title">
         <source>Embedd video to the message content.</source>
-        <target>Embedd video to the message content.</target>
+        <target>Ttworzenia zawartości tekstowej.</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.model.addVideoButton.title">
         <source>Embedd video to the message content.</source>
@@ -292,29 +292,17 @@
         <source>Share</source>
         <target>Dzielić</target>
       </trans-unit>
-      <trans-unit id="plutonium-cm-form.contentTabLabel">
-        <source>Content</source>
-        <target>Zadowolony</target>
+      <trans-unit id="plutonium-cm-form.embbeddedContentTabLabel">
+        <source>Embed content</source>
+        <target>Doładuj fajl</target>
+      </trans-unit>
+      <trans-unit id="plutonium-cm-form.assembledContentTabLabel">
+        <source>Assembled content</source>
+        <target>Edytować</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.propertiesTabLabel">
         <source>Properties</source>
         <target>Nieruchomości</target>
-      </trans-unit>
-      <trans-unit id="plutonium-cm-form.embbeddedContentRadio">
-        <source>Embed content</source>
-        <target>Doładuj fajl</target>
-      </trans-unit>
-      <trans-unit id="plutonium-cm-form.assembledContentRadio">
-        <source>Assemble</source>
-        <target>Assemble</target>
-      </trans-unit>
-      <trans-unit id="plutonium-cm-form.embedContentRadio">
-        <source>Embed content</source>
-        <target>Embed content</target>
-      </trans-unit>
-      <trans-unit id="plutonium-cm-form.assembleRadio">
-        <source>Assemble</source>
-        <target>Edytować</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.uploadFileText">
         <source>Choose File</source>

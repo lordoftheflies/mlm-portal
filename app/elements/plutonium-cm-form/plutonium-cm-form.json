@@ -24,11 +24,8 @@
     }
   },
   "shareTabLabel": "Share",
-  "contentTabLabel": "Content",
+  "embbeddedContentTabLabel": "Embed content",
+  "assembledContentTabLabel": "Assembled content",
   "propertiesTabLabel": "Properties",
-  "embbeddedContentRadio": "Embed content",
-  "assembledContentRadio": "Assemble",
-  "embedContentRadio": "Embed content",
-  "assembleRadio": "Assemble",
   "uploadFileText": "Choose File"
 }

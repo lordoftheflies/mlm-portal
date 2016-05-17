@@ -152,12 +152,9 @@
       }
     },
     "shareTabLabel": "Dzielić",
-    "contentTabLabel": "Zadowolony",
+    "embbeddedContentTabLabel": "Doładuj fajl",
+    "assembledContentTabLabel": "Edytować",
     "propertiesTabLabel": "Nieruchomości",
-    "embbeddedContentRadio": "Doładuj fajl",
-    "assembledContentRadio": "Assemble",
-    "embedContentRadio": "Embed content",
-    "assembleRadio": "Edytować",
     "uploadFileText": "Wybierz fajl"
   },
   "profile-view": {

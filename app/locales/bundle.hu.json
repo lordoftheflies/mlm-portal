@@ -152,12 +152,9 @@
       }
     },
     "shareTabLabel": "Megosztás",
-    "contentTabLabel": "Tartalom",
+    "embbeddedContentTabLabel": "Fájl feltöltés",
+    "assembledContentTabLabel": "Saját tartalom",
     "propertiesTabLabel": "Tulajdonságok",
-    "embbeddedContentRadio": "Bináris tartalom",
-    "assembledContentRadio": "Saját tartalom",
-    "embedContentRadio": "Bináris tartalom",
-    "assembleRadio": "Saját tartalom",
     "uploadFileText": "Fájl kiválasztása"
   },
   "profile-view": {
