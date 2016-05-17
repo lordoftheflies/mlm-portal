@@ -84,6 +84,7 @@
                 "parent-candidates": {}
             }
         },
+        "plutonium-section-editor": {},
         "iron-icon": {
             "attributes": {
                 "icon": {}

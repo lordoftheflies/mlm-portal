@@ -77,6 +77,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             last-response="{{parentCandidates}}" 
             auto></iron-ajax>
 
+        {{kacsa}}
+        <plutonium-section-text
+            id="mcIntire"
+            model$="{{kacsa}}"
+            ></plutonium-section-text>
+        <plutonium-section-text
+            id="mcIntire2"
+            editable
+            model$="{{kacsa}}"
+            ></plutonium-section-text>
+
+        <!--        <plutonium-section-editor 
+                    id="sectionEditor2"
+                    action-title="Edit section"
+                    justification="start-justified"
+                    font-size="13">
+                    actasdasda
+                </plutonium-section-editor>-->
+
         <plutonium-cm-form 
             id="pcf"
             contacts="{{contacts}}" 
@@ -224,6 +243,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     accountId: {
                         type: String,
                         notify: true
+                    },
+                    kacsa: {
+                        type: Object,
+                        notify: true,
+                        value: {
+                            title: "title",
+                            data: "dataddd",
+                            justification: "start-justified",
+                            fontSize: 18
+                        }
                     }
                 },
                 //                listeners: {
