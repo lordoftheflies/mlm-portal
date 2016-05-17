@@ -30,7 +30,7 @@ Example:
 @hero hero.svg
 -->
 
-<dom-module id="plutonium-text-editor">
+<dom-module id="plutonium-link-editor">
     <template>
         <style include="iron-flex iron-flex-alignment">
             :host {
@@ -62,6 +62,12 @@ Example:
                 color: var(--paper-icon-button-ink-color, black);
             }
         </style>
+        <iron-ajax 
+            id="parentCandidatesAjax"
+            url="{{parentCandidatesUrl}}" 
+            last-response="{{parentCandidates}}" 
+            auto></iron-ajax>
+        
         <paper-dialog 
             id="editorDialog" modal 
             entry-animation="scale-up-animation"
@@ -79,9 +85,20 @@ Example:
             <div class$="horizontal {{_justification}} layout">
                  <div class="preview">aAbBcC</div>
             </div>
-            <paper-input id="textModelTitle" label="Title" value="{{_title}}"></paper-input>
-            <paper-textarea id="textModelData" label="Text" rows="10" value="{{_data}}" class="{{_justification}}" >
-            </paper-textarea>
+            <div>
+                <paper-input id="linkEditorDialogTitleLabel" name="title" label="Title"  value="{{_title}}"></paper-input>
+
+                <input name="data" type="hidden" />
+                <paper-dropdown-menu id="linkEditorReferenceLabel" label="Reference">
+                    <paper-menu
+                        class="dropdown-content" selected="{{_data}}" attr-for-selected="value"
+                        attr-for-selected="id">
+                        <template is="dom-repeat" items="{{parentCandidates}}">
+                            <paper-item value="{{item.id}}">{{item.title}}</paper-item>
+                        </template>
+                    </paper-menu>
+                </paper-dropdown-menu>
+            </div>
             <div class="buttons">
                 <paper-button id="editorDialogCancelButton" dialog-dismiss on-tap="onCancelChanges">Cancel</paper-button>
                 <paper-button id="editorDialogAcceptButton" raised dialog-confirm on-tap="onApplyChanges">Apply</paper-button>
@@ -93,7 +110,7 @@ Example:
         (function () {
             'use strict';
             Polymer({
-                is: 'plutonium-text-editor',
+                is: 'plutonium-link-editor',
                 behaviors: [
                     PlutoniumBehaviors.SectionEditorBehavior
                 ],
@@ -111,6 +128,10 @@ Example:
                         notify: true
                     },
                     _data: {
+                        type: String,
+                        notify: true
+                    },
+                    parentCandidatesUrl: {
                         type: String,
                         notify: true
                     }
@@ -139,13 +160,8 @@ Example:
                 },
                 onCancelChanges: function () {
                     this._reset();
-                },
-                _reset: function () {
-                    this._justification = this.justification;
-                    this._fontSize = this.fontSize;
-                    this._title = this.title;
-                    this._data = this.data;
                 }
+
             });
         })();
     </script>

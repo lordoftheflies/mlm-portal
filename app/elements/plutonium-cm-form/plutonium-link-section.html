@@ -13,7 +13,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
 <link rel="import" href="plutonium-section-field-behavior.html">
-<link rel="import" href="plutonium-image-editor.html">
+<link rel="import" href="plutonium-link-editor.html">
 
 <!--
 An element providing a solution to no problem in particular.
@@ -32,7 +32,7 @@ Example:
 @hero hero.svg
 -->
 
-<dom-module id="plutonium-image-section">
+<dom-module id="plutonium-link-section">
     <template>
         <style include="iron-flex iron-flex-alignment">
             :host {
@@ -42,16 +42,15 @@ Example:
 
 
         </style>
-        <plutonium-image-editor 
+        <plutonium-link-editor 
             id="plSectionEditor"
             action-title="Edit section"
             title="{{model.title}}"
             data="{{model.data}}"
             justification="{{model.justification}}"
-            height="{{model.height}}"
-            width="{{model.width}}"
-            font-size="{{model.fontSize}}">
-        </plutonium-image-editor>
+            font-size="{{model.fontSize}}"
+            parent-candidates-url="{{parentCandidatesUrl}}">
+        </plutonium-link-editor>
         <div hidden="[[!editable]]">
             <paper-icon-button id="moveUpButton" on-tap="onMoveUpSection" icon="expand-less" raised></paper-icon-button>
             <paper-icon-button id="moveDownButton" on-tap="onMoveDownSection" icon="expand-more" raised></paper-icon-button>
@@ -59,22 +58,24 @@ Example:
             <paper-icon-button id="removeSectionButton" on-tap="onRemoveSection" icon="delete"></paper-icon-button>
         </div>
         <h3>{{model.title}}</h3>
-        <div id="modelData" class$="horizontal {{model.justification}} layout">
-             <iron-image fade class="thumbnail" sizing="contain" width$="{{model.width}}" height$="{{model.height}}" src="{{model.data}}"></iron-image>
-        </div>
+        <p id="modelData" class$="horizontal {{model.justification}} layout">{{model.data}}</p>
     </template>
 
     <script>
         (function () {
             'use strict';
             Polymer({
-                is: 'plutonium-image-section',
+                is: 'plutonium-link-section',
                 behaviors: [
                     PlutoniumBehaviors.SectionFieldBehavior
                 ],
                 properties: {
                     model: {
                         type: Object,
+                        notify: true
+                    },
+                    parentCandidatesUrl: {
+                        type: String,
                         notify: true
                     }
                 },
@@ -88,12 +89,12 @@ Example:
                 ],
                 // Element Lifecycle
 
-    //                ready: function () {
-    //
-    //                },
-    //                attached: function () {
-    //
-    //                },
+//                ready: function () {
+//
+//                },
+//                attached: function () {
+//
+//                },
                 detached: function () {
 
                 },
@@ -105,7 +106,7 @@ Example:
                     console.log(this.is + '[' + this.id + '] model property changed.');
                 },
                 observeModelData: function (data) {
-    //                this.$.modelData.innerHTML = data;
+//                    this.$.modelData.innerHTML = data;
                 },
                 observeModelStyles: function (property) {
                     console.log(this.is + '[' + this.id + '] model changed, update styles.');

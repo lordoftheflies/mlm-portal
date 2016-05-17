@@ -77,6 +77,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             last-response="{{parentCandidates}}" 
             auto></iron-ajax>
 
+
+        <plutonium-link-section
+            id="mcIntire"
+            model$="{{kacsa4}}"
+            ></plutonium-link-section>
+        <plutonium-link-section
+            id="mcIntire"
+            editable
+            parent-candidates-url="{{apiUrl}}/content-management/candidates"
+            model$="{{kacsa4}}"
+            ></plutonium-link-section>
         <plutonium-text-section
             id="mcIntire"
             model$="{{kacsa}}"
@@ -177,8 +188,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         <paper-menu
                             class="dropdown-content" selected="{{data}}" attr-for-selected="value"
                             attr-for-selected="id">
-                            <template is="dom-repeat" items="{{shareableContents}}">
-                                <paper-item value="{{item.id}}">{{item.name}}</paper-item>
+                            <template is="dom-repeat" items="{{parentCandidates}}">
+                                <paper-item value="{{item.id}}">{{item.title}}</paper-item>
                             </template>
                         </paper-menu>
                     </paper-dropdown-menu>
@@ -255,7 +266,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             "plutonium-cm-editor-image": "imageEditorDialog",
                             "plutonium-cm-editor-link": "linkEditorDialog",
                             "plutonium-cm-editor-text": "textEditorDialog",
-                            "plutonium-cm-editor-video": "videoEditorDialog"}
+                            "plutonium-cm-editor-video": "videoEditorDialog"
+                        }
                     },
                     accountId: {
                         type: String,
@@ -267,6 +279,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         value: {
                             title: "text title",
                             data: "Ez itt a szöveg <strong>erősen</strong> <i>dőlt</i>.",
+                            justification: "start-justified",
+                            fontSize: 18
+                        }
+                    },
+                    kacsa4: {
+                        type: Object,
+                        notify: true,
+                        value: {
+                            title: "text link",
+                            data: "415222f8-2bfb-4cfc-beb8-382c1b7946ec",
                             justification: "start-justified",
                             fontSize: 18
                         }
