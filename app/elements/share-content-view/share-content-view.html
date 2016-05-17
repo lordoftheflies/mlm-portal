@@ -77,6 +77,53 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             last-response="{{parentCandidates}}" 
             auto></iron-ajax>
 
+
+        <plutonium-link-section
+            id="mcIntire"
+            model$="{{kacsa4}}"
+            ></plutonium-link-section>
+        <plutonium-link-section
+            id="mcIntire"
+            editable
+            parent-candidates-url="{{apiUrl}}/content-management/candidates"
+            model$="{{kacsa4}}"
+            ></plutonium-link-section>
+        <plutonium-text-section
+            id="mcIntire"
+            model$="{{kacsa}}"
+            ></plutonium-text-section>
+        <plutonium-text-section
+            id="mcIntire2"
+            editable
+            model$="{{kacsa}}"
+            ></plutonium-text-section>
+        <plutonium-video-section
+            id="mcIntire3"
+            model$="{{kacsa3}}"
+            ></plutonium-video-section>
+        <plutonium-video-section
+            id="mcIntire4"
+            editable
+            model$="{{kacsa3}}"
+            ></plutonium-video-section>
+        <plutonium-image-section
+            id="mcIntire5"
+            model$="{{kacsa2}}"
+            ></plutonium-image-section>
+        <plutonium-image-section
+            id="mcIntire6"
+            editable
+            model$="{{kacsa2}}"
+            ></plutonium-image-section>
+
+        <!--        <plutonium-section-editor 
+                    id="sectionEditor2"
+                    action-title="Edit section"
+                    justification="start-justified"
+                    font-size="13">
+                    actasdasda
+                </plutonium-section-editor>-->
+
         <plutonium-cm-form 
             id="pcf"
             contacts="{{contacts}}" 
@@ -141,8 +188,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         <paper-menu
                             class="dropdown-content" selected="{{data}}" attr-for-selected="value"
                             attr-for-selected="id">
-                            <template is="dom-repeat" items="{{shareableContents}}">
-                                <paper-item value="{{item.id}}">{{item.name}}</paper-item>
+                            <template is="dom-repeat" items="{{parentCandidates}}">
+                                <paper-item value="{{item.id}}">{{item.title}}</paper-item>
                             </template>
                         </paper-menu>
                     </paper-dropdown-menu>
@@ -219,11 +266,56 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             "plutonium-cm-editor-image": "imageEditorDialog",
                             "plutonium-cm-editor-link": "linkEditorDialog",
                             "plutonium-cm-editor-text": "textEditorDialog",
-                            "plutonium-cm-editor-video": "videoEditorDialog"}
+                            "plutonium-cm-editor-video": "videoEditorDialog"
+                        }
                     },
                     accountId: {
                         type: String,
                         notify: true
+                    },
+                    kacsa: {
+                        type: Object,
+                        notify: true,
+                        value: {
+                            title: "text title",
+                            data: "Ez itt a szöveg <strong>erősen</strong> <i>dőlt</i>.",
+                            justification: "start-justified",
+                            fontSize: 18
+                        }
+                    },
+                    kacsa4: {
+                        type: Object,
+                        notify: true,
+                        value: {
+                            title: "text link",
+                            data: "415222f8-2bfb-4cfc-beb8-382c1b7946ec",
+                            justification: "start-justified",
+                            fontSize: 18
+                        }
+                    },
+                    kacsa2: {
+                        type: Object,
+                        notify: true,
+                        value: {
+                            title: "image title",
+                            data: "http://ghk.h-cdn.co/assets/16/09/1600x800/landscape-1457107485-gettyimages-512366437.jpg",
+                            justification: "center-justified",
+                            fontSize: 18,
+                            width: 300,
+                            height: 300
+                        }
+                    },
+                    kacsa3: {
+                        type: Object,
+                        notify: true,
+                        value: {
+                            title: "video title",
+                            data: "cQrXUVOny4w",
+                            justification: "end-justified",
+                            fontSize: 18,
+                            width: 700,
+                            height: 300
+                        }
                     }
                 },
                 //                listeners: {

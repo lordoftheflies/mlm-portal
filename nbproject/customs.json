@@ -84,6 +84,7 @@
                 "parent-candidates": {}
             }
         },
+        "plutonium-section-editor": {},
         "iron-icon": {
             "attributes": {
                 "icon": {}
@@ -258,6 +259,9 @@
         },
         "unresolved": {
             "context": "body"
+        },
+        "class$": {
+            "context": "p"
         },
         "href$": {
             "context": "a"

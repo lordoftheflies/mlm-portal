@@ -96,7 +96,8 @@ Example:
 
                 <paper-tabs class="flex" selected="{{selectedMetaAction}}" autoselect>
                     <paper-tab id="shareTabLabel">Share</paper-tab>
-                    <paper-tab id="contentTabLabel">Content</paper-tab>
+                    <paper-tab id="embbeddedContentTabLabel" name="embedded">Embed content</paper-tab>
+                    <paper-tab id="assembledContentTabLabel" name="assembled">Assembled content</paper-tab>
                     <paper-tab id="propertiesTabLabel">Properties</paper-tab>
                 </paper-tabs>
 
@@ -136,8 +137,7 @@ Example:
 
                     <div class="card-content">
                         <paper-tabs selected="{{contentMode}}" attr-for-selected="name">
-                            <paper-tab id="embbeddedContentRadio" name="embedded">Embed content</paper-tab>
-                            <paper-tab id="assembledContentRadio" name="assembled">Assemble</paper-tab>
+
                         </paper-tabs>
                         <iron-pages selected="{{contentMode}}" attr-for-selected="id">
                             <div id="assembled">
@@ -171,10 +171,10 @@ Example:
                             </paper-listbox>
                         </div>
                         <div id="embedded" class="layout vertical">
-<!--                            <paper-radio-group selected="{{contentMode}}" attr-for-selected="name">
-                                <paper-radio-button id="embedContentRadio" name="embedded">Embed content</paper-radio-button>
-                                <paper-radio-button id="assembleRadio" name="assembled">Assemble</paper-radio-button>
-                            </paper-radio-group>-->
+                            <!--                            <paper-radio-group selected="{{contentMode}}" attr-for-selected="name">
+                                                            <paper-radio-button id="embedContentRadio" name="embedded">Embed content</paper-radio-button>
+                                                            <paper-radio-button id="assembleRadio" name="assembled">Assemble</paper-radio-button>
+                                                        </paper-radio-group>-->
                             <file-upload 
                                 id="uploadFileText"
                                 drop-text="Drop any PDF file here."
