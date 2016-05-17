@@ -1,7 +1,113 @@
 {
   "app": {
     "meta": {
-      "todo": []
+      "todo": [
+        {
+          "op": "add",
+          "path": "/shareTabLabel",
+          "value": "Share"
+        },
+        {
+          "op": "add",
+          "path": "/embbeddedContentTabLabel",
+          "value": "Embed content"
+        },
+        {
+          "op": "add",
+          "path": "/assembledContentTabLabel",
+          "value": "Assembled content"
+        },
+        {
+          "op": "add",
+          "path": "/propertiesTabLabel",
+          "value": "Properties"
+        },
+        {
+          "op": "add",
+          "path": "/messagesPagePublicFolderTitle",
+          "value": "Public"
+        },
+        {
+          "op": "add",
+          "path": "/messagesPageMyContentsFolderTitle",
+          "value": "Drafts"
+        },
+        {
+          "op": "add",
+          "path": "/messagesPagePublishedFolderTitle",
+          "value": "Published"
+        },
+        {
+          "op": "add",
+          "path": "/mailBoxPageInboxFolderTitle",
+          "value": "Inbox"
+        },
+        {
+          "op": "add",
+          "path": "/sentItemsPageInboxFolderTitle",
+          "value": "Sent items"
+        },
+        {
+          "op": "add",
+          "path": "/mainToolbar:div_2:iron-pages:div:span_1",
+          "value": "/"
+        },
+        {
+          "op": "add",
+          "path": "/mainToolbar:div_2:iron-pages:div_1:span_1",
+          "value": "/"
+        },
+        {
+          "op": "add",
+          "path": "/mainToolbar:div_2:iron-pages:div_2:span_1",
+          "value": "/"
+        },
+        {
+          "op": "add",
+          "path": "/mainToolbar:div_2:iron-pages:div_3:span_1",
+          "value": "/"
+        },
+        {
+          "op": "add",
+          "path": "/mainToolbar:div_2:iron-pages:div_4:span_1",
+          "value": "/"
+        },
+        {
+          "op": "replace",
+          "path": "/contentTreeViewTitleLabel",
+          "value": "Contents"
+        },
+        {
+          "op": "replace",
+          "path": "/mailBoxViewTitleLabel",
+          "value": "Mailbox"
+        },
+        {
+          "op": "replace",
+          "path": "/networkViewTitleLabel",
+          "value": "Network"
+        },
+        {
+          "op": "replace",
+          "path": "/aboutViewTitleLabel",
+          "value": "About"
+        },
+        {
+          "op": "add",
+          "path": "/profileViewTitleLabel",
+          "value": "Profile"
+        },
+        {
+          "op": "replace",
+          "path": "/shareContentViewTitleLabel",
+          "value": "Share content"
+        },
+        {
+          "op": "add",
+          "path": "/mainToolbar:div_2:iron-pages:div_5:span_1",
+          "value": "/"
+        }
+      ]
     },
     "model": {},
     "loginDialogTitle": "Sign-in",
@@ -13,32 +119,85 @@
     "mailBoxMenuTitle": "Mailbox",
     "networkMenuTitle": "Network",
     "aboutMenuTitle": "About",
+    "mainToolbar:div_2:iron-pages:div:span_1": "/",
+    "shareContentViewTitleLabel": "Share content",
+    "mainToolbar:div_2:iron-pages:div_1:span_1": "/",
+    "contentTreeViewTitleLabel": "Contents",
+    "mainToolbar:div_2:iron-pages:div_2:span_1": "/",
+    "mailBoxViewTitleLabel": "Mailbox",
+    "mainToolbar:div_2:iron-pages:div_3:span_1": "/",
+    "networkViewTitleLabel": "Network",
+    "mainToolbar:div_2:iron-pages:div_4:span_1": "/",
+    "aboutViewTitleLabel": "About",
+    "mainToolbar:div_2:iron-pages:div_5:span_1": "/",
+    "profileViewTitleLabel": "Profile",
     "profileMenuTitle": "Profile",
     "logoutButtonLabel": "Logout",
-    "mottoLabel": "The future of the web today",
-    "shareContentViewTitleLabel": "Share content",
-    "contentTreeViewTitleLabel": "Contents",
-    "mailBoxViewTitleLabel": "Mailbox",
-    "networkViewTitleLabel": "Network",
-    "aboutViewTitleLabel": "About",
+    "shareTabLabel": "Share",
+    "embbeddedContentTabLabel": "Embed content",
+    "assembledContentTabLabel": "Assembled content",
+    "propertiesTabLabel": "Properties",
+    "messagesPagePublicFolderTitle": "Public",
+    "messagesPageMyContentsFolderTitle": "Drafts",
+    "messagesPagePublishedFolderTitle": "Published",
+    "mailBoxPageInboxFolderTitle": "Inbox",
+    "sentItemsPageInboxFolderTitle": "Sent items",
     "toastMessageText": "Ok"
   },
   "about-view": {
     "meta": {
-      "todo": []
+      "todo": [
+        {
+          "op": "add",
+          "path": "/ul_2:template:li/0",
+          "value": " {1} ({2}) "
+        },
+        {
+          "op": "add",
+          "path": "/ul_2:template:li/1",
+          "value": "{{item.name}}"
+        },
+        {
+          "op": "add",
+          "path": "/ul_2:template:li/2",
+          "value": "{{item.email}}"
+        },
+        {
+          "op": "add",
+          "path": "/ul_4:template:li/0",
+          "value": " {1} ({2}) "
+        },
+        {
+          "op": "add",
+          "path": "/ul_4:template:li/1",
+          "value": "{{item.name}}"
+        },
+        {
+          "op": "add",
+          "path": "/ul_4:template:li/2",
+          "value": "{{item.email}}"
+        }
+      ]
     },
     "model": {},
     "contributorsTitleLabel": "Authors & contributors",
-    "administrationTitleLabel": "Webmaster & maintenance"
+    "ul_2:template:li": [
+      " {1} ({2}) ",
+      "{{item.name}}",
+      "{{item.email}}"
+    ],
+    "administrationTitleLabel": "Webmaster & maintenance",
+    "ul_4:template:li": [
+      " {1} ({2}) ",
+      "{{item.name}}",
+      "{{item.email}}"
+    ]
   },
   "content-tree-view": {
     "meta": {
       "todo": []
     },
     "model": {},
-    "messagesPagePublicFolderTitle": "Public",
-    "messagesPageMyContentsFolderTitle": "Drafts",
-    "messagesPagePublishedFolderTitle": "Published",
     "emptyContentFolderText": "No content in the folder."
   },
   "content-viewer": {
@@ -56,8 +215,6 @@
       "todo": []
     },
     "model": {},
-    "mailBoxPageInboxFolderTitle": "Inbox",
-    "sentItemsPageInboxFolderTitle": "Sent items",
     "emptyMailBoxFolderText": "No messages in the folder."
   },
   "network-view": {
@@ -126,12 +283,15 @@
   },
   "plutonium-cm-form": {
     "meta": {
-      "todo": []
+      "todo": [
+        {
+          "op": "replace",
+          "path": "/model/addSectionButton/title",
+          "value": "Embedd video to the message content."
+        }
+      ]
     },
     "model": {
-      "messageInput": {
-        "label": "Message"
-      },
       "addSectionButton": {
         "title": "Embedd video to the message content."
       },
@@ -143,19 +303,8 @@
       },
       "addLinkButton": {
         "title": "Embedd a link to another message to the message content."
-      },
-      "parentDdLabel": {
-        "label": "Parent"
-      },
-      "contentTitleInput": {
-        "label": "Title"
       }
-    },
-    "shareTabLabel": "Share",
-    "embbeddedContentTabLabel": "Embed content",
-    "assembledContentTabLabel": "Assembled content",
-    "propertiesTabLabel": "Properties",
-    "uploadFileText": "Choose File"
+    }
   },
   "profile-view": {
     "meta": {
@@ -176,43 +325,41 @@
   },
   "share-content-view": {
     "meta": {
-      "todo": []
+      "todo": [
+        {
+          "op": "add",
+          "path": "/uploadFileText",
+          "value": "Choose File"
+        },
+        {
+          "op": "add",
+          "path": "/model/messageInput/label",
+          "value": "Message"
+        },
+        {
+          "op": "add",
+          "path": "/model/parentDdLabel/label",
+          "value": "Parent"
+        },
+        {
+          "op": "add",
+          "path": "/model/contentTitleInput/label",
+          "value": "Title"
+        }
+      ]
     },
     "model": {
-      "textContentTextLabel": {
-        "label": "Text"
+      "messageInput": {
+        "label": "Message"
       },
-      "imageContentTitleLabel": {
+      "parentDdLabel": {
+        "label": "Parent"
+      },
+      "contentTitleInput": {
         "label": "Title"
-      },
-      "imageEditorUrlLabel": {
-        "label": "Image url"
-      },
-      "linkEditorDialogTitleLabel": {
-        "label": "Title"
-      },
-      "linkEditorReferenceLabel": {
-        "label": "Reference"
-      },
-      "videoEditorTitleLabel": {
-        "label": "Title"
-      },
-      "videoContentUrlLabel": {
-        "label": "Video url",
-        "error-message": "Invalid Youtube url."
       }
     },
-    "textEditorDialogTitle": "Edit text properties",
-    "textEditorDialogAcceptButton": "Accept",
-    "imageEditorDialogTitle": "Edit image properties",
-    "imageEditorDialogCancelButton": "Cancel",
-    "imageEditorDialogAcceptButton": "Accept",
-    "linkEditorDialogTitle": "Edit link properties",
-    "linkEditorDialogCancelButton": "Cancel",
-    "linkEditorDialogAcceptButton": "Accept",
-    "videoEditorDialogTitle": "Edit video properties",
-    "videoEditorDialogCancelButton": "Cancel",
-    "videoEditorDialogAcceptButton": "Accept"
+    "uploadFileText": "Choose File"
   },
   "signin-view": {
     "meta": {

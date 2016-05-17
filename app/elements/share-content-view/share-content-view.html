@@ -22,7 +22,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <dom-module id="share-content-view">
     <template>
-        <style>
+        <style include="iron-flex iron-flex-alignment">
             :host {
                 display: block;
                 /*@apply(--layout-vertical);*/
@@ -31,6 +31,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
 
 
+            paper-material {
+                background-color: white;
+            }
 
             plutonium-cm-form {
                 display: block;
@@ -78,152 +81,92 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             auto></iron-ajax>
 
 
-        <plutonium-link-section
-            id="mcIntire"
-            model$="{{kacsa4}}"
-            ></plutonium-link-section>
-        <plutonium-link-section
-            id="mcIntire"
-            editable
-            parent-candidates-url="{{apiUrl}}/content-management/candidates"
-            model$="{{kacsa4}}"
-            ></plutonium-link-section>
-        <plutonium-text-section
-            id="mcIntire"
-            model$="{{kacsa}}"
-            ></plutonium-text-section>
-        <plutonium-text-section
-            id="mcIntire2"
-            editable
-            model$="{{kacsa}}"
-            ></plutonium-text-section>
-        <plutonium-video-section
-            id="mcIntire3"
-            model$="{{kacsa3}}"
-            ></plutonium-video-section>
-        <plutonium-video-section
-            id="mcIntire4"
-            editable
-            model$="{{kacsa3}}"
-            ></plutonium-video-section>
-        <plutonium-image-section
-            id="mcIntire5"
-            model$="{{kacsa2}}"
-            ></plutonium-image-section>
-        <plutonium-image-section
-            id="mcIntire6"
-            editable
-            model$="{{kacsa2}}"
-            ></plutonium-image-section>
+        <iron-pages selected="{{selectedMetaAction}}" attr-for-selected="name">
 
-        <!--        <plutonium-section-editor 
-                    id="sectionEditor2"
-                    action-title="Edit section"
-                    justification="start-justified"
-                    font-size="13">
-                    actasdasda
-                </plutonium-section-editor>-->
-
-        <plutonium-cm-form 
-            id="pcf"
-            contacts="{{contacts}}" 
-            content-model="{{sections}}"
-            parent-candidates="{{parentCandidates}}"
-            file-upload-target="{{apiUrl}}/fs/upload"
-            editors="[[editorMap]]">
-            <paper-dialog id="textEditorDialog" modal class="editor">
-                <h2 id="textEditorDialogTitle">Edit text properties</h2>
-                <div class="content">
-                    <paper-icon-button id="decreaseSizeButton" on-tap="onDecreaseFontSize" icon="unfold-less" raised></paper-icon-button>
-                    <paper-icon-button id="increaseSizeButton" on-tap="onInreaseFontSize" icon="unfold-more" raised></paper-icon-button>
-                    <paper-icon-button id="alignLeftButton" on-tap="onAlignLeft" icon="editor:format-align-left" raised></paper-icon-button>
-                    <paper-icon-button id="alignCenterButton" on-tap="onAlignCenter" icon="editor:format-align-center" raised></paper-icon-button>
-                    <paper-icon-button id="alignRightButton" on-tap="onAlignRight" icon="editor:format-align-right" raised></paper-icon-button>
+            <paper-card elevation="1" name="share" class="layout vertical">
+                <div class="card-content">
+                    <plutonium-field-recipient
+                        id="recipientsFieldInput"
+                        label="To"
+                        picker-icon="supervisor-account"
+                        picker-title="Contacts"
+                        picker-button-tooltip="Choose contacts."
+                        clear-icon="clear"
+                        clear-button-tooltip="Clear recipients input."
+                        attr-for-selected="id"
+                        as="item"
+                        items="[[contacts]]">
+                        <template is="dom-repeat" items="[[contacts]]">
+                            <paper-item id="[[item.id]]" class="item pad">
+                                <label>[[item.name]]</label>
+                            </paper-item>
+                        </template>
+                    </plutonium-field-recipient>
+                    <paper-input id="messageInput" class="bottom title" label="Message" value="{{message}}"></paper-input>
                 </div>
-                <div class="content">
-                    <input type="hidden" name="name">
-                    <paper-input id="textContentTitleLabel" name="title" label="{{text.textEditorTitlePlaceholder}}">
-                    </paper-input>
-                    <paper-textarea  
-                        id="textContentTextLabel" 
-                        name="data" 
-                        label="Text" 
-                        rows="10" 
-                        type="text"  
-                        char-counter maxlength="10000">
-                    </paper-textarea>
 
+
+            </paper-card>
+
+            <paper-card elevation="1" name="assembled" class="layout vertical">
+                <div class="card-content" style="padding-top: 10px;">
+                    <plutonium-cm-form 
+                        id="pcf"
+                        contacts="{{contacts}}" 
+                        content-model="{{sections}}"
+                        parent-candidates="{{parentCandidates}}"
+                        file-upload-target="{{apiUrl}}/fs/upload"
+                        editors="[[editorMap]]">
+
+                    </plutonium-cm-form>
                 </div>
-                <div class="buttons">
-                    <paper-button id="textEditorDialogCancelButton" dialog-dismiss>{{text.textEditorCancelLabel}}</paper-button>
-                    <paper-button id="textEditorDialogAcceptButton" raised dialog-confirm>Accept</paper-button>
+            </paper-card>
+
+            <paper-card elevation="1" name="embedded" class="layout vertical">
+                <!--                            <paper-radio-group selected="{{contentMode}}" attr-for-selected="name">
+                                                <paper-radio-button id="embedContentRadio" name="embedded">Embed content</paper-radio-button>
+                                                <paper-radio-button id="assembleRadio" name="assembled">Assemble</paper-radio-button>
+                                            </paper-radio-group>-->
+                <div class="card-content">
+                    <file-upload 
+                        id="uploadFileText"
+                        drop-text="Drop any PDF file here."
+                        error-text="File upload failed."
+                        droppable="true" 
+                        raised="true" 
+                        multi="false" 
+                        method="POST"
+                        target="{{fileUploadTarget}}">Choose File</file-upload>
                 </div>
-            </paper-dialog>
+            </paper-card>
 
-            <paper-dialog id="imageEditorDialog" modal class="editor">
-                <h2 id="imageEditorDialogTitle">Edit image properties</h2>
-                <div class="content">
-                    <input type="hidden" name="name">
-                    <paper-input id="imageContentTitleLabel" name="title" label="Title"></paper-input>
+            <paper-card elevation="1"  name="props" class="layout vertical">
+                <div class="card-content">
+                    <paper-dropdown-menu 
+                        id="parentDdLabel"
+                        label="Parent">
+                        <!--<paper-menu class="layout flex">-->
+                        <paper-listbox id="parentCandidatesList"
+                                       class="dropdown-content"
+                                       attr-for-selected="{{attrForSelected}}"
+                                       items="[[parentCandidates]]"
+                                       as="parent"
+                                       selected="{{selectedParent}}">
+                            <template is="dom-repeat" items="[[parentCandidates]]">
 
-                    <paper-input id="imageEditorUrlLabel" name="data" required auto-validate
-                                 label="Image url">
-
-                    </paper-input>
-                </div>
-                <div class="buttons">
-                    <paper-button id="imageEditorDialogCancelButton" dialog-dismiss>Cancel</paper-button>
-                    <paper-button id="imageEditorDialogAcceptButton" raised dialog-confirm>Accept</paper-button>
-                </div>
-            </paper-dialog>
-
-            <paper-dialog id="linkEditorDialog" modal class="editor">
-                <h2 id="linkEditorDialogTitle">Edit link properties</h2>
-                <div class="content">
-                    <input type="hidden" name="name">
-                    <paper-input id="linkEditorDialogTitleLabel" name="title" label="Title" ></paper-input>
-
-                    <input name="data" type="hidden" />
-                    <paper-dropdown-menu id="linkEditorReferenceLabel" label="Reference">
-                        <paper-menu
-                            class="dropdown-content" selected="{{data}}" attr-for-selected="value"
-                            attr-for-selected="id">
-                            <template is="dom-repeat" items="{{parentCandidates}}">
-                                <paper-item value="{{item.id}}">{{item.title}}</paper-item>
+                                <paper-item id="[[item.id]]" class="item pad">
+                                    <label>[[item.title]]</label> 
+                                </paper-item>
                             </template>
-                        </paper-menu>
+                        </paper-listbox>
                     </paper-dropdown-menu>
+                    <!---->
+
+                    <paper-input id="contentTitleInput" class="bottom title" label="Title" value="{{contentModel.title}}"></paper-input>
                 </div>
-                <div class="buttons">
-                    <paper-button id="linkEditorDialogCancelButton" dialog-dismiss>Cancel</paper-button>
-                    <paper-button id="linkEditorDialogAcceptButton" raised dialog-confirm>Accept</paper-button>
-                </div>
-            </paper-dialog>
+            </paper-card>
 
-
-
-            <paper-dialog id="videoEditorDialog" modal class="editor">
-                <h2 id="videoEditorDialogTitle">Edit video properties</h2>
-                <div class="content">
-                    <input type="hidden" name="name">
-                    <paper-input  id="videoEditorTitleLabel" name="title" label='Title' value="{{title}}">
-
-                    </paper-input>
-                    <paper-input 
-                        id="videoContentUrlLabel"
-                        name="data" required auto-validate
-                        label='Video url'
-                        error-message='Invalid Youtube url.'
-                        value="{{url}}">
-
-                    </paper-input>
-                </div>
-                <div class="buttons">
-                    <paper-button id="videoEditorDialogCancelButton" dialog-dismiss>Cancel</paper-button>
-                    <paper-button id="videoEditorDialogAcceptButton" raised dialog-confirm>Accept</paper-button>
-                </div>
-            </paper-dialog> 
-        </plutonium-cm-form>
+        </iron-pages>
 
         <iron-ajax 
             id="shareAjax"
@@ -258,6 +201,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             "sections": [
                             ]
                         }
+                    },
+                    selectedMetaAction: {
+                        type: String,
+                        notify: true,
+                        value: 'assembled'
                     },
                     editorMap: {
                         type: Object,
@@ -354,7 +302,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 },
                 onInreaseFontSize: function (e) {
                     console.log('Increase font size.');
-                    textEditorDialogAcceptButton
+//                    textEditorDialogAcceptButton
                 },
                 onAlignLeft: function (e) {
                     console.log('Change align to left.');

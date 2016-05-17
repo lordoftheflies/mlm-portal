@@ -66,14 +66,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <template is="i18n-dom-bind" id="app">
 
-            <iron-ajax 
-                id="login" 
-                on-response="sessionInfoHandler" 
-                on-error="sessionInitializationErrorHandler" 
-                url="{{backEndUrl}}authentication/session?token={{sessionInfo.token}}"
-                last-response="{{sessionInfo}}"
-                auto>
-            </iron-ajax>
+
+
+            <iron-ajax id="login" hidden="[[!sessionInfo]]" on-response="sessionInfoHandler" on-error="sessionInitializationErrorHandler" url="{{backEndUrl}}authentication/session?token={{sessionInfo.token}}" last-response="{{sessionInfo}}" auto></iron-ajax>
+            <!--Network AJAX-->
+            <iron-ajax id="genocideIronAjax" hidden="[[!sessionInfo]]" url="{{backEndUrl}}addressbook/genocide" params="{{genocideRequestParams}}" last-response="{{parents}}"></iron-ajax>
+            <iron-ajax id="possibleParentsIronAjax" hidden="[[!sessionInfo]]" url="{{backEndUrl}}addressbook/all" last-response="{{possibleParents}}" auto></iron-ajax>
+            <iron-ajax id="childrenIronAjax" hidden="[[!sessionInfo]]" url="{{backEndUrl}}addressbook/children" params="{{childrenRequestParams}}" last-response="{{data}}"></iron-ajax>
+            <iron-ajax id="localesAjax" hidden="[[!sessionInfo]]" url="{{backEndUrl}}localization/locales" last-response="{{locales}}" auto></iron-ajax>
+            <!--Content AJAX-->
+            <iron-ajax id="rootModelAjax" hidden="[[!sessionInfo]]" url="{{backEndUrl}}content-management/toc/info" params="{{infoRequestParams}}" handle-as="json" last-response="{{rootModel}}"></iron-ajax>
+            <iron-ajax id="parentTocAjax" hidden="[[!sessionInfo]]" url="{{backEndUrl}}content-management/toc/path" params="{{tocRequestParams}}" handle-as="json" last-response="{{parentModel}}" on-response="onParentTocResponse" on-error="onParentTocError"></iron-ajax>
+            <iron-ajax id="childTocAjax" hidden="[[!sessionInfo]]" url="{{backEndUrl}}content-management/toc" params="{{tocRequestParams}}" handle-as="json" on-response="onContentResponse" on-error="onContentError" last-response="{{contentChildrenModel}}"></iron-ajax>
+            <!--Mailbox-->
+            <iron-ajax id="mailBoxAjax" hidden="[[!sessionInfo]]" url="{{backEndUrl}}mailbox/{{sessionInfo.token}}/{{selectedMetaAction}}" last-response="{{mailBoxModel}}"></iron-ajax>
+            <!--Profile-->
+            <iron-ajax id="profileAjax" hidden="[[!sessionInfo]]" url="{{backEndUrl}}addressbook/{{sessionInfo.token}}/profile" 
+                   last-response="{{profile}}" auto></iron-ajax>
+
+       <!-- <iron-ajax id="mailBoxAjax" hidden="[[!sessionInfo]]" url="{{backEndUrl}}localization/locales" 
+
+                   last-response="{{locales}}" auto></iron-ajax>-->
+        
+            
             <paper-dialog id="loginDialog" modal>
                 <h2 id="loginDialogTitle">Sign-in</h2>
                 <signin-view api-url="{{backEndUrl}}"></signin-view>
@@ -138,8 +153,41 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                         <!-- Application name -->
                         <div class="middle middle-container">
-                            <div class="app-name">[[applicationTitle]]</div>
+                            <iron-pages attr-for-selected="data-route" selected="{{route}}" class="flex">
+                                <div data-route="share-content" class="app-name focus-target" tabindex="-1">
+                                    <span id="mainTitle">[[applicationTitle]]</span>
+                                    <span>/</span>
+                                    <span id="shareContentViewTitleLabel" class="page-title">Share content</span>
+                                </div>
+                                <div data-route="content-tree" class="app-name focus-target" tabindex="-1">
+                                    <span id="mainTitle">[[applicationTitle]]</span>
+                                    <span>/</span>
+                                    <span id="contentTreeViewTitleLabel" class="page-title">Contents</span>
+                                </div>
+                                <div data-route="mailbox" class="app-name focus-target" tabindex="-1">
+                                    <span id="mainTitle">[[applicationTitle]]</span>
+                                    <span>/</span>
+                                    <span id="mailBoxViewTitleLabel" class="page-title">Mailbox</span>
+                                </div>
+                                <div data-route="network" class="app-name focus-target" tabindex="-1">
+                                    <span id="mainTitle">[[applicationTitle]]</span>
+                                    <span>/</span>
+                                    <span id="networkViewTitleLabel" class="page-title">Network</span>
+                                </div>
+                                <div data-route="about" class="app-name focus-target" tabindex="-1">
+                                    <span id="mainTitle">[[applicationTitle]]</span>
+                                    <span>/</span>
+                                    <span id="aboutViewTitleLabel" class="page-title">About</span>
+                                </div>
+                                <div data-route="profile" class="app-name focus-target" tabindex="-1">
+                                    <span id="mainTitle">[[applicationTitle]]</span>
+                                    <span>/</span>
+                                    <span id="profileViewTitleLabel" class="page-title">Profile</span>
+                                </div>
+                            </iron-pages>
                         </div>
+
+
 
                         <!-- Toolbar icons -->
                         <div hidden="[[!sessionInfo]]">
@@ -162,8 +210,50 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         </div>
 
                         <!-- Application sub title -->
-                        <div class="bottom bottom-container">
-                            <div id="mottoLabel" class="bottom-title">The future of the web today</div>
+                        <div class="bottom bottom-container flex" hidden="[[!admin]]">
+                            <iron-pages attr-for-selected="data-route" selected="{{route}}" class="flex">
+                                <paper-tabs data-route="share-content"  attr-for-selected="name" selected="{{selectedMetaAction}}" style="width: 100%;" autoselect>
+                                    <paper-tab text-id="shareTabLabel" name="share">Share</paper-tab>
+                                    <paper-tab text-id="embbeddedContentTabLabel" name="embedded">Embed content</paper-tab>
+                                    <paper-tab text-id="assembledContentTabLabel" name="assembled">Assembled content</paper-tab>
+                                    <paper-tab text-id="propertiesTabLabel" name="props">Properties</paper-tab>
+                                </paper-tabs>
+                                <paper-tabs data-route="content-tree"  attr-for-selected="name" selected="{{selectedContentFolder}}" style="width: 100%;" autoselect>
+                                    <paper-tab text-id="messagesPagePublicFolderTitle" name="public">Public</paper-tab>
+                                    <paper-tab text-id="messagesPageMyContentsFolderTitle" name="drafts">Drafts</paper-tab>
+                                    <paper-tab text-id="messagesPagePublishedFolderTitle" name="published">Published</paper-tab>
+                                </paper-tabs>
+                                <paper-tabs data-route="mailbox"  attr-for-selected="name" selected="{{selectedMailboxFolder}}" style="width: 100%;" autoselect>
+                                    <paper-tab text-id="mailBoxPageInboxFolderTitle" name="inbox">Inbox</paper-tab> 
+                                    <paper-tab text-id="sentItemsPageInboxFolderTitle" name="outbox">Sent items</paper-tab>
+                                </paper-tabs>
+
+                                <div data-route="network"  class="layout end-justified">
+                                    <!--<paper-icon-button icon="arrow-upward" on-tap="onNavigateUp"></paper-icon-button>-->
+                                    <paper-icon-button icon="add-circle" on-tap="onOpenCreateMember"></paper-icon-button>
+                                    <paper-icon-button icon="remove-circle" on-tap="onConfirmRemoveMember"></paper-icon-button>
+                                    <paper-icon-button icon="send" on-tap="onSendTo"></paper-icon-button>
+                                    <template is="dom-if" if="[[isUser(selectedRole)]]">
+                                        <paper-icon-button icon="star" on-tap="onOpenPromoteAdminPrompt"></paper-icon-button>
+                                    </template>
+                                    <template is="dom-if" if="[[isAdmin(selectedRole)]]">
+                                        <paper-icon-button icon="star-border" on-tap="onOpenDemoteAdminPrompt"></paper-icon-button>
+                                    </template>
+
+                                    <paper-tabs selected="{{selectedAccount}}" scrollable attr-for-selected="id">
+                                        <template is="dom-repeat" items="{{parents}}">
+                                            <paper-tab id="[[item.id]]" role="{{item.role}}" href="{{baseUrl}}network/{{item.id}}">
+                                                <iron-icon class="end-justified" icon="[[getIcon(item.role)]]"></iron-icon>
+                                                <a href="{{baseUrl}}network/{{item.id}}">
+
+                                                    [[item.name]]
+                                                </a>
+                                            </paper-tab>
+                                        </template>
+                                    </paper-tabs>
+                                </div>
+
+                            </iron-pages>
                         </div>
                     </paper-toolbar>
 
@@ -172,55 +262,58 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         <iron-pages attr-for-selected="data-route" selected="{{route}}">
                             <section data-route="profile">
                                 <!--<paper-material elevation="1">-->
-                                <h2 id="shareContentViewTitleLabel" class="page-title focus-target" tabindex="-1">Profile</h2>
-                                <profile-view account-id="{{sessionInfo.token}}" api-url="{{backEndUrl}}"></profile-view>
+                                <!--<h2 id="profileViewTitleLabel" class="page-title focus-target" tabindex="-1">Profile</h2>-->
+                                <profile-view account-id="{{sessionInfo.token}}" api-url="{{backEndUrl}}"
+                                              profile="{{profile}}"
+                                              locales="{{locales}}"></profile-view>
                                 <!--</paper-material>-->
                             </section>
 
                             <section data-route="share-content">
-                                <!--<paper-material elevation="1">-->
-                                <h2 id="shareContentViewTitleLabel" class="page-title focus-target" tabindex="-1">Share content</h2>
-                                <share-content-view id="scv" account-id="{{sessionInfo.token}}" api-url="{{backEndUrl}}"></share-content-view>
-                                <!--</paper-material>-->
+                                <share-content-view 
+                                    class="focus-target" id="scv" account-id="{{sessionInfo.token}}" api-url="{{backEndUrl}}" selected-meta-action="{{selectedMetaAction}}"></share-content-view>
                             </section>
                             <section data-route="content-tree">
-                                <!--<paper-material elevation="1">-->
-                                <h2 id="contentTreeViewTitleLabel" class="page-title focus-target" tabindex="-1">Contents</h2>
                                 <content-tree-view 
+                                    id="contentTree"
+                                    class="page-title focus-target"
                                     admin="[[sessionInfo.powerUser]]"
                                     selected-root="[[params.contentId]]" 
                                     base-url="/" 
+                                    selected-content-folder="{{selectedContentFolder}}"
+                                    info-request-params="{{infoRequestParams}}"
+                                    root-model="{{rootModel}}"
+                                    parent-model="{{parentModel}}"
+                                    toc-request-params="{{tocRequestParams}}"
+                                    data="{{contentChildrenModel}}"
                                     api-url="{{backEndUrl}}"></content-tree-view>
-                                <!--</paper-material>-->
                             </section>
                             <section data-route="mailbox">
-                                <h2 id="mailBoxViewTitleLabel" class="page-title focus-target" tabindex="-1">Mailbox</h2>
-                                <mailbox-view account-id="{{sessionInfo.token}}" api-url="{{backEndUrl}}"></mailbox-view>
+                                <mailbox-view 
+                                    data="{{mailBoxModel}}"
+                                    selected-mail-box-folder="{{selectedMailboxFolder}}"
+                                    class="focus-target" account-id="{{sessionInfo.token}}" api-url="{{backEndUrl}}"></mailbox-view>
                             </section>
                             <section data-route="network">
-                                <!--<paper-material elevation="1">-->
-                                <h2 id="networkViewTitleLabel" class="page-title focus-target" tabindex="-1">Network</h2>
-                                <network-view account-id="[[params.memberId]]" api-url="{{backEndUrl}}" owner-id="{{sessionInfo.token}}"></network-view>
-                                <!--</paper-material>-->
+                                <network-view 
+                                    id="networkView"
+                                    class="focus-target" 
+                                    genocide-request-params="{{genocideRequestParams}}"
+                                    parents="{{parents}}"
+                                    data="{{data}}"
+                                    possible-parents="{{possibleParents}}"
+                                    children-request-params="{{childrenRequestParams}}"
+                                    
+                                    account-id="[[params.memberId]]" 
+                                              api-url="{{backEndUrl}}" 
+                                              owner-id="{{sessionInfo.token}}"></network-view>
                             </section>
 
                             <section data-route="about">
-                                <paper-material elevation="1">
-                                    <h2 id="aboutViewTitleLabel" class="page-title focus-target" tabindex="-1">About</h2>
+                                <paper-material 
+                                    class="focus-target" elevation="1">
                                     <about-view></about-view>
                                 </paper-material>
-                            </section>
-                            <section data-route="registrate">
-                                <div class="page-title focus-target"></div>
-                                <!--                                <paper-material elevation="1">
-                                                                    <h2 id="logonDialogTitle" class="page-title focus-target" tabindex="-1">Sign-on</h2>
-                                                                    <signon-view api-url="{{backEndUrl}}"></signon-view>
-                                                                </paper-material>-->
-
-                                <!--                                <paper-dialog id="registrationDialog" modal >
-                                                                    <h2 id="logonDialogTitle" class="page-title focus-target">Sign-on</h2>
-                                                                    <signon-view api-url="{{backEndUrl}}"></signon-view>
-                                                                </paper-dialog>-->
                             </section>
 
 

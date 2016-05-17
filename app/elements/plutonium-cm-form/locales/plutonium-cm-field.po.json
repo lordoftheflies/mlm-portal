@@ -1,10 +1,16 @@
 {
   "meta": {
-    "todo": []
+    "todo": [
+      {
+        "op": "replace",
+        "path": "/model/addSectionButton/title",
+        "value": "Embedd video to the message content."
+      }
+    ]
   },
   "model": {
     "addSectionButton": {
-      "title": "Ttworzenia zawartości tekstowej."
+      "title": "Embedd video to the message content."
     },
     "addVideoButton": {
       "title": "Osadzony materiał wideo"

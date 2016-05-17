@@ -24,7 +24,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <dom-module id="content-tree-view">
     <template>
-        <style include="shared-styles">
+        <style include="shared-styles iron-flex iron-flex-alignment">
             :host {
                 display: block;
                 /*                @apply(--layout-vertical);
@@ -46,61 +46,36 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             /*}*/
         </style>
 
-        <iron-ajax 
-            id="rootModelAjax"
-            url="{{apiUrl}}/content-management/toc/info" 
-            params="{{infoRequestParams}}"
-            handle-as="json"
-            last-response="{{rootModel}}">
-        </iron-ajax>
 
-        <iron-ajax 
-            id="parentTocAjax"
-            url="{{apiUrl}}/content-management/toc/path" 
-            params="{{tocRequestParams}}"
-            handle-as="json"
-            last-response="{{parentModel}}" 
-            on-response="onParentTocResponse"
-            on-error="onParentTocError">
-        </iron-ajax>
-
-        <iron-ajax 
-            id="childTocAjax"
-            url="{{apiUrl}}/content-management/toc" 
-            params="{{tocRequestParams}}"
-            handle-as="json"
-            on-response="onContentResponse"
-            on-error="onContentError"
-            last-response="{{data}}">
-        </iron-ajax>
-
-        <paper-tabs hidden="[[!admin]]" selected="{{selectedContentFolder}}" attr-for-selected="name" autoselect>
-            <paper-tab text-id="messagesPagePublicFolderTitle" name="public">Public</paper-tab>
-            <paper-tab text-id="messagesPageMyContentsFolderTitle" name="drafts">Drafts</paper-tab>
-            <paper-tab text-id="messagesPagePublishedFolderTitle" name="published">Published</paper-tab>
-        </paper-tabs>
+        <!--
+                <paper-tabs hidden="[[!admin]]" selected="{{selectedContentFolder}}" attr-for-selected="name" autoselect>
+                    <paper-tab text-id="messagesPagePublicFolderTitle" name="public">Public</paper-tab>
+                    <paper-tab text-id="messagesPageMyContentsFolderTitle" name="drafts">Drafts</paper-tab>
+                    <paper-tab text-id="messagesPagePublishedFolderTitle" name="published">Published</paper-tab>
+                </paper-tabs>-->
 
         <!--        <template is="dom-repeat" items="{{parentModel.sections}}">
                     <grapp-breadcrumb href="{{baseUrl}}content-tree/{{item.data}}">[[item.title]]</grapp-breadcrumb>
                 </template>-->
 
-        <paper-material>
-            <paper-tabs selected="{{selectedRoot}}" scrollable attr-for-selected="id">
+        <paper-material class="layout horizontal">
+            <paper-tabs selected="{{selectedRoot}}" scrollable attr-for-selected="id" class="flex">
                 <template is="dom-repeat" items="{{parentModel.sections}}">
                     <paper-tab id="[[item.name]]" href="{{baseUrl}}content-tree/{{item.data}}">
                         <a href="{{baseUrl}}content-tree/{{item.data}}">[[item.title]]</a>
                     </paper-tab>
                 </template>
             </paper-tabs>
-            
-            <paper-icon-button icon="create" hidden="{{!isDraftSelected(selectedContentFolder)}}"></paper-icon-button>
-            <paper-icon-button icon="delete" hidden="{{!isDraftSelected(selectedContentFolder)}}"></paper-icon-button>
-            <paper-icon-button icon="file-upload" hidden="{{!isDraftSelected(selectedContentFolder)}}"></paper-icon-button>
-            <paper-icon-button icon="file-download" hidden="{{!isDraftSelected(selectedContentFolder)}}"></paper-icon-button>
+            <div hidden="{{!isDraftSelected(selectedContentFolder)}}">
+                <paper-icon-button icon="create"></paper-icon-button>
+                <paper-icon-button icon="delete"></paper-icon-button>
+                <paper-icon-button icon="file-upload"></paper-icon-button>
+                <paper-icon-button icon="file-download"></paper-icon-button>
+            </div>
         </paper-material>
 
 
-        <div class="mailbox-content">
+        <div class="content-tree-content">
             <template is="dom-if" if="{{data.hasEmbeddedFile}}">
                 <iframe src$="{{getContentFileUrl(data.embeddedFileName)}}"></iframe>
                 <!--http://localhost/topn_data/[[data.embeddedFileName]]-->
@@ -202,9 +177,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     console.log('Toc-Content-view toc navigation request parameters updated: ' + JSON.stringify(this.tocRequestParams))
                     if (this.data !== undefined)
                         this.splice('data.sections', 0, this.data.sections.length);
-                    this.$.rootModelAjax.generateRequest();
-                    this.$.childTocAjax.generateRequest();
-                    this.$.parentTocAjax.generateRequest();
+                    app.$.rootModelAjax.generateRequest();
+                    app.$.childTocAjax.generateRequest();
+                    app.$.parentTocAjax.generateRequest();
                 },
                 getItemClasses: function (item) {
                     return item.tags.join(" ");
@@ -216,28 +191,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 isFork: function (item) {
                     return item.sections.length > 0;
                 },
-                onParentTocResponse: function () {
-                    console.log('Toc-Content-View parent path success response (' + this.selectedRoot + ').');
-                    //                this.renderBreadCrumbs = true;
-                },
-                onParentTocError: function () {
-                    console.log('Toc-Content-View parent path failed to respond (' + this.selectedRoot + ').');
-                    this.selectedContentFolder = 'public';
-                    //                this.renderBreadCrumbs = true;
-                },
-                onContentResponse: function () {
-                    console.log('Content fetched for ' + this.selectedRoot);
-                },
-                onContentError: function () {
-                    console.log('Content fetching failed for ' + this.selectedRoot);
-                },
                 isEmpty: function (data) {
                     return (data === undefined || data === null || data.length === 0);
                 },
                 getContentFileUrl: function (fileName) {
                     return this.contentRootUrl + fileName;
                 },
-                isDraftSelected: function(selectedContentFolder) {
+                isDraftSelected: function (selectedContentFolder) {
                     console.log('Fasz');
                     return selectedContentFolder === 'drafts';
                 }

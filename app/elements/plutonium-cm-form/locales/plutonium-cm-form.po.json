@@ -1,13 +1,16 @@
 {
   "meta": {
-    "todo": []
+    "todo": [
+      {
+        "op": "replace",
+        "path": "/model/addSectionButton/title",
+        "value": "Embedd video to the message content."
+      }
+    ]
   },
   "model": {
-    "messageInput": {
-      "label": "Wiadomość"
-    },
     "addSectionButton": {
-      "title": "Ttworzenia zawartości tekstowej."
+      "title": "Embedd video to the message content."
     },
     "addVideoButton": {
       "title": "Osadzony materiał wideo."
@@ -17,17 +20,6 @@
     },
     "addLinkButton": {
       "title": "Osadzonej zawartości Link."
-    },
-    "parentDdLabel": {
-      "label": "Roślina mateczna"
-    },
-    "contentTitleInput": {
-      "label": "Tytuł"
     }
-  },
-  "shareTabLabel": "Dzielić",
-  "embbeddedContentTabLabel": "Doładuj fajl",
-  "assembledContentTabLabel": "Edytować",
-  "propertiesTabLabel": "Nieruchomości",
-  "uploadFileText": "Wybierz fajl"
+  }
 }

@@ -1,40 +1,38 @@
 {
   "meta": {
-    "todo": []
+    "todo": [
+      {
+        "op": "add",
+        "path": "/uploadFileText",
+        "value": "Choose File"
+      },
+      {
+        "op": "add",
+        "path": "/model/messageInput/label",
+        "value": "Message"
+      },
+      {
+        "op": "add",
+        "path": "/model/parentDdLabel/label",
+        "value": "Parent"
+      },
+      {
+        "op": "add",
+        "path": "/model/contentTitleInput/label",
+        "value": "Title"
+      }
+    ]
   },
   "model": {
-    "textContentTextLabel": {
-      "label": "Szöveg"
+    "messageInput": {
+      "label": "Message"
     },
-    "imageContentTitleLabel": {
-      "label": "Cím"
+    "parentDdLabel": {
+      "label": "Parent"
     },
-    "imageEditorUrlLabel": {
-      "label": "Kép url"
-    },
-    "linkEditorDialogTitleLabel": {
-      "label": "Cím"
-    },
-    "linkEditorReferenceLabel": {
-      "label": "Hivatkozás"
-    },
-    "videoEditorTitleLabel": {
-      "label": "Cím"
-    },
-    "videoContentUrlLabel": {
-      "label": "Videó url",
-      "error-message": "Érvénytelen Youtube videó."
+    "contentTitleInput": {
+      "label": "Title"
     }
   },
-  "textEditorDialogTitle": "Szöveg tulajdonságainak szerkesztése",
-  "textEditorDialogAcceptButton": "Elfogadás",
-  "imageEditorDialogTitle": "Kép tulajdonságainak szerkesztése",
-  "imageEditorDialogCancelButton": "Elvetés",
-  "imageEditorDialogAcceptButton": "Elfogadás",
-  "linkEditorDialogTitle": "Hivatkozás tulajdonságainak szerkesztése",
-  "linkEditorDialogCancelButton": "Elvetés",
-  "linkEditorDialogAcceptButton": "Elfogadás",
-  "videoEditorDialogTitle": "Video tulajdonságainak szerkesztése",
-  "videoEditorDialogCancelButton": "Elvetés",
-  "videoEditorDialogAcceptButton": "Elfogadás"
+  "uploadFileText": "Choose File"
 }

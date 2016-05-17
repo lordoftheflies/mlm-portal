@@ -1,8 +1,49 @@
 {
   "meta": {
-    "todo": []
+    "todo": [
+      {
+        "op": "add",
+        "path": "/ul_2:template:li/0",
+        "value": " {1} ({2}) "
+      },
+      {
+        "op": "add",
+        "path": "/ul_2:template:li/1",
+        "value": "{{item.name}}"
+      },
+      {
+        "op": "add",
+        "path": "/ul_2:template:li/2",
+        "value": "{{item.email}}"
+      },
+      {
+        "op": "add",
+        "path": "/ul_4:template:li/0",
+        "value": " {1} ({2}) "
+      },
+      {
+        "op": "add",
+        "path": "/ul_4:template:li/1",
+        "value": "{{item.name}}"
+      },
+      {
+        "op": "add",
+        "path": "/ul_4:template:li/2",
+        "value": "{{item.email}}"
+      }
+    ]
   },
   "model": {},
   "contributorsTitleLabel": "Authors & contributors",
-  "administrationTitleLabel": "Webmaster & maintenance"
+  "ul_2:template:li": [
+    " {1} ({2}) ",
+    "{{item.name}}",
+    "{{item.email}}"
+  ],
+  "administrationTitleLabel": "Webmaster & maintenance",
+  "ul_4:template:li": [
+    " {1} ({2}) ",
+    "{{item.name}}",
+    "{{item.email}}"
+  ]
 }

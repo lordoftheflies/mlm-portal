@@ -127,6 +127,7 @@
                 "id": {}
             }
         },
+        "plutonium-video-section": {},
         "paper-material": {
             "attributes": {
                 "elevation": {}
@@ -148,6 +149,7 @@
                 "api-url": {}
             }
         },
+        "plutonium-link-section": {},
         "iron-dropdown": {
             "attributes": {
                 "vertical-align": {},
@@ -155,6 +157,7 @@
                 "horizontal-align": {}
             }
         },
+        "plutonium-image-section": {},
         "paper-dialog": {
             "attributes": {
                 "id": {},
@@ -214,6 +217,7 @@
                 "id": {}
             }
         },
+        "plutonium-text-section": {},
         "profile-view": {
             "attributes": {
                 "api-url": {},

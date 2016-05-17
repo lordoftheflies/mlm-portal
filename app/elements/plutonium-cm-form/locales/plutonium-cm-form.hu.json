@@ -1,11 +1,14 @@
 {
   "meta": {
-    "todo": []
+    "todo": [
+      {
+        "op": "replace",
+        "path": "/model/addSectionButton/title",
+        "value": "Embedd video to the message content."
+      }
+    ]
   },
   "model": {
-    "messageInput": {
-      "label": "Üzenet"
-    },
     "addSectionButton": {
       "title": "Embedd video to the message content."
     },
@@ -17,17 +20,6 @@
     },
     "addLinkButton": {
       "title": "Hivatkozás szekció beágyazása."
-    },
-    "parentDdLabel": {
-      "label": "Szülő"
-    },
-    "contentTitleInput": {
-      "label": "Cím"
     }
-  },
-  "shareTabLabel": "Megosztás",
-  "embbeddedContentTabLabel": "Fájl feltöltés",
-  "assembledContentTabLabel": "Saját tartalom",
-  "propertiesTabLabel": "Tulajdonságok",
-  "uploadFileText": "Fájl kiválasztása"
+  }
 }

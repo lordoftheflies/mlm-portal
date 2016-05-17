@@ -26,12 +26,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
         </style>
 
-        <iron-ajax url="{{apiUrl}}addressbook/{{accountId}}/profile" 
-                   last-response="{{profile}}" auto></iron-ajax>
-
-        <iron-ajax url="{{apiUrl}}localization/locales" 
-
-                   last-response="{{locales}}" auto></iron-ajax>
         <iron-ajax id="changeLanguageAjax" 
                    method="POST"
                    handle-as="json"

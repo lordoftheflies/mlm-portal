@@ -1,40 +1,38 @@
 {
   "meta": {
-    "todo": []
+    "todo": [
+      {
+        "op": "add",
+        "path": "/uploadFileText",
+        "value": "Choose File"
+      },
+      {
+        "op": "add",
+        "path": "/model/messageInput/label",
+        "value": "Message"
+      },
+      {
+        "op": "add",
+        "path": "/model/parentDdLabel/label",
+        "value": "Parent"
+      },
+      {
+        "op": "add",
+        "path": "/model/contentTitleInput/label",
+        "value": "Title"
+      }
+    ]
   },
   "model": {
-    "textContentTextLabel": {
-      "label": "Tekst"
+    "messageInput": {
+      "label": "Message"
     },
-    "imageContentTitleLabel": {
-      "label": "Tytuł"
+    "parentDdLabel": {
+      "label": "Parent"
     },
-    "imageEditorUrlLabel": {
-      "label": "URL obrazu"
-    },
-    "linkEditorDialogTitleLabel": {
-      "label": "Tytuł"
-    },
-    "linkEditorReferenceLabel": {
-      "label": "Powiązane treści"
-    },
-    "videoEditorTitleLabel": {
-      "label": "Tytuł"
-    },
-    "videoContentUrlLabel": {
-      "label": "Url wideo",
-      "error-message": "Nieprawidłowy url Youtube."
+    "contentTitleInput": {
+      "label": "Title"
     }
   },
-  "textEditorDialogTitle": "Właściwości Edycja tekstu.",
-  "textEditorDialogAcceptButton": "Zaakceptować",
-  "imageEditorDialogTitle": "Właściwości Edycja obrazu",
-  "imageEditorDialogCancelButton": "Anuluj",
-  "imageEditorDialogAcceptButton": "Zaakceptować",
-  "linkEditorDialogTitle": "Właściwości link Edytuj",
-  "linkEditorDialogCancelButton": "Anuluj",
-  "linkEditorDialogAcceptButton": "Zaakceptować",
-  "videoEditorDialogTitle": "Właściwości Edycja wideo.",
-  "videoEditorDialogCancelButton": "Anuluj",
-  "videoEditorDialogAcceptButton": "Zaakceptować"
+  "uploadFileText": "Choose File"
 }

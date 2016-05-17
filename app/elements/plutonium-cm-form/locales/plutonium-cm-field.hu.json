@@ -4,7 +4,7 @@
   },
   "model": {
     "addSectionButton": {
-      "title": "Szöveges szekció beágyazása."
+      "title": "Embedd video to the message content."
     },
     "addVideoButton": {
       "title": "Video szekció beágyazása."

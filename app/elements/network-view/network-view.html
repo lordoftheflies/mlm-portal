@@ -42,30 +42,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         </style>
 
-        <iron-ajax 
-            id="genocideIronAjax"
-            url="{{apiUrl}}addressbook/genocide" 
-            params="{{genocideRequestParams}}"
-            last-response="{{parents}}"></iron-ajax>
-        <iron-ajax 
-            id="possibleParentsIronAjax"
-            url="{{apiUrl}}addressbook/all" 
-            last-response="{{possibleParents}}" auto></iron-ajax>
-        <iron-ajax 
-            id="childrenIronAjax"
-            url="{{apiUrl}}addressbook/children" 
-            params="{{childrenRequestParams}}"
-            last-response="{{data}}"></iron-ajax>
-        <iron-ajax url="{{apiUrl}}localization/locales" 
-
-                   last-response="{{locales}}" auto></iron-ajax>
-
-
-
         <paper-dialog id="memberDialog" modal>
             <h2 id="newMemberDialogTitle">New member</h2>
             <form id="newMemberForm" is="iron-form" class="card-content" verbose 
-                  content-type="application/json" method="post" action="{{apiUrl}}/addressbook/save"
+                  content-type="application/json" method="post" action="{{apiUrl}}addressbook/save"
                   on-response="onCreateMemberResponse"
                   on-error="onCreateMemberError" 
                   handle-as="json">
@@ -170,30 +150,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <paper-material elevation="1" class="layout horizontal center">
 
-            <div class="layout end-justified">
-                <!--<paper-icon-button icon="arrow-upward" on-tap="onNavigateUp"></paper-icon-button>-->
-                <paper-icon-button icon="add-circle" on-tap="onOpenCreateMember"></paper-icon-button>
-                <paper-icon-button icon="remove-circle" on-tap="onConfirmRemoveMember"></paper-icon-button>
-                <paper-icon-button icon="send" on-tap="onSendTo"></paper-icon-button>
-                <template is="dom-if" if="[[isUser(selectedRole)]]">
-                    <paper-icon-button icon="star" on-tap="onOpenPromoteAdminPrompt"></paper-icon-button>
-                </template>
-                <template is="dom-if" if="[[isAdmin(selectedRole)]]">
-                    <paper-icon-button icon="star-border" on-tap="onOpenDemoteAdminPrompt"></paper-icon-button>
-                </template>
-            </div>
 
-            <paper-tabs selected="{{selectedAccount}}" scrollable attr-for-selected="id">
-                <template is="dom-repeat" items="{{parents}}">
-                    <paper-tab id="[[item.id]]" role="{{item.role}}" href="{{baseUrl}}network/{{item.id}}">
-                        <iron-icon class="end-justified" icon="[[getIcon(item.role)]]"></iron-icon>
-                        <a href="{{baseUrl}}network/{{item.id}}">
-
-                            [[item.name]]
-                        </a>
-                    </paper-tab>
-                </template>
-            </paper-tabs>
         </paper-material>
 
         <!--S: {{selectedMember.role}}-->
@@ -313,20 +270,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 computeChildRequestParams: function (accountId) {
                     this.childrenRequestParams.parentId = accountId;
                     console.log('Network-view child request parameters updated: ' + JSON.stringify(this.childrenRequestParams))
-                    this.$.childrenIronAjax.generateRequest();
+//                    this.$.childrenIronAjax.generateRequest();
+                    app.$.childrenIronAjax.generateRequest();
                 },
                 computeGenocideRequestParams: function (accountId) {
                     this.genocideRequestParams.childId = accountId;
                     console.log('Network-view genocide request parameters updated: ' + JSON.stringify(this.genocideRequestParams))
-                    this.$.genocideIronAjax.generateRequest();
+                    app.$.genocideIronAjax.generateRequest();
                 },
                 computeSelected: function (accountId) {
                     console.log('Change selected member from ' + this.selectedAccount + ' to ' + accountId);
                     this.selectedAccount = accountId;
                     this.childrenRequestParams.parentId = this.selectedAccount;
                     this.genocideRequestParams.childId = this.selectedAccount;
-                    this.$.childrenIronAjax.generateRequest();
-                    this.$.genocideIronAjax.generateRequest();
+                    app.$.childrenIronAjax.generateRequest();
+                    app.$.genocideIronAjax.generateRequest();
                 },
                 onSelectMember: function (event, details) {
                     console.log('Network-view select account:');
@@ -346,16 +304,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 onNavigateUp: function (event, details) {
                     this.accountId = this.$.parentBeadCrumbs.children[this.$.parentBeadCrumbs.children.length < 3 ? 0 : this.$.parentBeadCrumbs.children.length - 3].nodeid;
                     this.selectedAccount = this.accountId;
-                    this.$.childrenIronAjax.generateRequest();
-                    this.$.genocideIronAjax.generateRequest();
+                    app.$.childrenIronAjax.generateRequest();
+                    app.$.genocideIronAjax.generateRequest();
                     console.log('Network-view navigate to children ');
                 },
                 onRefresh: function () {
-                    this.$.childrenIronAjax.generateRequest();
-                    this.$.genocideIronAjax.generateRequest();
-                },
-                onOpenCreateMember: function () {
-                    this.$.memberDialog.open();
+                    app.$.childrenIronAjax.generateRequest();
+                    app.$.genocideIronAjax.generateRequest();
                 },
                 onCreateMember: function () {
                     this.$.newMemberForm.submit();
@@ -366,7 +321,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 },
                 onCreateMemberResponse: function (event, details) {
                     console.log('Member created successfully: ' + JSON.stringify(details.response));
-                    this.$.childrenIronAjax.generateRequest();
+                    app.$.childrenIronAjax.generateRequest();
                     app.$.toast.text = 'Member created successfully';
                     app.$.toast.show();
                 },
@@ -377,7 +332,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 },
                 onDeleteMemberResponse: function (event, details) {
                     console.log('Member removed successfully: ' + JSON.stringify(details.response));
-                    this.$.childrenIronAjax.generateRequest();
+                    app.$.childrenIronAjax.generateRequest();
                     app.$.toast.text = 'Member removed successfully';
                     app.$.toast.show();
                 },
@@ -388,7 +343,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 },
                 onPromoteMemberResponse: function (event, details) {
                     console.log('Member promoted successfully: ' + JSON.stringify(details.response));
-                    this.$.childrenIronAjax.generateRequest();
+                    app.$.childrenIronAjax.generateRequest();
                     app.$.toast.text = 'Member promoted successfully';
                     app.$.toast.show();
                 },
@@ -399,7 +354,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 },
                 onDemoteMemberResponse: function (event, details) {
                     console.log('Member demoted successfully: ' + JSON.stringify(details.response));
-                    this.$.childrenIronAjax.generateRequest();
+                    app.$.childrenIronAjax.generateRequest();
                     app.$.toast.text = 'Member demoted successfully';
                     app.$.toast.show();
                 },
@@ -408,32 +363,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     app.$.toast.text = 'Member demoting failed.';
                     app.$.toast.show();
                 },
-                onConfirmRemoveMember: function () {
-                    this.$.possibleParentsIronAjax.generateRequest();
-                    this.$.memberEraseConfirm.open();
-                },
-                onDeleteMemberPrompted: function () {
-                    this.$.deleteMemberForm.submit();
-                    console.log('Delete member prompted.');
-                },
-                onOpenPromoteAdminPrompt: function () {
-                    this.$.promoteAdminDialog.open();
-                },
-                onPromoteMemberPrompted: function () {
-                    this.$.promoteMemberForm.submit();
-                    console.log('Promote member prompted.');
-                },
-                onOpenDemoteAdminPrompt: function () {
-                    this.$.demoteAdminDialog.open();
-                },
-                onDemoteMemberPrompted: function () {
-                    this.$.demoteMemberForm.submit();
-                    console.log('Demote member prompted.');
-                },
-                onSendTo: function () {
-                    page.redirect(app.baseUrl + 'share-content');
-                    app.$.scv.$.pcf.$.recipientsFieldInput.push('selectedItemIds', this.accountId);
-                },
+                
                 isEmpty: function (data) {
                     return data === undefined || data === null || data.length === 0;
                 },
@@ -460,7 +390,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         return app.sessionInfo.token;
                     else
                         return null;
+                },
+                onDemoteMemberPrompted: function () {
+                    app.$.networkView.$.demoteMemberForm.submit();
+                    console.log('Demote member prompted.');
+                },
+                onDeleteMemberPrompted: function () {
+                    app.$.networkView.$.deleteMemberForm.submit();
+                    console.log('Delete member prompted.');
+                },
+                onPromoteMemberPrompted: function () {
+                    app.$.networkView.$.promoteMemberForm.submit();
+                    console.log('Promote member prompted.');
                 }
+
             });
         })();
     </script>

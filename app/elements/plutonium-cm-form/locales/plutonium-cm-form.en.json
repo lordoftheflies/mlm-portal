@@ -1,13 +1,16 @@
 {
   "meta": {
-    "todo": []
+    "todo": [
+      {
+        "op": "replace",
+        "path": "/model/addSectionButton/title",
+        "value": "Embedd video to the message content."
+      }
+    ]
   },
   "model": {
-    "messageInput": {
-      "label": "Message"
-    },
     "addSectionButton": {
-      "title": "Embedd text to the message content."
+      "title": "Embedd video to the message content."
     },
     "addVideoButton": {
       "title": "Embedd video to the message content."
@@ -17,17 +20,6 @@
     },
     "addLinkButton": {
       "title": "Embedd a link to another message to the message content."
-    },
-    "parentDdLabel": {
-      "label": "Parent"
-    },
-    "contentTitleInput": {
-      "label": "Title"
     }
-  },
-  "shareTabLabel": "Share",
-  "embbeddedContentTabLabel": "Embed content",
-  "assembledContentTabLabel": "Assembled content",
-  "propertiesTabLabel": "Properties",
-  "uploadFileText": "Choose File"
+  }
 }
