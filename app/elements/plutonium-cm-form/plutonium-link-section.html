@@ -51,14 +51,21 @@ Example:
             font-size="{{model.fontSize}}"
             parent-candidates-url="{{parentCandidatesUrl}}">
         </plutonium-link-editor>
-        <div hidden="[[!editable]]">
-            <paper-icon-button id="moveUpButton" on-tap="onMoveUpSection" icon="expand-less" raised></paper-icon-button>
-            <paper-icon-button id="moveDownButton" on-tap="onMoveDownSection" icon="expand-more" raised></paper-icon-button>
-            <paper-icon-button id="showEditorButton" on-tap="onShowEditor" icon="create" raised></paper-icon-button>
-            <paper-icon-button id="removeSectionButton" on-tap="onRemoveSection" icon="delete"></paper-icon-button>
+
+        <div hidden="[[editable]]">
+            <h2>{{model.title}}</h2>
+            <!--<p id="modelData" class$="horizontal {{model.justification}} layout">{{model.data}}</p>-->
         </div>
-        <h3>{{model.title}}</h3>
-        <p id="modelData" class$="horizontal {{model.justification}} layout">{{model.data}}</p>
+        
+        <paper-card elevation="1" heading="{{model.title}}" class="layout vertical"  hidden="[[!editable]]">
+            <!--<p id="modelData" class$="horizontal {{model.justification}} layout">{{model.data}}</p>-->
+            <div class="card-actions">
+                <paper-icon-button id="moveUpButton" on-tap="onMoveUpSection" icon="expand-less" raised></paper-icon-button>
+                <paper-icon-button id="moveDownButton" on-tap="onMoveDownSection" icon="expand-more" raised></paper-icon-button>
+                <paper-icon-button id="showEditorButton" on-tap="onShowEditor" icon="create" raised></paper-icon-button>
+                <paper-icon-button id="removeSectionButton" on-tap="onRemoveSection" icon="delete"></paper-icon-button>
+            </div>
+        </paper-card>
     </template>
 
     <script>

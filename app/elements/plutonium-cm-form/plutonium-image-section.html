@@ -52,16 +52,25 @@ Example:
             width="{{model.width}}"
             font-size="{{model.fontSize}}">
         </plutonium-image-editor>
-        <div hidden="[[!editable]]">
-            <paper-icon-button id="moveUpButton" on-tap="onMoveUpSection" icon="expand-less" raised></paper-icon-button>
-            <paper-icon-button id="moveDownButton" on-tap="onMoveDownSection" icon="expand-more" raised></paper-icon-button>
-            <paper-icon-button id="showEditorButton" on-tap="onShowEditor" icon="create" raised></paper-icon-button>
-            <paper-icon-button id="removeSectionButton" on-tap="onRemoveSection" icon="delete"></paper-icon-button>
+        <div hidden="[[editable]]" hidden="[[editable]]">
+
+            <h2>{{model.title}}</h2>
+            <div id="modelData" class$="horizontal {{model.justification}} layout">
+                 <iron-image fade class="thumbnail" sizing="contain" width$="{{model.width}}" height$="{{model.height}}" src="{{model.data}}"></iron-image>
+            </div>
         </div>
-        <h3>{{model.title}}</h3>
-        <div id="modelData" class$="horizontal {{model.justification}} layout">
-             <iron-image fade class="thumbnail" sizing="contain" width$="{{model.width}}" height$="{{model.height}}" src="{{model.data}}"></iron-image>
-        </div>
+
+        <paper-card elevation="1" heading="{{model.title}}" class="layout vertical" hidden="[[!editable]]">
+            <div id="modelData" class$="card-content horizontal {{model.justification}} layout">
+                 <iron-image fade class="thumbnail" sizing="contain" width$="{{model.width}}" height$="{{model.height}}" src="{{model.data}}"></iron-image>
+            </div>
+            <div class="card-actions">
+                <paper-icon-button id="moveUpButton" on-tap="onMoveUpSection" icon="expand-less" raised></paper-icon-button>
+                <paper-icon-button id="moveDownButton" on-tap="onMoveDownSection" icon="expand-more" raised></paper-icon-button>
+                <paper-icon-button id="showEditorButton" on-tap="onShowEditor" icon="create" raised></paper-icon-button>
+                <paper-icon-button id="removeSectionButton" on-tap="onRemoveSection" icon="delete"></paper-icon-button>
+            </div>
+        </paper-card>
     </template>
 
     <script>
@@ -88,12 +97,12 @@ Example:
                 ],
                 // Element Lifecycle
 
-    //                ready: function () {
-    //
-    //                },
-    //                attached: function () {
-    //
-    //                },
+                //                ready: function () {
+                //
+                //                },
+                //                attached: function () {
+                //
+                //                },
                 detached: function () {
 
                 },
@@ -105,7 +114,7 @@ Example:
                     console.log(this.is + '[' + this.id + '] model property changed.');
                 },
                 observeModelData: function (data) {
-    //                this.$.modelData.innerHTML = data;
+                    //                this.$.modelData.innerHTML = data;
                 },
                 observeModelStyles: function (property) {
                     console.log(this.is + '[' + this.id + '] model changed, update styles.');
