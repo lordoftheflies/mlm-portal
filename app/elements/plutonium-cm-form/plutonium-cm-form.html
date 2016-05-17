@@ -136,56 +136,51 @@ Example:
                     </div>
 
                     <div class="card-content">
-                        <paper-tabs selected="{{contentMode}}" attr-for-selected="name">
-
-                        </paper-tabs>
-                        <iron-pages selected="{{contentMode}}" attr-for-selected="id">
-                            <div id="assembled">
+                        <div id="assembled">
 
 
-                                <div>
-                                    <template is="dom-if" if$="{{isEmpty()}}">
-                                              <paper-icon-button id="addSectionButton" on-tap="onAddSection" icon="add-circle" title="Embedd video to the message content."></paper-icon-button>
-                                        <paper-icon-button id="addVideoButton" on-tap="onEmbedVideo" icon="theaters" title="Embedd video to the message content."></paper-icon-button>
-                                        <paper-icon-button id="addImageButton" on-tap="onEmbedImage" icon="perm-media" title="Embedd image to the message content."></paper-icon-button>
-                                        <paper-icon-button id="addLinkButton" on-tap="onEmbedLink" icon="link" title="Embedd a link to another message to the message content."></paper-icon-button>
-                                    </template>
+                            <div>
+                                <template is="dom-if" if$="{{isEmpty()}}">
+                                          <paper-icon-button id="addSectionButton" on-tap="onAddSection" icon="add-circle" title="Embedd video to the message content."></paper-icon-button>
+                                    <paper-icon-button id="addVideoButton" on-tap="onEmbedVideo" icon="theaters" title="Embedd video to the message content."></paper-icon-button>
+                                    <paper-icon-button id="addImageButton" on-tap="onEmbedImage" icon="perm-media" title="Embedd image to the message content."></paper-icon-button>
+                                    <paper-icon-button id="addLinkButton" on-tap="onEmbedLink" icon="link" title="Embedd a link to another message to the message content."></paper-icon-button>
+                                </template>
 
 
 
 
-                                    <content id="cm">
+                                <content id="cm">
 
-                                    </content>
+                                </content>
 
-                                    <paper-listbox id="assembled" selected="{{selectedSection}}">
-                                        <template is="dom-repeat" items="{{contentModel.sections}}" as="section">
-                                            <plutonium-cm-field 
-                                                name$="{{computeItemId(section)}}" 
-                                                model="{{section}}" 
-                                                dialog-id="{{computeDialogId(section)}}">
-                                        </plutonium-cm-field>
-                                        <br />
-                                    </template>
-                            </div>
-                            </paper-listbox>
+                                <paper-listbox id="assembled" selected="{{selectedSection}}">
+                                    <template is="dom-repeat" items="{{contentModel.sections}}" as="section">
+                                        <plutonium-cm-field 
+                                            name$="{{computeItemId(section)}}" 
+                                            model="{{section}}" 
+                                            dialog-id="{{computeDialogId(section)}}">
+                                    </plutonium-cm-field>
+                                    <br />
+                                </template>
                         </div>
-                        <div id="embedded" class="layout vertical">
-                            <!--                            <paper-radio-group selected="{{contentMode}}" attr-for-selected="name">
-                                                            <paper-radio-button id="embedContentRadio" name="embedded">Embed content</paper-radio-button>
-                                                            <paper-radio-button id="assembleRadio" name="assembled">Assemble</paper-radio-button>
-                                                        </paper-radio-group>-->
-                            <file-upload 
-                                id="uploadFileText"
-                                drop-text="Drop any PDF file here."
-                                error-text="File upload failed."
-                                droppable="true" 
-                                raised="true" 
-                                multi="false" 
-                                method="POST"
-                                target="{{fileUploadTarget}}">Choose File</file-upload>
-                        </div>
-                    </iron-pages>
+                        </paper-listbox>
+                    </div>
+                    <div id="embedded" class="layout vertical">
+                        <!--                            <paper-radio-group selected="{{contentMode}}" attr-for-selected="name">
+                                                        <paper-radio-button id="embedContentRadio" name="embedded">Embed content</paper-radio-button>
+                                                        <paper-radio-button id="assembleRadio" name="assembled">Assemble</paper-radio-button>
+                                                    </paper-radio-group>-->
+                        <file-upload 
+                            id="uploadFileText"
+                            drop-text="Drop any PDF file here."
+                            error-text="File upload failed."
+                            droppable="true" 
+                            raised="true" 
+                            multi="false" 
+                            method="POST"
+                            target="{{fileUploadTarget}}">Choose File</file-upload>
+                    </div>
 
                 </div>
 
