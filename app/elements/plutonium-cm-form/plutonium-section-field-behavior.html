@@ -6,6 +6,14 @@
                 type: Boolean,
                 notify: true,
                 value: false
+            },
+            widthStyleProperty: {
+                type: String,
+                computed: 'computeSize(model.width)'
+            },
+            heightStyleProperty: {
+                type: String,
+                computed: 'computeSize(model.height)'
             }
         },
         observers: [
@@ -42,6 +50,9 @@
             this.fire('movedownsection', {
                 name: this.name
             });
+        },
+        computeSize: function (value) {
+            return value + 'px';
         }
     };
 </script>

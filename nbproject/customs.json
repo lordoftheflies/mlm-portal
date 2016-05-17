@@ -260,6 +260,9 @@
         "unresolved": {
             "context": "body"
         },
+        "class$": {
+            "context": "p"
+        },
         "href$": {
             "context": "a"
         },

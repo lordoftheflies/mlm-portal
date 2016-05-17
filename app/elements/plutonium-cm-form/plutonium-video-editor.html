@@ -30,34 +30,34 @@ Example:
 @hero hero.svg
 -->
 
-<dom-module id="plutonium-section-editor">
+<dom-module id="plutonium-video-editor">
     <template>
         <style include="iron-flex iron-flex-alignment">
             :host {
                 --section-font-size: 10px;
             }
-            
-/*            --section-start-justified {
-                @apply(--layout-horizontal);
-                @apply(--layout-start-justified);
-            }
-            
-            --section-center-justified {
-                @apply(--layout-horizontal);
-                @apply(--layout-center-justified);
-            }
-            
-            --section-end-justified {
-                @apply(--layout-horizontal);
-                @apply(--layout-end-justified);
-            }*/
+
+            /*            --section-start-justified {
+                            @apply(--layout-horizontal);
+                            @apply(--layout-start-justified);
+                        }
+                        
+                        --section-center-justified {
+                            @apply(--layout-horizontal);
+                            @apply(--layout-center-justified);
+                        }
+                        
+                        --section-end-justified {
+                            @apply(--layout-horizontal);
+                            @apply(--layout-end-justified);
+                        }*/
 
             :host div.preview,
             :host paper-textarea {
                 font-size: var(--section-font-size);
 
             }
-            
+
             paper-icon-button[active] {
                 color: var(--paper-icon-button-ink-color, black);
             }
@@ -72,24 +72,26 @@ Example:
             <paper-toolbar>
                 <paper-icon-button id="decreaseSizeButton" on-tap="onDecreaseFontSize" icon="unfold-less" raised></paper-icon-button>
                 <paper-icon-button id="increaseSizeButton" on-tap="onInreaseFontSize" icon="unfold-more" raised></paper-icon-button>
-                
                 <paper-icon-button id="alignLeftButton" active="{{_startJustified}}" toggles raised on-tap="onAlignLeft" icon="editor:format-align-left" raised></paper-icon-button>
-                <!--<paper-icon-button id="alignLeftButton" toggles raised on-tap="onAlignLeft" icon="editor:format-align-left" raised></paper-icon-button>-->
                 <paper-icon-button id="alignCenterButton" active="{{_centerJustified}}" toggles raised on-tap="onAlignCenter" icon="editor:format-align-center" raised></paper-icon-button>
-                <!--<paper-icon-button id="alignCenterButton" toggles raised on-tap="onAlignCenter" icon="editor:format-align-center" raised></paper-icon-button>-->
                 <paper-icon-button id="alignRightButton" active="{{_endJustified}}" toggles raised on-tap="onAlignRight" icon="editor:format-align-right" raised></paper-icon-button>
-                <!--<paper-icon-button id="alignRightButton" toggles raised on-tap="onAlignRight" icon="editor:format-align-right" raised></paper-icon-button>-->
             </paper-toolbar>
-            <!--<div  class="">-->
             <div class$="horizontal {{_justification}} layout">
-            <!--<div class="horizontal end-justified layout">-->
-                
-                <div class="preview">aAbBcC</div>
+                 <div class="preview">aAbBcC</div>
             </div>
-            <paper-input id="textModelTitle" label="Title" value="{{_title}}"></paper-input>
-            <paper-textarea id="textModelData" label="Text" rows="10" value="{{_data}}" class="{{_justification}}" >
+            <div class="content">
+                <paper-input id="videoEditorTitleLabel" label="Title" value="{{_title}}"></paper-input>
+                <paper-input id="videoEditorWidthLabel" label="Width" type="number" value="{{_width}}"></paper-input>
+                <paper-input id="videoEditorHeightLabel" label="Height" type="number" value="{{_height}}"></paper-input>
+                <paper-input 
+                    id="videoContentUrlLabel"
+                    name="data" required auto-validate
+                    label='Video url'
+                    error-message='Invalid Youtube url.'
+                    value="{{_data}}">
 
-            </paper-textarea>
+                </paper-input>
+            </div>
             <div class="buttons">
                 <paper-button id="editorDialogCancelButton" dialog-dismiss on-tap="onCancelChanges">Cancel</paper-button>
                 <paper-button id="editorDialogAcceptButton" raised dialog-confirm on-tap="onApplyChanges">Apply</paper-button>
@@ -101,7 +103,7 @@ Example:
         (function () {
             'use strict';
             Polymer({
-                is: 'plutonium-section-editor',
+                is: 'plutonium-video-editor',
                 behaviors: [
                     PlutoniumBehaviors.SectionEditorBehavior
                 ],
@@ -114,6 +116,14 @@ Example:
                         type: String,
                         notify: true
                     },
+                    width: {
+                        type: Number,
+                        notify: true
+                    },
+                    height: {
+                        type: Number,
+                        notify: true
+                    },
                     _title: {
                         type: String,
                         notify: true
@@ -121,7 +131,15 @@ Example:
                     _data: {
                         type: String,
                         notify: true
-                    }
+                    },
+                    _width: {
+                        type: Number,
+                        notify: true
+                    },
+                    _height: {
+                        type: Number,
+                        notify: true
+                    },
                 },
 //                observers: [
 //                    'observeValueChanges(_fontSize, _justification)'
@@ -136,7 +154,26 @@ Example:
 //                computeTitle: function (model) {
 //                    this.title = model.title;
 //                },
-                
+                _reset: function () {
+                    this._justification = this.justification;
+                    this._fontSize = this.fontSize;
+                    this._title = this.title;
+                    this._data = this.data;
+                    this._width = this.width;
+                    this._height = this.height;
+                },
+                onApplyChanges: function () {
+                    console.log(this.is + ' apply changes.');
+                    this.justification = this._justification;
+                    this.fontSize = this._fontSize;
+                    this.title = this._title;
+                    this.data = this._data;
+                    this.width = this._width;
+                    this.height = this._height;
+                },
+                onCancelChanges: function () {
+                    this._reset();
+                }
             });
         })();
     </script>

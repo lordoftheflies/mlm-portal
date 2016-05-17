@@ -13,7 +13,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
 <link rel="import" href="plutonium-section-field-behavior.html">
-<link rel="import" href="plutonium-section-editor.html">
+<link rel="import" href="plutonium-video-editor.html">
 
 <!--
 An element providing a solution to no problem in particular.
@@ -32,7 +32,7 @@ Example:
 @hero hero.svg
 -->
 
-<dom-module id="plutonium-section-text">
+<dom-module id="plutonium-video-section">
     <template>
         <style include="iron-flex iron-flex-alignment">
             :host {
@@ -42,14 +42,23 @@ Example:
 
 
         </style>
-        <plutonium-section-editor 
+        title="{{model.title}}"
+            data="{{model.data}}"
+            justification="{{model.justification}}"
+            height="{{model.height}}"
+            width="{{model.width}}"
+            font-size="{{model.fontSize}}"
+        
+        <plutonium-video-editor 
             id="plSectionEditor"
             action-title="Edit section"
             title="{{model.title}}"
             data="{{model.data}}"
             justification="{{model.justification}}"
+            height="{{model.height}}"
+            width="{{model.width}}"
             font-size="{{model.fontSize}}">
-        </plutonium-section-editor>
+        </plutonium-video-editor>
         <div hidden="[[!editable]]">
             <paper-icon-button id="moveUpButton" on-tap="onMoveUpSection" icon="expand-less" raised></paper-icon-button>
             <paper-icon-button id="moveDownButton" on-tap="onMoveDownSection" icon="expand-more" raised></paper-icon-button>
@@ -57,14 +66,24 @@ Example:
             <paper-icon-button id="removeSectionButton" on-tap="onRemoveSection" icon="delete"></paper-icon-button>
         </div>
         <h3>{{model.title}}</h3>
-        <p id="modelData" class$="horizontal {{model.justification}} layout">{{model.data}}</p>
+        <div id="modelData" class$="horizontal {{model.justification}} layout">
+             <google-youtube
+                class="card-content"
+                video-id="{{model.data}}"
+                height="{{heightStyleProperty}}"
+                width="{{widthStyleProperty}}"
+                rel="0"
+                start="5"
+                autoplay="0">
+            </google-youtube>
+        </div>
     </template>
 
     <script>
         (function () {
             'use strict';
             Polymer({
-                is: 'plutonium-section-text',
+                is: 'plutonium-video-section',
                 behaviors: [
                     PlutoniumBehaviors.SectionFieldBehavior
                 ],
@@ -84,12 +103,12 @@ Example:
                 ],
                 // Element Lifecycle
 
-//                ready: function () {
-//
-//                },
-//                attached: function () {
-//
-//                },
+    //                ready: function () {
+    //
+    //                },
+    //                attached: function () {
+    //
+    //                },
                 detached: function () {
 
                 },
@@ -101,7 +120,7 @@ Example:
                     console.log(this.is + '[' + this.id + '] model property changed.');
                 },
                 observeModelData: function (data) {
-                    this.$.modelData.innerHTML = data;
+    //                this.$.modelData.innerHTML = data;
                 },
                 observeModelStyles: function (property) {
                     console.log(this.is + '[' + this.id + '] model changed, update styles.');

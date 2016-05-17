@@ -108,16 +108,6 @@
         open: function () {
             this._reset();
             this.$.editorDialog.open();
-        },
-        onApplyChanges: function () {
-            console.log(this.is + ' apply changes.');
-            this.justification = this._justification;
-            this.fontSize = this._fontSize;
-            this.title = this._title;
-            this.data = this._data;
-        },
-        onCancelChanges: function () {
-            this._reset();
         }
 //        observeJustification: function() {
 //            
