@@ -111,9 +111,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <paper-card elevation="1" name="assembled" class="layout vertical">
                 <div class="card-content" style="padding-top: 10px;">
                     <plutonium-cm-form 
+                        api-url="{{apiUrl}}"
                         id="pcf"
+                        editable
                         contacts="{{contacts}}" 
-                        content-model="{{sections}}"
+                        content-model="{{contentModel}}"
                         parent-candidates="{{parentCandidates}}"
                         file-upload-target="{{apiUrl}}/fs/upload"
                         editors="[[editorMap]]">

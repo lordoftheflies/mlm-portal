@@ -44,7 +44,7 @@
         app.$.toast.show();
         if (!app.activationCode)
             app.$.loginDialog.open();
-        
+
     };
     // Session AJAX success response handler.
     app.sessionInfoHandler = function (event, details) {
@@ -138,6 +138,9 @@
         console.log('Toc-Content-View parent path failed to respond (' + this.selectedRoot + ').');
         this.selectedContentFolder = 'public';
         //                this.renderBreadCrumbs = true;
+    };
+    app.editedContentModel = {
+        sections: []
     };
     // Listen for template bound event to know when bindings
     // have resolved and content has been stamped to the page

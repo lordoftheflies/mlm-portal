@@ -96,7 +96,7 @@ Example:
         <!--        <paper-card>
         -->
         <div class="card-content">
-            <div class="layout horizontal">
+            <div class="layout horizontal" hidden="{{!editable}}">
                 <!--<template is="dom-if" if$="{{isEmpty()}}">-->
                 <paper-icon-button id="addSectionButton" on-tap="onAddSection" icon="add-circle" title="Embedd video to the message content."></paper-icon-button>
                 <paper-icon-button id="addVideoButton" on-tap="onEmbedVideo" icon="theaters" title="Embedd video to the message content."></paper-icon-button>
@@ -111,7 +111,8 @@ Example:
                     <plutonium-section-page class="layout vertical wrap"
                                             name="{{computeItemId(section)}}" 
                                             model="{{section}}" 
-                                            dialog-id="{{computeDialogId(section)}}">
+                                            api-url="{{apiUrl}}"
+                                            editable="{{editable}}">
                     </plutonium-section-page>
                     <br />
                 </template>
@@ -161,7 +162,9 @@ Example:
         Polymer({
             is: 'plutonium-cm-form',
             behaviors: [
-                BehaviorsStore.I18nBehavior
+                PlutoniumBehaviors.WidgetBehavior,
+                BehaviorsStore.I18nBehavior,
+                PlutoniumBehaviors.SectionFieldBehavior
             ],
             properties: {
                 fileUploadTarget: {
@@ -344,23 +347,23 @@ Example:
                 document.querySelector('#' + e.detail.dialogId).open();
             },
             onApply: function (e, r) {
-                if (r.confirmed) {
-                    var title = document.querySelector('#' + e.target.id + ' [name="title"] ').value;
-                    var data = document.querySelector('#' + e.target.id + ' [name="data"] ').value;
-                    //                var name = document.querySelector('#' + e.target.id + ' [name="name"] ').value;
-                    var oldContent = this.contentModel.sections[this.selectedSection / 2];
-
-                    document.querySelector('plutonium-cm-field[name="' + oldContent.name + '"] ').model = {
-                        type: oldContent.type,
-                        name: oldContent.name,
-                        title: title,
-                        data: data
-                    };
-                    var newContent = this.contentModel.sections[this.selectedSection / 2];
-                    console.log('Change field model from ' + JSON.stringify(oldContent) + ' to ' + JSON.stringify(newContent));
-                } else {
-                    console.log('Cancel edit.');
-                }
+//                if (r.confirmed) {
+//                    var title = document.querySelector('#' + e.target.id + ' [name="title"] ').value;
+//                    var data = document.querySelector('#' + e.target.id + ' [name="data"] ').value;
+//                    //                var name = document.querySelector('#' + e.target.id + ' [name="name"] ').value;
+//                    var oldContent = this.contentModel.sections[this.selectedSection / 2];
+//
+//                    document.querySelector('plutonium-cm-field[name="' + oldContent.name + '"] ').model = {
+//                        type: oldContent.type,
+//                        name: oldContent.name,
+//                        title: title,
+//                        data: data
+//                    };
+//                    var newContent = this.contentModel.sections[this.selectedSection / 2];
+//                    console.log('Change field model from ' + JSON.stringify(oldContent) + ' to ' + JSON.stringify(newContent));
+//                } else {
+//                    console.log('Cancel edit.');
+//                }
             },
             onMoveUpSectionInParent: function (e) {
                 var index = this.indexOfSection(e.detail.name);

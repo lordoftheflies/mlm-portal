@@ -59,7 +59,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <style is="custom-style" include="shared-styles"></style>
     </head>
 
-    <body unresolved>
+    <body unresolved class="fullbleed layout vertical">
         <!-- build:remove -->
         <span id="browser-sync-binding"></span>
         <!-- endbuild -->
@@ -274,9 +274,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                     class="focus-target" id="scv" 
                                     account-id="{{sessionInfo.token}}" 
                                     api-url="{{backEndUrl}}" 
+                                    content-model="{{editedContentModel}}"
                                     selected-meta-action="{{selectedMetaAction}}">
-                                        
-                                    <!--sections="{{contentChildrenModel}}"-->
+                                    
+                                    
+                                    
                                 </share-content-view>
                             </section>
                             <section data-route="content-tree">

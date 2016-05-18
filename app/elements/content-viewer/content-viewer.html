@@ -38,7 +38,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 margin-top: 16px;
                 padding: 20px;
             }
-            
+
             :host paper-card {
                 margin-top: 16px;
             }
@@ -46,52 +46,39 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <!--<template is="dom-if" if="{{!data.leaf}}">-->
         <!--<paper-card heading$="{{title}}">-->
         <!--<div class="card-content">-->
-        <div hidden="[[data.leaf]]">Content tree</div>
-        <iron-list items="{{data.sections}}" as="section"  hidden="[[data.leaf]]">
-            <template>
+        <div class="layout vertical flex">
+            <iron-list items="{{data.sections}}" as="section" hidden="[[data.leaf]]">
+                <template>
+                    <div>
+                        <paper-material elevation="1" 
+                                        href="{{section.name}}" 
+                                        on-tap="onNavigate" 
+                                        hidden="[[!section.hasEmbeddedFile]]" 
+                                        id="articleTitleLabel" 
+                                        class="item"
+                                        title="Navigate to {{baseUrl}}content-tree/{{section.data}}">
+                            <span>[[section.title]]</span>
+                        </paper-material>
 
-                <!--                <paper-material elevation="1" tabindex="[[tabIndex]]"
-                                                >-->
+                        <paper-material elevation="1"
+                                        href="{{section.data}}" 
+                                        on-tap="onNavigate" 
+                                        hidden="[[section.hasEmbeddedFile]]" 
+                                        id="articleTitleLabel"
+                                        class="item"
+                                        title="Navigate to {{baseUrl}}content-tree/{{section.data}}">
+                            <span>[[section.title]]</span>
+                        </paper-material>
+                    </div>
+                </template>
+            </iron-list>
 
-                <!--<div class="item" tabindex="[[tabIndex]]">-->
-                <div >
-                    <paper-material elevation="1" 
-                                    href="{{section.name}}" 
-                                    on-tap="onNavigate" 
-                                    hidden="[[!section.hasEmbeddedFile]]" 
-                                    id="articleTitleLabel" 
-                                    class="item"
-                                    title="Navigate to {{baseUrl}}content-tree/{{section.data}}">
-                        <span>[[section.title]]</span>
-                    </paper-material>
-
-                    <paper-material elevation="1"
-                                    href="{{section.data}}" 
-                                    on-tap="onNavigate" 
-                                    hidden="[[section.hasEmbeddedFile]]" 
-                                    id="articleTitleLabel"
-                                    class="item"
-                                    title="Navigate to {{baseUrl}}content-tree/{{section.data}}">
-                        <span>[[section.title]]</span>
-                    </paper-material>
-                </div>
-                <!--</div>-->
-
-                <!--</paper-material>-->
-            </template>
-        </iron-list>
-        <!--</div>-->
-        <!--</paper-card>-->
-        <!---->
-        <!--</template>-->
-        <!--<template is="dom-if" if="{{data.leaf}}">-->
-        <paper-card heading="{{data.title}}" hidden="{{!data.leaf}}">
-            Content Viewer
-            <plutonium-cm-section id="contentDisplay" class="card-content"  content-model="{{data}}">
-            </plutonium-cm-section>
-        </paper-card>
-        <!--</template>-->
-
+            <paper-card heading="{{data.title}}" hidden="{{!data.leaf}}">
+                <plutonium-cm-form class="card-content layout vertical"
+                                   content-model="{{data}}">
+                </plutonium-cm-form>
+            </paper-card>
+        </div>
     </template>
     <script>
         (function () {

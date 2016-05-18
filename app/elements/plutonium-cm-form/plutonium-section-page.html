@@ -49,7 +49,6 @@ Example:
             }
 
         </style>
-        ssssssssss
         <iron-pages selected="{{model.type}}" attr-for-selected="name">
             <plutonium-link-section 
                 id="{{model.name}}" 
@@ -61,19 +60,19 @@ Example:
             <plutonium-text-section 
                 name="plutonium-cm-editor-text"
                 id="{{model.name}}"
-                editable
+                editable="{{editable}}"
                 model="{{model}}"
                 ></plutonium-text-section>
             <plutonium-video-section 
                 name="plutonium-cm-editor-video"
                 id="{{model.name}}"
-                editable
+                editable="{{editable}}"
                 model="{{model}}"
                 ></plutonium-video-section>
             <plutonium-image-section
                 name="plutonium-cm-editor-image"
                 id="{{model.name}}"
-                editable
+                editable="{{editable}}"
                 model="{{model}}"
                 ></plutonium-image-section>
         </iron-pages>
@@ -85,6 +84,8 @@ Example:
             Polymer({
                 is: 'plutonium-section-page',
                 behaviors: [
+                    PlutoniumBehaviors.SectionFieldBehavior,
+                    PlutoniumBehaviors.WidgetBehavior
                 ],
                 properties: {
                     /**

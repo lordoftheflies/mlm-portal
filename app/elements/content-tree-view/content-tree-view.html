@@ -45,19 +45,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             @apply(--layout-flex);*/
             /*}*/
         </style>
-
-
-        <!--
-                <paper-tabs hidden="[[!admin]]" selected="{{selectedContentFolder}}" attr-for-selected="name" autoselect>
-                    <paper-tab text-id="messagesPagePublicFolderTitle" name="public">Public</paper-tab>
-                    <paper-tab text-id="messagesPageMyContentsFolderTitle" name="drafts">Drafts</paper-tab>
-                    <paper-tab text-id="messagesPagePublishedFolderTitle" name="published">Published</paper-tab>
-                </paper-tabs>-->
-
-        <!--        <template is="dom-repeat" items="{{parentModel.sections}}">
-                    <grapp-breadcrumb href="{{baseUrl}}content-tree/{{item.data}}">[[item.title]]</grapp-breadcrumb>
-                </template>-->
-
         <paper-material class="layout horizontal">
 
             <paper-tabs selected="{{selectedRoot}}" scrollable attr-for-selected="id" class="flex">
@@ -78,21 +65,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <div class="content-tree-content">
             <template is="dom-if" if="{{data.hasEmbeddedFile}}">
-                File Viewee
                 <iframe src$="{{getContentFileUrl(data.embeddedFileName)}}"></iframe>
-                <!--http://localhost/topn_data/[[data.embeddedFileName]]-->
-                <!--<pdf-element src$="{{getContentFileUrl(data.embeddedFileName)}}" elevation="5" downloadable show-file-name width=800 height=600></pdf-element>-->
             </template>
 
-            <!--<iron-pages selected="{{selectedMailBoxFolder}}">-->
             <template is="dom-if" if="{{!isEmpty(data.sections)}}">
                 <content-viewer
                     data="{{data}}">
                 </content-viewer>
 
             </template>
-
-
 
         </div>
         <div  hidden="{{!isEmpty(data)}}" class="folder-content">
