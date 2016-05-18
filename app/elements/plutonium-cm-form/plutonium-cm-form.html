@@ -62,7 +62,7 @@ Example:
 
 <dom-module id="plutonium-cm-form">
     <template>
-        <style>
+        <style include="iron-flex iron-flex-alignment">
             :host {
                 display: inline-block;
                 box-sizing: border-box;
@@ -99,11 +99,11 @@ Example:
                 </div>
                 <paper-listbox id="assembled" selected="{{selectedSection}}">
                     <template is="dom-repeat" items="{{contentModel.sections}}" as="section">
-                        <plutonium-section
+                        <plutonium-section-page class="layout vertical wrap"
                             name="{{computeItemId(section)}}" 
                             model="{{section}}" 
                             dialog-id="{{computeDialogId(section)}}">
-                        </plutonium-section>
+                        </plutonium-section-page>
                         <br />
                     </template>
                 </paper-listbox>

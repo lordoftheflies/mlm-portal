@@ -271,7 +271,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                             <section data-route="share-content">
                                 <share-content-view 
-                                    class="focus-target" id="scv" account-id="{{sessionInfo.token}}" api-url="{{backEndUrl}}" selected-meta-action="{{selectedMetaAction}}"></share-content-view>
+                                    class="focus-target" id="scv" 
+                                    account-id="{{sessionInfo.token}}" 
+                                    api-url="{{backEndUrl}}" 
+                                    sections="{{contentChildrenModel}}"
+                                    selected-meta-action="{{selectedMetaAction}}"></share-content-view>
                             </section>
                             <section data-route="content-tree">
                                 <content-tree-view 

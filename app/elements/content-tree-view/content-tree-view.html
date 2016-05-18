@@ -59,6 +59,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </template>-->
 
         <paper-material class="layout horizontal">
+            
             <paper-tabs selected="{{selectedRoot}}" scrollable attr-for-selected="id" class="flex">
                 <template is="dom-repeat" items="{{parentModel.sections}}">
                     <paper-tab id="[[item.name]]" href="{{baseUrl}}content-tree/{{item.data}}">
@@ -67,7 +68,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </template>
             </paper-tabs>
             <div hidden="{{!isDraftSelected(selectedContentFolder)}}">
-                <paper-icon-button icon="create"></paper-icon-button>
+                <paper-icon-button icon="create" on-tap="onEditArticle"></paper-icon-button>
                 <paper-icon-button icon="delete"></paper-icon-button>
                 <paper-icon-button icon="file-upload"></paper-icon-button>
                 <paper-icon-button icon="file-download"></paper-icon-button>
@@ -136,7 +137,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     selectedContentFolder: {
                         type: String,
                         notify: true,
-                        value: 'public'
+                        value: 'public',
+                        observer: 'observeSelectedContentFolder'
                     },
                     selectedRoot: {
                         type: String,
@@ -181,6 +183,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     app.$.childTocAjax.generateRequest();
                     app.$.parentTocAjax.generateRequest();
                 },
+                observeSelectedContentFolder: function (folder) {
+                    this.tocRequestParams.tag = folder;
+                    app.$.rootModelAjax.generateRequest();
+                    app.$.childTocAjax.generateRequest();
+                    app.$.parentTocAjax.generateRequest();
+                },
                 getItemClasses: function (item) {
                     return item.tags.join(" ");
                 },
@@ -200,6 +208,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 isDraftSelected: function (selectedContentFolder) {
                     console.log('Fasz');
                     return selectedContentFolder === 'drafts';
+                },
+                onEditArticle: function() {
+                    page.redirect(app.baseUrl + 'share-content')
+                    app.currentEditedContent = this.data;
                 }
             });
         })();
