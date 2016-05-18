@@ -84,27 +84,30 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <iron-pages selected="{{selectedMetaAction}}" attr-for-selected="name">
 
             <paper-card elevation="1" name="share" class="layout vertical">
-                <div class="card-content">
-                    <plutonium-field-recipient
-                        id="recipientsFieldInput"
-                        label="To"
-                        picker-icon="supervisor-account"
-                        picker-title="Contacts"
-                        picker-button-tooltip="Choose contacts."
-                        clear-icon="clear"
-                        clear-button-tooltip="Clear recipients input."
-                        attr-for-selected="id"
-                        as="item"
-                        items="[[contacts]]">
-                        <template is="dom-repeat" items="[[contacts]]">
-                            <paper-item id="[[item.id]]" class="item pad">
-                                <label>[[item.name]]</label>
-                            </paper-item>
-                        </template>
-                    </plutonium-field-recipient>
-                    <paper-input id="messageInput" class="bottom title" label="Message" value="{{message}}"></paper-input>
+                <div class="card-content layout horizontal">
+                    <div class="flex layout vertical">
+                        <plutonium-field-recipient  class="flex"
+                                                    id="recipientsFieldInput"
+                                                    label="To"
+                                                    picker-icon="supervisor-account"
+                                                    picker-title="Contacts"
+                                                    picker-button-tooltip="Choose contacts."
+                                                    clear-icon="clear"
+                                                    clear-button-tooltip="Clear recipients input."
+                                                    attr-for-selected="id"
+                                                    as="item"
+                                                    items="[[contacts]]">
+                            <template is="dom-repeat" items="[[contacts]]">
+                                <paper-item id="[[item.id]]" class="item pad">
+                                    <label>[[item.name]]</label>
+                                </paper-item>
+                            </template>
+                        </plutonium-field-recipient>
+                        <paper-input id="messageInput" class="bottom title" label="Message" value="{{message}}"></paper-input>
+                    </div>
+                    <!--<div></div>-->
+                    <paper-fab class="end-justified" icon="send" on-tap="onSend" title="Publish content" id="sendMessageFab"></paper-fab>
                 </div>
-
 
             </paper-card>
 
@@ -129,7 +132,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                                 <paper-radio-button id="embedContentRadio" name="embedded">Embed content</paper-radio-button>
                                                 <paper-radio-button id="assembleRadio" name="assembled">Assemble</paper-radio-button>
                                             </paper-radio-group>-->
-                <div class="card-content">
+                <div class="card-content layout horizontal">
                     <file-upload 
                         id="uploadFileText"
                         drop-text="Drop any PDF file here."
@@ -139,32 +142,39 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         multi="false" 
                         method="POST"
                         target="{{fileUploadTarget}}">Choose File</file-upload>
+                    <div class="flex"></div>
+                    <paper-fab class="end-justified" icon="send" on-tap="onSend" title="Publish content" id="sendMessageFab"></paper-fab>
                 </div>
             </paper-card>
 
             <paper-card elevation="1"  name="props" class="layout vertical">
-                <div class="card-content">
-                    <paper-dropdown-menu 
-                        id="parentDdLabel"
-                        label="Parent">
-                        <!--<paper-menu class="layout flex">-->
-                        <paper-listbox id="parentCandidatesList"
-                                       class="dropdown-content"
-                                       attr-for-selected="{{attrForSelected}}"
-                                       items="[[parentCandidates]]"
-                                       as="parent"
-                                       selected="{{selectedParent}}">
-                            <template is="dom-repeat" items="[[parentCandidates]]">
+                <div class="card-content layout horizontal">
+                    <div class="layout vertical flex">
+                        <paper-dropdown-menu 
+                            id="parentDdLabel"
+                            label="Parent">
+                            <!--<paper-menu class="layout flex">-->
+                            <paper-listbox id="parentCandidatesList"
+                                           class="dropdown-content"
+                                           attr-for-selected="{{attrForSelected}}"
+                                           items="[[parentCandidates]]"
+                                           as="parent"
+                                           selected="{{selectedParent}}">
+                                <template is="dom-repeat" items="[[parentCandidates]]">
 
-                                <paper-item id="[[item.id]]" class="item pad">
-                                    <label>[[item.title]]</label> 
-                                </paper-item>
-                            </template>
-                        </paper-listbox>
-                    </paper-dropdown-menu>
-                    <!---->
+                                    <paper-item id="[[item.id]]" class="item pad">
+                                        <label>[[item.title]]</label> 
+                                    </paper-item>
+                                </template>
+                            </paper-listbox>
+                        </paper-dropdown-menu>
+                        <!---->
 
-                    <paper-input id="contentTitleInput" class="bottom title" label="Title" value="{{contentModel.title}}"></paper-input>
+                        <paper-input id="contentTitleInput" class="bottom title" label="Title" value="{{contentModel.title}}"></paper-input>
+                    </div>
+                    <!--<div class="flex"></div>-->
+                    <paper-fab class="end-justified" icon="send" on-tap="onSend" title="Publish content" id="sendMessageFab"></paper-fab>
+
                 </div>
             </paper-card>
 
