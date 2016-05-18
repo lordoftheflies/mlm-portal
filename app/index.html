@@ -68,27 +68,27 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
 
-            <iron-ajax id="login" hidden="[[!sessionInfo]]" on-response="sessionInfoHandler" on-error="sessionInitializationErrorHandler" url="{{backEndUrl}}authentication/session?token={{sessionInfo.token}}" last-response="{{sessionInfo}}" auto></iron-ajax>
+            <iron-ajax id="login" on-response="sessionInfoHandler" on-error="sessionInitializationErrorHandler" url="{{backEndUrl}}authentication/session?token={{sessionInfo.token}}" last-response="{{sessionInfo}}" auto></iron-ajax>
             <!--Network AJAX-->
-            <iron-ajax id="genocideIronAjax" hidden="[[!sessionInfo]]" url="{{backEndUrl}}addressbook/genocide" params="{{genocideRequestParams}}" last-response="{{parents}}"></iron-ajax>
-            <iron-ajax id="possibleParentsIronAjax" hidden="[[!sessionInfo]]" url="{{backEndUrl}}addressbook/all" last-response="{{possibleParents}}" auto></iron-ajax>
-            <iron-ajax id="childrenIronAjax" hidden="[[!sessionInfo]]" url="{{backEndUrl}}addressbook/children" params="{{childrenRequestParams}}" last-response="{{data}}"></iron-ajax>
-            <iron-ajax id="localesAjax" hidden="[[!sessionInfo]]" url="{{backEndUrl}}localization/locales" last-response="{{locales}}" auto></iron-ajax>
+            <iron-ajax id="genocideIronAjax" url="{{backEndUrl}}addressbook/genocide" params="{{genocideRequestParams}}" last-response="{{parents}}"></iron-ajax>
+            <iron-ajax id="possibleParentsIronAjax" url="{{backEndUrl}}addressbook/all" last-response="{{possibleParents}}" auto></iron-ajax>
+            <iron-ajax id="childrenIronAjax" url="{{backEndUrl}}addressbook/children" params="{{childrenRequestParams}}" last-response="{{data}}"></iron-ajax>
+            <iron-ajax id="localesAjax" url="{{backEndUrl}}localization/locales" last-response="{{locales}}" auto></iron-ajax>
             <!--Content AJAX-->
-            <iron-ajax id="rootModelAjax" hidden="[[!sessionInfo]]" url="{{backEndUrl}}content-management/toc/info" params="{{infoRequestParams}}" handle-as="json" last-response="{{rootModel}}"></iron-ajax>
-            <iron-ajax id="parentTocAjax" hidden="[[!sessionInfo]]" url="{{backEndUrl}}content-management/toc/path" params="{{tocRequestParams}}" handle-as="json" last-response="{{parentModel}}" on-response="onParentTocResponse" on-error="onParentTocError"></iron-ajax>
-            <iron-ajax id="childTocAjax" hidden="[[!sessionInfo]]" url="{{backEndUrl}}content-management/toc" params="{{tocRequestParams}}" handle-as="json" on-response="onContentResponse" on-error="onContentError" last-response="{{contentChildrenModel}}"></iron-ajax>
+            <iron-ajax id="rootModelAjax" url="{{backEndUrl}}content-management/toc/info" params="{{infoRequestParams}}" handle-as="json" last-response="{{rootModel}}"></iron-ajax>
+            <iron-ajax id="parentTocAjax" url="{{backEndUrl}}content-management/toc/path" params="{{tocRequestParams}}" handle-as="json" last-response="{{parentModel}}" on-response="onParentTocResponse" on-error="onParentTocError"></iron-ajax>
+            <iron-ajax id="childTocAjax" url="{{backEndUrl}}content-management/toc" params="{{tocRequestParams}}" handle-as="json" on-response="onContentResponse" on-error="onContentError" last-response="{{contentChildrenModel}}"></iron-ajax>
             <!--Mailbox-->
-            <iron-ajax id="mailBoxAjax" hidden="[[!sessionInfo]]" url="{{backEndUrl}}mailbox/{{sessionInfo.token}}/{{selectedMetaAction}}" last-response="{{mailBoxModel}}"></iron-ajax>
+            <iron-ajax id="mailBoxAjax" url="{{backEndUrl}}mailbox/{{sessionInfo.token}}/{{selectedMetaAction}}" last-response="{{mailBoxModel}}"></iron-ajax>
             <!--Profile-->
-            <iron-ajax id="profileAjax" hidden="[[!sessionInfo]]" url="{{backEndUrl}}addressbook/{{sessionInfo.token}}/profile" 
-                   last-response="{{profile}}" auto></iron-ajax>
+            <iron-ajax id="profileAjax" url="{{backEndUrl}}addressbook/{{sessionInfo.token}}/profile" 
+                       last-response="{{profile}}" auto></iron-ajax>
 
-       <!-- <iron-ajax id="mailBoxAjax" hidden="[[!sessionInfo]]" url="{{backEndUrl}}localization/locales" 
+            <!-- <iron-ajax id="mailBoxAjax" hidden="[[!sessionInfo]]" url="{{backEndUrl}}localization/locales" 
+     
+                        last-response="{{locales}}" auto></iron-ajax>-->
 
-                   last-response="{{locales}}" auto></iron-ajax>-->
-        
-            
+
             <paper-dialog id="loginDialog" modal>
                 <h2 id="loginDialogTitle">Sign-in</h2>
                 <signin-view api-url="{{backEndUrl}}"></signin-view>
@@ -218,7 +218,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                     <paper-tab text-id="assembledContentTabLabel" name="assembled">Assembled content</paper-tab>
                                     <paper-tab text-id="propertiesTabLabel" name="props">Properties</paper-tab>
                                 </paper-tabs>
-                                <paper-tabs data-route="content-tree"  attr-for-selected="name" selected="{{selectedContentFolder}}" style="width: 100%;" autoselect>
+                                <paper-tabs hidden="[[!sessionInfo.powerUser]]" data-route="content-tree"  attr-for-selected="name" selected="{{selectedContentFolder}}" style="width: 100%;" autoselect>
                                     <paper-tab text-id="messagesPagePublicFolderTitle" name="public">Public</paper-tab>
                                     <paper-tab text-id="messagesPageMyContentsFolderTitle" name="drafts">Drafts</paper-tab>
                                     <paper-tab text-id="messagesPagePublishedFolderTitle" name="published">Published</paper-tab>
@@ -274,13 +274,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                     class="focus-target" id="scv" 
                                     account-id="{{sessionInfo.token}}" 
                                     api-url="{{backEndUrl}}" 
-                                    sections="{{contentChildrenModel}}"
-                                    selected-meta-action="{{selectedMetaAction}}"></share-content-view>
+                                    selected-meta-action="{{selectedMetaAction}}">
+                                        
+                                    <!--sections="{{contentChildrenModel}}"-->
+                                </share-content-view>
                             </section>
                             <section data-route="content-tree">
                                 <content-tree-view 
                                     id="contentTree"
-                                    class="page-title focus-target"
+                                    class="focus-target"
                                     admin="[[sessionInfo.powerUser]]"
                                     selected-root="[[params.contentId]]" 
                                     base-url="/" 
@@ -296,7 +298,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                 <mailbox-view 
                                     data="{{mailBoxModel}}"
                                     selected-mail-box-folder="{{selectedMailboxFolder}}"
-                                    class="focus-target" account-id="{{sessionInfo.token}}" api-url="{{backEndUrl}}"></mailbox-view>
+                                    class="focus-target" 
+                                    account-id="{{sessionInfo.token}}" 
+                                    api-url="{{backEndUrl}}">
+
+                                </mailbox-view>
                             </section>
                             <section data-route="network">
                                 <network-view 
@@ -305,12 +311,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                     genocide-request-params="{{genocideRequestParams}}"
                                     parents="{{parents}}"
                                     data="{{data}}"
+                                    locales="{{locales}}"
                                     possible-parents="{{possibleParents}}"
                                     children-request-params="{{childrenRequestParams}}"
-                                    
+
                                     account-id="[[params.memberId]]" 
-                                              api-url="{{backEndUrl}}" 
-                                              owner-id="{{sessionInfo.token}}"></network-view>
+                                    api-url="{{backEndUrl}}" 
+                                    owner-id="{{sessionInfo.token}}">
+
+                                </network-view>
                             </section>
 
                             <section data-route="about">

@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
 <xliff version="1.0">
-  <file source-language="en" target-language="hu" datatype="plaintext" original="messages" date="2016-05-18T09:19:15Z" product-name="messages">
+  <file source-language="en" target-language="en-US" datatype="plaintext" original="messages" date="2016-05-18T09:19:15Z" product-name="messages">
   <header/>
     <body>
       <trans-unit id="app.loginDialogTitle">
         <source>Sign-in</source>
-        <target>Bejelentkezés</target>
+        <target>Sign-in</target>
       </trans-unit>
       <trans-unit id="app.logonDialogTitle">
         <source>Sign-on</source>
-        <target>Regisztráció</target>
+        <target>Sign-on</target>
       </trans-unit>
       <trans-unit id="app.forgottenPasswordDialogTitle">
         <source>Ask password reset</source>
-        <target>Jelszóváltoztatás kérése</target>
+        <target>Ask password reset</target>
       </trans-unit>
       <trans-unit id="app.mainMenuTitle">
         <source>Menu</source>
@@ -22,23 +22,23 @@
       </trans-unit>
       <trans-unit id="app.shareContentMenuTitle">
         <source>Share content</source>
-        <target>Tartalom megosztása</target>
+        <target>Share content</target>
       </trans-unit>
       <trans-unit id="app.contentsMenuTitle">
         <source>Contents</source>
-        <target>Menük</target>
+        <target>Contents</target>
       </trans-unit>
       <trans-unit id="app.mailBoxMenuTitle">
         <source>Mailbox</source>
-        <target>Postaláda</target>
+        <target>Mailbox</target>
       </trans-unit>
       <trans-unit id="app.networkMenuTitle">
         <source>Network</source>
-        <target>Hálózat</target>
+        <target>Network</target>
       </trans-unit>
       <trans-unit id="app.aboutMenuTitle">
         <source>About</source>
-        <target>Rólunk</target>
+        <target>About</target>
       </trans-unit>
       <trans-unit id="app.mainToolbar:div_2:iron-pages:div:span_1">
         <source>/</source>
@@ -90,11 +90,11 @@
       </trans-unit>
       <trans-unit id="app.profileMenuTitle">
         <source>Profile</source>
-        <target>Profil</target>
+        <target>Profile</target>
       </trans-unit>
       <trans-unit id="app.logoutButtonLabel">
         <source>Logout</source>
-        <target>Kijelentkezés</target>
+        <target>Logout</target>
       </trans-unit>
       <trans-unit id="app.shareTabLabel">
         <source>Share</source>
@@ -138,7 +138,7 @@
       </trans-unit>
       <trans-unit id="about-view.contributorsTitleLabel">
         <source>Authors &amp; contributors</source>
-        <target>Szerzők &amp; közreműködők</target>
+        <target>Authors &amp; contributors</target>
       </trans-unit>
       <trans-unit id="about-view.ul_2:template:li.0">
         <source> {1} ({2}) </source>
@@ -154,7 +154,7 @@
       </trans-unit>
       <trans-unit id="about-view.administrationTitleLabel">
         <source>Webmaster &amp; maintenance</source>
-        <target>Webmester &amp; karbantartás</target>
+        <target>Webmaster &amp; maintenance</target>
       </trans-unit>
       <trans-unit id="about-view.ul_4:template:li.0">
         <source> {1} ({2}) </source>
@@ -170,71 +170,71 @@
       </trans-unit>
       <trans-unit id="content-tree-view.emptyContentFolderText">
         <source>No content in the folder.</source>
-        <target>A mappában nincsenek tartalmak.</target>
+        <target>No content in the folder.</target>
       </trans-unit>
       <trans-unit id="content-viewer.model.articleTitleLabel.title">
         <source>Navigate to {{baseUrl}}content-tree/{{section.data}}</source>
-        <target>Ugrás {{baseUrl}}content-tree/{{section.data}}</target>
+        <target>Navigate to {{baseUrl}}content-tree/{{section.data}}</target>
       </trans-unit>
       <trans-unit id="mailbox-view.emptyMailBoxFolderText">
         <source>No messages in the folder.</source>
-        <target>A mappában nincsenek üzenetek.</target>
+        <target>No messages in the folder.</target>
       </trans-unit>
       <trans-unit id="network-view.model.newMemberNameLabel.label">
         <source>Name</source>
-        <target>Név</target>
+        <target>Name</target>
       </trans-unit>
       <trans-unit id="network-view.model.newMemberEmailLabel.label">
         <source>Email</source>
-        <target>Email cím</target>
+        <target>Email</target>
       </trans-unit>
       <trans-unit id="network-view.model.newMemberParentLabel.label">
         <source>Parent member</source>
-        <target>Fölérendelt tag</target>
+        <target>Parent member</target>
       </trans-unit>
       <trans-unit id="network-view.model.preferredLanguageLabel.label">
         <source>Preferred language</source>
-        <target>Preferált nyelv</target>
+        <target>Preferred language</target>
       </trans-unit>
       <trans-unit id="network-view.newMemberDialogTitle">
         <source>New member</source>
-        <target>Új tag</target>
+        <target>New member</target>
       </trans-unit>
       <trans-unit id="network-view.newMemberTypeUserTitle">
         <source>User</source>
-        <target>Felhasználó</target>
+        <target>User</target>
       </trans-unit>
       <trans-unit id="network-view.newMemberTypeGroupTitle">
         <source>Group</source>
-        <target>Csoport</target>
+        <target>Group</target>
       </trans-unit>
       <trans-unit id="network-view.newMemberTypeAdminTitle">
         <source>Admin</source>
-        <target>Adminisztrátor</target>
+        <target>Administrator</target>
       </trans-unit>
       <trans-unit id="network-view.newMemberDialogCancelButton">
         <source>Cancel</source>
-        <target>Elvetés</target>
+        <target>Cancel</target>
       </trans-unit>
       <trans-unit id="network-view.newMemberDialogCreateButton">
         <source>Create</source>
-        <target>Létrehozás</target>
+        <target>Create</target>
       </trans-unit>
       <trans-unit id="network-view.newMemberDialogCreateAndRepeatButton">
         <source>Create &amp; repeat</source>
-        <target>Létrehozás &amp; ismétlés</target>
+        <target>Create &amp; repeat</target>
       </trans-unit>
       <trans-unit id="network-view.memberEraseConfirmDialogTitle">
         <source>Delete member</source>
-        <target>Tag törlése</target>
+        <target>Delete member</target>
       </trans-unit>
       <trans-unit id="network-view.memberEraseConfirmDialogText">
         <source> Are you sure delete member? </source>
-        <target>Biztos, hogy törölni akarja a kiválasztott tagot?</target>
+        <target> Are you sure delete member? </target>
       </trans-unit>
       <trans-unit id="network-view.memberEraseConfirmDialogCancelButton">
         <source>Cancel</source>
-        <target>Elvetés</target>
+        <target>Cancel</target>
       </trans-unit>
       <trans-unit id="network-view.memberEraseConfirmDialogAcceptButton">
         <source>OK</source>
@@ -242,11 +242,11 @@
       </trans-unit>
       <trans-unit id="network-view.promoteAdminDialogTitle">
         <source>Promote administrator</source>
-        <target>Előléptetés</target>
+        <target>Promote administrator</target>
       </trans-unit>
       <trans-unit id="network-view.promoteAdminDialogText.0">
         <source> Are you surely promote {1} to administrator? </source>
-        <target> Biztos, hogy elő akarja léptetni {1}-t adminisztrátorrá? </target>
+        <target> Are you surely promote {1} to administrator? </target>
       </trans-unit>
       <trans-unit id="network-view.promoteAdminDialogText.1">
         <source>{{item.name}}</source>
@@ -254,7 +254,7 @@
       </trans-unit>
       <trans-unit id="network-view.promoteAdminDialogCancelButton">
         <source>Cancel</source>
-        <target>Elvetés</target>
+        <target>Cancel</target>
       </trans-unit>
       <trans-unit id="network-view.promoteAdminDialogAcceptButton">
         <source>OK</source>
@@ -262,11 +262,11 @@
       </trans-unit>
       <trans-unit id="network-view.demoteAdminDialogTitle">
         <source>Demote administrator</source>
-        <target>Lefokozás</target>
+        <target>Demote administrator</target>
       </trans-unit>
       <trans-unit id="network-view.demoteAdminDialogText.0">
         <source> Are you surely demote {1} to user? </source>
-        <target> Biztos, hogy le akarja fokozni {1}-t felhasználóvá?</target>
+        <target> Are you surely demote {1} to user? </target>
       </trans-unit>
       <trans-unit id="network-view.demoteAdminDialogText.1">
         <source>{{item.name}}</source>
@@ -274,7 +274,7 @@
       </trans-unit>
       <trans-unit id="network-view.demoteAdminDialogCancelButton">
         <source>Cancel</source>
-        <target>Elvetés</target>
+        <target>Cancel</target>
       </trans-unit>
       <trans-unit id="network-view.demoteAdminDialogAcceptButton">
         <source>OK</source>
@@ -282,7 +282,15 @@
       </trans-unit>
       <trans-unit id="network-view.emptyChildrenText">
         <source>No children.</source>
-        <target>Nincsenek alárendelt tagok.</target>
+        <target>No children.</target>
+      </trans-unit>
+      <trans-unit id="password-reset-view.model.passwordResetAccept.title">
+        <source>Reset password</source>
+        <target>Reset password</target>
+      </trans-unit>
+      <trans-unit id="password-reset-view.passwordResetSignIn">
+        <source>Sign-in</source>
+        <target>Sign-in</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-field.model.addSectionButton.title">
         <source>Embedd video to the message content.</source>
@@ -290,15 +298,15 @@
       </trans-unit>
       <trans-unit id="plutonium-cm-field.model.addVideoButton.title">
         <source>Embedd video to the message content.</source>
-        <target>Video szekció beágyazása.</target>
+        <target>Embedd video to the message content.</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-field.model.addImageButton.title">
         <source>Embedd image to the message content.</source>
-        <target>Kép szekció beágyazása.</target>
+        <target>Embedd image to the message content.</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-field.model.addLinkButton.title">
         <source>Embedd a link to another message to the message content.</source>
-        <target>Hivatkozás szekció beágyazása.</target>
+        <target>Embedd a link to another message to the message content.</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.model.addSectionButton.title">
         <source>Embedd video to the message content.</source>
@@ -306,31 +314,35 @@
       </trans-unit>
       <trans-unit id="plutonium-cm-form.model.addVideoButton.title">
         <source>Embedd video to the message content.</source>
-        <target>Video szekció beágyazása.</target>
+        <target>Embedd video to the message content.</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.model.addImageButton.title">
         <source>Embedd image to the message content.</source>
-        <target>Kép szekció beágyazása.</target>
+        <target>Embedd image to the message content.</target>
       </trans-unit>
       <trans-unit id="plutonium-cm-form.model.addLinkButton.title">
         <source>Embedd a link to another message to the message content.</source>
-        <target>Hivatkozás szekció beágyazása.</target>
+        <target>Embedd a link to another message to the message content.</target>
+      </trans-unit>
+      <trans-unit id="plutonium-section-page.text_1">
+        <source> ssssssssss </source>
+        <target> ssssssssss </target>
       </trans-unit>
       <trans-unit id="profile-view.model.preferredLanguageLabel.label">
         <source>Preferred language</source>
-        <target>Preferált nyelv</target>
+        <target>Preferred language</target>
       </trans-unit>
       <trans-unit id="profile-view.changeDeviceDialogTitle">
         <source>Change device request</source>
-        <target>Eszközcsere kérése</target>
+        <target>Change device request</target>
       </trans-unit>
       <trans-unit id="profile-view.memberEraseConfirmDialogText">
         <source> Are you surely change device? After login, until your inviter not approve you could not log in to the application. </source>
-        <target> Biztosan cserélni akarja eszközét? Kijelentkezés után, amíg az Önt meghívó személy nem hagyja jóvá, nem fog tudni bejelentkezni. </target>
+        <target> Are you surely change device? After login, until your inviter not approve you could not log in to the application. </target>
       </trans-unit>
       <trans-unit id="profile-view.memberEraseConfirmDialogCancelButton">
         <source>Cancel</source>
-        <target>Mégse</target>
+        <target>Cancel</target>
       </trans-unit>
       <trans-unit id="profile-view.memberEraseConfirmDialogAcceptButton">
         <source>OK</source>
@@ -338,15 +350,15 @@
       </trans-unit>
       <trans-unit id="profile-view.activationDateTitle">
         <source>Activation date</source>
-        <target>Aktiválva</target>
+        <target>Activation date</target>
       </trans-unit>
       <trans-unit id="profile-view.changingDeviceButton">
         <source>Changing device</source>
-        <target>Eszközcsere</target>
+        <target>Changing device</target>
       </trans-unit>
       <trans-unit id="profile-view.underDevelopmentText">
         <source>Under development ...</source>
-        <target>Fejlesztés alatt ...</target>
+        <target>Under development ...</target>
       </trans-unit>
       <trans-unit id="share-content-view.model.messageInput.label">
         <source>Message</source>
@@ -366,71 +378,79 @@
       </trans-unit>
       <trans-unit id="signin-view.model.signInFormLoginEmail.label">
         <source>Email address</source>
-        <target>Email cím</target>
+        <target>Email address</target>
       </trans-unit>
       <trans-unit id="signin-view.model.signInFormLoginPassword.label">
         <source>Password</source>
-        <target>Jelszó</target>
+        <target>Password</target>
       </trans-unit>
       <trans-unit id="signin-view.model.signInFormAccept.title">
         <source>submit</source>
-        <target>Bejelentkezés</target>
+        <target>submit</target>
       </trans-unit>
       <trans-unit id="signin-view.signInFormRememberMe">
         <source>Remember me</source>
-        <target>Emlékezz rám</target>
+        <target>Remember me</target>
       </trans-unit>
       <trans-unit id="signin-view.signInFormForgotPassword">
         <source>Forgot password</source>
-        <target>Elfelejtett jelszó</target>
+        <target>Forgot password</target>
       </trans-unit>
       <trans-unit id="signin-view.signInFormRegistrate">
         <source>Sign-on</source>
-        <target>Regisztráció</target>
+        <target>Sign-on</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registrateTitleLabel.label">
         <source>Name</source>
-        <target>Név</target>
+        <target>Name</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registrateTitleLabel.error-message">
         <source>Invalid name.</source>
-        <target>Érvénytelen név.</target>
+        <target>Invalid name.</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registratePhoneNumberLabel.label">
         <source>Phone</source>
-        <target>Telefonszám</target>
+        <target>Phone</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registratePhoneNumberLabel.error-message">
         <source>Invalid phone number.</source>
-        <target>Érvénytelen telefonszám.</target>
+        <target>Invalid phone number.</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registratePasswordLabel.label">
         <source>Password</source>
-        <target>Jelszó</target>
+        <target>Password</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registratePasswordLabel.error-message">
         <source>Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number.</source>
-        <target>Érvénytelen jelszó. A jelszó egy 6-16 jegyű, legalább egy számot tartalmazó alfanumerikus karaktersorozat.</target>
+        <target>Invalid password. Password have to be 6-16 alphanumercal character and minimum 1 number.</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registratePasswordConfirmLabel.label">
         <source>Password confirmation</source>
-        <target>Jelszó megerősítés</target>
+        <target>Password confirmation</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registrateCodeLabel.label">
         <source>Activation code</source>
-        <target>Aktivációs kód</target>
+        <target>Activation code</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registrateCodeLabel.error-message">
         <source>Activation code.</source>
-        <target>Hibás aktivációs kód.</target>
+        <target>Activation code.</target>
       </trans-unit>
       <trans-unit id="signon-view.model.registrateSignOnButton.title">
         <source>submit</source>
-        <target>Regisztráció</target>
+        <target>Signon</target>
+      </trans-unit>
+      <trans-unit id="signon-view.model.registrateEmailLabel.label">
+        <source></source>
+        <target>Email address</target>
+      </trans-unit>
+      <trans-unit id="signon-view.model.registrateEmailLabel.error-message">
+        <source></source>
+        <target>Invalid email address.</target>
       </trans-unit>
       <trans-unit id="signon-view.registrateSignInButton">
         <source>Signin</source>
-        <target>Bejelentkezés</target>
+        <target>Signin</target>
       </trans-unit>
       
     </body>

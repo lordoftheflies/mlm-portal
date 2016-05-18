@@ -10,6 +10,15 @@
 
 (function (document) {
     'use strict';
+
+    function guid() {
+        function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000).toString(16)
+                    .substring(1);
+        }
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+    }
+
     // Grab a reference to our auto-binding template
     // and give it some initial binding values
     // Learn more about auto-binding templates at http://goo.gl/Dx1u2g
@@ -21,8 +30,13 @@
         var error = 'Unknown client error.';
         if (args.request.status === 401) {
             error = 'Session token corrupted or invalid. Navigate to login.';
+//            app.activationCode = null;
+        } else if (args.request.status === 409) {
+            app.activationCode = guid();
+            app.$.registrationDialog.open();
         } else {
             error = JSON.stringify(args.error);
+//            app.activationCode = null;
         }
         app.sessionInfo = null;
         console.log(error);
@@ -30,6 +44,7 @@
         app.$.toast.show();
         if (!app.activationCode)
             app.$.loginDialog.open();
+        
     };
     // Session AJAX success response handler.
     app.sessionInfoHandler = function (event, details) {
@@ -55,6 +70,8 @@
         app.$.toast.text = app.sessionInfo.userName + ' logged in successfully.';
         app.$.toast.show();
         app.sessionInfo = null;
+        app.activationCode = null;
+        page.redirect(app.baseUrl);
     };
     app.isVisible = function () {
 //        console.log('PPPPPPPPPPPPPP:' + app.sessionInfo.powerUser);

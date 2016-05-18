@@ -86,7 +86,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <div class="card-actions">
                     <paper-button id="newMemberDialogCancelButton" dialog-dismiss>Cancel</paper-button>
                     <paper-button id="newMemberDialogCreateButton" raised class="primary" on-tap="onCreateMember" dialog-confirm>Create</paper-button>
-                    <paper-button id="newMemberDialogCreateAndRepeatButton" raised class="primary" on-tap="onCreateMemberRepeat" dialog-confirm>Create & repeat</paper-button>
+                    <paper-button id="newMemberDialogCreateAndRepeatButton" raised class="primary" on-tap="onCreateMemberRepeat">Create & repeat</paper-button>
                 </div>
             </form>
         </paper-dialog>
@@ -236,6 +236,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         type: Array,
                         notify: true
                     },
+                    locales: {
+                        type: Array,
+                        notify: true
+                    },
                     unusedCodes: {
                         type: Number,
                         notify: true
@@ -317,7 +321,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 },
                 onCreateMemberRepeat: function () {
                     this.$.newMemberForm.submit();
-                    this.$.memberDialog.open();
+                    this.$.newMemberForm.email.value = '';
+                    this.$.newMemberForm.role.value = 'USER';
+                    this.$.newMemberForm.name.value = '';
+//                    this.$.newMemberForm.preferredLangiage.value = '';
+
+//                    this.$.memberDialog.open();
                 },
                 onCreateMemberResponse: function (event, details) {
                     console.log('Member created successfully: ' + JSON.stringify(details.response));
@@ -363,7 +372,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     app.$.toast.text = 'Member demoting failed.';
                     app.$.toast.show();
                 },
-                
                 isEmpty: function (data) {
                     return data === undefined || data === null || data.length === 0;
                 },

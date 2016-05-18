@@ -7,10 +7,6 @@
       "label": "Név",
       "error-message": "Érvénytelen név."
     },
-    "registrateEmailLabel": {
-      "label": "Email cím",
-      "error-message": "Érvénytelen email cím."
-    },
     "registratePhoneNumberLabel": {
       "label": "Telefonszám",
       "error-message": "Érvénytelen telefonszám."

@@ -1,1 +1,13 @@
-{}
+{
+  "meta": {
+    "todo": [
+      {
+        "op": "add",
+        "path": "/emptyContentFolderText",
+        "value": "No content in the folder."
+      }
+    ]
+  },
+  "model": {},
+  "emptyContentFolderText": "No content in the folder."
+}

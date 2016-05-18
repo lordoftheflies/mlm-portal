@@ -63,6 +63,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               handle-as="json"
               action="{{apiUrl}}authentication/signon">
             <div class="card-content">
+                <input type="hidden" name="locale" value="en"></div>
                 <paper-input 
                     id="registrateTitleLabel" 
                     name="name" 
@@ -173,7 +174,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 onSignOnResponse: function (event, details) {
                     console.log('Sign-on response: ' + JSON.stringify(details.response));
                     app.sessionInfo = details.response;
-                    page.redirect(app.baseUrl + 'mailbox');
+                    page.redirect(app.baseUrl);
                 },
                 onSignOnError: function (event, details) {
                     console.log('Sign-on error: ' + JSON.stringify(details.response));
@@ -192,6 +193,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     this.$.form.$$('[name="name"]').value = details.response.name;
                     this.$.form.$$('[name="email"]').value = details.response.email;
                     this.$.form.$$('[name="phone"]').value = details.response.phone;
+//                    app.activationCode = null;
                     console.log('Registration profile fetched successfully.');
                 },
                 handleProfileError: function (event, details) {

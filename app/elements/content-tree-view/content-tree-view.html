@@ -59,7 +59,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </template>-->
 
         <paper-material class="layout horizontal">
-            
+
             <paper-tabs selected="{{selectedRoot}}" scrollable attr-for-selected="id" class="flex">
                 <template is="dom-repeat" items="{{parentModel.sections}}">
                     <paper-tab id="[[item.name]]" href="{{baseUrl}}content-tree/{{item.data}}">
@@ -78,6 +78,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <div class="content-tree-content">
             <template is="dom-if" if="{{data.hasEmbeddedFile}}">
+                File Viewee
                 <iframe src$="{{getContentFileUrl(data.embeddedFileName)}}"></iframe>
                 <!--http://localhost/topn_data/[[data.embeddedFileName]]-->
                 <!--<pdf-element src$="{{getContentFileUrl(data.embeddedFileName)}}" elevation="5" downloadable show-file-name width=800 height=600></pdf-element>-->
@@ -90,17 +91,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </content-viewer>
 
             </template>
-            <template is="dom-if" if="{{isEmpty(data)}}">
-                <br />
-                <paper-card elevation="1">
-                    <div class="card-content">
-                        <div id="emptyContentFolderText">No content in the folder.</div>
-                    </div>
-                </paper-card>
-            </template>
 
 
 
+        </div>
+        <div  hidden="{{!isEmpty(data)}}" class="folder-content">
+            <br />
+            <paper-card elevation="1">
+                <div class="card-content">
+                    <div id="emptyContentFolderText">No content in the folder.</div>
+                </div>
+            </paper-card>
         </div>
 
     </template>
@@ -209,7 +210,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     console.log('Fasz');
                     return selectedContentFolder === 'drafts';
                 },
-                onEditArticle: function() {
+                onEditArticle: function () {
                     page.redirect(app.baseUrl + 'share-content')
                     app.currentEditedContent = this.data;
                 }

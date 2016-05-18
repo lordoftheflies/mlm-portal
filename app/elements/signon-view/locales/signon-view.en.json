@@ -7,10 +7,6 @@
       "label": "Name",
       "error-message": "Invalid name."
     },
-    "registrateEmailLabel": {
-      "label": "Email address",
-      "error-message": "Invalid email address."
-    },
     "registratePhoneNumberLabel": {
       "label": "Phone",
       "error-message": "Invalid phone number."
@@ -27,7 +23,7 @@
       "error-message": "Activation code."
     },
     "registrateSignOnButton": {
-      "title": "Signon"
+      "title": "submit"
     }
   },
   "registrateSignInButton": "Signin"

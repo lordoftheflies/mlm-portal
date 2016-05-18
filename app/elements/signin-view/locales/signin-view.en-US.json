@@ -1,1 +1,50 @@
-{}
+{
+  "meta": {
+    "todo": [
+      {
+        "op": "add",
+        "path": "/model/signInFormLoginEmail/label",
+        "value": "Email address"
+      },
+      {
+        "op": "add",
+        "path": "/model/signInFormLoginPassword/label",
+        "value": "Password"
+      },
+      {
+        "op": "add",
+        "path": "/model/signInFormAccept/title",
+        "value": "submit"
+      },
+      {
+        "op": "add",
+        "path": "/signInFormRememberMe",
+        "value": "Remember me"
+      },
+      {
+        "op": "add",
+        "path": "/signInFormForgotPassword",
+        "value": "Forgot password"
+      },
+      {
+        "op": "add",
+        "path": "/signInFormRegistrate",
+        "value": "Sign-on"
+      }
+    ]
+  },
+  "model": {
+    "signInFormLoginEmail": {
+      "label": "Email address"
+    },
+    "signInFormLoginPassword": {
+      "label": "Password"
+    },
+    "signInFormAccept": {
+      "title": "submit"
+    }
+  },
+  "signInFormRememberMe": "Remember me",
+  "signInFormForgotPassword": "Forgot password",
+  "signInFormRegistrate": "Sign-on"
+}

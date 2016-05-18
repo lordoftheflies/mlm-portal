@@ -7,10 +7,6 @@
       "label": "Nazwa",
       "error-message": "Błędna nazwa."
     },
-    "registrateEmailLabel": {
-      "label": "Adres e-mail",
-      "error-message": "Błędny adres e-mail."
-    },
     "registratePhoneNumberLabel": {
       "label": "Numer telefonu",
       "error-message": "Nieprawidłowy numer telefonu."
