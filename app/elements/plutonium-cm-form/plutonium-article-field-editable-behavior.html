@@ -1,7 +1,21 @@
 <script>
     window.PlutoniumBehaviors = window.PlutoniumBehaviors || {};
-    PlutoniumBehaviors.SectionEditorBehavior = {
+    PlutoniumBehaviors.ArticleFieldEditableBehavior = {
         properties: {
+            fontSize: {
+                type: Number,
+                notify: true,
+                value: 12
+            },
+            justification: {
+                type: String,
+                notify: true,
+                value: 'start-justified'
+            },
+            actionTitle: {
+                type: String,
+                notify: true
+            },
             fontSizeChangeStep: {
                 type: Number,
                 notify: true,
@@ -11,23 +25,7 @@
                 type: Number,
                 notify: true
             },
-            fontSize: {
-                type: Number,
-                notify: true,
-                value: 12,
-//                observer: 'observeFontSize'
-            },
             _justification: {
-                type: String,
-                notify: true
-            },
-            justification: {
-                type: String,
-                notify: true,
-                value: 'start-justified',
-//                observer: 'obserSveJustification'
-            },
-            actionTitle: {
                 type: String,
                 notify: true
             },
@@ -50,12 +48,6 @@
         observers: [
             'observeStyleChanges(_fontSize, _justification)'
         ],
-        ready: function () {
-            console.log(this.is + ' ready.');
-        },
-        attached: function () {
-            console.log(this.is + ' attached.');
-        },
         _reset: function () {
             this._justification = this.justification;
             this._fontSize = this.fontSize;

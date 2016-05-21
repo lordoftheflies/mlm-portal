@@ -32,7 +32,7 @@ Example:
 @hero hero.svg
 -->
 
-<dom-module id="plutonium-image-section">
+<dom-module id="plutonium-article-image-section">
     <template>
         <style include="iron-flex iron-flex-alignment">
             :host {
@@ -42,7 +42,7 @@ Example:
 
 
         </style>
-        <plutonium-image-editor 
+        <plutonium-article-image-editor 
             id="plSectionEditor"
             action-title="Edit section"
             title="{{model.title}}"
@@ -51,7 +51,7 @@ Example:
             height="{{model.height}}"
             width="{{model.width}}"
             font-size="{{model.fontSize}}">
-        </plutonium-image-editor>
+        </plutonium-article-image-editor>
         <div hidden="[[editable]]" hidden="[[editable]]">
 
             <h2>{{model.title}}</h2>
@@ -77,7 +77,7 @@ Example:
         (function () {
             'use strict';
             Polymer({
-                is: 'plutonium-image-section',
+                is: 'plutonium-article-image-section',
                 behaviors: [
                     PlutoniumBehaviors.SectionFieldBehavior
                 ],

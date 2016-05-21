@@ -127,7 +127,14 @@
                 "id": {}
             }
         },
-        "plutonium-video-section": {},
+        "plutonium-video-section": {
+            "attributes": {
+                "field": {},
+                "editable": {},
+                "model": {},
+                "id": {}
+            }
+        },
         "paper-material": {
             "attributes": {
                 "elevation": {}
@@ -149,7 +156,15 @@
                 "api-url": {}
             }
         },
-        "plutonium-link-section": {},
+        "plutonium-link-section": {
+            "attributes": {
+                "field": {},
+                "editable": {},
+                "parent-candidates-url": {},
+                "model": {},
+                "id": {}
+            }
+        },
         "iron-dropdown": {
             "attributes": {
                 "vertical-align": {},
@@ -157,7 +172,14 @@
                 "horizontal-align": {}
             }
         },
-        "plutonium-image-section": {},
+        "plutonium-image-section": {
+            "attributes": {
+                "field": {},
+                "editable": {},
+                "model": {},
+                "id": {}
+            }
+        },
         "paper-dialog": {
             "attributes": {
                 "id": {},
@@ -217,7 +239,14 @@
                 "id": {}
             }
         },
-        "plutonium-text-section": {},
+        "plutonium-text-section": {
+            "attributes": {
+                "field": {},
+                "editable": {},
+                "model": {},
+                "id": {}
+            }
+        },
         "profile-view": {
             "attributes": {
                 "api-url": {},

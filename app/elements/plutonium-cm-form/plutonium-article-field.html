@@ -18,30 +18,32 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/i18n-behavior/i18n-behavior.html">
-<link rel="import" href="plutonium-cm-behavior.html">
-<link rel="import" href="plutonium-cm-shared-styles.html">
-<link rel="import" href="plutonium-image-section.html">
-<link rel="import" href="plutonium-link-section.html">
-<link rel="import" href="plutonium-video-section.html">
-<link rel="import" href="plutonium-text-section.html">
+
+<!-- Behaviors -->
+<link rel="import" href="plutonium-article-field-behavior.html">
+<!-- Form fields -->
+<link rel="import" href="plutonium-article-image-section.html">
+<link rel="import" href="plutonium-article-link-section.html">
+<link rel="import" href="plutonium-article-text-section.html">
+<link rel="import" href="plutonium-article-video-section.html">
 <!--
 An element providing a solution to no problem in particular.
 
 Example:
 
-    <plutonium-section-page></plutonium-section-page>
+    <plutonium-article-field></plutonium-article-field>
 
 Example:
 
-    <plutonium-section-page>
-      <h2>Hello plutonium-section-page</h2>
-    </plutonium-section-page>
+    <plutonium-article-field>
+      <h2>Hello plutonium-article-field</h2>
+    </plutonium-article-field>
 
 @demo demo/index.html
 @hero hero.svg
 -->
 
-<dom-module id="plutonium-section-page">
+<dom-module id="plutonium-article-field">
     <template>
         <style>
             :host {
@@ -49,31 +51,23 @@ Example:
             }
 
         </style>
-        <iron-pages selected="{{model.type}}" attr-for-selected="name">
+        <iron-pages selected="{{model.type}}" attr-for-selected="field">
             <plutonium-link-section 
-                id="{{model.name}}" 
-                name="plutonium-cm-editor-link"
-                editable="{{editable}}"
+                id="{{model.name}}" editable="{{editable}}" model="{{model}}"
+                field="plutonium-cm-editor-link"
                 parent-candidates-url="{{apiUrl}}/content-management/candidates"
-                model="{{model}}"
                 ></plutonium-link-section>
             <plutonium-text-section 
-                name="plutonium-cm-editor-text"
-                id="{{model.name}}"
-                editable="{{editable}}"
-                model="{{model}}"
+                id="{{model.name}}" editable="{{editable}}" model="{{model}}"
+                field="plutonium-cm-editor-text"
                 ></plutonium-text-section>
             <plutonium-video-section 
-                name="plutonium-cm-editor-video"
-                id="{{model.name}}"
-                editable="{{editable}}"
-                model="{{model}}"
+                id="{{model.name}}" editable="{{editable}}" model="{{model}}"
+                field="plutonium-cm-editor-video"
                 ></plutonium-video-section>
             <plutonium-image-section
-                name="plutonium-cm-editor-image"
-                id="{{model.name}}"
-                editable="{{editable}}"
-                model="{{model}}"
+                id="{{model.name}}" editable="{{editable}}" model="{{model}}"
+                field="plutonium-cm-editor-image"
                 ></plutonium-image-section>
         </iron-pages>
     </template>
@@ -82,9 +76,9 @@ Example:
         (function () {
             'use strict';
             Polymer({
-                is: 'plutonium-section-page',
+                is: 'plutonium-article-field',
                 behaviors: [
-                    PlutoniumBehaviors.SectionFieldBehavior,
+                    PlutoniumBehaviors.ArticleFieldBehavior,
                     PlutoniumBehaviors.WidgetBehavior
                 ],
                 properties: {

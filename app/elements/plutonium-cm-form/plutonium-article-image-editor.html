@@ -31,27 +31,12 @@ Example:
 @hero hero.svg
 -->
 
-<dom-module id="plutonium-image-editor">
+<dom-module id="plutonium-article-image-editor">
     <template>
         <style include="iron-flex iron-flex-alignment">
             :host {
                 --section-font-size: 10px;
             }
-
-            /*            --section-start-justified {
-                            @apply(--layout-horizontal);
-                            @apply(--layout-start-justified);
-                        }
-                        
-                        --section-center-justified {
-                            @apply(--layout-horizontal);
-                            @apply(--layout-center-justified);
-                        }
-                        
-                        --section-end-justified {
-                            @apply(--layout-horizontal);
-                            @apply(--layout-end-justified);
-                        }*/
 
             :host div.preview,
             :host paper-textarea {
@@ -107,10 +92,10 @@ Example:
         (function () {
             'use strict';
             Polymer({
-                is: 'plutonium-image-editor',
+                is: 'plutonium-article-image-editor',
                 behaviors: [
-                    PlutoniumBehaviors.SectionEditorBehavior,
-                    PlutoniumBehaviors.SectionSizingBehavior
+                    PlutoniumBehaviors.ArticleFieldSizeableBehavior,
+                    PlutoniumBehaviors.ArticleFieldBehavior
                 ],
                 properties: {
                     title: {

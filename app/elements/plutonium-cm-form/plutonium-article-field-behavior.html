@@ -1,0 +1,20 @@
+<script>
+    window.PlutoniumBehaviors = window.PlutoniumBehaviors || {};
+    PlutoniumBehaviors.ArticleFieldBehavior = {
+        properties: {
+            editable: {
+                type: Boolean,
+                notify: true,
+                value: false
+            },
+            name: {
+                type: String,
+                notify: true
+            },
+            model: {
+                type: Object,
+                notify: true
+            }
+        }
+    };
+</script>
