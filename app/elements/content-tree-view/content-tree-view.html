@@ -192,7 +192,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     this.tocRequestParams.tag = selectedContentFolder;
                     this.infoRequestParams.pageId = selectedRoot;
                     console.log('Toc-Content-view toc navigation request parameters updated: ' + JSON.stringify(this.tocRequestParams))
-                    if (this.data !== undefined)
+                    if (this.data !== undefined && this.data.sections !== undefined)
                         this.splice('data.sections', 0, this.data.sections.length);
                     app.$.rootModelAjax.generateRequest();
                     app.$.childTocAjax.generateRequest();
