@@ -84,6 +84,15 @@
                 "parent-candidates": {}
             }
         },
+        "plutonium-article-field": {
+            "attributes": {
+                "api-url": {},
+                "editable": {},
+                "name": {},
+                "model": {},
+                "class": {}
+            }
+        },
         "plutonium-section-editor": {},
         "iron-icon": {
             "attributes": {

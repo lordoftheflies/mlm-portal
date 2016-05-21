@@ -69,9 +69,39 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </template>
 
             <template is="dom-if" if="{{!isEmpty(data.sections)}}">
-                <content-viewer
-                    data="{{data}}">
-                </content-viewer>
+                <div class="layout vertical flex">
+                    <iron-list items="{{data.sections}}" as="section" hidden="[[data.leaf]]">
+                        <template>
+                            <div>
+                                <paper-material elevation="1" 
+                                                href="{{section.name}}" 
+                                                on-tap="onNavigate" 
+                                                hidden="[[!section.hasEmbeddedFile]]" 
+                                                id="articleTitleLabel" 
+                                                class="item"
+                                                title="Navigate to {{baseUrl}}content-tree/{{section.data}}">
+                                    <span>[[section.title]]</span>
+                                </paper-material>
+
+                                <paper-material elevation="1"
+                                                href="{{section.data}}" 
+                                                on-tap="onNavigate" 
+                                                hidden="[[section.hasEmbeddedFile]]" 
+                                                id="articleTitleLabel"
+                                                class="item"
+                                                title="Navigate to {{baseUrl}}content-tree/{{section.data}}">
+                                    <span>[[section.title]]</span>
+                                </paper-material>
+                            </div>
+                        </template>
+                    </iron-list>
+
+                    <paper-card heading="{{data.title}}" hidden="{{!data.leaf}}">
+                        <plutonium-cm-form class="card-content layout vertical"
+                                           content-model="{{data}}">
+                        </plutonium-cm-form>
+                    </paper-card>
+                </div>
 
             </template>
 
@@ -149,7 +179,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     }
                 },
                 observers: [
-                    'computeTocRequestParams(selectedRoot, selectedContentFolder)'
+                    'computeTocRequestParams(selectedRoot, selectedContentFolder)',
+//                    'computeTitle(data.title)'
                 ],
                 ready: function () {
                     console.log('Toc-Content-view is READY(account-id=' + this.selectedRoot + ')');
@@ -194,6 +225,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 onEditArticle: function () {
                     page.redirect(app.baseUrl + 'share-content')
                     app.currentEditedContent = this.data;
+                },
+//                computeTitle: function (data) {
+//                    this.title = data.title;
+//                },
+                onNavigate: function (event, details) {
+                    page.redirect(app.baseUrl + 'content-tree/' + details.sourceEvent.currentTarget.href);
                 }
             });
         })();

@@ -12,8 +12,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
 
 
-<link rel="import" href="plutonium-section-field-behavior.html">
-<link rel="import" href="plutonium-image-editor.html">
+<link rel="import" href="plutonium-article-field-behavior.html">
+<link rel="import" href="plutonium-article-field-sizing-behavior.html">
+<link rel="import" href="plutonium-article-image-editor.html">
 
 <!--
 An element providing a solution to no problem in particular.
@@ -79,7 +80,8 @@ Example:
             Polymer({
                 is: 'plutonium-article-image-section',
                 behaviors: [
-                    PlutoniumBehaviors.SectionFieldBehavior
+                    PlutoniumBehaviors.ArticleFieldBehavior,
+                    PlutoniumBehaviors.ArticleFieldSizingBehavior
                 ],
                 properties: {
                     model: {

@@ -11,9 +11,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
 
-
-<link rel="import" href="plutonium-section-field-behavior.html">
-<link rel="import" href="plutonium-video-editor.html">
+<link rel="import" href="plutonium-article-field-behavior.html">
+<link rel="import" href="plutonium-article-field-sizing-behavior.html">
+<link rel="import" href="plutonium-article-video-editor.html">
 
 <!--
 An element providing a solution to no problem in particular.
@@ -32,7 +32,7 @@ Example:
 @hero hero.svg
 -->
 
-<dom-module id="plutonium-video-section">
+<dom-module id="plutonium-article-video-section">
     <template>
         <style include="iron-flex iron-flex-alignment">
             :host {
@@ -42,7 +42,7 @@ Example:
 
 
         </style>
-        <plutonium-video-editor 
+        <plutonium-article-video-editor 
             id="plSectionEditor"
             action-title="Edit section"
             title="{{model.title}}"
@@ -51,7 +51,7 @@ Example:
             height="{{model.height}}"
             width="{{model.width}}"
             font-size="{{model.fontSize}}">
-        </plutonium-video-editor>
+        </plutonium-article-video-editor>
         <div hidden="[[editable]]">
             <h2>{{model.title}}</h2>
             <div id="modelData" class$="horizontal {{model.justification}} layout">
@@ -92,9 +92,10 @@ Example:
         (function () {
             'use strict';
             Polymer({
-                is: 'plutonium-video-section',
+                is: 'plutonium-article-video-section',
                 behaviors: [
-                    PlutoniumBehaviors.SectionFieldBehavior
+                    PlutoniumBehaviors.ArticleFieldBehavior,
+                    PlutoniumBehaviors.ArticleFieldSizingBehavior
                 ],
                 properties: {
                     model: {

@@ -12,8 +12,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
 
 
-<link rel="import" href="plutonium-section-field-behavior.html">
-<link rel="import" href="plutonium-link-editor.html">
+<link rel="import" href="plutonium-article-field-behavior.html">
+<link rel="import" href="plutonium-article-link-editor.html">
 
 <!--
 An element providing a solution to no problem in particular.
@@ -32,7 +32,7 @@ Example:
 @hero hero.svg
 -->
 
-<dom-module id="plutonium-link-section">
+<dom-module id="plutonium-article-link-section">
     <template>
         <style include="iron-flex iron-flex-alignment">
             :host {
@@ -42,7 +42,7 @@ Example:
 
 
         </style>
-        <plutonium-link-editor 
+        <plutonium-article-link-editor 
             id="plSectionEditor"
             action-title="Edit section"
             title="{{model.title}}"
@@ -50,7 +50,7 @@ Example:
             justification="{{model.justification}}"
             font-size="{{model.fontSize}}"
             parent-candidates-url="{{parentCandidatesUrl}}">
-        </plutonium-link-editor>
+        </plutonium-article-link-editor>
 
         <div hidden="[[editable]]">
             <h2>{{model.title}}</h2>
@@ -70,9 +70,9 @@ Example:
         (function () {
             'use strict';
             Polymer({
-                is: 'plutonium-link-section',
+                is: 'plutonium-article-link-section',
                 behaviors: [
-                    PlutoniumBehaviors.SectionFieldBehavior
+                    PlutoniumBehaviors.ArticleFieldBehavior
                 ],
                 properties: {
                     model: {

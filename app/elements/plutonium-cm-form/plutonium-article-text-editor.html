@@ -12,7 +12,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 
-<link rel="import" href="plutonium-section-editor-behavior.html">
+<link rel="import" href="plutonium-article-field-editable-behavior.html">
 <!--
 An element providing a solution to no problem in particular.
 
@@ -30,7 +30,7 @@ Example:
 @hero hero.svg
 -->
 
-<dom-module id="plutonium-text-editor">
+<dom-module id="plutonium-article-text-editor">
     <template>
         <style include="iron-flex iron-flex-alignment">
             :host {
@@ -93,9 +93,9 @@ Example:
         (function () {
             'use strict';
             Polymer({
-                is: 'plutonium-text-editor',
+                is: 'plutonium-article-text-editor',
                 behaviors: [
-                    PlutoniumBehaviors.SectionEditorBehavior
+                    PlutoniumBehaviors.ArticleFieldEditableBehavior
                 ],
                 properties: {
                     title: {

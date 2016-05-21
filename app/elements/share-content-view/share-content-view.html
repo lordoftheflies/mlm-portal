@@ -113,25 +113,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             <paper-card elevation="1" name="assembled" class="layout vertical">
                 <div class="card-content" style="padding-top: 10px;">
-                    <plutonium-cm-form 
+                    <plutonium-article-form 
                         api-url="{{apiUrl}}"
                         id="pcf"
                         editable
                         contacts="{{contacts}}" 
                         content-model="{{contentModel}}"
                         parent-candidates="{{parentCandidates}}"
-                        file-upload-target="{{apiUrl}}/fs/upload"
                         editors="[[editorMap]]">
-
-                    </plutonium-cm-form>
+                    </plutonium-article-form>
                 </div>
             </paper-card>
 
             <paper-card elevation="1" name="embedded" class="layout vertical">
-                <!--                            <paper-radio-group selected="{{contentMode}}" attr-for-selected="name">
-                                                <paper-radio-button id="embedContentRadio" name="embedded">Embed content</paper-radio-button>
-                                                <paper-radio-button id="assembleRadio" name="assembled">Assemble</paper-radio-button>
-                                            </paper-radio-group>-->
                 <div class="card-content layout horizontal">
                     <file-upload 
                         id="uploadFileText"
@@ -153,7 +147,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         <paper-dropdown-menu 
                             id="parentDdLabel"
                             label="Parent">
-                            <!--<paper-menu class="layout flex">-->
                             <paper-listbox id="parentCandidatesList"
                                            class="dropdown-content"
                                            attr-for-selected="{{attrForSelected}}"
@@ -168,11 +161,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                 </template>
                             </paper-listbox>
                         </paper-dropdown-menu>
-                        <!---->
 
                         <paper-input id="contentTitleInput" class="bottom title" label="Title" value="{{contentModel.title}}"></paper-input>
                     </div>
-                    <!--<div class="flex"></div>-->
                     <paper-fab class="end-justified" icon="send" on-tap="onSend" title="Publish content" id="sendMessageFab"></paper-fab>
 
                 </div>

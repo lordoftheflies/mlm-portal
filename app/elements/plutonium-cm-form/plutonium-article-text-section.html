@@ -12,8 +12,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
 
 
-<link rel="import" href="plutonium-section-field-behavior.html">
-<link rel="import" href="plutonium-text-editor.html">
+<link rel="import" href="plutonium-article-field-behavior.html">
+<link rel="import" href="plutonium-article-text-editor.html">
 
 <!--
 An element providing a solution to no problem in particular.
@@ -32,7 +32,7 @@ Example:
 @hero hero.svg
 -->
 
-<dom-module id="plutonium-text-section">
+<dom-module id="plutonium-article-text-section">
     <template>
         <style include="iron-flex iron-flex-alignment">
             :host {
@@ -42,20 +42,20 @@ Example:
 
 
         </style>
-        <plutonium-text-editor 
+        <plutonium-article-text-editor 
             id="plSectionEditor"
             action-title="Edit section"
             title="{{model.title}}"
             data="{{model.data}}"
             justification="{{model.justification}}"
             font-size="{{model.fontSize}}">
-        </plutonium-text-editor>
+        </plutonium-article-text-editor>
 
         <div hidden="[[editable]]">
             <h2>{{model.title}}</h2>
             <p id="modelData" class$="horizontal {{model.justification}} layout">{{model.data}}</p>
         </div>
-        
+
         <paper-card elevation="1" heading="{{model.title}}" class="layout vertical" hidden="[[!editable]]">
             <p id="modelData" class$="card-content horizontal {{model.justification}} layout">{{model.data}}</p>
             <div class="card-actions">
@@ -71,9 +71,9 @@ Example:
         (function () {
             'use strict';
             Polymer({
-                is: 'plutonium-text-section',
+                is: 'plutonium-article-text-section',
                 behaviors: [
-                    PlutoniumBehaviors.SectionFieldBehavior
+                    PlutoniumBehaviors.ArticleFieldBehavior
                 ],
                 properties: {
                     model: {
