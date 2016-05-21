@@ -88,7 +88,7 @@ Example:
         </style>
         <div class="card-content">
             <div class="layout horizontal">
-                <paper-icon-button id="addSectionButton" on-tap="onAddSection" icon="add-circle" title="Embedd video to the message content."></paper-icon-button>
+                <paper-icon-button id="addSectionButton" on-tap="onAddSection" icon="add-circle" title="Embedd text to the message content."></paper-icon-button>
                 <paper-icon-button id="addVideoButton" on-tap="onEmbedVideo" icon="theaters" title="Embedd video to the message content."></paper-icon-button>
                 <paper-icon-button id="addImageButton" on-tap="onEmbedImage" icon="perm-media" title="Embedd image to the message content."></paper-icon-button>
                 <paper-icon-button id="addLinkButton" on-tap="onEmbedLink" icon="link" title="Embedd a link to another message to the message content."></paper-icon-button>
@@ -97,9 +97,7 @@ Example:
             </div>
             <paper-listbox id="assembled" selected="{{selectedSection}}">
                 <template is="dom-repeat" items="{{contentModel.sections}}" as="section">
-                    N{{section.name}}
                     <plutonium-article-field name$="[[model.name]]" class="layout vertical wrap"
-                                             name="{{computeItemId(section)}}" 
                                              model="{{section}}" 
                                              api-url="{{apiUrl}}"
                                              editable>
