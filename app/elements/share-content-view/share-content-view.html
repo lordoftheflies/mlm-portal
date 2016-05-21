@@ -73,30 +73,34 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             id="contactsAjax"
             url="{{apiUrl}}/addressbook/{{accountId}}/contacts" 
             last-response="{{contacts}}" 
-            auto></iron-ajax>
+            auto>
+        </iron-ajax>
         <iron-ajax 
             id="parentCandidatesAjax"
             url="{{apiUrl}}/content-management/candidates/parent" 
             last-response="{{parentCandidates}}" 
-            auto></iron-ajax>
+            auto>
+        </iron-ajax>
 
-
+        CM: {{contentModel.title}}
+        CM: {{contentModel}}
+        
         <iron-pages selected="{{selectedMetaAction}}" attr-for-selected="name">
-
             <paper-card elevation="1" name="share" class="layout vertical">
                 <div class="card-content layout horizontal">
                     <div class="flex layout vertical">
-                        <plutonium-field-recipient  class="flex"
-                                                    id="recipientsFieldInput"
-                                                    label="To"
-                                                    picker-icon="supervisor-account"
-                                                    picker-title="Contacts"
-                                                    picker-button-tooltip="Choose contacts."
-                                                    clear-icon="clear"
-                                                    clear-button-tooltip="Clear recipients input."
-                                                    attr-for-selected="id"
-                                                    as="item"
-                                                    items="[[contacts]]">
+                        <plutonium-field-recipient  
+                            class="flex"
+                            id="recipientsFieldInput"
+                            label="To"
+                            picker-icon="supervisor-account"
+                            picker-title="Contacts"
+                            picker-button-tooltip="Choose contacts."
+                            clear-icon="clear"
+                            clear-button-tooltip="Clear recipients input."
+                            attr-for-selected="id"
+                            as="item"
+                            items="[[contacts]]">
                             <template is="dom-repeat" items="[[contacts]]">
                                 <paper-item id="[[item.id]]" class="item pad">
                                     <label>[[item.name]]</label>
@@ -114,7 +118,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             <paper-card elevation="1" name="assembled" class="layout vertical">
                 <div class="card-content layout horizontal" style="padding-top: 10px;">
-                    <plutonium-article-form  class="flex"
+                    <plutonium-article-form  
+                        class="flex"
                         api-url="{{apiUrl}}"
                         id="pcf"
                         editable

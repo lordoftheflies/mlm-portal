@@ -60,7 +60,10 @@
         "paper-dropdown-menu": {},
         "paper-card": {
             "attributes": {
-                "heading": {}
+                "elevation": {},
+                "heading": {},
+                "name": {},
+                "class": {}
             }
         },
         "paper-item": {
@@ -158,6 +161,18 @@
                 "autoselect": {}
             }
         },
+        "plutonium-article-form": {
+            "attributes": {
+                "api-url": {},
+                "content-model": {},
+                "editable": {},
+                "id": {},
+                "class": {},
+                "contacts": {},
+                "editors": {},
+                "parent-candidates": {}
+            }
+        },
         "template": {
             "attributes": {
                 "as": {},
@@ -173,7 +188,12 @@
         },
         "share-content-view": {
             "attributes": {
-                "account-id": {}
+                "selected-meta-action": {},
+                "content-model": {},
+                "api-url": {},
+                "account-id": {},
+                "id": {},
+                "class": {}
             }
         },
         "paper-textarea": {
@@ -192,10 +212,18 @@
         },
         "content-tree-view": {
             "attributes": {
+                "selected-content-folder": {},
+                "parent-model": {},
                 "base-url": {},
                 "selected-root": {},
+                "data": {},
                 "api-url": {},
-                "admin": {}
+                "admin": {},
+                "info-request-params": {},
+                "id": {},
+                "class": {},
+                "root-model": {},
+                "toc-request-params": {}
             }
         },
         "plutonium-cm-form": {
@@ -229,7 +257,11 @@
         },
         "mailbox-view": {
             "attributes": {
-                "account-id": {}
+                "data": {},
+                "api-url": {},
+                "account-id": {},
+                "selected-mail-box-folder": {},
+                "class": {}
             }
         },
         "about-view": {},
@@ -274,7 +306,17 @@
         "plutonium-cm-field": {},
         "network-view": {
             "attributes": {
-                "account-id": {}
+                "locales": {},
+                "data": {},
+                "api-url": {},
+                "owner-id": {},
+                "account-id": {},
+                "children-request-params": {},
+                "id": {},
+                "genocide-request-params": {},
+                "possible-parents": {},
+                "class": {},
+                "parents": {}
             }
         },
         "paper-fab": {

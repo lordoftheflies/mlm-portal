@@ -100,7 +100,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     <paper-card heading="{{data.title}}" hidden="{{!data.leaf}}">
                         <plutonium-article-section 
                             class="card-content layout vertical"
-                                           content-model="{{data}}">
+                            content-model="{{data}}">
                         </plutonium-article-section>
                     </paper-card>
                 </div>
@@ -225,8 +225,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     return selectedContentFolder === 'drafts';
                 },
                 onEditArticle: function () {
-                    page.redirect(app.baseUrl + 'share-content')
-                    app.currentEditedContent = this.data;
+//                    app.currentEditedContent = this.data;
+                    app.route = 'share-content';
+                    app.$.scv.contentModel = this.data;
+//                    page.redirect(app.baseUrl + 'share-content');
                 },
 //                computeTitle: function (data) {
 //                    this.title = data.title;

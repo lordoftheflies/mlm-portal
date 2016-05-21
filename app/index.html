@@ -274,11 +274,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                     class="focus-target" id="scv" 
                                     account-id="{{sessionInfo.token}}" 
                                     api-url="{{backEndUrl}}" 
-                                    content-model="{{editedContentModel}}"
+                                    content-model$="{{editedContentModel}}"
                                     selected-meta-action="{{selectedMetaAction}}">
-                                    
-                                    
-                                    
                                 </share-content-view>
                             </section>
                             <section data-route="content-tree">
@@ -316,7 +313,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                     locales="{{locales}}"
                                     possible-parents="{{possibleParents}}"
                                     children-request-params="{{childrenRequestParams}}"
-
                                     account-id="[[params.memberId]]" 
                                     api-url="{{backEndUrl}}" 
                                     owner-id="{{sessionInfo.token}}">
