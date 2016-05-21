@@ -210,47 +210,45 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         </div>
 
                         <!-- Application sub title -->
-                        <div class="bottom bottom-container flex" hidden="[[!admin]]">
-                            <iron-pages attr-for-selected="data-route" selected="{{route}}" class="flex">
-                                <paper-tabs data-route="share-content"  attr-for-selected="name" selected="{{selectedMetaAction}}" style="width: 100%;" autoselect>
+                        <div class="bottom flex" hidden="[[!admin]]">
+                            <iron-pages attr-for-selected="data-route" selected="{{route}}" class="flex" style="padding: 0px">
+                                <paper-tabs data-route="share-content"  attr-for-selected="name" selected="{{selectedMetaAction}}" style="width: 100%;" scrollable autoselect>
                                     <paper-tab text-id="shareTabLabel" name="share">Share</paper-tab>
                                     <paper-tab text-id="embbeddedContentTabLabel" name="embedded">Embed content</paper-tab>
                                     <paper-tab text-id="assembledContentTabLabel" name="assembled">Assembled content</paper-tab>
                                     <paper-tab text-id="propertiesTabLabel" name="props">Properties</paper-tab>
                                 </paper-tabs>
-                                <paper-tabs hidden="[[!sessionInfo.powerUser]]" data-route="content-tree"  attr-for-selected="name" selected="{{selectedContentFolder}}" style="width: 100%;" autoselect>
+                                <paper-tabs hidden="[[!sessionInfo.powerUser]]" data-route="content-tree"  attr-for-selected="name" selected="{{selectedContentFolder}}" style="width: 100%;" scrollable autoselect>
                                     <paper-tab text-id="messagesPagePublicFolderTitle" name="public">Public</paper-tab>
                                     <paper-tab text-id="messagesPageMyContentsFolderTitle" name="drafts">Drafts</paper-tab>
                                     <paper-tab text-id="messagesPagePublishedFolderTitle" name="published">Published</paper-tab>
                                 </paper-tabs>
-                                <paper-tabs data-route="mailbox"  attr-for-selected="name" selected="{{selectedMailboxFolder}}" style="width: 100%;" autoselect>
+                                <paper-tabs data-route="mailbox"  attr-for-selected="name" selected="{{selectedMailboxFolder}}" style="width: 100%;" scrollable autoselect>
                                     <paper-tab text-id="mailBoxPageInboxFolderTitle" name="inbox">Inbox</paper-tab> 
                                     <paper-tab text-id="sentItemsPageInboxFolderTitle" name="outbox">Sent items</paper-tab>
                                 </paper-tabs>
 
-                                <div data-route="network"  class="layout end-justified">
+                                <div data-route="network"  class="layout horizontal">
+
+
+                                    <paper-tabs selected="{{selectedAccount}}" class="flex" scrollable attr-for-selected="id">
+                                        <template is="dom-repeat" items="{{parents}}">
+                                            <paper-tab id="[[item.id]]" role="{{item.role}}" href="{{baseUrl}}network/{{item.id}}">
+                                                <iron-icon class="end-justified" icon="[[getIcon(item.role)]]"></iron-icon>
+                                                <a class="tab-content" href="{{baseUrl}}network/{{item.id}}">[[item.name]]</a>
+                                            </paper-tab>
+                                        </template>
+                                    </paper-tabs>
                                     <!--<paper-icon-button icon="arrow-upward" on-tap="onNavigateUp"></paper-icon-button>-->
                                     <paper-icon-button icon="add-circle" on-tap="onOpenCreateMember"></paper-icon-button>
                                     <paper-icon-button icon="remove-circle" on-tap="onConfirmRemoveMember"></paper-icon-button>
                                     <paper-icon-button icon="send" on-tap="onSendTo"></paper-icon-button>
-                                    <template is="dom-if" if="[[isUser(selectedRole)]]">
-                                        <paper-icon-button icon="star" on-tap="onOpenPromoteAdminPrompt"></paper-icon-button>
-                                    </template>
-                                    <template is="dom-if" if="[[isAdmin(selectedRole)]]">
-                                        <paper-icon-button icon="star-border" on-tap="onOpenDemoteAdminPrompt"></paper-icon-button>
-                                    </template>
-
-                                    <paper-tabs selected="{{selectedAccount}}" scrollable attr-for-selected="id">
-                                        <template is="dom-repeat" items="{{parents}}">
-                                            <paper-tab id="[[item.id]]" role="{{item.role}}" href="{{baseUrl}}network/{{item.id}}">
-                                                <iron-icon class="end-justified" icon="[[getIcon(item.role)]]"></iron-icon>
-                                                <a href="{{baseUrl}}network/{{item.id}}">
-
-                                                    [[item.name]]
-                                                </a>
-                                            </paper-tab>
-                                        </template>
-                                    </paper-tabs>
+                                    <!--<template is="dom-if" if="[[isUser(selectedRole)]]">-->
+                                        <paper-icon-button hidden="[[!isUser(selectedRole)]]" icon="star" on-tap="onOpenPromoteAdminPrompt"></paper-icon-button>
+                                    <!--</template>-->
+<!--                                    <template is="dom-if" if="[[isAdmin(selectedRole)]]">-->
+                                        <paper-icon-button hidden="[[!isAdmin(selectedRole)]]" icon="star-border" on-tap="onOpenDemoteAdminPrompt"></paper-icon-button>
+                                    <!--</template>-->
                                 </div>
 
                             </iron-pages>
@@ -276,90 +274,90 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                     api-url="{{backEndUrl}}" 
                                     content-model$="{{editedContentModel}}"
                                     selected-meta-action="{{selectedMetaAction}}">
-                                </share-content-view>
-                            </section>
-                            <section data-route="content-tree">
-                                <content-tree-view 
-                                    id="contentTree"
-                                    class="focus-target"
-                                    admin="[[sessionInfo.powerUser]]"
-                                    selected-root="[[params.contentId]]" 
-                                    base-url="/" 
-                                    selected-content-folder="{{selectedContentFolder}}"
-                                    info-request-params="{{infoRequestParams}}"
-                                    root-model="{{rootModel}}"
-                                    parent-model="{{parentModel}}"
-                                    toc-request-params="{{tocRequestParams}}"
-                                    data="{{contentChildrenModel}}"
-                                    api-url="{{backEndUrl}}"></content-tree-view>
-                            </section>
-                            <section data-route="mailbox">
-                                <mailbox-view 
-                                    data="{{mailBoxModel}}"
-                                    selected-mail-box-folder="{{selectedMailboxFolder}}"
-                                    class="focus-target" 
-                                    account-id="{{sessionInfo.token}}" 
-                                    api-url="{{backEndUrl}}">
+                            </share-content-view>
+                        </section>
+                        <section data-route="content-tree">
+                            <content-tree-view 
+                                id="contentTree"
+                                class="focus-target"
+                                admin="[[sessionInfo.powerUser]]"
+                                selected-root="[[params.contentId]]" 
+                                base-url="/" 
+                                selected-content-folder="{{selectedContentFolder}}"
+                                info-request-params="{{infoRequestParams}}"
+                                root-model="{{rootModel}}"
+                                parent-model="{{parentModel}}"
+                                toc-request-params="{{tocRequestParams}}"
+                                data="{{contentChildrenModel}}"
+                                api-url="{{backEndUrl}}"></content-tree-view>
+                        </section>
+                        <section data-route="mailbox">
+                            <mailbox-view 
+                                data="{{mailBoxModel}}"
+                                selected-mail-box-folder="{{selectedMailboxFolder}}"
+                                class="focus-target" 
+                                account-id="{{sessionInfo.token}}" 
+                                api-url="{{backEndUrl}}">
 
-                                </mailbox-view>
-                            </section>
-                            <section data-route="network">
-                                <network-view 
-                                    id="networkView"
-                                    class="focus-target" 
-                                    genocide-request-params="{{genocideRequestParams}}"
-                                    parents="{{parents}}"
-                                    data="{{data}}"
-                                    locales="{{locales}}"
-                                    possible-parents="{{possibleParents}}"
-                                    children-request-params="{{childrenRequestParams}}"
-                                    account-id="[[params.memberId]]" 
-                                    api-url="{{backEndUrl}}" 
-                                    owner-id="{{sessionInfo.token}}">
+                            </mailbox-view>
+                        </section>
+                        <section data-route="network">
+                            <network-view 
+                                id="networkView"
+                                class="focus-target" 
+                                genocide-request-params="{{genocideRequestParams}}"
+                                parents="{{parents}}"
+                                data="{{data}}"
+                                locales="{{locales}}"
+                                possible-parents="{{possibleParents}}"
+                                children-request-params="{{childrenRequestParams}}"
+                                account-id="[[params.memberId]]" 
+                                api-url="{{backEndUrl}}" 
+                                owner-id="{{sessionInfo.token}}">
 
-                                </network-view>
-                            </section>
+                            </network-view>
+                        </section>
 
-                            <section data-route="about">
-                                <paper-material 
-                                    class="focus-target" elevation="1">
-                                    <about-view></about-view>
-                                </paper-material>
-                            </section>
+                        <section data-route="about">
+                            <paper-material 
+                                class="focus-target" elevation="1">
+                                <about-view></about-view>
+                            </paper-material>
+                        </section>
 
 
-                        </iron-pages>
-                    </div>
-                </paper-scroll-header-panel>
-            </paper-drawer-panel>
+                    </iron-pages>
+                </div>
+            </paper-scroll-header-panel>
+        </paper-drawer-panel>
 
-            <paper-toast id="toast">
-                <span id="toastMessageText" class="toast-hide-button" role="button" tabindex="0" onclick="app.$.toast.hide()">Ok</span>
-            </paper-toast>
+        <paper-toast id="toast">
+            <span id="toastMessageText" class="toast-hide-button" role="button" tabindex="0" onclick="app.$.toast.hide()">Ok</span>
+        </paper-toast>
 
-            <!-- Uncomment next block to enable Service Worker support (1/2) -->
-            <!--
-            <paper-toast id="caching-complete"
-                         duration="6000"
-                         text="Caching complete! This app will work offline.">
-            </paper-toast>
-        
-            <platinum-sw-register auto-register
-                                  clients-claim
-                                  skip-waiting
-                                  base-uri="bower_components/platinum-sw/bootstrap"
-                                  on-service-worker-installed="displayInstalledToast">
-              <platinum-sw-cache default-cache-strategy="fastest"
-                                 cache-config-file="cache-config.json">
-              </platinum-sw-cache>
-            </platinum-sw-register>
-            -->
+        <!-- Uncomment next block to enable Service Worker support (1/2) -->
+        <!--
+        <paper-toast id="caching-complete"
+                     duration="6000"
+                     text="Caching complete! This app will work offline.">
+        </paper-toast>
+    
+        <platinum-sw-register auto-register
+                              clients-claim
+                              skip-waiting
+                              base-uri="bower_components/platinum-sw/bootstrap"
+                              on-service-worker-installed="displayInstalledToast">
+          <platinum-sw-cache default-cache-strategy="fastest"
+                             cache-config-file="cache-config.json">
+          </platinum-sw-cache>
+        </platinum-sw-register>
+        -->
 
-        </template>
+    </template>
 
-        <!-- build:js scripts/app.js -->
-        <script src="scripts/app.js"></script>
-        <!-- endbuild-->
-    </body>
+    <!-- build:js scripts/app.js -->
+    <script src="scripts/app.js"></script>
+    <!-- endbuild-->
+</body>
 
 </html>
