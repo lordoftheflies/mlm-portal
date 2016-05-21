@@ -111,9 +111,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             </paper-card>
 
+
             <paper-card elevation="1" name="assembled" class="layout vertical">
-                <div class="card-content" style="padding-top: 10px;">
-                    <plutonium-article-form 
+                <div class="card-content layout horizontal" style="padding-top: 10px;">
+                    <plutonium-article-form  class="flex"
                         api-url="{{apiUrl}}"
                         id="pcf"
                         editable
@@ -197,11 +198,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         type: Object,
                         notify: true
                     },
-                    sections: {
+                    contentModel: {
                         type: Object,
                         notify: true,
                         value: {
-                            "sections": [
+                            sections: [
                             ]
                         }
                     },
@@ -223,50 +224,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     accountId: {
                         type: String,
                         notify: true
-                    },
-                    kacsa: {
-                        type: Object,
-                        notify: true,
-                        value: {
-                            title: "text title",
-                            data: "Ez itt a szöveg <strong>erősen</strong> <i>dőlt</i>.",
-                            justification: "start-justified",
-                            fontSize: 18
-                        }
-                    },
-                    kacsa4: {
-                        type: Object,
-                        notify: true,
-                        value: {
-                            title: "text link",
-                            data: "415222f8-2bfb-4cfc-beb8-382c1b7946ec",
-                            justification: "start-justified",
-                            fontSize: 18
-                        }
-                    },
-                    kacsa2: {
-                        type: Object,
-                        notify: true,
-                        value: {
-                            title: "image title",
-                            data: "http://ghk.h-cdn.co/assets/16/09/1600x800/landscape-1457107485-gettyimages-512366437.jpg",
-                            justification: "center-justified",
-                            fontSize: 18,
-                            width: 300,
-                            height: 300
-                        }
-                    },
-                    kacsa3: {
-                        type: Object,
-                        notify: true,
-                        value: {
-                            title: "video title",
-                            data: "cQrXUVOny4w",
-                            justification: "end-justified",
-                            fontSize: 18,
-                            width: 700,
-                            height: 300
-                        }
                     }
                 },
                 //                listeners: {
@@ -299,22 +256,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 onShareResponse: function () {
                     app.$.toast.text = 'New content shared successfully.';
                     app.$.toast.show();
-                },
-                onDecreaseFontSize: function (e) {
-                    console.log('Decrease font size.');
-                },
-                onInreaseFontSize: function (e) {
-                    console.log('Increase font size.');
-//                    textEditorDialogAcceptButton
-                },
-                onAlignLeft: function (e) {
-                    console.log('Change align to left.');
-                },
-                onAlignCenter: function (e) {
-                    console.log('Change align to center.');
-                },
-                onAlignRight: function (e) {
-                    console.log('Change align to right.');
                 }
             });
         })();

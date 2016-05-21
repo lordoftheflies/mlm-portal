@@ -52,23 +52,23 @@ Example:
 
         </style>
         <iron-pages selected="{{model.type}}" attr-for-selected="field">
-            <plutonium-link-section 
-                id="{{model.name}}" editable="{{editable}}" model="{{model}}"
+            <plutonium-article-link-section 
+                name="{{model.name}}" editable="{{editable}}" model="{{model}}"
                 field="plutonium-cm-editor-link"
                 parent-candidates-url="{{apiUrl}}/content-management/candidates"
-                ></plutonium-link-section>
-            <plutonium-text-section 
-                id="{{model.name}}" editable="{{editable}}" model="{{model}}"
+                ></plutonium-article-link-section>
+            <plutonium-article-text-section 
+                name="{{model.name}}" editable="{{editable}}" model="{{model}}"
                 field="plutonium-cm-editor-text"
-                ></plutonium-text-section>
-            <plutonium-video-section 
-                id="{{model.name}}" editable="{{editable}}" model="{{model}}"
+                ></plutonium-article-text-section>
+            <plutonium-article-video-section 
+                name="{{model.name}}" editable="{{editable}}" model="{{model}}"
                 field="plutonium-cm-editor-video"
-                ></plutonium-video-section>
-            <plutonium-image-section
-                id="{{model.name}}" editable="{{editable}}" model="{{model}}"
+                ></plutonium-article-video-section>
+            <plutonium-article-image-section
+                name="{{model.name}}" editable="{{editable}}" model="{{model}}"
                 field="plutonium-cm-editor-image"
-                ></plutonium-image-section>
+                ></plutonium-article-image-section>
         </iron-pages>
     </template>
 

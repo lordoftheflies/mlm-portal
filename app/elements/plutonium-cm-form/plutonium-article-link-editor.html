@@ -160,6 +160,13 @@ Example:
                 },
                 onCancelChanges: function () {
                     this._reset();
+                },
+                _reset: function () {
+                    this.$.parentCandidatesAjax.generateRequest();
+                    this._justification = this.justification;
+                    this._fontSize = this.fontSize;
+                    this._title = this.title;
+                    this._data = this.data;
                 }
 
             });

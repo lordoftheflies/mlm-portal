@@ -15,6 +15,24 @@
                 type: Object,
                 notify: true
             }
+        },
+        onRemoveSection: function () {
+            console.log('Remove field[' + this.name + ']');
+            this.fire('remove', {
+                name: this.name
+            });
+        },
+        onMoveUpSection: function () {
+            console.log('Move up field[' + this.name + ']');
+            this.fire('moveupsection', {
+                name: this.name
+            });
+        },
+        onMoveDownSection: function () {
+            console.log('Move down field[' + this.name + ']');
+            this.fire('movedownsection', {
+                name: this.name
+            });
         }
     };
 </script>

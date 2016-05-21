@@ -96,10 +96,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         </template>
                     </iron-list>
 
+                    <br />
                     <paper-card heading="{{data.title}}" hidden="{{!data.leaf}}">
-                        <plutonium-cm-form class="card-content layout vertical"
+                        <plutonium-article-section 
+                            class="card-content layout vertical"
                                            content-model="{{data}}">
-                        </plutonium-cm-form>
+                        </plutonium-article-section>
                     </paper-card>
                 </div>
 
