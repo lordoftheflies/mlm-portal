@@ -88,7 +88,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <form id="deleteMemberForm" is="iron-form" 
                   verbose 
                   content-type="application/json" 
-                  method="post" action="{{apiUrl}}addressbook/delete"
+                  method="post" action="[[apiUrl]]/addressbook/delete"
                   handle-as="json">
                 <div id="memberEraseConfirmDialogText" class="card-content">
                     Are you sure delete member?
@@ -106,7 +106,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <form id="promoteMemberForm" is="iron-form" 
                   verbose 
                   content-type="application/json" 
-                  method="post" action="{{apiUrl}}addressbook/promote"
+                  method="post" action="[[apiUrl]]/addressbook/promote"
                   handle-as="json">
                 <div id="promoteAdminDialogText" class="card-content">
                     Are you surely promote {{item.name}} to administrator?
@@ -126,7 +126,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <form id="demoteMemberForm" is="iron-form" 
                   verbose 
                   content-type="application/json" 
-                  method="post" action="{{apiUrl}}addressbook/demote"
+                  method="post" action="[[apiUrl]]/addressbook/demote"
                   handle-as="json">
                 <div id="demoteAdminDialogText" class="card-content">
                     Are you surely demote {{item.name}} to user?
