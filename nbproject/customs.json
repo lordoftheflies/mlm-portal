@@ -1,5 +1,6 @@
 {
     "elements": {
+        "topflavon-mailbox-view": {},
         "google-youtube": {
             "attributes": {
                 "width": {},
@@ -38,6 +39,7 @@
             }
         },
         "app-drawer-layout": {},
+        "topflavon-network-view": {},
         "iron-list": {},
         "gold-email-input": {
             "attributes": {
@@ -214,6 +216,7 @@
             }
         },
         "app-header": {},
+        "topflavon-profile-view": {},
         "content": {
             "attributes": {
                 "id": {}
@@ -275,6 +278,7 @@
             }
         },
         "iron-selector": {},
+        "topflavon-content-view": {},
         "about-view": {},
         "paper-icon-button": {
             "attributes": {
