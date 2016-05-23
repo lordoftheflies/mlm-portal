@@ -14,46 +14,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 
-        <title>My App</title>
+        <title>TopFlavon</title>
 
         <link rel="shortcut icon" sizes="32x32" href="/images/app-icon-32.png">
 
         <meta name="theme-color" content="#fff">
         <link rel="manifest" href="/manifest.json">
 
-        <script>
-
-            // setup Polymer options
-            window.Polymer = {lazyRegister: true, dom: 'shadow'};
-
-            // load webcomponents polyfills
-            (function () {
-                if ('registerElement' in document
-                        && 'import' in document.createElement('link')
-                        && 'content' in document.createElement('template')) {
-                    // browser has web components
-                } else {
-                    // polyfill web components
-                    var e = document.createElement('script');
-                    e.src = '/bower_components/webcomponentsjs/webcomponents-lite.min.js';
-                    document.body.appendChild(e);
-                }
-            })();
-
-            // load pre-caching service worker
-            if ('serviceWorker' in navigator) {
-                window.addEventListener('load', function () {
-                    navigator.serviceWorker.register('/service-worker.js');
-                });
-            }
-
-        </script>
-
-
-        <link rel="import" href="/src/my-app.html">
-
+        <!-- Application loader -->
+        <script src="app.js" async></script>
+        
         <style>
-
+            
             body {
                 margin: 0;
                 font-family: 'Roboto', 'Noto', sans-serif;
@@ -62,12 +34,32 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 background-color: #eee;
             }
 
+            /* Preloader style */
+            body[unresolved] #splash {
+                opacity: 1;
+            }
+
+            #splash {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                transition: opacity 300ms cubic-bezier(0,0,0.2,1);
+                opacity: 0;
+                will-change: opacity;
+                z-index: 1;
+                background: url('/images/spinningwheel.gif') no-repeat;
+                background-color: #EDEDEE;
+                background-attachment: fixed;
+                background-position: center; 
+            }
+
         </style>
 
     </head>
-    <body>
-
-    <my-app prefix="my" landing-page="view1">My App</my-app>
-
-</body>
+    <body  onload="polymerLoader.loadPolymerApplication()" unresolved>
+        <!-- Preloading screen -->
+        <div id="splash"></div>
+    </body>
 </html>

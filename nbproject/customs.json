@@ -1,0 +1,10 @@
+{
+    "elements": {
+        "my-app": {}
+    },
+    "attributes": {
+        "unresolved": {
+            "context": "body"
+        }
+    }
+}
