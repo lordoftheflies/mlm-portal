@@ -10,6 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="plutonium-widget-behavior.html">
 <link rel="import" href="plutonium-shared-styles.html">
 
 <dom-module id="topflavon-mailbox-view">
@@ -19,10 +20,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <style include="plutonium-shared-styles">
             :host {
                 display: block;
-                
+
                 @apply(--layout-vertical);
             }
-            
+
         </style>
 
         <iron-ajax id="mailBoxAjax" url="[[apiUrl]]/mailbox/[[accountId]]/[[selectedMailBoxFolder]]" last-response="{{mailBoxModel}}"></iron-ajax>
@@ -64,6 +65,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         Polymer({
             is: 'topflavon-mailbox-view',
+            behaviors: [
+                PlutoniumBehaviors.WidgetBehavior
+            ],
             properties: {
                 selectedMailBoxFolder: {
                     type: String,

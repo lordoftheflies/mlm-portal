@@ -35,6 +35,38 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             }
 
+            paper-item {
+                --paper-item: {
+                    @apply(--layout-flex);
+                };
+            }
+
+
+
+            paper-item > paper-material {
+                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+                padding: 16px;
+                margin: 12px;
+                border-radius: 5px;
+                background-color: white;
+                color: #757575;
+            }
+
+            paper-item:nth-child(2) > paper-material {
+                margin-top: 24px;
+                margin-bottom: 12px;
+            }
+
+            paper-item:last-child > paper-material {
+                margin-top: 12px;
+                margin-bottom: 24px;
+            }
+            
+/*            iron-list {
+                margin-top: 12px;
+            }*/
+
+
         </style>
     </template>
 </dom-module>

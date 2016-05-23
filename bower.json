@@ -28,7 +28,7 @@
     "polymer": "Polymer/polymer",
     "paper-tabs": "^1.5.0",
     "iron-ajax": "^1.2.0",
-    "iron-list": "polymerelements/iron-list",
+    "iron-list": "^1.3.1",
     "google-youtube": "GoogleWebComponents/google-youtube",
     "iron-selector": "polymerelements/iron-selector",
     "grapp-breadcrumbs": "^0.1.5",
@@ -37,7 +37,8 @@
     "gold-email-input": "PolymerElements/gold-email-input#^1.0.7",
     "plutonium-login-widget": "git@github.com:lordoftheflies/plutonium-login-widget.git",
     "paper-styles": "^1.1.4",
-    "paper-material": "^1.0.6"
+    "paper-material": "^1.0.6",
+    "paper-item": "^1.2.1"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"
