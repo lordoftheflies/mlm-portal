@@ -83,7 +83,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             },
             computeMailboxFolderRequest: function (accountId, selectedMailBoxFolder) {
                 console.log(this.is + ' fetch ' + selectedMailBoxFolder + ' from ' + accountId + '\'s mailbox.');
-                app.$.mailBoxAjax.generateRequest();
+                this.$.mailBoxAjax.generateRequest();
             },
             isEmpty: function (data) {
                 return data === undefined || data === null || data.length === 0;
