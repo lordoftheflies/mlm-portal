@@ -9,8 +9,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
 
-<dom-module id="my-view3">
+<dom-module id="topflavon-mailbox-view">
 
     <template>
 
@@ -18,47 +19,75 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             :host {
                 display: block;
                 padding: 10px;
+            
+                @apply(--layout-vertical);
             }
-            .card {
-                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-                padding: 16px;
-                margin: 24px;
-                border-radius: 5px;
-                background-color: #fff;
-                color: #757575;
-            }
-            .circle {
-                display: inline-block;
-                height: 64px;
-                width: 64px;
-                border-radius: 50%;
-                background: #ddd;
-                line-height: 64px;
-                font-size: 30px;
-                color: #555;
-                text-align: center;
-            }
-            h1 {
-                font-size: 22px;
-                margin: 16px 0;
-                color: #212121;
-            }
+            
         </style>
 
-        <div class="card">
-            <div class="circle">4</div>
-            <h1>View Three</h1>
-            <p>Modus commodo minimum eum te, vero utinam assueverit per eu.</p>
-            <p>Ea duis bonorum nec, falli paulo aliquid ei eum.Has at minim mucius aliquam, est id tempor laoreet.Pro saepe pertinax ei, ad pri animal labores suscipiantur.</p>
-        </div>
+        <iron-ajax id="mailBoxAjax" url="[[apiUrl]]/mailbox/[[accountId]]/[[selectedMailBoxFolder]]" last-response="{{mailBoxModel}}"></iron-ajax>
+
+        <!--<template is="dom-if" if="{{!isEmpty(data)}}">-->
+        <iron-list items="[[mailBoxModel]]" as="item" hidden="[[isEmpty(mailBoxModel)]]">
+            <template>
+                <div>
+                    <div class$="item [[getItemClasses(item)]]" tabindex$="[[tabIndex]]">
+                         <!--<iron-image class="avatar" sizing="contain" src="[[item.image]]"></iron-image>-->
+
+                         <div class="pad">
+                            <div class="primary container">
+                                <span>[[item.from]]</span>
+                                <div class="flexchild"></div>
+                                <span>[[item.ts]]</span>
+                            </div>
+                            <div class="secondary">
+                                <span>[[item.title]]</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </iron-list>
+        <!--</template>-->
+        <!--<template is="dom-if" if="{{isEmpty(data)}}">-->
+        <!--<br />-->
+        <paper-card elevation="1" hidden="[[!isEmpty(data)]]">
+            <div class="card-content">
+                <div id="emptyMailBoxFolderText">No messages in the folder.</div>
+            </div>
+        </paper-card>
+        <!--</template>-->
 
     </template>
 
     <script>
 
         Polymer({
-            is: 'my-view3'
-
+            is: 'topflavon-mailbox-view',
+            properties: {
+                selectedMailBoxFolder: {
+                    type: String,
+                    notify: true,
+                    value: 'inbox'
+                },
+                accountId: {
+                    type: String,
+                    notify: true
+                }
+            },
+            observers: [
+                'computeMailboxFolderRequest(accountId, selectedMailBoxFolder)'
+            ],
+            getItemClasses: function (item) {
+                return item.tags.join(" ");
+            },
+            computeMailboxFolderRequest: function (accountId, selectedMailBoxFolder) {
+                console.log(this.is + ' fetch ' + selectedMailBoxFolder + ' from ' + accountId + '\'s mailbox.');
+                app.$.mailBoxAjax.generateRequest();
+            },
+            isEmpty: function (data) {
+                return data === undefined || data === null || data.length === 0;
+            }
         });
 
     </script>
