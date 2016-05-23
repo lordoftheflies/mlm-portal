@@ -18,11 +18,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/paper-toast/paper-toast.html">
+<link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../bower_components/paper-menu/paper-menu.html">
+<link rel="import" href="../bower_components/paper-styles/paper-styles.html">
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../bower_components/iron-dropdown/iron-dropdown.html">
 <link rel="import" href="../bower_components/plutonium-login-widget/plutonium-shared-styles.html">
 <link rel="import" href="../bower_components/plutonium-login-widget/plutonium-login-widget.html">
 <link rel="import" href="../bower_components/plutonium-login-widget/plutonium-logon-widget.html">
@@ -31,12 +36,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/plutonium-login-widget/plutonium-secure-application-behavior.html">
 
 <link rel="import" href="my-icons.html">
+<link rel="import" href="plutonium-shared-styles.html">
 
 <dom-module id="my-app">
 
     <template>
 
-        <style>
+        <style include="iron-flex iron-alignment plutonium-shared-styles">
 
             :host {
                 display: block;
@@ -51,6 +57,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             app-header paper-icon-button {
                 --paper-icon-button-ink-color: white;
             }
+
+            app-drawer {
+                --app-drawer-content-container: {
+                    box-shadow: 1px 0 2px 1px rgba(0,0,0,0.18);
+                }
+                --app-drawer-scrim-background: rgba(179, 157, 219, 0.5);
+            }
+
 
             .drawer-list {
                 margin: 0 20px;
@@ -86,6 +100,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <app-drawer>
                 <app-toolbar>Menu</app-toolbar>
                 <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+                    <a name="about-view" href="/about-view">About</a>
                     <a name="view1" href="/view1">View One</a>
                     <a name="view2" href="/view2">View Two</a>
                     <a name="view3" href="/view3">View Three</a>
@@ -110,21 +125,140 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                        on-error="sessionInitializationErrorHandler" 
                        url="[[apiUrl]]/authentication/session?token=[[token]]" 
                        last-response="{{session}}"></iron-ajax>s
-            
+
 
             <!-- Main content -->
             <app-header-layout has-scrolling-region>
 
-                <app-header condenses reveals effects="waterfall">
+                <app-header condenses fixed shadow effects="waterfall resize-title fade-background parallax-background" class="layout horizontal">
                     <app-toolbar>
                         <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
-                        <div title>My App</div>
+                        <div title>
+                            <h1>TopFlavon</h1>
+                        </div>
+                        <div hidden="[[!session]]">
+                            <paper-button on-tap="showUserNavigation">
+                                <iron-icon icon="account-circle"></iron-icon>
+                                <span>{{session.userName}}</span>
+                            </paper-button>
+                            <iron-dropdown id="userNavigation" horizontal-align="right" vertical-align="top">
+                                <paper-menu attr-for-selected="data-route" selected="[[route]]" class="dropdown-content">
+                                    <a data-route="profile" href="/profile-view">
+                                        <iron-icon icon="account-circle"></iron-icon>
+                                        <span id="profileMenuTitle">Profile</span>
+                                    </a>
+                                    <a data-route="signout" href="#" on-tap="onLogout">
+                                        <iron-icon icon="markunread-mailbox"></iron-icon>
+                                        <span id="logoutButtonLabel">Logout</span>
+                                    </a>
+                                </paper-menu>
+                            </iron-dropdown>
+                        </div>
                     </app-toolbar>
+                    <div primary class="layout horizontal">
+                        <div condensed-title>
+                            <iron-pages attr-for-selected="data-route" selected="[[page]]" class="flex">
+                                <div data-route="share-content" class="app-name focus-target" tabindex="-1">
+                                    <span id="mainTitle">[[applicationTitle]]</span>
+                                    <span>/</span>
+                                    <span id="shareContentViewTitleLabel" class="page-title">Share content</span>
+                                </div>
+                                <div data-route="content-tree" class="app-name focus-target" tabindex="-1">
+                                    <span id="mainTitle">[[applicationTitle]]</span>
+                                    <span>/</span>
+                                    <span id="contentTreeViewTitleLabel" class="page-title">Contents</span>
+                                </div>
+                                <div data-route="mailbox" class="app-name focus-target" tabindex="-1">
+                                    <span id="mainTitle">[[applicationTitle]]</span>
+                                    <span>/</span>
+                                    <span id="mailBoxViewTitleLabel" class="page-title">Mailbox</span>
+                                </div>
+                                <div data-route="network" class="app-name focus-target" tabindex="-1">
+                                    <span id="mainTitle">[[applicationTitle]]</span>
+                                    <span>/</span>
+                                    <span id="networkViewTitleLabel" class="page-title">Network</span>
+                                </div>
+                                <div data-route="about-view" class="app-name focus-target" tabindex="-1">
+                                    <span id="mainTitle">[[applicationTitle]]</span>
+                                    <span>/</span>
+                                    <span id="aboutViewTitleLabel" class="page-title">About</span>
+                                </div>
+                                <div data-route="profile-view" class="app-name focus-target" tabindex="-1">
+                                    <span id="mainTitle">[[applicationTitle]]</span>
+                                    <span>/</span>
+                                    <span id="profileViewTitleLabel" class="page-title">Profile</span>
+                                </div>
+                            </iron-pages>
+                        </div>
+                        <paper-tabs selected="0" autoselect scrollable class="flex">
+                            <paper-tab>Food</paper-tab>
+                            <paper-tab>Drink</paper-tab>
+                            <paper-tab>Life</paper-tab>
+                        </paper-tabs>
+                    </div>
+
+                    <!-- Application name -->
+                    <div class="middle middle-container">
+
+                    </div>
+
+
+
+                    <!-- Toolbar icons -->
+
+
+                    <!-- Application sub title -->
+                    <div hidden="[[!admin]]">
+                        <iron-pages attr-for-selected="data-route" selected="{{route}}" class="flex" style="padding: 0px">
+                            <paper-tabs data-route="share-content"  attr-for-selected="name" selected="{{selectedMetaAction}}" style="width: 100%;" scrollable autoselect>
+                                <paper-tab text-id="shareTabLabel" name="share">Share</paper-tab>
+                                <paper-tab text-id="embbeddedContentTabLabel" name="embedded">Embed content</paper-tab>
+                                <paper-tab text-id="assembledContentTabLabel" name="assembled">Assembled content</paper-tab>
+                                <paper-tab text-id="propertiesTabLabel" name="props">Properties</paper-tab>
+                            </paper-tabs>
+                            <paper-tabs hidden="[[!sessionInfo.powerUser]]" data-route="content-tree"  attr-for-selected="name" selected="{{selectedContentFolder}}" style="width: 100%;" scrollable autoselect>
+                                <paper-tab text-id="messagesPagePublicFolderTitle" name="public">Public</paper-tab>
+                                <paper-tab text-id="messagesPageMyContentsFolderTitle" name="drafts">Drafts</paper-tab>
+                                <paper-tab text-id="messagesPagePublishedFolderTitle" name="published">Published</paper-tab>
+                            </paper-tabs>
+                            <paper-tabs data-route="mailbox"  attr-for-selected="name" selected="{{selectedMailboxFolder}}" style="width: 100%;" scrollable autoselect>
+                                <paper-tab text-id="mailBoxPageInboxFolderTitle" name="inbox">Inbox</paper-tab> 
+                                <paper-tab text-id="sentItemsPageInboxFolderTitle" name="outbox">Sent items</paper-tab>
+                            </paper-tabs>
+
+                            <div data-route="network"  class="layout horizontal">
+
+
+                                <paper-tabs selected="{{selectedAccount}}" class="flex" scrollable attr-for-selected="id">
+                                    <template is="dom-repeat" items="{{parents}}">
+                                        <paper-tab id="[[item.id]]" role="{{item.role}}" href="{{baseUrl}}network/{{item.id}}">
+                                            <iron-icon class="end-justified" icon="[[getIcon(item.role)]]"></iron-icon>
+                                            <a class="tab-content" href="{{baseUrl}}network/{{item.id}}">[[item.name]]</a>
+                                        </paper-tab>
+                                    </template>
+                                </paper-tabs>
+                                <!--<paper-icon-button icon="arrow-upward" on-tap="onNavigateUp"></paper-icon-button>-->
+                                <paper-icon-button icon="add-circle" on-tap="onOpenCreateMember"></paper-icon-button>
+                                <paper-icon-button icon="remove-circle" on-tap="onConfirmRemoveMember"></paper-icon-button>
+                                <paper-icon-button icon="send" on-tap="onSendTo"></paper-icon-button>
+                                <!--<template is="dom-if" if="[[isUser(selectedRole)]]">-->
+                                <paper-icon-button hidden="[[!isUser(selectedRole)]]" icon="star" on-tap="onOpenPromoteAdminPrompt"></paper-icon-button>
+                                <!--</template>-->
+                                <!--                                    <template is="dom-if" if="[[isAdmin(selectedRole)]]">-->
+                                <paper-icon-button hidden="[[!isAdmin(selectedRole)]]" icon="star-border" on-tap="onOpenDemoteAdminPrompt"></paper-icon-button>
+                                <!--</template>-->
+                            </div>
+
+                        </iron-pages>
+                    </div>
+
                 </app-header>
 
-                
-                
+
+
                 <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
+                    <topflavon-about-view name="about-view"></topflavon-about-view>
+                    <topflavon-profile-view name="profile-view" api-url="[[apiUrl]]" account-id="[[session.token]]"></topflavon-profile-view>
                     <my-view1 name="view1"></my-view1>
                     <my-view2 name="view2"></my-view2>
                     <my-view3 name="view3"></my-view3>
@@ -136,6 +270,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         </app-drawer-layout>
 
+        <iron-media-query query="min-width: 600px" query-matches="{{wideLayout}}"></iron-media-query>
+
     </template>
 
     <script>
@@ -146,10 +282,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 PlutoniumBehaviors.SecureApplicationBehavior
             ],
             properties: {
+                applicationTitle: {
+                    type: String,
+                    value: 'TopFlavon'
+                },
                 apiUrl: {
                     type: String,
                     value: "http://localhost:8080/topflavon-backend"
                 }
+            },
+            showUserNavigation: function () {
+                console.log("Show user navigation dropdown.");
+                this.$.userNavigation.toggle();
             }
 //                page: {
 //                    type: String,

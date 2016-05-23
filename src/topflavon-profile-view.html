@@ -9,24 +9,35 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../bower_components/paper-menu/paper-menu.html">
+<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="plutonium-shared-styles.html">
+<link rel="import" href="plutonium-widget-behavior.html">
 
-<dom-module id="my-view3">
+
+<dom-module id="topflavon-profile-view">
 
     <template>
 
-        <style>
-            :host {
-                display: block;
-                padding: 10px;
+        <style include="plutonium-shared-styles">
+            :host > paper-card {
+                /*                display: block;
+                                padding: 10px;*/
+
+
             }
-            .card {
-                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-                padding: 16px;
-                margin: 24px;
-                border-radius: 5px;
-                background-color: #fff;
-                color: #757575;
+
+            paper-card {
+
             }
+
+            
+             
             .circle {
                 display: inline-block;
                 height: 64px;
@@ -43,22 +54,144 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 margin: 16px 0;
                 color: #212121;
             }
+
         </style>
 
-        <div class="card">
-            <div class="circle">4</div>
-            <h1>View Three</h1>
-            <p>Modus commodo minimum eum te, vero utinam assueverit per eu.</p>
-            <p>Ea duis bonorum nec, falli paulo aliquid ei eum.Has at minim mucius aliquam, est id tempor laoreet.Pro saepe pertinax ei, ad pri animal labores suscipiantur.</p>
-        </div>
+        <!--Profile-->
+        <iron-ajax id="profileAjax" url="[[apiUrl]]/addressbook/[[accountId]]/profile" last-response="{{profile}}" auto="[[accountId]]"></iron-ajax>
+        <iron-ajax id="localesAjax" url="[[apiUrl]]/localization/locales" last-response="{{locales}}" auto></iron-ajax>
+
+
+        <iron-ajax id="changeLanguageAjax" 
+                   method="POST"
+                   handle-as="json"
+                   content-type="application/json"
+                   url="[[apiUrl]]/localization/change" 
+                   on-response="handleChangeLanguageResponse"
+                   on-error="handleChangeLanguageError"
+                   body="{{_changeLanguageModel}}"></iron-ajax>
+
+        <paper-dialog id="changeDeviceDialog" modal>
+            <h2 id="changeDeviceDialogTitle">Change device request</h2>
+            <form id="changeDeviceForm" is="iron-form" 
+                  verbose 
+                  content-type="application/json" 
+                  method="post" action="{{apiUrl}}/authentication/change"
+                  handle-as="json">
+                <div id="memberEraseConfirmDialogText" class="card-content">
+                    Are you surely change device? After login, until your inviter not approve you could not log in to the application.
+                </div>
+                <input name="owner" type="hidden" value="{{accountId}}" />
+                <div class="card-actions">
+                    <paper-button id="memberEraseConfirmDialogCancelButton" dialog-dismiss>Cancel</paper-button>
+                    <paper-button id="memberEraseConfirmDialogAcceptButton" dialog-confirm raised on-tap="onDeviceChangePrompted">OK</paper-button>
+                </div>
+            </form>
+        </paper-dialog>
+
+        <!--<br />-->
+        <paper-card id="accountHeading" heading="Account" class="layout vertical">
+            <div class="card-content">
+                <div>
+                    <label id="activationDateTitle">Activation date</label>
+                    <span>[[profile.activated]]</span>
+                </div>
+                <div>
+                    <paper-dropdown-menu id="preferredLanguageLabel" label="Preferred language">
+                        <paper-menu class="dropdown-content">
+                            <paper-menu class="dropdown-content" selected="{{profile.preferredLanguage}}" attr-for-selected="data-value">
+                                <template is="dom-repeat" items="[[locales]]" as="locale">
+                                    <paper-item data-value="[[locale.code]]">[[locale.name]]</paper-item>
+                                </template>
+                            </paper-menu>
+                        </paper-menu>
+                    </paper-dropdown-menu>
+                </div>
+            </div>
+            <div class="card-actions">
+                <paper-button id="changingDeviceButton" raised on-tap="openChangeDevicePrompt">Changing device</paper-button>
+            </div>
+        </paper-card>
+        <!--<br />-->
+        <paper-card id="tutorialsHeading" heading="Tutorials" class="layout vertical flex">
+            <p id="underDevelopmentText" class="card-content">Under development ...</p>
+        </paper-card>
 
     </template>
 
     <script>
 
         Polymer({
-            is: 'my-view3'
+            is: 'topflavon-profile-view',
+            behaviors: [
+                PlutoniumBehaviors.WidgetBehavior,
+//                BehaviorsStore.I18nBehavior
+            ],
+            properties: {
+                accountId: {
+                    type: String,
+                    notify: true
+                },
+                locales: {
+                    type: Array,
+                    notify: true
+                },
+                _init: {
+                    type: Object,
+                    notify: true,
+                    value: false
+                },
+                _changeLanguageModel: {
+                    type: Object,
+                    notify: true
+                }
+            },
+            listeners: {
+                'iron-select': 'onSelect'
+            },
+            ready: function () {
+                this._init = false;
+            },
+            attached: function () {
 
+            },
+            onSelect: function (event, details) {
+                if (this._init) {
+                    this._changeLanguageModel = {
+                        accountId: this.profile.id,
+                        language: this.profile.preferredLanguage
+                    };
+                    console.log('Change language request: ' + JSON.stringify(this._changeLanguageModel));
+                    this.$.changeLanguageAjax.generateRequest();
+                } else {
+                    this._init = true;
+                }
+            },
+            handleChangeLanguageResponse: function () {
+                var msg = 'Language changed successfully to ' + this.locales.filter(function (currentValue, index, arr) {
+                    return (currentValue.code === this.profile.preferredLanguage);
+                }, this)[0].name + '.';
+                console.log(msg);
+                var oldLang = document.querySelector('html').getAttribute('lang');
+                document.querySelector('html').setAttribute('lang', this.profile.preferredLanguage);
+                var newLang = document.querySelector('html').getAttribute('lang');
+                console.log('Change from locale ' + oldLang + ' to ' + newLang);
+                app.$.toast.text = msg;
+                app.$.toast.show();
+            },
+            handleChangeLanguageError: function () {
+                var msg = 'Language changing failed.';
+                console.log(msg);
+                app.$.toast.text = msg;
+                app.$.toast.show();
+            },
+            onDeviceChangePrompted: function () {
+                app.$.toast.text = 'Device changing request sent. Wait for your inviter\'s approval.';
+                app.$.toast.show();
+            },
+            openChangeDevicePrompt: function () {
+                this.$.changeDeviceDialog.open();
+            }
         });
 
     </script>

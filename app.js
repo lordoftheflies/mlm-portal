@@ -74,7 +74,7 @@ var polymerLoader = (function () {
         // for the application to work.
         if (callCount >= expectedCalls) {
             // here is the html that is inserted when everything is loaded.
-            document.querySelector('body').innerHTML += '<my-app id="app" unresolved prefix="my" landing-page="view1">My App</my-app>';
+            document.querySelector('body').innerHTML += '<my-app id="app" unresolved prefix="topflavon" landing-page="about-view">My App</my-app>';
         }
     }
 

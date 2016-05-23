@@ -37,6 +37,7 @@
                 "url": {}
             }
         },
+        "app-drawer-layout": {},
         "iron-list": {},
         "gold-email-input": {
             "attributes": {
@@ -44,6 +45,8 @@
                 "value": {}
             }
         },
+        "plutonium-login-widget": {},
+        "app-toolbar": {},
         "plutonium-field-recipient": {
             "attributes": {
                 "id": {},
@@ -132,6 +135,7 @@
                 "id": {}
             }
         },
+        "app-location": {},
         "plutonium-text-section": {
             "attributes": {
                 "field": {},
@@ -140,6 +144,7 @@
                 "id": {}
             }
         },
+        "iron-media-query": {},
         "paper-input": {
             "attributes": {
                 "id": {},
@@ -148,6 +153,7 @@
                 "value": {}
             }
         },
+        "plutonium-forgottenpassword-widget": {},
         "paper-listbox": {
             "attributes": {
                 "id": {},
@@ -173,6 +179,7 @@
                 "parent-candidates": {}
             }
         },
+        "topflavon-about-view": {},
         "template": {
             "attributes": {
                 "as": {},
@@ -186,6 +193,7 @@
                 "model": {}
             }
         },
+        "app-drawer": {},
         "share-content-view": {
             "attributes": {
                 "selected-meta-action": {},
@@ -205,6 +213,7 @@
                 "class": {}
             }
         },
+        "app-header": {},
         "content": {
             "attributes": {
                 "id": {}
@@ -250,6 +259,7 @@
                 "icon": {}
             }
         },
+        "app-header-layout": {},
         "dom-module": {
             "attributes": {
                 "id": {}
@@ -264,6 +274,7 @@
                 "class": {}
             }
         },
+        "iron-selector": {},
         "about-view": {},
         "paper-icon-button": {
             "attributes": {
@@ -293,6 +304,8 @@
                 "elevation": {}
             }
         },
+        "app-route": {},
+        "plutonium-logon-widget": {},
         "paper-dialog": {
             "attributes": {
                 "exit-animation": {},
@@ -336,6 +349,7 @@
                 "id": {}
             }
         },
+        "plutonium-passwordreset-widget": {},
         "profile-view": {
             "attributes": {
                 "api-url": {},
@@ -360,6 +374,9 @@
         },
         "unresolved": {
             "context": "body"
+        },
+        "condensed-title": {
+            "context": "div"
         },
         "class$": {
             "context": "p"

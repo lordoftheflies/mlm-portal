@@ -7,7 +7,7 @@
     "iron-elements": "PolymerElements/iron-elements",
     "iron-flex-layout": "polymerelements/iron-flex-layout#^1.0.0",
     "iron-icon": "polymerelements/iron-icon",
-    "iron-dropdown": "polymerelements/iron-dropdown",
+    "iron-dropdown": "^1.4.0",
     "iron-image": "polymerelements/iron-image",
     "neon-elements": "PolymerElements/neon-elements",
     "paper-elements": "PolymerElements/paper-elements",
@@ -15,8 +15,8 @@
     "paper-card": "polymerelements/paper-card",
     "paper-button": "polymerelements/paper-button",
     "paper-dialog-scrollable": "polymerelements/paper-dialog-scrollable",
-    "paper-dropdown-menu": "polymerelements/paper-dropdown-menu",
-    "paper-menu": "polymerelements/paper-menu",
+    "paper-dropdown-menu": "^1.2.1",
+    "paper-menu": "^1.2.2",
     "paper-fab": "polymerelements/paper-fab",
     "paper-toggle-button": "polymerelements/paper-toggle-button",
     "paper-input": "polymerelements/paper-input",
@@ -26,7 +26,7 @@
     "paper-spinner": "^1.1.1",
     "platinum-elements": "PolymerElements/platinum-elements",
     "polymer": "Polymer/polymer",
-    "paper-tabs": "polymerelements/paper-tabs",
+    "paper-tabs": "^1.5.0",
     "iron-ajax": "^1.2.0",
     "iron-list": "polymerelements/iron-list",
     "google-youtube": "GoogleWebComponents/google-youtube",
@@ -35,7 +35,9 @@
     "i18n-behavior": "^1.0.0",
     "pdf-element": "^1.0.5",
     "gold-email-input": "PolymerElements/gold-email-input#^1.0.7",
-    "plutonium-login-widget": "git@github.com:lordoftheflies/plutonium-login-widget.git"
+    "plutonium-login-widget": "git@github.com:lordoftheflies/plutonium-login-widget.git",
+    "paper-styles": "^1.1.4",
+    "paper-material": "^1.0.6"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"
