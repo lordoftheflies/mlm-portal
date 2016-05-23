@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "todo": []
+  },
+  "model": {
+    "registrateTitleLabel": {
+      "label": "Név",
+      "error-message": "Érvénytelen név."
+    },
+    "registratePhoneNumberLabel": {
+      "label": "Telefonszám",
+      "error-message": "Érvénytelen telefonszám."
+    },
+    "registratePasswordLabel": {
+      "label": "Jelszó",
+      "error-message": "Érvénytelen jelszó. A jelszó egy 6-16 jegyű, legalább egy számot tartalmazó alfanumerikus karaktersorozat."
+    },
+    "registratePasswordConfirmLabel": {
+      "label": "Jelszó megerősítés"
+    },
+    "registrateCodeLabel": {
+      "label": "Aktivációs kód",
+      "error-message": "Hibás aktivációs kód."
+    },
+    "registrateSignOnButton": {
+      "title": "Regisztráció"
+    }
+  },
+  "registrateSignInButton": "Bejelentkezés"
+}

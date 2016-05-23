@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "todo": []
+  },
+  "model": {
+    "signInFormLoginEmail": {
+      "label": "Adres e-mail"
+    },
+    "signInFormLoginPassword": {
+      "label": "Hasło"
+    },
+    "signInFormAccept": {
+      "title": "Zaloguj"
+    }
+  },
+  "signInFormRememberMe": "Zapamiętaj mnie",
+  "signInFormForgotPassword": "Zapomniałeś hasła",
+  "signInFormRegistrate": "Zapisać się"
+}

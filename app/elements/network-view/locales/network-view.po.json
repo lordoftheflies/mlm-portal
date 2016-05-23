@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "todo": []
+  },
+  "model": {
+    "newMemberNameLabel": {
+      "label": "Nazwa"
+    },
+    "newMemberEmailLabel": {
+      "label": "Adres e-mail"
+    },
+    "newMemberParentLabel": {
+      "label": "Członek rodzic"
+    },
+    "preferredLanguageLabel": {
+      "label": "Preferowany język"
+    }
+  },
+  "newMemberDialogTitle": "Nowy członek",
+  "newMemberTypeUserTitle": "Użytkownik",
+  "newMemberTypeGroupTitle": "Grupa",
+  "newMemberTypeAdminTitle": "Administrator",
+  "newMemberDialogCancelButton": "Anuluj",
+  "newMemberDialogCreateButton": "Stwórz",
+  "newMemberDialogCreateAndRepeatButton": "Tworzenie i powtórzyć",
+  "memberEraseConfirmDialogTitle": "Usuń element",
+  "memberEraseConfirmDialogText": "Czy na pewno usunąć członkiem?",
+  "memberEraseConfirmDialogCancelButton": "Anuluj",
+  "memberEraseConfirmDialogAcceptButton": "OK",
+  "promoteAdminDialogTitle": "Promuj administratorem",
+  "promoteAdminDialogText": [
+    "Czy na pewno promować {1} do administratora?",
+    "{{item.name}}"
+  ],
+  "promoteAdminDialogCancelButton": "Anuluj",
+  "promoteAdminDialogAcceptButton": "OK",
+  "demoteAdminDialogTitle": "Obniżanie administratorem",
+  "demoteAdminDialogText": [
+    "Czy na pewno obniżyć {1}, aby użytkownik?",
+    "{{item.name}}"
+  ],
+  "demoteAdminDialogCancelButton": "Anuluj",
+  "demoteAdminDialogAcceptButton": "OK",
+  "emptyChildrenText": "Brak członków dziecko."
+}

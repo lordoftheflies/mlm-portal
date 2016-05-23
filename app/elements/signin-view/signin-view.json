@@ -1,0 +1,17 @@
+{
+  "meta": {},
+  "model": {
+    "signInFormLoginEmail": {
+      "label": "Email address"
+    },
+    "signInFormLoginPassword": {
+      "label": "Password"
+    },
+    "signInFormAccept": {
+      "title": "submit"
+    }
+  },
+  "signInFormRememberMe": "Remember me",
+  "signInFormForgotPassword": "Forgot password",
+  "signInFormRegistrate": "Sign-on"
+}

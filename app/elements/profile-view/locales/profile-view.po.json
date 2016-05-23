@@ -1,0 +1,17 @@
+{
+  "meta": {
+    "todo": []
+  },
+  "model": {
+    "preferredLanguageLabel": {
+      "label": "Preferowany język"
+    }
+  },
+  "changeDeviceDialogTitle": "Żądanie zmiany urządzenie",
+  "memberEraseConfirmDialogText": " Czy na pewno zmienić urządzenie? Po zalogowaniu się , dopóki nie zatwierdzi zapraszający nie można zalogować się do aplikacji. ",
+  "memberEraseConfirmDialogCancelButton": "Anuluj",
+  "memberEraseConfirmDialogAcceptButton": "OK",
+  "activationDateTitle": "Data aktywacji",
+  "changingDeviceButton": "Zmiana narzędzia",
+  "underDevelopmentText": "W budowie ..."
+}

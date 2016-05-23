@@ -1,0 +1,15 @@
+{
+  "meta": {},
+  "model": {
+    "messageInput": {
+      "label": "Message"
+    },
+    "parentDdLabel": {
+      "label": "Parent"
+    },
+    "contentTitleInput": {
+      "label": "Title"
+    }
+  },
+  "uploadFileText": "Choose File"
+}

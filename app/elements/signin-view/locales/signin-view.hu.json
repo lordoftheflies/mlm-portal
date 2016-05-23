@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "todo": []
+  },
+  "model": {
+    "signInFormLoginEmail": {
+      "label": "Email cím"
+    },
+    "signInFormLoginPassword": {
+      "label": "Jelszó"
+    },
+    "signInFormAccept": {
+      "title": "Bejelentkezés"
+    }
+  },
+  "signInFormRememberMe": "Emlékezz rám",
+  "signInFormForgotPassword": "Elfelejtett jelszó",
+  "signInFormRegistrate": "Regisztráció"
+}

@@ -1,0 +1,205 @@
+{
+  "meta": {
+    "todo": [
+      {
+        "op": "add",
+        "path": "/loginDialogTitle",
+        "value": "Sign-in"
+      },
+      {
+        "op": "add",
+        "path": "/logonDialogTitle",
+        "value": "Sign-on"
+      },
+      {
+        "op": "add",
+        "path": "/forgottenPasswordDialogTitle",
+        "value": "Ask password reset"
+      },
+      {
+        "op": "add",
+        "path": "/mainMenuTitle",
+        "value": ""
+      },
+      {
+        "op": "add",
+        "path": "/shareContentMenuTitle",
+        "value": "Share content"
+      },
+      {
+        "op": "add",
+        "path": "/contentsMenuTitle",
+        "value": "Contents"
+      },
+      {
+        "op": "add",
+        "path": "/mailBoxMenuTitle",
+        "value": "Mailbox"
+      },
+      {
+        "op": "add",
+        "path": "/networkMenuTitle",
+        "value": "Network"
+      },
+      {
+        "op": "add",
+        "path": "/aboutMenuTitle",
+        "value": "About"
+      },
+      {
+        "op": "add",
+        "path": "/mainToolbar:div_2:iron-pages:div:span_1",
+        "value": "/"
+      },
+      {
+        "op": "add",
+        "path": "/shareContentViewTitleLabel",
+        "value": "Share content"
+      },
+      {
+        "op": "add",
+        "path": "/mainToolbar:div_2:iron-pages:div_1:span_1",
+        "value": "/"
+      },
+      {
+        "op": "add",
+        "path": "/contentTreeViewTitleLabel",
+        "value": "Contents"
+      },
+      {
+        "op": "add",
+        "path": "/mainToolbar:div_2:iron-pages:div_2:span_1",
+        "value": "/"
+      },
+      {
+        "op": "add",
+        "path": "/mailBoxViewTitleLabel",
+        "value": "Mailbox"
+      },
+      {
+        "op": "add",
+        "path": "/mainToolbar:div_2:iron-pages:div_3:span_1",
+        "value": "/"
+      },
+      {
+        "op": "add",
+        "path": "/networkViewTitleLabel",
+        "value": "Network"
+      },
+      {
+        "op": "add",
+        "path": "/mainToolbar:div_2:iron-pages:div_4:span_1",
+        "value": "/"
+      },
+      {
+        "op": "add",
+        "path": "/aboutViewTitleLabel",
+        "value": "About"
+      },
+      {
+        "op": "add",
+        "path": "/mainToolbar:div_2:iron-pages:div_5:span_1",
+        "value": "/"
+      },
+      {
+        "op": "add",
+        "path": "/profileViewTitleLabel",
+        "value": "Profile"
+      },
+      {
+        "op": "add",
+        "path": "/profileMenuTitle",
+        "value": "Profile"
+      },
+      {
+        "op": "add",
+        "path": "/logoutButtonLabel",
+        "value": "Logout"
+      },
+      {
+        "op": "add",
+        "path": "/shareTabLabel",
+        "value": "Share"
+      },
+      {
+        "op": "add",
+        "path": "/embbeddedContentTabLabel",
+        "value": "Embed content"
+      },
+      {
+        "op": "add",
+        "path": "/assembledContentTabLabel",
+        "value": "Assembled content"
+      },
+      {
+        "op": "add",
+        "path": "/propertiesTabLabel",
+        "value": "Properties"
+      },
+      {
+        "op": "add",
+        "path": "/messagesPagePublicFolderTitle",
+        "value": "Public"
+      },
+      {
+        "op": "add",
+        "path": "/messagesPageMyContentsFolderTitle",
+        "value": "Drafts"
+      },
+      {
+        "op": "add",
+        "path": "/messagesPagePublishedFolderTitle",
+        "value": "Published"
+      },
+      {
+        "op": "add",
+        "path": "/mailBoxPageInboxFolderTitle",
+        "value": "Inbox"
+      },
+      {
+        "op": "add",
+        "path": "/sentItemsPageInboxFolderTitle",
+        "value": "Sent items"
+      },
+      {
+        "op": "add",
+        "path": "/toastMessageText",
+        "value": "Ok"
+      }
+    ]
+  },
+  "model": {},
+  "loginDialogTitle": "Sign-in",
+  "logonDialogTitle": "Sign-on",
+  "forgottenPasswordDialogTitle": "Ask password reset",
+  "mainMenuTitle": "",
+  "shareContentMenuTitle": "Share content",
+  "contentsMenuTitle": "Contents",
+  "mailBoxMenuTitle": "Mailbox",
+  "networkMenuTitle": "Network",
+  "aboutMenuTitle": "About",
+  "mainToolbar:div_2:iron-pages:div:span_1": "/",
+  "shareContentViewTitleLabel": "Share content",
+  "mainToolbar:div_2:iron-pages:div_1:span_1": "/",
+  "contentTreeViewTitleLabel": "Contents",
+  "mainToolbar:div_2:iron-pages:div_2:span_1": "/",
+  "mailBoxViewTitleLabel": "Mailbox",
+  "mainToolbar:div_2:iron-pages:div_3:span_1": "/",
+  "networkViewTitleLabel": "Network",
+  "mainToolbar:div_2:iron-pages:div_4:span_1": "/",
+  "aboutViewTitleLabel": "About",
+  "mainToolbar:div_2:iron-pages:div_5:span_1": "/",
+  "profileViewTitleLabel": "Profile",
+  "profileMenuTitle": "Profile",
+  "logoutButtonLabel": "Logout",
+  "shareTabLabel": "Share",
+  "embbeddedContentTabLabel": "Embed content",
+  "assembledContentTabLabel": "Assembled content",
+  "propertiesTabLabel": "Properties",
+  "messagesPagePublicFolderTitle": "Public",
+  "messagesPageMyContentsFolderTitle": "Drafts",
+  "messagesPagePublishedFolderTitle": "Published",
+  "mailBoxPageInboxFolderTitle": "Inbox",
+  "sentItemsPageInboxFolderTitle": "Sent items",
+  "toastMessageText": "Ok"
+}

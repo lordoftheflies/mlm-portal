@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "todo": [
+      {
+        "op": "add",
+        "path": "/model/messageInput/label",
+        "value": "Message"
+      },
+      {
+        "op": "add",
+        "path": "/model/parentDdLabel/label",
+        "value": "Parent"
+      },
+      {
+        "op": "add",
+        "path": "/model/contentTitleInput/label",
+        "value": "Title"
+      },
+      {
+        "op": "add",
+        "path": "/uploadFileText",
+        "value": "Choose File"
+      }
+    ]
+  },
+  "model": {
+    "messageInput": {
+      "label": "Message"
+    },
+    "parentDdLabel": {
+      "label": "Parent"
+    },
+    "contentTitleInput": {
+      "label": "Title"
+    }
+  },
+  "uploadFileText": "Choose File"
+}

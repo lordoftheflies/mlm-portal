@@ -1,0 +1,140 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
+
+<link rel="import" href="plutonium-article-field-behavior.html">
+<link rel="import" href="plutonium-article-field-sizing-behavior.html">
+<link rel="import" href="plutonium-article-video-editor.html">
+
+<!--
+An element providing a solution to no problem in particular.
+
+Example:
+
+    <plutonium-cm-editor-text></plutonium-cm-editor-text>
+
+Example:
+
+    <plutonium-cm-editor-text>
+      <h2>Hello plutonium-cm-editor-text</h2>
+    </plutonium-cm-editor-text>
+
+@demo demo/index.html
+@hero hero.svg
+-->
+
+<dom-module id="plutonium-article-video-section">
+    <template>
+        <style include="iron-flex iron-flex-alignment">
+            :host {
+                display: block;
+                font-size: var(--section-font-size);
+            }
+
+
+        </style>
+        <plutonium-article-video-editor 
+            id="plSectionEditor"
+            action-title="Edit section"
+            title="{{model.title}}"
+            data="{{model.data}}"
+            justification="{{model.justification}}"
+            height="{{model.height}}"
+            width="{{model.width}}"
+            font-size="{{model.fontSize}}">
+        </plutonium-article-video-editor>
+        <div hidden="[[editable]]">
+            <h2>{{model.title}}</h2>
+            <div id="modelData" class$="horizontal {{model.justification}} layout">
+                 <google-youtube
+                    video-id="{{model.data}}"
+                    height="{{heightStyleProperty}}"
+                    width="{{widthStyleProperty}}"
+                    rel="0"
+                    autoplay="0">
+                </google-youtube> 
+            </div>
+        </div>
+
+        <paper-card elevation="1" heading="{{model.title}}" class="layout vertical" hidden="[[!editable]]">
+            <div id="modelData" class$="card-content horizontal {{model.justification}} layout">
+                 <google-youtube
+                    video-id="{{model.data}}"
+                    height="{{heightStyleProperty}}"
+                    width="{{widthStyleProperty}}"
+                    rel="0"
+                    start="5"
+                    autoplay="0">
+                </google-youtube>
+            </div>
+            <div class="card-actions">
+                <paper-icon-button id="moveUpButton" on-tap="onMoveUpSection" icon="expand-less" raised></paper-icon-button>
+                <paper-icon-button id="moveDownButton" on-tap="onMoveDownSection" icon="expand-more" raised></paper-icon-button>
+                <paper-icon-button id="showEditorButton" on-tap="onShowEditor" icon="create" raised></paper-icon-button>
+                <paper-icon-button id="removeSectionButton" on-tap="onRemoveSection" icon="delete"></paper-icon-button>
+            </div>
+        </paper-card>
+    </template>
+
+    <script>
+        (function () {
+            'use strict';
+            Polymer({
+                is: 'plutonium-article-video-section',
+                behaviors: [
+                    PlutoniumBehaviors.ArticleFieldBehavior,
+                    PlutoniumBehaviors.ArticleFieldSizingBehavior
+                ],
+                properties: {
+                    model: {
+                        type: Object,
+                        notify: true
+                    }
+                },
+                listeners: {
+                    'removeSection': 'removeSection',
+                },
+                observers: [
+                    'observeModel(model)',
+                    'observeModelStyles(model.*)',
+                    'observeModelData(model.data)'
+                ],
+                // Element Lifecycle
+
+                //                ready: function () {
+                //
+                //                },
+                //                attached: function () {
+                //
+                //                },
+                detached: function () {
+
+                },
+                onShowEditor: function () {
+                    console.log(this.is + '[' + this.id + '] show field editor.');
+                    this.$.plSectionEditor.open();
+                },
+                observeModel: function () {
+                    console.log(this.is + '[' + this.id + '] model property changed.');
+                },
+                observeModelData: function (data) {
+                    //                this.$.modelData.innerHTML = data;
+                },
+                observeModelStyles: function (property) {
+                    console.log(this.is + '[' + this.id + '] model changed, update styles.');
+                    this.customStyle['--section-font-size'] = this.model.fontSize + 'px';
+                    this.updateStyles();
+                }
+            });
+        })();
+    </script>
+</dom-module>

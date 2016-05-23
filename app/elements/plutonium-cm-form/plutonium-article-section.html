@@ -1,0 +1,83 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-list/iron-list.html">
+
+<link rel="import" href="plutonium-article-field.html">
+<!--
+An element providing a solution to no problem in particular.
+
+Example:
+
+    <plutonium-article-section></plutonium-article-section>
+
+Example:
+
+    <plutonium-article-section>
+      <h2>Hello plutonium-article-section</h2>
+    </plutonium-article-section>
+
+@demo demo/index.html
+@hero hero.svg
+-->
+
+<dom-module id="plutonium-article-section">
+    <template>
+        <style>
+            :host {
+                display: block;
+                box-sizing: border-box;
+            }
+        </style>
+        <template is="dom-repeat" items="{{contentModel.sections}}" as="section">
+<!--            <plutonium-article-field 
+                class="layout vertical wrap"
+                name="{{section.name}}" 
+                model="{{section}}" 
+                api-url="{{apiUrl}}">
+            </plutonium-article-field>-->
+            <plutonium-article-field
+                name="{{section.name}}" 
+                model="{{section}}" 
+                api-url="{{apiUrl}}">
+            </plutonium-article-field>
+            <br />
+        </template>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'plutonium-article-section',
+            properties: {
+                /**
+                 * Data-model of th form.
+                 */
+                contentModel: {
+                    type: Object,
+                    notify: true,
+//                    observer: 'renderContent'
+                }
+            },
+            observers: [
+                'observeSections(contentModel.sections.splices)'
+            ],
+            //            // Element Lifecycle
+
+            observeSections: function (splices) {
+                console.log(this.is + ' onserve sections.');
+            }
+        });
+    </script>
+</dom-module>

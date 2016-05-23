@@ -1,0 +1,17 @@
+{
+  "meta": {
+    "todo": []
+  },
+  "model": {
+    "preferredLanguageLabel": {
+      "label": "Preferált nyelv"
+    }
+  },
+  "changeDeviceDialogTitle": "Eszközcsere kérése",
+  "memberEraseConfirmDialogText": " Biztosan cserélni akarja eszközét? Kijelentkezés után, amíg az Önt meghívó személy nem hagyja jóvá, nem fog tudni bejelentkezni. ",
+  "memberEraseConfirmDialogCancelButton": "Mégse",
+  "memberEraseConfirmDialogAcceptButton": "OK",
+  "activationDateTitle": "Aktiválva",
+  "changingDeviceButton": "Eszközcsere",
+  "underDevelopmentText": "Fejlesztés alatt ..."
+}

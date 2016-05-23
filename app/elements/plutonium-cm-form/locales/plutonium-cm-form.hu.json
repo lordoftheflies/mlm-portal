@@ -1,0 +1,25 @@
+{
+  "meta": {
+    "todo": [
+      {
+        "op": "replace",
+        "path": "/model/addSectionButton/title",
+        "value": "Embedd video to the message content."
+      }
+    ]
+  },
+  "model": {
+    "addSectionButton": {
+      "title": "Embedd video to the message content."
+    },
+    "addVideoButton": {
+      "title": "Video szekció beágyazása."
+    },
+    "addImageButton": {
+      "title": "Kép szekció beágyazása."
+    },
+    "addLinkButton": {
+      "title": "Hivatkozás szekció beágyazása."
+    }
+  }
+}

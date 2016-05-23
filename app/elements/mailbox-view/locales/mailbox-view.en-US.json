@@ -1,0 +1,13 @@
+{
+  "meta": {
+    "todo": [
+      {
+        "op": "add",
+        "path": "/emptyMailBoxFolderText",
+        "value": "No messages in the folder."
+      }
+    ]
+  },
+  "model": {},
+  "emptyMailBoxFolderText": "No messages in the folder."
+}

@@ -1,10 +1,380 @@
 {
     "elements": {
-        "my-app": {}
+        "google-youtube": {
+            "attributes": {
+                "width": {},
+                "rel": {},
+                "start": {},
+                "video-id": {},
+                "autoplay": {},
+                "height": {}
+            }
+        },
+        "paper-radio-group": {
+            "attributes": {
+                "attr-for-selected": {},
+                "selected": {}
+            }
+        },
+        "paper-radio-button": {
+            "attributes": {
+                "name": {},
+                "id": {}
+            }
+        },
+        "signin-view": {
+            "attributes": {
+                "api-url": {}
+            }
+        },
+        "iron-ajax": {
+            "attributes": {
+                "last-response": {},
+                "auto": {},
+                "on-error": {},
+                "on-response": {},
+                "id": {},
+                "url": {}
+            }
+        },
+        "iron-list": {},
+        "gold-email-input": {
+            "attributes": {
+                "label": {},
+                "value": {}
+            }
+        },
+        "plutonium-field-recipient": {
+            "attributes": {
+                "id": {},
+                "label": {}
+            }
+        },
+        "paper-menu": {
+            "attributes": {
+                "attr-for-selected": {},
+                "class": {},
+                "selected": {}
+            }
+        },
+        "paper-dropdown-menu": {},
+        "paper-card": {
+            "attributes": {
+                "elevation": {},
+                "heading": {},
+                "name": {},
+                "class": {}
+            }
+        },
+        "paper-item": {
+            "attributes": {
+                "id": {},
+                "class": {}
+            }
+        },
+        "signon-view": {
+            "attributes": {
+                "api-url": {}
+            }
+        },
+        "plutonium-link-section": {
+            "attributes": {
+                "field": {},
+                "editable": {},
+                "parent-candidates-url": {},
+                "model": {},
+                "id": {}
+            }
+        },
+        "iron-dropdown": {
+            "attributes": {
+                "vertical-align": {},
+                "id": {},
+                "horizontal-align": {}
+            }
+        },
+        "plutonium-image-section": {
+            "attributes": {
+                "field": {},
+                "editable": {},
+                "model": {},
+                "id": {}
+            }
+        },
+        "paper-button": {
+            "attributes": {
+                "dialog-dismiss": {},
+                "on-click": {},
+                "raised": {},
+                "dialog-confirm": {},
+                "id": {},
+                "on-tap": {}
+            }
+        },
+        "iron-pages": {
+            "attributes": {
+                "attr-for-selected": {},
+                "selected": {}
+            }
+        },
+        "paper-toast": {
+            "attributes": {
+                "id": {}
+            }
+        },
+        "paper-scroll-header-panel": {
+            "attributes": {
+                "condenses": {},
+                "drawer": {},
+                "keep-condensed-header": {},
+                "fixed": {},
+                "main": {},
+                "id": {}
+            }
+        },
+        "plutonium-text-section": {
+            "attributes": {
+                "field": {},
+                "editable": {},
+                "model": {},
+                "id": {}
+            }
+        },
+        "paper-input": {
+            "attributes": {
+                "id": {},
+                "label": {},
+                "class": {},
+                "value": {}
+            }
+        },
+        "paper-listbox": {
+            "attributes": {
+                "id": {},
+                "selected": {}
+            }
+        },
+        "paper-tabs": {
+            "attributes": {
+                "class": {},
+                "selected": {},
+                "autoselect": {}
+            }
+        },
+        "plutonium-article-form": {
+            "attributes": {
+                "api-url": {},
+                "content-model": {},
+                "editable": {},
+                "id": {},
+                "class": {},
+                "contacts": {},
+                "editors": {},
+                "parent-candidates": {}
+            }
+        },
+        "template": {
+            "attributes": {
+                "as": {},
+                "if": {},
+                "items": {}
+            }
+        },
+        "password-reset-view": {
+            "attributes": {
+                "api-url": {},
+                "model": {}
+            }
+        },
+        "share-content-view": {
+            "attributes": {
+                "selected-meta-action": {},
+                "content-model": {},
+                "api-url": {},
+                "account-id": {},
+                "id": {},
+                "class": {}
+            }
+        },
+        "paper-textarea": {
+            "attributes": {
+                "id": {},
+                "label": {},
+                "rows": {},
+                "value": {},
+                "class": {}
+            }
+        },
+        "content": {
+            "attributes": {
+                "id": {}
+            }
+        },
+        "content-tree-view": {
+            "attributes": {
+                "selected-content-folder": {},
+                "parent-model": {},
+                "base-url": {},
+                "selected-root": {},
+                "data": {},
+                "api-url": {},
+                "admin": {},
+                "info-request-params": {},
+                "id": {},
+                "class": {},
+                "root-model": {},
+                "toc-request-params": {}
+            }
+        },
+        "plutonium-cm-form": {
+            "attributes": {
+                "content-model": {},
+                "file-upload-target": {},
+                "contacts": {},
+                "editors": {},
+                "parent-candidates": {}
+            }
+        },
+        "plutonium-article-field": {
+            "attributes": {
+                "api-url": {},
+                "editable": {},
+                "name": {},
+                "model": {},
+                "class": {}
+            }
+        },
+        "plutonium-section-editor": {},
+        "iron-icon": {
+            "attributes": {
+                "icon": {}
+            }
+        },
+        "dom-module": {
+            "attributes": {
+                "id": {}
+            }
+        },
+        "mailbox-view": {
+            "attributes": {
+                "data": {},
+                "api-url": {},
+                "account-id": {},
+                "selected-mail-box-folder": {},
+                "class": {}
+            }
+        },
+        "about-view": {},
+        "paper-icon-button": {
+            "attributes": {
+                "toggles": {},
+                "icon": {},
+                "raised": {},
+                "active": {},
+                "id": {},
+                "paper-drawer-toggle": {}
+            }
+        },
+        "paper-tab": {
+            "attributes": {
+                "id": {}
+            }
+        },
+        "plutonium-video-section": {
+            "attributes": {
+                "field": {},
+                "editable": {},
+                "model": {},
+                "id": {}
+            }
+        },
+        "paper-material": {
+            "attributes": {
+                "elevation": {}
+            }
+        },
+        "paper-dialog": {
+            "attributes": {
+                "exit-animation": {},
+                "with-backdrop": {},
+                "id": {},
+                "entry-animation": {},
+                "class": {},
+                "modal": {}
+            }
+        },
+        "plutonium-cm-field": {},
+        "network-view": {
+            "attributes": {
+                "locales": {},
+                "data": {},
+                "api-url": {},
+                "owner-id": {},
+                "account-id": {},
+                "children-request-params": {},
+                "id": {},
+                "genocide-request-params": {},
+                "possible-parents": {},
+                "class": {},
+                "parents": {}
+            }
+        },
+        "paper-fab": {
+            "attributes": {
+                "on-click": {},
+                "icon": {},
+                "dialog-confirm": {},
+                "id": {},
+                "on-tap": {},
+                "title": {},
+                "class": {}
+            }
+        },
+        "paper-drawer-panel": {
+            "attributes": {
+                "responsive-width": {},
+                "id": {}
+            }
+        },
+        "profile-view": {
+            "attributes": {
+                "api-url": {},
+                "account-id": {}
+            }
+        },
+        "iron-image": {
+            "attributes": {
+                "src": {},
+                "class": {}
+            }
+        },
+        "paper-toolbar": {
+            "attributes": {
+                "id": {}
+            }
+        }
     },
     "attributes": {
+        "include": {
+            "context": "style"
+        },
         "unresolved": {
             "context": "body"
+        },
+        "class$": {
+            "context": "p"
+        },
+        "href$": {
+            "context": "a"
+        },
+        "is": {
+            "context": "form"
+        },
+        "on-tap": {
+            "context": "a"
+        },
+        "href": {
+            "context": "div"
         }
     }
 }
