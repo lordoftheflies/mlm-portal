@@ -38,12 +38,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                    auto="[[!parents]]">
 
         </iron-ajax>
-        <iron-ajax id="possibleParentsIronAjax" 
-                   url="[[apiUrl]]/addressbook/all" 
-                   last-response="{{possibleParents}}" 
-                   auto="[[!possibleParents]]">
-
-        </iron-ajax>
         <iron-ajax id="childrenIronAjax" 
                    url="[[apiUrl]]/addressbook/children" 
                    params="[[childrenRequestParams]]" 
@@ -51,15 +45,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                    auto="[[!data]]">
 
         </iron-ajax>
-        <iron-ajax id="localesAjax" 
-                   url="[[apiUrl]]/localization/locales" 
-                   last-response="{{locales}}" 
-                   auto>
-
-        </iron-ajax>
+        
 
 
-        <paper-dialog id="memberDialog" 
+<!--        <paper-dialog id="memberDialog" 
                       class="plutonium widget"
                       modal entry-animation="scale-up-animation" 
                       exit-animation="scale-down-animation"
@@ -111,7 +100,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     <paper-button id="newMemberDialogCreateAndRepeatButton" raised class="primary" on-tap="onCreateMemberRepeat">Create & repeat</paper-button>
                 </div>
             </form>
-        </paper-dialog>
+        </paper-dialog>-->
 
         <paper-dialog id="memberEraseConfirm" modal>
             <h2 id="memberEraseConfirmDialogTitle">Delete member</h2>
@@ -255,8 +244,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 'observeOwnerChange(accountId)'
             ],
             listeners: {
-                'newMemberForm.iron-form-response': 'onCreateMemberResponse',
-                'newMemberForm.iron-form-error': 'onCreateMemberError',
                 'deleteMemberForm.iron-form-response': 'onDeleteMemberResponse',
                 'deleteMemberForm.iron-form-error': 'onDeleteMemberError',
                 'promoteMemberForm.iron-form-response': 'onPromoteMemberResponse',
@@ -326,31 +313,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 this.$.childrenIronAjax.generateRequest();
                 this.$.genocideIronAjax.generateRequest();
             },
-            onCreateMember: function () {
-                this.$.newMemberForm.submit();
-            },
-            onCreateMemberRepeat: function () {
-                this.$.newMemberForm.submit();
-                this.$.newMemberForm.email.value = '';
-                this.$.newMemberForm.role.value = 'USER';
-                this.$.newMemberForm.name.value = '';
-//                    this.$.newMemberForm.preferredLangiage.value = '';
-
-//                    this.$.memberDialog.open();
-            },
-            onCreateMemberResponse: function (event, details) {
-                console.log('Member created successfully: ' + JSON.stringify(details.response));
-                this.$.childrenIronAjax.generateRequest();
-                this.fire('feedback', {
-                    message: 'Member created successfully'
-                });
-            },
-            onCreateMemberError: function (event, details) {
-                console.log('Create-member error: ' + JSON.stringify(details.response));
-                this.fire('feedback', {
-                    message: 'Member creation failed.'
-                });
-            },
+//            onCreateMember: function () {
+//                this.$.newMemberForm.submit();
+//            },
+//            onCreateMemberRepeat: function () {
+//                this.$.newMemberForm.submit();
+//                this.$.newMemberForm.email.value = '';
+//                this.$.newMemberForm.role.value = 'USER';
+//                this.$.newMemberForm.name.value = '';
+////                    this.$.newMemberForm.preferredLangiage.value = '';
+//
+////                    this.$.memberDialog.open();
+//            },
             onDeleteMemberResponse: function (event, details) {
                 console.log('Member removed successfully: ' + JSON.stringify(details.response));
                 this.$.childrenIronAjax.generateRequest();
@@ -405,9 +379,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 this.$.promoteMemberForm.submit();
                 console.log('Promote member prompted.');
             },
-            openNewMember: function () {
-                this.$.memberDialog.open();
-            }
+//            openNewMember: function () {
+//                this.$.memberDialog.open();
+//            }
         });
 
     </script>

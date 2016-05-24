@@ -39,6 +39,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="plutonium-shared-styles.html">
 <link rel="import" href="plutonium-authorization-behavior.html">
 
+<link rel="import" href="topflavon-member-editor.html">
+
 <dom-module id="my-app">
 
     <template>
@@ -109,6 +111,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             pattern="/:memberId"
             data="{{memberSubrouteData}}">
         </app-route>
+
+        <iron-ajax id="localesAjax" 
+                   url="[[apiUrl]]/localization/locales" 
+                   last-response="{{locales}}" 
+                   auto>
+        </iron-ajax>
+        <iron-ajax id="possibleParentsIronAjax" 
+                   url="[[apiUrl]]/addressbook/all" 
+                   last-response="{{possibleParents}}" 
+                   auto>
+
+        </iron-ajax>
+
+        <topflavon-member-editor
+            id="memberEditor"
+            acion="[[apiUrl]]/addressbook/save"
+            possible-parents="[[possibleParents]]"
+            locales="[[locales]]">
+        </topflavon-member-editor>
 
         <app-drawer-layout fullbleed>
 
@@ -318,6 +339,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 }
             },
             listeners: {
+                'memberEditor.iron-form-response': 'onCreateMemberResponse',
+                'memberEditor.iron-form-error': 'onCreateMemberError',
                 'feedback': 'onFeedback'
             },
             showUserNavigation: function () {
@@ -340,7 +363,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 }
             },
             onOpenCreateMember: function (event, detail) {
-                this.$.networkPage.openNewMember();
+                this.$.memberEditor.show();
+            },
+            onCreateMemberResponse: function (event, details) {
+                console.log('Member created successfully: ' + JSON.stringify(details.response));
+                // TODO: move to this
+                this.$.networkPage.$.childrenIronAjax.generateRequest();
+                this.fire('feedback', {
+                    message: 'Member created successfully'
+                });
+            },
+            onCreateMemberError: function (event, details) {
+                console.log('Create-member error: ' + JSON.stringify(details.response));
+                this.fire('feedback', {
+                    message: 'Member creation failed.'
+                });
             },
 //                page: {
 //                    type: String,
