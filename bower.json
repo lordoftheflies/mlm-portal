@@ -38,7 +38,9 @@
     "plutonium-login-widget": "git@github.com:lordoftheflies/plutonium-login-widget.git",
     "paper-styles": "^1.1.4",
     "paper-material": "^1.0.6",
-    "paper-item": "^1.2.1"
+    "paper-item": "^1.2.1",
+    "paper-dialog": "^1.0.4",
+    "iron-overlay-behavior": "^1.7.6"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"

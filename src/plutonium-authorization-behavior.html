@@ -1,0 +1,26 @@
+<script>
+    window.PlutoniumBehaviors = window.PlutoniumBehaviors || {};
+    PlutoniumBehaviors.AuthorizationBehavior = {
+        isGroup: function (data) {
+            return data === 'GROUP';
+        },
+        isAdmin: function (data) {
+            return data === 'ADMIN';
+        },
+        isUser: function (data) {
+            return data === 'USER';
+        },
+        getIcon: function (data) {
+            if (data === 'GROUP') {
+                return 'supervisor-account';
+            } else if (data === 'USER') {
+                return 'star-border';
+            } else if (data === 'ADMIN') {
+                return 'star';
+            }
+        },
+        isMe: function(accountId, token) {
+            return accountId === token;
+        }
+    };
+</script>

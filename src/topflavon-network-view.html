@@ -8,12 +8,16 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animations.html">
+<link rel="import" href="../bower_components/iron-overlay-behavior/iron-overlay-behavior.html">
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../bower_components/paper-item/paper-item.html">
 <link rel="import" href="../bower_components/paper-material/paper-material.html">
 <link rel="import" href="../bower_components/iron-list/iron-list.html">
 <link rel="import" href="plutonium-shared-styles.html">
 <link rel="import" href="plutonium-widget-behavior.html">
+<link rel="import" href="plutonium-authorization-behavior.html">
 
 <dom-module id="topflavon-network-view">
 
@@ -55,7 +59,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </iron-ajax>
 
 
-        <paper-dialog id="memberDialog" modal>
+        <paper-dialog id="memberDialog" 
+                      class="plutonium widget"
+                      modal entry-animation="scale-up-animation" 
+                      exit-animation="scale-down-animation"
+                      with-backdrop
+                      always-on-top>
             <h2 id="newMemberDialogTitle">New member</h2>
             <form id="newMemberForm" is="iron-form" class="card-content" verbose 
                   content-type="application/json" method="post" action="[[apiUrl]]/addressbook/save"
@@ -164,9 +173,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <iron-list id="childrenIronList" items="[[data]]" as="item" hidden="[[isEmpty(data)]]" class="layout vertical">
             <template>
                 <paper-item class="layout horizontal">
-                    <paper-material class="flex" nodeid="[[item.id]]" on-tap="onNavigateToChildren"  tabindex="[[tabIndex]]">
-                        <iron-icon class="end-justified" icon="[[getIcon(item.role)]]"></iron-icon>
-                        <span >[[item.name]]</span>
+                    <paper-material class="flex layout horizontal" nodeid="[[item.id]]" role="[[item.role]]" on-tap="onNavigateToChildren"  tabindex="[[tabIndex]]">
+                        <div class="flex">
+                            <iron-icon icon="[[getIcon(item.role)]]"></iron-icon>
+                            <span >[[item.name]]</span>
+                        </div>
                     </paper-material>
                 </paper-item>
             </template>
@@ -197,7 +208,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         Polymer({
             is: 'topflavon-network-view',
             behaviors: [
-                PlutoniumBehaviors.WidgetBehavior
+                PlutoniumBehaviors.WidgetBehavior,
+                PlutoniumBehaviors.AuthorizationBehavior
             ],
             properties: {
                 genocideRequestParams: {
@@ -270,12 +282,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 console.log(this.is + ' genocide request parameters updated: ' + JSON.stringify(this.genocideRequestParams))
                 this.$.genocideIronAjax.generateRequest();
             },
-            computeChildrenRequestParams: function() {
+            computeChildrenRequestParams: function () {
                 return {
                     parentId: this.selectedAccountId
                 };
             },
-            computeGenocideRenocideRequestParams: function() {
+            computeGenocideRenocideRequestParams: function () {
                 return {
                     childId: this.selectedAccountId
                 };
@@ -297,9 +309,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 //                    
             },
             onNavigateToChildren: function (event, details) {
-                this.accountId = event.currentTarget.nodeid;
-                this.selectedAccount = this.accountId;
-
+//                this.accountId = event.currentTarget.nodeid;
+                this.selectedAccountId = event.currentTarget.nodeid;
+                this.selectedRole = event.currentTarget.role;
                 console.log('Network-view navigate to children ');
 
             },
@@ -381,30 +393,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             isEmpty: function (data) {
                 return data === undefined || data === null || data.length === 0;
             },
-            isGroup: function (data) {
-                return data === 'GROUP';
-            },
-            isAdmin: function (data) {
-                return data === 'ADMIN';
-            },
-            isUser: function (data) {
-                return data === 'USER';
-            },
-            getIcon: function (data) {
-                if (data === 'GROUP') {
-                    return 'supervisor-account';
-                } else if (data === 'USER') {
-                    return 'star-border';
-                } else if (data === 'ADMIN') {
-                    return 'star';
-                }
-            },
-//            getOwnerAccount: function () {
-//                if (app.sessionInfo)
-//                    return app.sessionInfo.token;
-//                else
-//                    return null;
-//            },
             onDemoteMemberPrompted: function () {
                 this.$.demoteMemberForm.submit();
                 console.log('Demote member prompted.');
@@ -416,6 +404,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             onPromoteMemberPrompted: function () {
                 this.$.promoteMemberForm.submit();
                 console.log('Promote member prompted.');
+            },
+            openNewMember: function () {
+                this.$.memberDialog.open();
             }
         });
 

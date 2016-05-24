@@ -37,6 +37,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="my-icons.html">
 <link rel="import" href="plutonium-shared-styles.html">
+<link rel="import" href="plutonium-authorization-behavior.html">
 
 <dom-module id="my-app">
 
@@ -229,12 +230,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                 <paper-icon-button icon="add-circle" on-tap="onOpenCreateMember"></paper-icon-button>
                                 <paper-icon-button icon="remove-circle" on-tap="onConfirmRemoveMember"></paper-icon-button>
                                 <paper-icon-button icon="send" on-tap="onSendTo"></paper-icon-button>
-                                <!--<template is="dom-if" if="[[isUser(selectedRole)]]">-->
-                                <paper-icon-button hidden="[[!isUser(selectedRole)]]" icon="star" on-tap="onOpenPromoteAdminPrompt"></paper-icon-button>
-                                <!--</template>-->
-                                <!--                                    <template is="dom-if" if="[[isAdmin(selectedRole)]]">-->
-                                <paper-icon-button hidden="[[!isAdmin(selectedRole)]]" icon="star-border" on-tap="onOpenDemoteAdminPrompt"></paper-icon-button>
-                                <!--</template>-->
+                                <template is="dom-if" if="[[!isMe(memberSubrouteData.memberId, session.token)]]">
+                                    <paper-icon-button hidden="[[!isUser(selectedRole)]]" icon="star" on-tap="onOpenPromoteAdminPrompt"></paper-icon-button>
+                                    <!--</template>-->
+                                    <!--                                    <template is="dom-if" if="[[isAdmin(selectedRole)]]">-->
+                                    <paper-icon-button hidden="[[!isAdmin(selectedRole)]]" icon="star-border" on-tap="onOpenDemoteAdminPrompt"></paper-icon-button>
+                                </template>
                             </div>
 
                         </iron-pages>
@@ -270,11 +271,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                             account-id="[[session.token]]" 
                                             selected-mail-box-folder="{{selectedMailboxFolder}}">
                     </topflavon-mailbox-view>
-                    <topflavon-network-view name="network-view" 
-                                            api-url="[[apiUrl]]" 
-                                            account-id="[[session.token]]" 
-                                            parents="{{parents}}"
-                                            selected-account-id="{{memberSubrouteData.memberId}}">
+                    <topflavon-network-view 
+                        id="networkPage"
+                        name="network-view" 
+                        api-url="[[apiUrl]]" 
+                        account-id="[[session.token]]" 
+                        parents="{{parents}}"
+                        selected-role="{{selectedRole}}"
+                        selected-account-id="{{memberSubrouteData.memberId}}">
                     </topflavon-network-view>
                     <topflavon-content-view name="content-view" 
                                             api-url="[[apiUrl]]" 
@@ -300,7 +304,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         Polymer({
             is: 'my-app',
             behaviors: [
-                PlutoniumBehaviors.SecureApplicationBehavior
+                PlutoniumBehaviors.SecureApplicationBehavior,
+                PlutoniumBehaviors.AuthorizationBehavior
             ],
             properties: {
                 applicationTitle: {
@@ -333,7 +338,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 } else if (data === 'ADMIN') {
                     return 'star';
                 }
-            }
+            },
+            onOpenCreateMember: function (event, detail) {
+                this.$.networkPage.openNewMember();
+            },
 //                page: {
 //                    type: String,
 //                    reflectToAttribute: true,
