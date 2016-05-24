@@ -40,6 +40,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="plutonium-authorization-behavior.html">
 
 <link rel="import" href="topflavon-member-editor.html">
+<link rel="import" href="topflavon-member-delete-prompt.html">
 <link rel="import" href="topflavon-role-changer-prompt.html">
 
 <dom-module id="my-app">
@@ -149,6 +150,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             role-name="user"
             subject-id="[[memberSubrouteData.memberId]]">
         </topflavon-role-changer-prompt>
+        <topflavon-member-delete-prompt
+            id="deleteMemberDialog"
+            action="[[apiUrl]]/addressbook/delete"
+            owner-id="[[session.token]]"
+            subject-name="[[selectedName]]"
+            subject-id="[[memberSubrouteData.memberId]]">
+        </topflavon-member-delete-prompt>
 
         <app-drawer-layout fullbleed>
 
@@ -268,7 +276,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                 </paper-tabs>
                                 <!--<paper-icon-button icon="arrow-upward" on-tap="onNavigateUp"></paper-icon-button>-->
                                 <paper-icon-button icon="add-circle" on-tap="onOpenCreateMember"></paper-icon-button>
-                                <paper-icon-button icon="remove-circle" on-tap="onConfirmRemoveMember"></paper-icon-button>
+                                <paper-icon-button icon="remove-circle" on-tap="onOpenDeleteMember"></paper-icon-button>
                                 <paper-icon-button icon="send" on-tap="onSendTo"></paper-icon-button>
                                 <template is="dom-if" if="[[!isMe(memberSubrouteData.memberId, session.token)]]">
                                     <paper-icon-button icon="star" hidden="[[!isUserIndicator]]" on-tap="onOpenPromoteMember"></paper-icon-button>
@@ -362,6 +370,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             listeners: {
                 'memberEditor.iron-form-response': 'onCreateMemberResponse',
                 'memberEditor.iron-form-error': 'onCreateMemberError',
+                'deleteMemberDialog.iron-form-response': 'onDeleteMemberResponse',
+                'deleteMemberDialog.iron-form-error': 'onDeleteMemberError',
                 'promotionDialog.iron-form-response': 'onPromoteMemberResponse',
                 'promotionDialog.iron-form-error': 'onPromoteMemberError',
                 'demotionDialog.iron-form-response': 'onDemoteMemberResponse',
@@ -405,6 +415,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     message: 'Member creation failed.'
                 });
             },
+            onOpenDeleteMember: function (event, detail) {
+                this.$.deleteMemberDialog.show();
+            },
+            onDeleteMemberResponse: function (event, details) {
+                console.log('Member removed successfully: ' + JSON.stringify(details.response));
+                this.$.networkPage.selectedAccountId = this.session.token;
+                this.$.networkPage.$.childrenIronAjax.generateRequest();
+                this.$.networkPage.$.genocideIronAjax.generateRequest();
+                this.fire('feedback', {
+                    message: 'Member removed successfully.'
+                });
+            },
+            onDeleteMemberError: function (event, details) {
+                console.log('Remove-member error: ' + JSON.stringify(details.response));
+                this.fire('feedback', {
+                    message: 'Member removing failed.'
+                });
+            },
             onOpenPromoteMember: function (event, detail) {
                 this.$.promotionDialog.show();
             },
@@ -440,25 +468,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 this.fire('feedback', {
                     message: 'Member demoting failed.'
                 });
-            },
-//                page: {
-//                    type: String,
-//                    reflectToAttribute: true,
-//                    observer: '_pageChanged'
-//                },
-//            },
-//            observers: [
-//                '_routePageChanged(routeData.page)'
-//            ],
-//            _routePageChanged: function (page) {
-//                this.page = page || 'view1';
-//            },
-//            _pageChanged: function (page) {
-//                // load page import on demand.
-//                this.importHref(
-//                        this.resolveUrl('my-' + page + '.html'), null, null, true);
-//            }
-
+            }
         });
 
     </script>

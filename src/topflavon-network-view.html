@@ -102,7 +102,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     </form>
                 </paper-dialog>-->
 
-        <paper-dialog id="memberEraseConfirm" modal>
+<!--        <paper-dialog id="memberEraseConfirm" modal>
             <h2 id="memberEraseConfirmDialogTitle">Delete member</h2>
             <form id="deleteMemberForm" is="iron-form" 
                   verbose 
@@ -119,7 +119,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     <paper-button id="memberEraseConfirmDialogAcceptButton" dialog-confirm raised on-tap="onDeleteMemberPrompted">OK</paper-button>
                 </div>
             </form>
-        </paper-dialog>
+        </paper-dialog>-->
 <!--        <paper-dialog id="promoteAdminDialog" modal>
             <h2 id="promoteAdminDialogTitle">Promote administrator</h2>
             <form id="promoteMemberForm" is="iron-form" 
@@ -248,8 +248,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 'observeOwnerChange(accountId)'
             ],
             listeners: {
-                'deleteMemberForm.iron-form-response': 'onDeleteMemberResponse',
-                'deleteMemberForm.iron-form-error': 'onDeleteMemberError',
+//                'deleteMemberForm.iron-form-response': 'onDeleteMemberResponse',
+//                'deleteMemberForm.iron-form-error': 'onDeleteMemberError',
 //                'promoteMemberForm.iron-form-response': 'onPromoteMemberResponse',
 //                'promoteMemberForm.iron-form-error': 'onPromoteMemberError',
 //                'demoteMemberForm.iron-form-response': 'onDemoteMemberResponse',
@@ -330,19 +330,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 //
 ////                    this.$.memberDialog.open();
 //            },
-            onDeleteMemberResponse: function (event, details) {
-                console.log('Member removed successfully: ' + JSON.stringify(details.response));
-                this.$.childrenIronAjax.generateRequest();
-                this.fire('feedback', {
-                    message: 'Member removed successfully.'
-                });
-            },
-            onDeleteMemberError: function (event, details) {
-                console.log('Remove-member error: ' + JSON.stringify(details.response));
-                this.fire('feedback', {
-                    message: 'Member removing failed.'
-                });
-            },
+//            onDeleteMemberResponse: function (event, details) {
+//                console.log('Member removed successfully: ' + JSON.stringify(details.response));
+//                this.$.childrenIronAjax.generateRequest();
+//                this.fire('feedback', {
+//                    message: 'Member removed successfully.'
+//                });
+//            },
+//            onDeleteMemberError: function (event, details) {
+//                console.log('Remove-member error: ' + JSON.stringify(details.response));
+//                this.fire('feedback', {
+//                    message: 'Member removing failed.'
+//                });
+//            },
 //            onPromoteMemberResponse: function (event, details) {
 //                console.log('Member promoted successfully: ' + JSON.stringify(details.response));
 //                this.$.childrenIronAjax.generateRequest();
@@ -372,18 +372,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             isEmpty: function (data) {
                 return data === undefined || data === null || data.length === 0;
             },
-            onDemoteMemberPrompted: function () {
-                this.$.demoteMemberForm.submit();
-                console.log('Demote member prompted.');
-            },
-            onDeleteMemberPrompted: function () {
-                this.$.deleteMemberForm.submit();
-                console.log('Delete member prompted.');
-            },
-            onPromoteMemberPrompted: function () {
-                this.$.promoteMemberForm.submit();
-                console.log('Promote member prompted.');
-            },
+//            onDemoteMemberPrompted: function () {
+//                this.$.demoteMemberForm.submit();
+//                console.log('Demote member prompted.');
+//            },
+//            onDeleteMemberPrompted: function () {
+//                this.$.deleteMemberForm.submit();
+//                console.log('Delete member prompted.');
+//            },
+//            onPromoteMemberPrompted: function () {
+//                this.$.promoteMemberForm.submit();
+//                console.log('Promote member prompted.');
+//            },
 //            openNewMember: function () {
 //                this.$.memberDialog.open();
 //            }
