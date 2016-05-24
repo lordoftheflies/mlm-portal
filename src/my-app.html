@@ -40,6 +40,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="plutonium-authorization-behavior.html">
 
 <link rel="import" href="topflavon-member-editor.html">
+<link rel="import" href="topflavon-role-changer-prompt.html">
 
 <dom-module id="my-app">
 
@@ -126,10 +127,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <topflavon-member-editor
             id="memberEditor"
-            acion="[[apiUrl]]/addressbook/save"
+            action="[[apiUrl]]/addressbook/save"
             possible-parents="[[possibleParents]]"
             locales="[[locales]]">
         </topflavon-member-editor>
+        <topflavon-role-changer-prompt
+            id="promotionDialog"
+            action="[[apiUrl]]/addressbook/promote"
+            owner-id="[[session.token]]"
+            subject-name="[[selectedName]]"
+            operation-name="promote"
+            role-name="administrator"
+            subject-id="[[memberSubrouteData.memberId]]">
+        </topflavon-role-changer-prompt>
+        <topflavon-role-changer-prompt
+            id="demotionDialog"
+            action="[[apiUrl]]/addressbook/demote"
+            owner-id="[[session.token]]"
+            subject-name="[[selectedName]]"
+            operation-name="demote"
+            role-name="user"
+            subject-id="[[memberSubrouteData.memberId]]">
+        </topflavon-role-changer-prompt>
 
         <app-drawer-layout fullbleed>
 
@@ -252,27 +271,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                 <paper-icon-button icon="remove-circle" on-tap="onConfirmRemoveMember"></paper-icon-button>
                                 <paper-icon-button icon="send" on-tap="onSendTo"></paper-icon-button>
                                 <template is="dom-if" if="[[!isMe(memberSubrouteData.memberId, session.token)]]">
-                                    <paper-icon-button hidden="[[!isUser(selectedRole)]]" icon="star" on-tap="onOpenPromoteAdminPrompt"></paper-icon-button>
-                                    <!--</template>-->
-                                    <!--                                    <template is="dom-if" if="[[isAdmin(selectedRole)]]">-->
-                                    <paper-icon-button hidden="[[!isAdmin(selectedRole)]]" icon="star-border" on-tap="onOpenDemoteAdminPrompt"></paper-icon-button>
+                                    <paper-icon-button icon="star" hidden="[[!isUserIndicator]]" on-tap="onOpenPromoteMember"></paper-icon-button>
+                                    <paper-icon-button icon="star-border" hidden="[[!isAdminIndicator]]" on-tap="onOpenDemoteMember"></paper-icon-button>
                                 </template>
                             </div>
 
                         </iron-pages>
                     </app-toolbar>
-
-
-
-                    <!-- Toolbar icons -->
-
-
-                    <!--                     Application sub title 
-                                        <div hidden="[[!admin]]">
-                    
-                                        </div>-->
-
-
                 </app-header>
                 <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
                     <topflavon-about-view name="about-view"></topflavon-about-view>
@@ -298,6 +303,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         api-url="[[apiUrl]]" 
                         account-id="[[session.token]]" 
                         parents="{{parents}}"
+                        selected-name="{{selectedName}}"
                         selected-role="{{selectedRole}}"
                         selected-account-id="{{memberSubrouteData.memberId}}">
                     </topflavon-network-view>
@@ -336,11 +342,30 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 apiUrl: {
                     type: String,
                     value: "http://localhost:8080/topflavon-backend"
-                }
+                },
+//                isMeIndicator: {
+//                    type: Boolean,
+//                    value: true,
+//                    observer: 'isMe(memberSubrouteData.memberId, session.token)'
+//                },
+//                isUserIndicator: {
+//                    type: Boolean,
+//                    value: true,
+//                    observer: 'isUser(selectedRole)'
+//                },
+//                isAdminIndicator: {
+//                    type: Boolean,
+//                    value: true,
+//                    observer: 'isAdmin(selectedRole)'
+//                }
             },
             listeners: {
                 'memberEditor.iron-form-response': 'onCreateMemberResponse',
                 'memberEditor.iron-form-error': 'onCreateMemberError',
+                'promotionDialog.iron-form-response': 'onPromoteMemberResponse',
+                'promotionDialog.iron-form-error': 'onPromoteMemberError',
+                'demotionDialog.iron-form-response': 'onDemoteMemberResponse',
+                'demotionDialog.iron-form-error': 'onDemoteMemberError',
                 'feedback': 'onFeedback'
             },
             showUserNavigation: function () {
@@ -369,6 +394,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 console.log('Member created successfully: ' + JSON.stringify(details.response));
                 // TODO: move to this
                 this.$.networkPage.$.childrenIronAjax.generateRequest();
+                this.$.possibleParentsIronAjax.generateRequest();
                 this.fire('feedback', {
                     message: 'Member created successfully'
                 });
@@ -377,6 +403,42 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 console.log('Create-member error: ' + JSON.stringify(details.response));
                 this.fire('feedback', {
                     message: 'Member creation failed.'
+                });
+            },
+            onOpenPromoteMember: function (event, detail) {
+                this.$.promotionDialog.show();
+            },
+            onPromoteMemberResponse: function (event, details) {
+                console.log('Member promoted successfully: ' + JSON.stringify(details.response));
+                this.$.networkPage.$.childrenIronAjax.generateRequest();
+                this.$.networkPage.$.genocideIronAjax.generateRequest();
+                this.selectedRole = 'ADMIN';
+                this.fire('feedback', {
+                    message: 'Member promoted successfully'
+                });
+            },
+            onPromoteMemberError: function (event, details) {
+                console.log('Promote-member error: ' + JSON.stringify(details.response));
+                this.fire('feedback', {
+                    message: 'Member promoting failed.'
+                });
+            },
+            onOpenDemoteMember: function (event, detail) {
+                this.$.demotionDialog.show();
+            },
+            onDemoteMemberResponse: function (event, details) {
+                console.log('Member demoted successfully: ' + JSON.stringify(details.response));
+                this.$.networkPage.$.childrenIronAjax.generateRequest();
+                this.$.networkPage.$.genocideIronAjax.generateRequest();
+                this.selectedRole = 'USER';
+                this.fire('feedback', {
+                    message: 'Member demoted successfully'
+                });
+            },
+            onDemoteMemberError: function (event, details) {
+                console.log('Demote-member error: ' + JSON.stringify(details.response));
+                this.fire('feedback', {
+                    message: 'Member demoting failed.'
                 });
             },
 //                page: {

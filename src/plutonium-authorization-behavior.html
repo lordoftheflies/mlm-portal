@@ -1,6 +1,35 @@
 <script>
     window.PlutoniumBehaviors = window.PlutoniumBehaviors || {};
     PlutoniumBehaviors.AuthorizationBehavior = {
+        properties: {
+            selecedRole: {
+                type: String,
+                notify: true
+            },
+            memberSubrouteData: {
+                type: Object,
+                notify: true
+            },
+            session: {
+                type: Object,
+                notify: true
+            },
+            isMeIndicator: {
+                type: Boolean,
+                notify: true,
+                observer: 'isMe(memberSubrouteData.memberId, session.token)'
+            },
+            isUserIndicator: {
+                type: Boolean,
+                notify: true,
+                computed: 'isUser(selectedRole)'
+            },
+            isAdminIndicator: {
+                type: Boolean,
+                notify: true,
+                computed: 'isAdmin(selectedRole)'
+            }
+        },
         isGroup: function (data) {
             return data === 'GROUP';
         },
@@ -19,7 +48,7 @@
                 return 'star';
             }
         },
-        isMe: function(accountId, token) {
+        isMe: function (accountId, token) {
             return accountId === token;
         }
     };
