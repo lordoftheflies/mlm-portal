@@ -129,7 +129,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             },
             accountId: {
                 type: String,
-                notify: true
+                notify: true,
+                observer: 'observeSelectedAccountId'
             },
             selectedRoot: {
                 type: String,
@@ -178,7 +179,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         },
         observeSelectedContentFolder: function (folder) {
             this.tocRequestParams.tag = folder;
-            this.$.rootModelAjax.generateRequest();
+            this.tocRequestParams.owner = this.accountId;
+//            this.$.rootModelAjax.generateRequest();
+            this.$.childTocAjax.generateRequest();
+            this.$.parentTocAjax.generateRequest();
+        },
+        observeSelectedAccountId: function (accountId) {
+            this.tocRequestParams.tag = this.selectedContentFolder;
+            this.tocRequestParams.owner = accountId;
+//            this.$.rootModelAjax.generateRequest();
             this.$.childTocAjax.generateRequest();
             this.$.parentTocAjax.generateRequest();
         },
@@ -199,7 +208,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             return this.contentRootUrl + fileName;
         },
         isDraftSelected: function (selectedContentFolder) {
-            console.log('Fasz');
             return selectedContentFolder === 'drafts';
         },
         onEditArticle: function () {
