@@ -82,6 +82,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             observers: [
                 'computeMailboxFolderRequest(accountId, selectedMailBoxFolder)'
             ],
+            ready: function () {
+                console.log(this.is + ' is ready.');
+            },
             getItemClasses: function (item) {
                 return item.tags.join(" ");
             },

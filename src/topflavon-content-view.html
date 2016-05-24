@@ -163,7 +163,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 //                    'computeTitle(data.title)'
         ],
         ready: function () {
-            console.log('Toc-Content-view is READY(account-id=' + this.selectedRoot + ')');
+            console.log(this.is + ' is ready.');
         },
         computeTocRequestParams: function (selectedRoot, selectedContentFolder, accountId) {
             this.tocRequestParams.pageId = selectedRoot;
@@ -178,18 +178,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             this.$.parentTocAjax.generateRequest();
         },
         observeSelectedContentFolder: function (folder) {
-            this.tocRequestParams.tag = folder;
-            this.tocRequestParams.owner = this.accountId;
+            if (this.tocRequestParams) {
+                this.tocRequestParams.tag = folder;
+            }
+//            this.tocRequestParams.owner = this.accountId;
 //            this.$.rootModelAjax.generateRequest();
-            this.$.childTocAjax.generateRequest();
-            this.$.parentTocAjax.generateRequest();
+//            this.$.childTocAjax.generateRequest();
+//            this.$.parentTocAjax.generateRequest();
         },
         observeSelectedAccountId: function (accountId) {
-            this.tocRequestParams.tag = this.selectedContentFolder;
-            this.tocRequestParams.owner = accountId;
+//            this.tocRequestParams.tag = this.selectedContentFolder;
+            if (this.tocRequestParams) {
+                this.tocRequestParams.owner = accountId;
+            }
 //            this.$.rootModelAjax.generateRequest();
-            this.$.childTocAjax.generateRequest();
-            this.$.parentTocAjax.generateRequest();
+//            this.$.childTocAjax.generateRequest();
+//            this.$.parentTocAjax.generateRequest();
         },
         getItemClasses: function (item) {
             return item.tags.join(" ");

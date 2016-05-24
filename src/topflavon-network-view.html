@@ -7,7 +7,6 @@ The complete set of contributors may be found at http://polymer.github.io/CONTRI
 Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
-
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/paper-card/paper-card.html">
 <link rel="import" href="../bower_components/paper-item/paper-item.html">
@@ -28,10 +27,32 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         </style>
 
-        <iron-ajax id="genocideIronAjax" url="[[apiUrl]]/addressbook/genocide" params="{{genocideRequestParams}}" last-response="{{parents}}" auto="[[!selectedAccount]]"></iron-ajax>
-        <iron-ajax id="possibleParentsIronAjax" url="[[apiUrl]]/addressbook/all" last-response="{{possibleParents}}" auto="[[!selectedAccount]]"></iron-ajax>
-        <iron-ajax id="childrenIronAjax" url="[[apiUrl]]/addressbook/children" params="{{childrenRequestParams}}" last-response="{{data}}" auto="[[!selectedAccount]]"></iron-ajax>
-        <iron-ajax id="localesAjax" url="[[apiUrl]]/localization/locales" last-response="{{locales}}" auto></iron-ajax>
+        <iron-ajax id="genocideIronAjax" 
+                   url="[[apiUrl]]/addressbook/genocide" 
+                   params="[[genocideRequestParams]]" 
+                   last-response="{{parents}}" 
+                   auto="[[!parents]]">
+
+        </iron-ajax>
+        <iron-ajax id="possibleParentsIronAjax" 
+                   url="[[apiUrl]]/addressbook/all" 
+                   last-response="{{possibleParents}}" 
+                   auto="[[!possibleParents]]">
+
+        </iron-ajax>
+        <iron-ajax id="childrenIronAjax" 
+                   url="[[apiUrl]]/addressbook/children" 
+                   params="[[childrenRequestParams]]" 
+                   last-response="{{data}}" 
+                   auto="[[!data]]">
+
+        </iron-ajax>
+        <iron-ajax id="localesAjax" 
+                   url="[[apiUrl]]/localization/locales" 
+                   last-response="{{locales}}" 
+                   auto>
+
+        </iron-ajax>
 
 
         <paper-dialog id="memberDialog" modal>
@@ -157,6 +178,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </div>
         </paper-card>
 
+        <table>
+            <tr><td>Genocide</td><td>[[genocideRequestParams]]</td></tr>
+            <tr><td>Children</td><td>[[childrenRequestParams]]</td></tr>
+            <tr><td>Selected account</td><td>[[selectedAccountId]]</td></tr>
+            <tr><td>Account</td><td>[[accountId]]</td></tr>
+            <tr><td>Role</td><td>[[selectedRole]]</td></tr>
+            <tr><td>Possible parents</td><td>[[possibleParents]]</td></tr>
+            <tr><td>Locales</td><td>[[locales]]</td></tr>
+            <tr><td>Type</td><td>[[selectedType]]</td></tr>
+            <tr><td>Parents</td><td>[[parents]]</td></tr>
+        </table>
+
     </template>
 
     <script>
@@ -170,28 +203,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 genocideRequestParams: {
                     type: Object,
                     notify: true,
-                    value: {
-                        childId: null
-                    }
+                    computed: 'computeGenocideRenocideRequestParams(selectedAccountId)'
                 },
                 childrenRequestParams: {
                     type: Object,
                     notify: true,
-                    value: {
-                        parentId: null
-                    }
+                    computed: 'computeChildrenRequestParams(selectedAccountId)'
                 },
-                accountId: {
+                selectedAccountId: {
                     type: String,
-                    notify: true
-                },
-                ownerId: {
-                    type: String,
-                    notify: true
-                },
-                selectedAccount: {
-                    type: String,
-                    notify: true
+                    notify: true,
+//                    reflectToAttribute: true
                 },
                 selectedRole: {
                     type: String,
@@ -205,10 +227,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     type: Array,
                     notify: true
                 },
-                unusedCodes: {
-                    type: Number,
-                    notify: true
-                },
                 selectedType: {
                     type: String,
                     notify: true,
@@ -220,9 +238,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 }
             },
             observers: [
-                'computeChildRequestParams(selectedAccount)',
-                'computeGenocideRequestParams(selectedAccount)',
-                'computeSelected(accountId)'
+                'observeChildRequestParams(selectedAccountId)',
+                'observeGenocideRequestParams(selectedAccountId)',
+                'observeOwnerChange(accountId)'
             ],
             listeners: {
                 'newMemberForm.iron-form-response': 'onCreateMemberResponse',
@@ -237,28 +255,39 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 'network-tree-refresh': 'onRefresh'
             },
             ready: function () {
-                console.log('Network-view is READY(account-id=' + this.accountId);
-                this.selectedAccount = this.accountId;
+                console.log(this.is + ' is ready.');
             },
-            computeChildRequestParams: function (accountId) {
-                this.childrenRequestParams.parentId = accountId;
-                console.log('Network-view child request parameters updated: ' + JSON.stringify(this.childrenRequestParams))
-//                    this.$.childrenIronAjax.generateRequest();
+            observeOwnerChange: function (accountId) {
+                this.selectedAccountId = accountId;
+            },
+            observeChildRequestParams: function (selectedAccountId) {
+//                this.childrenRequestParams.parentId = selectedAccountId;
+                console.log(this.is + ' child request parameters updated: ' + JSON.stringify(this.childrenRequestParams))
                 this.$.childrenIronAjax.generateRequest();
             },
-            computeGenocideRequestParams: function (accountId) {
-                this.genocideRequestParams.childId = accountId;
-                console.log('Network-view genocide request parameters updated: ' + JSON.stringify(this.genocideRequestParams))
+            observeGenocideRequestParams: function (selectedAccountId) {
+//                this.genocideRequestParams.childId = selectedAccountId;
+                console.log(this.is + ' genocide request parameters updated: ' + JSON.stringify(this.genocideRequestParams))
                 this.$.genocideIronAjax.generateRequest();
             },
-            computeSelected: function (accountId) {
-                console.log('Change selected member from ' + this.selectedAccount + ' to ' + accountId);
-                this.selectedAccount = accountId;
-                this.childrenRequestParams.parentId = this.selectedAccount;
-                this.genocideRequestParams.childId = this.selectedAccount;
-                this.$.childrenIronAjax.generateRequest();
-                this.$.genocideIronAjax.generateRequest();
+            computeChildrenRequestParams: function() {
+                return {
+                    parentId: this.selectedAccountId
+                };
             },
+            computeGenocideRenocideRequestParams: function() {
+                return {
+                    childId: this.selectedAccountId
+                };
+            },
+//            computeSelected: function (accountId) {
+//                console.log('Change selected member from ' + this.selectedAccount + ' to ' + accountId);
+//                this.selectedAccount = accountId;
+//                this.childrenRequestParams.parentId = this.selectedAccount;
+//                this.genocideRequestParams.childId = this.selectedAccount;
+////                this.$.childrenIronAjax.generateRequest();
+////                this.$.genocideIronAjax.generateRequest();
+//            },
             onSelectMember: function (event, details) {
                 console.log('Network-view select account:');
                 this.unusedCodes = details.item.unusedcodes;

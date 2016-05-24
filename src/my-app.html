@@ -28,7 +28,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/iron-dropdown/iron-dropdown.html">
-<link rel="import" href="../bower_components/plutonium-login-widget/plutonium-shared-styles.html">
+<!--<link rel="import" href="../bower_components/plutonium-login-widget/plutonium-shared-styles.html">-->
 <link rel="import" href="../bower_components/plutonium-login-widget/plutonium-login-widget.html">
 <link rel="import" href="../bower_components/plutonium-login-widget/plutonium-logon-widget.html">
 <link rel="import" href="../bower_components/plutonium-login-widget/plutonium-passwordreset-widget.html">
@@ -93,20 +93,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             pattern="/:page"
             data="{{routeData}}"
             tail="{{subroute}}"></app-route>
-<!--        <app-route
-            route="{{subroute}}"
-            pattern="/:contentId"
-            data="{{subrouteData}}">
-        </app-route>-->
+        <!--        <app-route
+                    route="{{subroute}}"
+                    pattern="/:contentId"
+                    data="{{subrouteData}}">
+                </app-route>-->
         <app-route
-            route="content-view"
+            route="/content-view"
             pattern="/:contentId"
-            data="{{subrouteData}}">
+            data="{{contentSubrouteData}}">
         </app-route>
         <app-route
-            route="network-view"
+            route="/network-view"
             pattern="/:memberId"
-            data="{{subrouteData}}">
+            data="{{memberSubrouteData}}">
         </app-route>
 
         <app-drawer-layout fullbleed>
@@ -217,7 +217,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             <div data-route="network-view"  class="layout horizontal">
 
 
-                                <paper-tabs selected="{{selectedAccount}}" class="flex" scrollable attr-for-selected="id">
+                                <paper-tabs selected="{{memberSubrouteData.memberId}}" class="flex" scrollable attr-for-selected="id">
                                     <template is="dom-repeat" items="[[parents]]">
                                         <paper-tab id="[[item.id]]" role="[[item.role]]" link>
                                             <iron-icon class="end-justified" icon="[[getIcon(item.role)]]" href="/network-view/{{item.id}}"></iron-icon>
@@ -250,16 +250,41 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     
                                         </div>-->
 
+
                 </app-header>
                 <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
                     <topflavon-about-view name="about-view"></topflavon-about-view>
-                    <topflavon-share-view name="profile-view" api-url="[[apiUrl]]" account-id="[[session.token]]"></topflavon-share-view>
-                    <topflavon-profile-view name="profile-view" api-url="[[apiUrl]]" account-id="[[session.token]]"></topflavon-profile-view>
-                    <topflavon-mailbox-view name="mailbox-view" api-url="[[apiUrl]]" account-id="[[session.token]]" selected-mail-box-folder="{{selectedMailboxFolder}}"></topflavon-mailbox-view>
-                    <topflavon-network-view name="network-view" api-url="[[apiUrl]]" account-id="[[session.token]]" selected-account="{{subrouteData.memberId}}" parents="{{parents}}" owner-id="[[session.token]]"></topflavon-network-view>
-                    <topflavon-content-view name="content-view" api-url="[[apiUrl]]" account-id="[[session.token]]" admin="[[session.powerUser]]" selected-root="{{subrouteData.contentId}}" selected-content-folder="{{selectedContentFolder}}"></topflavon-content-view>
-                </iron-pages>
 
+                    <topflavon-share-view name="profile-view" 
+                                          api-url="[[apiUrl]]" 
+                                          account-id="[[session.token]]" 
+                                          content-model="{{editedContentModel}}" 
+                                          selected-meta-action="{{selectedMetaAction}}">
+                    </topflavon-share-view>
+                    <topflavon-profile-view name="profile-view" 
+                                            api-url="[[apiUrl]]" 
+                                            account-id="[[session.token]]">
+                    </topflavon-profile-view>
+                    <topflavon-mailbox-view name="mailbox-view" 
+                                            api-url="[[apiUrl]]" 
+                                            account-id="[[session.token]]" 
+                                            selected-mail-box-folder="{{selectedMailboxFolder}}">
+                    </topflavon-mailbox-view>
+                    <topflavon-network-view name="network-view" 
+                                            api-url="[[apiUrl]]" 
+                                            account-id="[[session.token]]" 
+                                            parents="{{parents}}"
+                                            selected-account-id="{{memberSubrouteData.memberId}}">
+                    </topflavon-network-view>
+                    <topflavon-content-view name="content-view" 
+                                            api-url="[[apiUrl]]" 
+                                            account-id="[[session.token]]" 
+                                            admin="[[session.powerUser]]" 
+                                            selected-root="{{contentSubrouteData.contentId}}"
+                                            selected-content-folder="{{selectedContentFolder}}">
+
+                    </topflavon-content-view>
+                </iron-pages>
             </app-header-layout>
 
             <paper-toast id="mainToast"></paper-toast>
