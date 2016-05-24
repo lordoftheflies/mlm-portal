@@ -139,15 +139,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <app-header-layout has-scrolling-region>
 
                 <app-header condenses fixed shadow effects="waterfall resize-title fade-background parallax-background" class="layout horizontal">
-                    <app-toolbar>
+                    <app-toolbar primary>
                         <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
-                        <div title>
-                            <h1>TopFlavon</h1>
+                        <div class="flex" >
+                            <h4 condensed-title>[[applicationTitle]]</h4>
                         </div>
+
                         <div hidden="[[!session]]">
                             <paper-button on-tap="showUserNavigation">
                                 <iron-icon icon="account-circle"></iron-icon>
-                                <span>{{session.userName}}</span>
+                                <label>{{session.userName}}</label>
                             </paper-button>
                             <iron-dropdown id="userNavigation" horizontal-align="right" vertical-align="top">
                                 <paper-menu attr-for-selected="data-route" selected="[[route]]" class="dropdown-content">
@@ -163,85 +164,56 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             </iron-dropdown>
                         </div>
                     </app-toolbar>
-                    <div primary class="layout horizontal">
-                        <div condensed-title>
-                            <iron-pages attr-for-selected="data-route" selected="[[page]]" class="flex">
-                                <div data-route="share-content" class="app-name focus-target" tabindex="-1">
-                                    <span id="mainTitle">[[applicationTitle]]</span>
-                                    <span>/</span>
-                                    <span id="shareContentViewTitleLabel" class="page-title">Share content</span>
-                                </div>
-                                <div data-route="content-tree" class="app-name focus-target" tabindex="-1">
-                                    <span id="mainTitle">[[applicationTitle]]</span>
-                                    <span>/</span>
-                                    <span id="contentTreeViewTitleLabel" class="page-title">Contents</span>
-                                </div>
-                                <div data-route="mailbox" class="app-name focus-target" tabindex="-1">
-                                    <span id="mainTitle">[[applicationTitle]]</span>
-                                    <span>/</span>
-                                    <span id="mailBoxViewTitleLabel" class="page-title">Mailbox</span>
-                                </div>
-                                <div data-route="network" class="app-name focus-target" tabindex="-1">
-                                    <span id="mainTitle">[[applicationTitle]]</span>
-                                    <span>/</span>
-                                    <span id="networkViewTitleLabel" class="page-title">Network</span>
-                                </div>
-                                <div data-route="about-view" class="app-name focus-target" tabindex="-1">
-                                    <span id="mainTitle">[[applicationTitle]]</span>
-                                    <span>/</span>
-                                    <span id="aboutViewTitleLabel" class="page-title">About</span>
-                                </div>
-                                <div data-route="profile-view" class="app-name focus-target" tabindex="-1">
-                                    <span id="mainTitle">[[applicationTitle]]</span>
-                                    <span>/</span>
-                                    <span id="profileViewTitleLabel" class="page-title">Profile</span>
-                                </div>
-                            </iron-pages>
-                        </div>
-                        <paper-tabs selected="0" autoselect scrollable class="flex">
-                            <paper-tab>Food</paper-tab>
-                            <paper-tab>Drink</paper-tab>
-                            <paper-tab>Life</paper-tab>
-                        </paper-tabs>
-                    </div>
+                    <app-toolbar>
+                        <iron-pages title selected="[[page]]" attr-for-selected="data-route"  attr-for-selected="name" role="navigation">
+                            <h1 data-route="share-content" class="app-name focus-target" tabindex="-1">
+                                <span>[[applicationTitle]]</span><span>/</span><span id="shareContentViewTitleLabel" class="page-title">Share content</span>
+                            </h1>
+                            <h1 data-route="content-view" class="app-name focus-target" tabindex="-1">
+                                <span>[[applicationTitle]]</span><span>/</span><span id="contentTreeViewTitleLabel" class="page-title">Contents</span>
+                            </h1>
+                            <h1 data-route="mailbox-view" class="app-name focus-target" tabindex="-1">
+                                <span>[[applicationTitle]]</span><span>/</span><span id="mailBoxViewTitleLabel" class="page-title">Mailbox</span>
+                            </h1>
+                            <h1 data-route="network-view" class="app-name focus-target" tabindex="-1">
+                                <span>[[applicationTitle]]</span><span>/</span><span id="networkViewTitleLabel" class="page-title">Network</span>
+                            </h1>
+                            <h1 data-route="about-view" class="app-name focus-target" tabindex="-1">
+                                <span id="mainTitle">[[applicationTitle]]</span><span>/</span><span id="aboutViewTitleLabel" class="page-title">About</span>
+                            </h1>
+                            <h1 data-route="profile-view" class="app-name focus-target" tabindex="-1">
+                                <span id="mainTitle">[[applicationTitle]]</span><span>/</span><span id="profileViewTitleLabel" class="page-title">Profile</span>
+                            </h1>
+                        </iron-pages>
+                    </app-toolbar>
 
-                    <!-- Application name -->
-                    <div class="middle middle-container">
-
-                    </div>
-
-
-
-                    <!-- Toolbar icons -->
-
-
-                    <!-- Application sub title -->
-                    <div hidden="[[!admin]]">
-                        <iron-pages attr-for-selected="data-route" selected="{{route}}" class="flex" style="padding: 0px">
-                            <paper-tabs data-route="share-content"  attr-for-selected="name" selected="{{selectedMetaAction}}" style="width: 100%;" scrollable autoselect>
+                    <!--Application name--> 
+                    <app-toolbar hidden="[[!admin]]">
+                        <iron-pages attr-for-selected="data-route" selected="[[page]]" class="flex" style="padding: 0px">
+                            <paper-tabs data-route="share-content"  attr-for-selected="name" selected="{{selectedMetaAction}}" style="width: 100%;" autoselect>
                                 <paper-tab text-id="shareTabLabel" name="share">Share</paper-tab>
                                 <paper-tab text-id="embbeddedContentTabLabel" name="embedded">Embed content</paper-tab>
                                 <paper-tab text-id="assembledContentTabLabel" name="assembled">Assembled content</paper-tab>
                                 <paper-tab text-id="propertiesTabLabel" name="props">Properties</paper-tab>
                             </paper-tabs>
-                            <paper-tabs hidden="[[!sessionInfo.powerUser]]" data-route="content-tree"  attr-for-selected="name" selected="{{selectedContentFolder}}" style="width: 100%;" scrollable autoselect>
+                            <paper-tabs hidden="[[!session.powerUser]]" data-route="content-view"  attr-for-selected="name" selected="{{selectedContentFolder}}" style="width: 100%;" autoselect>
                                 <paper-tab text-id="messagesPagePublicFolderTitle" name="public">Public</paper-tab>
                                 <paper-tab text-id="messagesPageMyContentsFolderTitle" name="drafts">Drafts</paper-tab>
                                 <paper-tab text-id="messagesPagePublishedFolderTitle" name="published">Published</paper-tab>
                             </paper-tabs>
-                            <paper-tabs data-route="mailbox"  attr-for-selected="name" selected="{{selectedMailboxFolder}}" style="width: 100%;" scrollable autoselect>
+                            <paper-tabs data-route="mailbox-view"  attr-for-selected="name" selected="{{selectedMailboxFolder}}" style="width: 100%;" autoselect>
                                 <paper-tab text-id="mailBoxPageInboxFolderTitle" name="inbox">Inbox</paper-tab> 
                                 <paper-tab text-id="sentItemsPageInboxFolderTitle" name="outbox">Sent items</paper-tab>
                             </paper-tabs>
 
-                            <div data-route="network"  class="layout horizontal">
+                            <div data-route="network-view"  class="layout horizontal">
 
 
                                 <paper-tabs selected="{{selectedAccount}}" class="flex" scrollable attr-for-selected="id">
-                                    <template is="dom-repeat" items="{{parents}}">
-                                        <paper-tab id="[[item.id]]" role="{{item.role}}" href="{{baseUrl}}network/{{item.id}}">
-                                            <iron-icon class="end-justified" icon="[[getIcon(item.role)]]"></iron-icon>
-                                            <a class="tab-content" href="{{baseUrl}}network/{{item.id}}">[[item.name]]</a>
+                                    <template is="dom-repeat" items="[[parents]]">
+                                        <paper-tab id="[[item.id]]" role="[[item.role]]" link>
+                                            <iron-icon class="end-justified" icon="[[getIcon(item.role)]]" href="/network-view/{{item.id}}"></iron-icon>
+                                            <a class="member tab" href="/network-view/{{item.id}}">[[item.name]]</a>
                                         </paper-tab>
                                     </template>
                                 </paper-tabs>
@@ -258,18 +230,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             </div>
 
                         </iron-pages>
-                    </div>
+                    </app-toolbar>
+
+
+
+                    <!-- Toolbar icons -->
+
+
+                    <!--                     Application sub title 
+                                        <div hidden="[[!admin]]">
+                    
+                                        </div>-->
 
                 </app-header>
-
-
-
                 <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
                     <topflavon-about-view name="about-view"></topflavon-about-view>
                     <topflavon-profile-view name="profile-view" api-url="[[apiUrl]]" account-id="[[session.token]]"></topflavon-profile-view>
-                    <topflavon-mailbox-view name="mailbox-view" api-url="[[apiUrl]]" account-id="[[session.token]]"></topflavon-mailbox-view>
-                    <topflavon-network-view name="network-view" api-url="[[apiUrl]]" account-id="[[session.token]]" owner-id="[[session.token]]"></topflavon-network-view>
-                    <topflavon-content-view name="content-view" api-url="[[apiUrl]]" account-id="[[session.token]]" admin="[[session.powerUser]]" selected-root="{{subrouteData.contentId}}"></topflavon-content-view>
+                    <topflavon-mailbox-view name="mailbox-view" api-url="[[apiUrl]]" account-id="[[session.token]]" selected-mail-box-folder="{{selectedMailboxFolder}}"></topflavon-mailbox-view>
+                    <topflavon-network-view name="network-view" api-url="[[apiUrl]]" account-id="[[session.token]]" selected-account="{{selectedAccount}}" parents="{{parents}}" owner-id="[[session.token]]"></topflavon-network-view>
+                    <topflavon-content-view name="content-view" api-url="[[apiUrl]]" account-id="[[session.token]]" admin="[[session.powerUser]]" selected-root="{{subrouteData.contentId}}" selected-content-folder="{{selectedContentFolder}}"></topflavon-content-view>
                     <my-view1 name="view1"></my-view1>
                     <my-view2 name="view2"></my-view2>
                     <my-view3 name="view3"></my-view3>
@@ -313,6 +292,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 if (detail.message) {
                     this.$.mainToast.text = detail.message;
                     this.$.mainToast.show();
+                }
+            },
+            getIcon: function (data) {
+                if (data === 'GROUP') {
+                    return 'supervisor-account';
+                } else if (data === 'USER') {
+                    return 'star-border';
+                } else if (data === 'ADMIN') {
+                    return 'star';
                 }
             }
 //                page: {

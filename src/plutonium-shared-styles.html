@@ -15,11 +15,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="plutonium-shared-styles">
     <template>
         <style include="iron-flex iron-flex-alignment">
-            
+
+            paper-tab[link] a.member.tab {
+                /*@apply(--layout-horizontal);*/
+                /*@apply(--layout-center-center);*/
+                text-decoration: none;
+                height: initial;
+                margin-left: 10px;
+                margin-right: 10px;
+                color: var(--primary-background-color);
+            }
+
             a.paper-item-link {
                 text-decoration: none;
             }
-            
+
             paper-card {
                 --paper-card: {
                     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
@@ -66,11 +76,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 margin-top: 12px;
                 margin-bottom: 24px;
             }
-            
-            
-/*            iron-list {
-                margin-top: 12px;
-            }*/
+
+
+            /*            iron-list {
+                            margin-top: 12px;
+                        }*/
 
 
         </style>

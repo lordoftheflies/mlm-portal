@@ -28,9 +28,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         </style>
 
-        <iron-ajax id="genocideIronAjax" url="[[apiUrl]]/addressbook/genocide" params="{{genocideRequestParams}}" last-response="{{parents}}"></iron-ajax>
-        <iron-ajax id="possibleParentsIronAjax" url="[[apiUrl]]/addressbook/all" last-response="{{possibleParents}}" auto></iron-ajax>
-        <iron-ajax id="childrenIronAjax" url="[[apiUrl]]/addressbook/children" params="{{childrenRequestParams}}" last-response="{{data}}"></iron-ajax>
+        <iron-ajax id="genocideIronAjax" url="[[apiUrl]]/addressbook/genocide" params="{{genocideRequestParams}}" last-response="{{parents}}" auto="[[!selectedAccount]]"></iron-ajax>
+        <iron-ajax id="possibleParentsIronAjax" url="[[apiUrl]]/addressbook/all" last-response="{{possibleParents}}" auto="[[!selectedAccount]]"></iron-ajax>
+        <iron-ajax id="childrenIronAjax" url="[[apiUrl]]/addressbook/children" params="{{childrenRequestParams}}" last-response="{{data}}" auto="[[!selectedAccount]]"></iron-ajax>
         <iron-ajax id="localesAjax" url="[[apiUrl]]/localization/locales" last-response="{{locales}}" auto></iron-ajax>
 
 
@@ -213,6 +213,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     type: String,
                     notify: true,
                     value: 'USER'
+                },
+                parents: {
+                    type: Array,
+                    notify: true
                 }
             },
             observers: [

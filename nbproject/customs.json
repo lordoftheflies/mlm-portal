@@ -118,6 +118,7 @@
         },
         "iron-pages": {
             "attributes": {
+                "role": {},
                 "attr-for-selected": {},
                 "selected": {}
             }
