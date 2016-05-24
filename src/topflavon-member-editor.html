@@ -10,7 +10,9 @@
 <link rel="import" href="../bower_components/paper-radio-button/paper-radio-button.html">
 <link rel="import" href="../bower_components/paper-radio-group/paper-radio-group.html">
 <link rel="import" href="../bower_components/iron-list/iron-list.html">
-<link rel="import" href="plutonium-shared-styles.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animations.html">
+<link rel="import" href="../bower_components/plutonium-login-widget/plutonium-shared-styles.html">
+<link rel="import" href="topflavon-shared-styles.html">
 <link rel="import" href="plutonium-authorization-behavior.html">
 
 <dom-module id="topflavon-member-editor">
@@ -22,6 +24,7 @@
                 @apply(--layout-vertical);
             }
 
+
         </style>
 
         <paper-dialog id="memberDialog" 
@@ -30,7 +33,9 @@
                       exit-animation="scale-down-animation"
                       with-backdrop
                       always-on-top>
-            <h2 id="newMemberDialogTitle">New member</h2>
+            <paper-toolbar>
+                <h2 id="newMemberDialogTitle">New member</h2>
+            </paper-toolbar>
             <form id="newMemberForm" is="iron-form" class="card-content" verbose 
                   content-type="application/json" method="post" action="[[action]]"
                   handle-as="json">
@@ -73,11 +78,12 @@
                         </paper-menu>
                     </paper-dropdown-menu>
                 </div>
-                <div class="card-actions">
-                    <paper-button id="newMemberDialogCancelButton" dialog-dismiss>Cancel</paper-button>
-                    <paper-button id="newMemberDialogCreateButton" raised class="primary" on-tap="onCreateMember" dialog-confirm>Create</paper-button>
+                <div class="layout horizontal">
+                    <paper-button id="newMemberDialogCancelButton" raised dialog-dismiss>Cancel</paper-button>
                     <paper-button id="newMemberDialogCreateAndRepeatButton" raised class="primary" on-tap="onCreateMemberRepeat">Create & repeat</paper-button>
                 </div>
+                
+                <paper-fab id="newMemberDialogCreateButton" raised icon="done" on-tap="onCreateMember" dialog-confirm>Create</paper-fab>
             </form>
         </paper-dialog>
 
@@ -126,7 +132,7 @@
                 this.$.newMemberForm.role.value = 'USER';
                 this.$.newMemberForm.name.value = '';
             },
-            show: function() {
+            show: function () {
                 this.$.memberDialog.open();
             }
         });

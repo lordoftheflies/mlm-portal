@@ -36,7 +36,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/plutonium-login-widget/plutonium-secure-application-behavior.html">
 
 <link rel="import" href="my-icons.html">
-<link rel="import" href="plutonium-shared-styles.html">
+<link rel="import" href="topflavon-shared-styles.html">
 <link rel="import" href="plutonium-authorization-behavior.html">
 
 <link rel="import" href="topflavon-member-editor.html">
@@ -47,8 +47,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <template>
 
-        <style include="iron-flex iron-alignment plutonium-shared-styles">
+        <style include="iron-flex iron-alignment topflavon-shared-styles">
 
+            .debug {
+                display: none;
+            }
+            
             :host {
                 display: block;
                 --app-primary-color: #4285f4;
