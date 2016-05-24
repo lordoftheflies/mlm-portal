@@ -1,0 +1,404 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-toast/paper-toast.html">
+<link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../bower_components/paper-menu/paper-menu.html">
+<link rel="import" href="../bower_components/paper-styles/paper-styles.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../bower_components/iron-dropdown/iron-dropdown.html">
+<!--<link rel="import" href="../bower_components/plutonium-login-widget/plutonium-shared-styles.html">-->
+<link rel="import" href="../bower_components/plutonium-login-widget/plutonium-login-widget.html">
+<link rel="import" href="../bower_components/plutonium-login-widget/plutonium-logon-widget.html">
+<link rel="import" href="../bower_components/plutonium-login-widget/plutonium-passwordreset-widget.html">
+<link rel="import" href="../bower_components/plutonium-login-widget/plutonium-forgottenpassword-widget.html">
+<link rel="import" href="../bower_components/plutonium-login-widget/plutonium-secure-application-behavior.html">
+
+<link rel="import" href="my-icons.html">
+<link rel="import" href="plutonium-shared-styles.html">
+<link rel="import" href="plutonium-authorization-behavior.html">
+
+<link rel="import" href="topflavon-member-editor.html">
+
+<dom-module id="my-app">
+
+    <template>
+
+        <style include="iron-flex iron-alignment plutonium-shared-styles">
+
+            :host {
+                display: block;
+                --app-primary-color: #4285f4;
+                --app-secondary-color: black;
+            }
+
+            app-header {
+                background-color: var(--app-primary-color);
+                color: #fff;
+            }
+            app-header paper-icon-button {
+                --paper-icon-button-ink-color: white;
+            }
+
+            app-drawer {
+                --app-drawer-content-container: {
+                    box-shadow: 1px 0 2px 1px rgba(0,0,0,0.18);
+                }
+                --app-drawer-scrim-background: rgba(179, 157, 219, 0.5);
+            }
+
+
+            .drawer-list {
+                margin: 0 20px;
+            }
+            .drawer-list a {
+                display: block;
+                padding: 0 16px;
+                line-height: 40px;
+                text-decoration: none;
+                color: var(--app-secondary-color);
+            }
+            .drawer-list a.iron-selected {
+                color: black;
+                font-weight: bold;
+            }
+            .drawer-list a.subroute {
+                padding-left: 32px;
+            }
+
+
+        </style>
+
+        <app-location route="{{route}}"></app-location>
+        <app-route
+            route="{{route}}"
+            pattern="/:page"
+            data="{{routeData}}"
+            tail="{{subroute}}"></app-route>
+        <!--        <app-route
+                    route="{{subroute}}"
+                    pattern="/:contentId"
+                    data="{{subrouteData}}">
+                </app-route>-->
+        <app-route
+            route="/content-view"
+            pattern="/:contentId"
+            data="{{contentSubrouteData}}">
+        </app-route>
+        <app-route
+            route="/network-view"
+            pattern="/:memberId"
+            data="{{memberSubrouteData}}">
+        </app-route>
+
+        <iron-ajax id="localesAjax" 
+                   url="[[apiUrl]]/localization/locales" 
+                   last-response="{{locales}}" 
+                   auto>
+        </iron-ajax>
+        <iron-ajax id="possibleParentsIronAjax" 
+                   url="[[apiUrl]]/addressbook/all" 
+                   last-response="{{possibleParents}}" 
+                   auto>
+
+        </iron-ajax>
+
+        <topflavon-member-editor
+            id="memberEditor"
+            acion="[[apiUrl]]/addressbook/save"
+            possible-parents="[[possibleParents]]"
+            locales="[[locales]]">
+        </topflavon-member-editor>
+
+        <app-drawer-layout fullbleed>
+
+            <!-- Drawer content -->
+            <app-drawer>
+                <app-toolbar>Menu</app-toolbar>
+                <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+                    <a id="shareMainMenuTitle" name="share-view" href="/share-view">Share</a>
+                    <a id="contentMainMenuTitle" name="content-view" href="/content-view/ROOT">Content</a>
+                    <a id="networkMainMenuTitle" name="network-view" href="/network-view/[[session.token]]">Network</a>
+                    <a id="mailBoxMainMenuTitle" name="mailbox-view" href="/mailbox-view/[[session.token]]">Mailbox</a>
+                    <a id="aboutMainMenuTitle" name="about-view" href="/about-view">About</a>
+                </iron-selector>
+            </app-drawer>
+
+            <plutonium-login-widget id="loginWidget"
+                                    authentication-url="{{apiUrl}}/authentication/signin">
+            </plutonium-login-widget>
+            <plutonium-logon-widget id="logonWidget"
+                                    registration-url="{{apiUrl}}/reg"
+                                    activation-code="{{activationCode}}">                                        
+            </plutonium-logon-widget>
+            <plutonium-passwordreset-widget id="passwordResetWidget"
+                                            password-reset-url="{{apiUrl}}/reset">
+            </plutonium-passwordreset-widget>
+            <plutonium-forgottenpassword-widget id="forgottenPasswordWidget"
+                                                password-reset-url="{{apiUrl}}/reset">
+            </plutonium-forgottenpassword-widget>
+            <iron-ajax id="sessionAjax" 
+                       on-response="sessionInfoHandler" 
+                       on-error="sessionInitializationErrorHandler" 
+                       url="[[apiUrl]]/authentication/session?token=[[token]]" 
+                       last-response="{{session}}"></iron-ajax>s
+
+
+            <!-- Main content -->
+            <app-header-layout has-scrolling-region>
+
+                <app-header condenses fixed shadow effects="waterfall resize-title fade-background parallax-background" class="layout horizontal">
+                    <app-toolbar primary>
+                        <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
+                        <div class="flex" >
+                            <h4 condensed-title>[[applicationTitle]]</h4>
+                        </div>
+
+                        <div hidden="[[!session]]">
+                            <paper-button on-tap="showUserNavigation">
+                                <iron-icon icon="account-circle"></iron-icon>
+                                <label title>{{session.userName}}</label>
+                            </paper-button>
+                            <iron-dropdown id="userNavigation" horizontal-align="right" vertical-align="top">
+                                <paper-menu attr-for-selected="data-route" selected="[[route]]" class="dropdown-content">
+                                    <a data-route="profile" href="/profile-view">
+                                        <iron-icon icon="account-circle"></iron-icon>
+                                        <span id="profileMenuTitle">Profile</span>
+                                    </a>
+                                    <a data-route="signout" href="#" on-tap="onLogout">
+                                        <iron-icon icon="markunread-mailbox"></iron-icon>
+                                        <span id="logoutButtonLabel">Logout</span>
+                                    </a>
+                                </paper-menu>
+                            </iron-dropdown>
+                        </div>
+                    </app-toolbar>
+                    <app-toolbar>
+                        <iron-pages title selected="[[page]]" attr-for-selected="data-route"  attr-for-selected="name" role="navigation">
+                            <h1 data-route="share-view" class="app-name focus-target" tabindex="-1">
+                                <span>[[applicationTitle]]</span><span>/</span><span id="shareContentViewTitleLabel" class="page-title">Share content</span>
+                            </h1>
+                            <h1 data-route="content-view" class="app-name focus-target" tabindex="-1">
+                                <span>[[applicationTitle]]</span><span>/</span><span id="contentTreeViewTitleLabel" class="page-title">Contents</span>
+                            </h1>
+                            <h1 data-route="mailbox-view" class="app-name focus-target" tabindex="-1">
+                                <span>[[applicationTitle]]</span><span>/</span><span id="mailBoxViewTitleLabel" class="page-title">Mailbox</span>
+                            </h1>
+                            <h1 data-route="network-view" class="app-name focus-target" tabindex="-1">
+                                <span>[[applicationTitle]]</span><span>/</span><span id="networkViewTitleLabel" class="page-title">Network</span>
+                            </h1>
+                            <h1 data-route="about-view" class="app-name focus-target" tabindex="-1">
+                                <span id="mainTitle">[[applicationTitle]]</span><span>/</span><span id="aboutViewTitleLabel" class="page-title">About</span>
+                            </h1>
+                            <h1 data-route="profile-view" class="app-name focus-target" tabindex="-1">
+                                <span id="mainTitle">[[applicationTitle]]</span><span>/</span><span id="profileViewTitleLabel" class="page-title">Profile</span>
+                            </h1>
+                        </iron-pages>
+                    </app-toolbar>
+
+                    <!--Application name--> 
+                    <app-toolbar hidden="[[!admin]]">
+                        <iron-pages attr-for-selected="data-route" selected="[[page]]" class="flex" style="padding: 0px">
+                            <paper-tabs data-route="share-view"  attr-for-selected="name" selected="{{selectedMetaAction}}" style="width: 100%;" autoselect>
+                                <paper-tab text-id="shareTabLabel" name="share">Share</paper-tab>
+                                <paper-tab text-id="embbeddedContentTabLabel" name="embedded">Embed content</paper-tab>
+                                <paper-tab text-id="assembledContentTabLabel" name="assembled">Assembled content</paper-tab>
+                                <paper-tab text-id="propertiesTabLabel" name="props">Properties</paper-tab>
+                            </paper-tabs>
+                            <paper-tabs hidden="[[!session.powerUser]]" data-route="content-view"  attr-for-selected="name" selected="{{selectedContentFolder}}" style="width: 100%;" autoselect>
+                                <paper-tab text-id="messagesPagePublicFolderTitle" name="public">Public</paper-tab>
+                                <paper-tab text-id="messagesPageMyContentsFolderTitle" name="drafts">Drafts</paper-tab>
+                                <paper-tab text-id="messagesPagePublishedFolderTitle" name="published">Published</paper-tab>
+                            </paper-tabs>
+                            <paper-tabs data-route="mailbox-view"  attr-for-selected="name" selected="{{selectedMailboxFolder}}" style="width: 100%;" autoselect>
+                                <paper-tab text-id="mailBoxPageInboxFolderTitle" name="inbox">Inbox</paper-tab> 
+                                <paper-tab text-id="sentItemsPageInboxFolderTitle" name="outbox">Sent items</paper-tab>
+                            </paper-tabs>
+
+                            <div data-route="network-view"  class="layout horizontal">
+
+
+                                <paper-tabs selected="{{memberSubrouteData.memberId}}" class="flex" scrollable attr-for-selected="id">
+                                    <template is="dom-repeat" items="[[parents]]">
+                                        <paper-tab id="[[item.id]]" role="[[item.role]]" link>
+                                            <iron-icon class="end-justified" icon="[[getIcon(item.role)]]" href="/network-view/{{item.id}}"></iron-icon>
+                                            <a class="member tab" href="/network-view/{{item.id}}">[[item.name]]</a>
+                                        </paper-tab>
+                                    </template>
+                                </paper-tabs>
+                                <!--<paper-icon-button icon="arrow-upward" on-tap="onNavigateUp"></paper-icon-button>-->
+                                <paper-icon-button icon="add-circle" on-tap="onOpenCreateMember"></paper-icon-button>
+                                <paper-icon-button icon="remove-circle" on-tap="onConfirmRemoveMember"></paper-icon-button>
+                                <paper-icon-button icon="send" on-tap="onSendTo"></paper-icon-button>
+                                <template is="dom-if" if="[[!isMe(memberSubrouteData.memberId, session.token)]]">
+                                    <paper-icon-button hidden="[[!isUser(selectedRole)]]" icon="star" on-tap="onOpenPromoteAdminPrompt"></paper-icon-button>
+                                    <!--</template>-->
+                                    <!--                                    <template is="dom-if" if="[[isAdmin(selectedRole)]]">-->
+                                    <paper-icon-button hidden="[[!isAdmin(selectedRole)]]" icon="star-border" on-tap="onOpenDemoteAdminPrompt"></paper-icon-button>
+                                </template>
+                            </div>
+
+                        </iron-pages>
+                    </app-toolbar>
+
+
+
+                    <!-- Toolbar icons -->
+
+
+                    <!--                     Application sub title 
+                                        <div hidden="[[!admin]]">
+                    
+                                        </div>-->
+
+
+                </app-header>
+                <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
+                    <topflavon-about-view name="about-view"></topflavon-about-view>
+
+                    <topflavon-share-view name="profile-view" 
+                                          api-url="[[apiUrl]]" 
+                                          account-id="[[session.token]]" 
+                                          content-model="{{editedContentModel}}" 
+                                          selected-meta-action="{{selectedMetaAction}}">
+                    </topflavon-share-view>
+                    <topflavon-profile-view name="profile-view" 
+                                            api-url="[[apiUrl]]" 
+                                            account-id="[[session.token]]">
+                    </topflavon-profile-view>
+                    <topflavon-mailbox-view name="mailbox-view" 
+                                            api-url="[[apiUrl]]" 
+                                            account-id="[[session.token]]" 
+                                            selected-mail-box-folder="{{selectedMailboxFolder}}">
+                    </topflavon-mailbox-view>
+                    <topflavon-network-view 
+                        id="networkPage"
+                        name="network-view" 
+                        api-url="[[apiUrl]]" 
+                        account-id="[[session.token]]" 
+                        parents="{{parents}}"
+                        selected-role="{{selectedRole}}"
+                        selected-account-id="{{memberSubrouteData.memberId}}">
+                    </topflavon-network-view>
+                    <topflavon-content-view name="content-view" 
+                                            api-url="[[apiUrl]]" 
+                                            account-id="[[session.token]]" 
+                                            admin="[[session.powerUser]]" 
+                                            selected-root="{{contentSubrouteData.contentId}}"
+                                            selected-content-folder="{{selectedContentFolder}}">
+
+                    </topflavon-content-view>
+                </iron-pages>
+            </app-header-layout>
+
+            <paper-toast id="mainToast"></paper-toast>
+
+        </app-drawer-layout>
+
+        <iron-media-query query="min-width: 600px" query-matches="{{wideLayout}}"></iron-media-query>
+
+    </template>
+
+    <script>
+
+        Polymer({
+            is: 'my-app',
+            behaviors: [
+                PlutoniumBehaviors.SecureApplicationBehavior,
+                PlutoniumBehaviors.AuthorizationBehavior
+            ],
+            properties: {
+                applicationTitle: {
+                    type: String,
+                    value: 'TopFlavon'
+                },
+                apiUrl: {
+                    type: String,
+                    value: "http://localhost:8080/topflavon-backend"
+                }
+            },
+            listeners: {
+                'memberEditor.iron-form-response': 'onCreateMemberResponse',
+                'memberEditor.iron-form-error': 'onCreateMemberError',
+                'feedback': 'onFeedback'
+            },
+            showUserNavigation: function () {
+                console.log("Show user navigation dropdown.");
+                this.$.userNavigation.toggle();
+            },
+            onFeedback: function (event, detail) {
+                if (detail.message) {
+                    this.$.mainToast.text = detail.message;
+                    this.$.mainToast.show();
+                }
+            },
+            getIcon: function (data) {
+                if (data === 'GROUP') {
+                    return 'supervisor-account';
+                } else if (data === 'USER') {
+                    return 'star-border';
+                } else if (data === 'ADMIN') {
+                    return 'star';
+                }
+            },
+            onOpenCreateMember: function (event, detail) {
+                this.$.memberEditor.show();
+            },
+            onCreateMemberResponse: function (event, details) {
+                console.log('Member created successfully: ' + JSON.stringify(details.response));
+                // TODO: move to this
+                this.$.networkPage.$.childrenIronAjax.generateRequest();
+                this.fire('feedback', {
+                    message: 'Member created successfully'
+                });
+            },
+            onCreateMemberError: function (event, details) {
+                console.log('Create-member error: ' + JSON.stringify(details.response));
+                this.fire('feedback', {
+                    message: 'Member creation failed.'
+                });
+            },
+//                page: {
+//                    type: String,
+//                    reflectToAttribute: true,
+//                    observer: '_pageChanged'
+//                },
+//            },
+//            observers: [
+//                '_routePageChanged(routeData.page)'
+//            ],
+//            _routePageChanged: function (page) {
+//                this.page = page || 'view1';
+//            },
+//            _pageChanged: function (page) {
+//                // load page import on demand.
+//                this.importHref(
+//                        this.resolveUrl('my-' + page + '.html'), null, null, true);
+//            }
+
+        });
+
+    </script>
+
+</dom-module>

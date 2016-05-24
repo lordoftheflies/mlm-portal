@@ -1,0 +1,136 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animations.html">
+<link rel="import" href="../bower_components/iron-overlay-behavior/iron-overlay-behavior.html">
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../bower_components/paper-menu/paper-menu.html">
+<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../bower_components/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="../bower_components/paper-radio-group/paper-radio-group.html">
+<link rel="import" href="../bower_components/iron-list/iron-list.html">
+<link rel="import" href="plutonium-shared-styles.html">
+<link rel="import" href="plutonium-authorization-behavior.html">
+
+<dom-module id="topflavon-member-editor">
+
+    <template>
+        <style include="plutonium-shared-styles">
+            :host {
+                display: block;
+                @apply(--layout-vertical);
+            }
+
+        </style>
+
+        <paper-dialog id="memberDialog" 
+                      class="plutonium widget"
+                      modal entry-animation="scale-up-animation" 
+                      exit-animation="scale-down-animation"
+                      with-backdrop
+                      always-on-top>
+            <h2 id="newMemberDialogTitle">New member</h2>
+            <form id="newMemberForm" is="iron-form" class="card-content" verbose 
+                  content-type="application/json" method="post" action="[[acion]]"
+                  handle-as="json">
+                <paper-input id="newMemberNameLabel" name="name" label="Name" type="text"></paper-input>
+                <paper-input hidden="[[isGroup(selectedType)]]" id="newMemberEmailLabel" name="email" label="Email" type="email">
+                </paper-input>
+
+                <!--                  on-response="onCreateMemberResponse"
+                                  on-error="onCreateMemberError" 
+                -->
+
+                <input name="role" type="hidden" value="{{selectedType}}" />
+                <paper-radio-group label="Type" attr-for-selected="name" selected="{{selectedType}}">
+                    <paper-radio-button id="newMemberTypeUserTitle" name="USER">User</paper-radio-button>
+                    <paper-radio-button id="newMemberTypeGroupTitle" name="GROUP">Group</paper-radio-button>
+                    <paper-radio-button id="newMemberTypeAdminTitle" name="ADMIN">Admin</paper-radio-button>
+                </paper-radio-group>
+
+                <div>
+                    <input name="parent" type="hidden" value="{{selectedParent}}" />
+                    <paper-dropdown-menu id="newMemberParentLabel" label="Parent member">
+                        <paper-menu
+                            class="dropdown-content" selected="{{selectedParent}}" attr-for-selected="value"
+                            attr-for-selected="id">
+                            <template is="dom-repeat" items="{{possibleParents}}">
+                                <paper-item value="{{item.id}}">{{item.name}}</paper-item>
+                            </template>
+                        </paper-menu>
+                    </paper-dropdown-menu>
+                </div>
+                <div>
+                    <input name="preferredLanguage" type="hidden" value="{{preferredLanguage}}" />
+                    <paper-dropdown-menu id="preferredLanguageLabel" label="Preferred language">
+                        <paper-menu class="dropdown-content">
+                            <paper-menu class="dropdown-content" selected="{{preferredLanguage}}" attr-for-selected="data-value">
+                                <template is="dom-repeat" items="[[locales]]" as="locale">
+                                    <paper-item data-value="[[locale.code]]">[[locale.name]]</paper-item>
+                                </template>
+                            </paper-menu>
+                        </paper-menu>
+                    </paper-dropdown-menu>
+                </div>
+                <div class="card-actions">
+                    <paper-button id="newMemberDialogCancelButton" dialog-dismiss>Cancel</paper-button>
+                    <paper-button id="newMemberDialogCreateButton" raised class="primary" on-tap="onCreateMember" dialog-confirm>Create</paper-button>
+                    <paper-button id="newMemberDialogCreateAndRepeatButton" raised class="primary" on-tap="onCreateMemberRepeat">Create & repeat</paper-button>
+                </div>
+            </form>
+        </paper-dialog>
+
+    </template>
+
+    <script>
+
+        Polymer({
+            is: 'topflavon-member-editor',
+            behaviors: [
+                PlutoniumBehaviors.AuthorizationBehavior
+            ],
+            properties: {
+                acion: {
+                    type: String,
+                    notify: true
+                },
+                preferredLanguage: {
+                    type: String,
+                    notify: true
+                },
+                selectedParent: {
+                    type: String,
+                    notify: true
+                },
+                selectedType: {
+                    type: String,
+                    notify: true,
+                    value: 'USER'
+                },
+                possibleParents: {
+                    type: String,
+                    notify: true
+                },
+                locales: {
+                    type: Array,
+                    notify: true
+                }
+            },
+            onCreateMember: function () {
+                this.$.newMemberForm.submit();
+            },
+            onCreateMemberRepeat: function () {
+                this.$.newMemberForm.submit();
+                this.$.newMemberForm.email.value = '';
+                this.$.newMemberForm.role.value = 'USER';
+                this.$.newMemberForm.name.value = '';
+            },
+            show: function() {
+                this.$.memberDialog.open();
+            }
+        });
+
+    </script>
+
+</dom-module>

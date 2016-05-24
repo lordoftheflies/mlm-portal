@@ -1,0 +1,12 @@
+{
+    "entrypoint": "index.html",
+    "shell": "src/my-app.html",
+    "fragments": [
+        "src/topflavon-share-view.html",
+        "src/topflavon-content-view.html",
+        "src/topflavon-mailbox-view.html",
+        "src/topflavon-about-view.html",
+        "src/topflavon-profile-view.html",
+        "src/topflavon-network-view.html"
+    ]
+}

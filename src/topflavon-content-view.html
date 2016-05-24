@@ -1,0 +1,253 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-list/iron-list.html">
+<link rel="import" href="../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../bower_components/grapp-breadcrumbs/grapp-breadcrumbs.html">
+
+<link rel="import" href="plutonium-widget-behavior.html">
+<link rel="import" href="plutonium-shared-styles.html">
+
+<dom-module id="topflavon-content-view">
+
+    <template>
+
+        <style include="plutonium-shared-styles">
+            :host {
+                display: block;
+                /*@apply(--layout-vertical);*/
+            }
+        </style>
+
+        <iron-ajax id="rootModelAjax" url="[[apiUrl]]/content-management/toc/info" params="[[infoRequestParams]]" handle-as="json" last-response="{{rootModel}}" auto="[[!selectedRoot]]"></iron-ajax>
+        <iron-ajax id="parentTocAjax" url="[[apiUrl]]/content-management/toc/path" params="[[tocRequestParams]]" handle-as="json" last-response="{{parentModel}}" on-response="onParentTocResponse" on-error="onParentTocError" auto="[[!selectedRoot]]"></iron-ajax>
+        <iron-ajax id="childTocAjax" url="[[apiUrl]]/content-management/toc" params="[[tocRequestParams]]" handle-as="json" on-response="onContentResponse" on-error="onContentError" last-response="{{contentChildrenModel}}" auto="[[!selectedRoot]]"></iron-ajax>
+
+
+
+        <template is="dom-if" if="{{contentChildrenModel.hasEmbeddedFile}}">
+            File
+            <iframe src$="{{getContentFileUrl(contentChildrenModel.embeddedFileName)}}"></iframe>
+        </template>
+
+        <!--<template is="dom-if" if="{{!isEmpty(data.sections)}}">-->
+        <div class="layout vertical flex" hidden="[[contentChildrenModel.leaf]]">
+            <iron-list items="{{contentChildrenModel.sections}}" as="section"   hidden="[[!isEmpty(data)]]">
+                <template>
+                    <a class="paper-item-link" href="[[getLink(section)]]" tabindex="[[tabIndex]]">
+                        <paper-item class="layout horizontal">
+                            <paper-material elevation="1" class="flex layout horizontal">
+                                <span class="flex">[[section.title]]</span>
+                                <div hidden="{{!isDraftSelected(selectedContentFolder)}}" class="layout horizontal">
+                                    <paper-icon-button icon="create" on-tap="onEditArticle"></paper-icon-button>
+                                    <paper-icon-button icon="delete"></paper-icon-button>
+                                    <paper-icon-button icon="file-upload"></paper-icon-button>
+                                    <paper-icon-button icon="file-download"></paper-icon-button>
+                                </div>
+                            </paper-material>
+
+                        </paper-item>
+                    </a>
+                </template>
+            </iron-list>
+
+        </div>
+        <paper-card heading="{{contentChildrenModel.title}}" hidden="{{!contentChildrenModel.leaf}}">
+            Article ||
+            Account: {{accountId}}
+            Selected root: {{selectedRoot}}
+            Selected folder: {{selectedContentFolder}}
+            Ebedded file: {{contentChildrenModel.hasEmbeddedFile}}
+            Is leaf: {{contentChildrenModel.leaf}}
+            ID: {{contentChildrenModel.id}}
+            Title: {{contentChildrenModel.title}}
+            Sections: {{contentChildrenModel.sections.length}}
+
+            <plutonium-article-section 
+                class="card-content layout vertical"
+                content-model="{{contentChildrenModel}}">
+            </plutonium-article-section>
+        </paper-card>
+    </template>
+
+    <paper-card elevation="1" hidden="[[!isEmpty(contentChildrenModel)]]">
+        <div class="card-content">
+            <div id="emptyChildrenText">No content in the folder.</div>
+        </div>
+    </paper-card>
+
+</template>
+
+<script>
+    'use strict';
+    Polymer({
+        is: 'topflavon-content-view',
+        behaviors: [
+            PlutoniumBehaviors.WidgetBehavior
+        ],
+        properties: {
+            tocRequestParams: {
+                type: Object,
+                notify: true,
+                value: {
+                    pageId: 'ROOT'
+                }
+            },
+            infoRequestParams: {
+                type: Object,
+                notify: true,
+                value: {
+                    pageId: 'ROOT'
+                }
+            },
+            renderBreadCrumbs: {
+                type: Boolean,
+                notify: true,
+                value: false
+            },
+            selectedContentFolder: {
+                type: String,
+                notify: true,
+                value: 'public',
+                observer: 'observeSelectedContentFolder'
+            },
+            accountId: {
+                type: String,
+                notify: true,
+                observer: 'observeSelectedAccountId'
+            },
+            selectedRoot: {
+                type: String,
+                notify: true
+            },
+            baseUrl: {
+                type: String,
+                notify: true
+            },
+            rootModel: {
+                type: Object,
+                notify: true
+            },
+            parentModel: {
+                type: Object,
+                notify: true
+            },
+            contentChildrenModel: {
+                type: Object,
+                notify: true
+            },
+            contentRootUrl: {
+                type: String,
+                notify: true,
+                value: 'http://localhost/topn_data/'
+            }
+        },
+        observers: [
+            'computeTocRequestParams(selectedRoot, selectedContentFolder, accountId)',
+//                    'computeTitle(data.title)'
+        ],
+        ready: function () {
+            console.log(this.is + ' is ready.');
+        },
+        computeTocRequestParams: function (selectedRoot, selectedContentFolder, accountId) {
+            this.tocRequestParams.pageId = selectedRoot;
+            this.tocRequestParams.tag = selectedContentFolder;
+            this.tocRequestParams.owner = accountId;
+            this.infoRequestParams.pageId = selectedRoot;
+            console.log('Toc-Content-view toc navigation request parameters updated: ' + JSON.stringify(this.tocRequestParams))
+            if (this.contentChildrenModel !== undefined && this.contentChildrenModel.sections !== undefined)
+                this.splice('contentChildrenModel.sections', 0, this.contentChildrenModel.sections.length);
+            this.$.rootModelAjax.generateRequest();
+            this.$.childTocAjax.generateRequest();
+            this.$.parentTocAjax.generateRequest();
+        },
+        observeSelectedContentFolder: function (folder) {
+            if (this.tocRequestParams) {
+                this.tocRequestParams.tag = folder;
+            }
+//            this.tocRequestParams.owner = this.accountId;
+//            this.$.rootModelAjax.generateRequest();
+//            this.$.childTocAjax.generateRequest();
+//            this.$.parentTocAjax.generateRequest();
+        },
+        observeSelectedAccountId: function (accountId) {
+//            this.tocRequestParams.tag = this.selectedContentFolder;
+            if (this.tocRequestParams) {
+                this.tocRequestParams.owner = accountId;
+            }
+//            this.$.rootModelAjax.generateRequest();
+//            this.$.childTocAjax.generateRequest();
+//            this.$.parentTocAjax.generateRequest();
+        },
+        getItemClasses: function (item) {
+            return item.tags.join(" ");
+        },
+        isLeaf: function (item) {
+            console.log(item.sections.length);
+            return item.sections.length === 0;
+        },
+        isFork: function (item) {
+            return item.sections.length > 0;
+        },
+        isEmpty: function (data) {
+            return (data === undefined || data === null || data.sections === undefined || data.sections === null || data.sections.length === 0);
+        },
+        getContentFileUrl: function (fileName) {
+            return this.contentRootUrl + fileName;
+        },
+        isDraftSelected: function (selectedContentFolder) {
+            return selectedContentFolder === 'drafts';
+        },
+        onEditArticle: function () {
+//                    app.currentEditedContent = this.data;
+            app.route = 'share-content';
+            app.$.scv.contentModel = this.data;
+//                    page.redirect(app.baseUrl + 'share-content');
+        },
+        onRemoveArticle: function () {
+
+        },
+//                computeTitle: function (data) {
+//                    this.title = data.title;
+//                },
+//        onNavigate: function (event, details) {
+//            page.redirect(app.baseUrl + '/content-tree/' + details.sourceEvent.currentTarget.href);
+//        },
+        onContentResponse: function () {
+            console.log('Content fetched for ' + this.selectedRoot);
+        },
+        onContentError: function () {
+            console.log('Content fetching failed for ' + this.selectedRoot);
+        },
+        onParentTocResponse: function () {
+            console.log('Toc-Content-View parent path success response (' + this.selectedRoot + ').');
+            //                this.renderBreadCrumbs = true;
+        },
+        onParentTocError: function () {
+            console.log('Toc-Content-View parent path failed to respond (' + this.selectedRoot + ').');
+            this.selectedContentFolder = 'public';
+            //                this.renderBreadCrumbs = true;
+        },
+        getLink: function (item) {
+            return '/content-tree/' + item.hasEmbeddedFile ? item.data : item.name;
+        }
+    });
+
+</script>
+
+</dom-module>

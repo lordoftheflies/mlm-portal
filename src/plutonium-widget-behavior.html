@@ -1,0 +1,22 @@
+<script>
+    window.PlutoniumBehaviors = window.PlutoniumBehaviors || {};
+    PlutoniumBehaviors.WidgetBehavior = {
+        properties: {
+            admin: {
+                type: Boolean,
+                notify: true,
+                value: false
+            },
+            apiUrl: {
+                type: String,
+                notify: true,
+                value: 'http://185.51.67.30:8080/topflavon-backend/'
+//                value: 'http://localhost:8080/topflavon-backend/'
+            },
+            accountId: {
+                type: String,
+                notify: true
+            }
+        }
+    };
+</script>

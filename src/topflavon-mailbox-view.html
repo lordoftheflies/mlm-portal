@@ -1,0 +1,102 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="plutonium-widget-behavior.html">
+<link rel="import" href="plutonium-shared-styles.html">
+
+<dom-module id="topflavon-mailbox-view">
+
+    <template>
+
+        <style include="plutonium-shared-styles">
+            :host {
+                display: block;
+
+                @apply(--layout-vertical);
+            }
+
+        </style>
+
+        <iron-ajax id="mailBoxAjax" url="[[apiUrl]]/mailbox/[[accountId]]/[[selectedMailBoxFolder]]" last-response="{{mailBoxModel}}"></iron-ajax>
+
+        <!--<template is="dom-if" if="{{!isEmpty(data)}}">-->
+        <iron-list items="[[mailBoxModel]]" as="item" hidden="[[isEmpty(mailBoxModel)]]">
+            <template>
+                <div>
+                    <div class$="item [[getItemClasses(item)]]" tabindex$="[[tabIndex]]">
+                         <!--<iron-image class="avatar" sizing="contain" src="[[item.image]]"></iron-image>-->
+
+                         <div class="pad">
+                            <div class="primary container">
+                                <span>[[item.from]]</span>
+                                <div class="flexchild"></div>
+                                <span>[[item.ts]]</span>
+                            </div>
+                            <div class="secondary">
+                                <span>[[item.title]]</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </iron-list>
+        <!--</template>-->
+        <!--<template is="dom-if" if="{{isEmpty(data)}}">-->
+        <!--<br />-->
+        <paper-card elevation="1" hidden="[[!isEmpty(data)]]">
+            <div class="card-content">
+                <div id="emptyMailBoxFolderText">No messages in the folder.</div>
+            </div>
+        </paper-card>
+        <!--</template>-->
+
+    </template>
+
+    <script>
+
+        Polymer({
+            is: 'topflavon-mailbox-view',
+            behaviors: [
+                PlutoniumBehaviors.WidgetBehavior
+            ],
+            properties: {
+                selectedMailBoxFolder: {
+                    type: String,
+                    notify: true,
+                    value: 'inbox'
+                },
+                accountId: {
+                    type: String,
+                    notify: true
+                }
+            },
+            observers: [
+                'computeMailboxFolderRequest(accountId, selectedMailBoxFolder)'
+            ],
+            ready: function () {
+                console.log(this.is + ' is ready.');
+            },
+            getItemClasses: function (item) {
+                return item.tags.join(" ");
+            },
+            computeMailboxFolderRequest: function (accountId, selectedMailBoxFolder) {
+                console.log(this.is + ' fetch ' + selectedMailBoxFolder + ' from ' + accountId + '\'s mailbox.');
+                this.$.mailBoxAjax.generateRequest();
+            },
+            isEmpty: function (data) {
+                return data === undefined || data === null || data.length === 0;
+            }
+        });
+
+    </script>
+
+</dom-module>

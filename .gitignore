@@ -1,6 +1,7 @@
-node_modules
-dist
 bower_components
+dist
+node_modules
+build
+/nbproject/private/
 .tmp
 .publish/
-/nbproject/private/
