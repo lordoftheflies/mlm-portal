@@ -13,7 +13,7 @@
 <link rel="import" href="plutonium-shared-styles.html">
 <link rel="import" href="plutonium-authorization-behavior.html">
 
-<dom-module id="topflavon-role-changer-prompt">
+<dom-module id="topflavon-member-delete-prompt">
 
     <template>
         <style include="plutonium-shared-styles">
@@ -24,21 +24,20 @@
 
         </style>
         <paper-dialog id="dialog" modal>
-            <h2 id="dialogTitle">Promote administrator</h2>
+            <h2 id="memberEraseConfirmDialogTitle">Delete member</h2>
             <form id="form" is="iron-form" 
                   verbose 
                   content-type="application/json" 
                   method="post" action="[[action]]"
                   handle-as="json">
-                <div id="dialogText" class="card-content">
-                    Are you surely {{operationName}} {{subjectName}} to {{roleName}}?
+                <div id="memberEraseConfirmDialogText" class="card-content">
+                    Are you sure delete member [[subjectName]]?
                 </div>
-
                 <input name="owner" type="hidden" value="{{ownerId}}" />
                 <input name="subject" type="hidden" value="{{subjectId}}" />
                 <div class="card-actions">
-                    <paper-button id="promoteAdminDialogCancelButton" dialog-dismiss>Cancel</paper-button>
-                    <paper-button id="promoteAdminDialogAcceptButton" dialog-confirm raised on-tap="onPrompted">OK</paper-button>
+                    <paper-button id="memberEraseConfirmDialogCancelButton" dialog-dismiss>Cancel</paper-button>
+                    <paper-button id="memberEraseConfirmDialogAcceptButton" dialog-confirm raised on-tap="onPrompted">OK</paper-button>
                 </div>
             </form>
 
@@ -55,20 +54,11 @@
     <script>
 
         Polymer({
-            is: 'topflavon-role-changer-prompt',
+            is: 'topflavon-member-delete-prompt',
             behaviors: [
-                PlutoniumBehaviors.AuthorizationBehavior
             ],
             properties: {
                 action: {
-                    type: String,
-                    notify: true
-                },
-                operationName: {
-                    type: String,
-                    notify: true
-                },
-                roleName: {
                     type: String,
                     notify: true
                 },
@@ -87,7 +77,7 @@
             },
             onPrompted: function () {
                 this.$.form.submit();
-                console.log('Authorization role change prompted.');
+                console.log('Delete member prompted.');
             },
             show: function () {
                 this.$.dialog.open();
