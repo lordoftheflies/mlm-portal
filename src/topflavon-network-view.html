@@ -45,62 +45,62 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                    auto="[[!data]]">
 
         </iron-ajax>
+
+
+
+        <!--        <paper-dialog id="memberDialog" 
+                              class="plutonium widget"
+                              modal entry-animation="scale-up-animation" 
+                              exit-animation="scale-down-animation"
+                              with-backdrop
+                              always-on-top>
+                    <h2 id="newMemberDialogTitle">New member</h2>
+                    <form id="newMemberForm" is="iron-form" class="card-content" verbose 
+                          content-type="application/json" method="post" action="[[apiUrl]]/addressbook/save"
+                          on-response="onCreateMemberResponse"
+                          on-error="onCreateMemberError" 
+                          handle-as="json">
+                        <paper-input id="newMemberNameLabel" name="name" label="Name" type="text"></paper-input>
+                        <paper-input hidden="[[isGroup(selectedType)]]" id="newMemberEmailLabel" name="email" label="Email" type="email"></paper-input>
         
-
-
-<!--        <paper-dialog id="memberDialog" 
-                      class="plutonium widget"
-                      modal entry-animation="scale-up-animation" 
-                      exit-animation="scale-down-animation"
-                      with-backdrop
-                      always-on-top>
-            <h2 id="newMemberDialogTitle">New member</h2>
-            <form id="newMemberForm" is="iron-form" class="card-content" verbose 
-                  content-type="application/json" method="post" action="[[apiUrl]]/addressbook/save"
-                  on-response="onCreateMemberResponse"
-                  on-error="onCreateMemberError" 
-                  handle-as="json">
-                <paper-input id="newMemberNameLabel" name="name" label="Name" type="text"></paper-input>
-                <paper-input hidden="[[isGroup(selectedType)]]" id="newMemberEmailLabel" name="email" label="Email" type="email"></paper-input>
-
-                <input name="role" type="hidden" value="{{selectedType}}" />
-                <paper-radio-group label="Type" attr-for-selected="name" selected="{{selectedType}}">
-                    <paper-radio-button id="newMemberTypeUserTitle" name="USER">User</paper-radio-button>
-                    <paper-radio-button id="newMemberTypeGroupTitle" name="GROUP">Group</paper-radio-button>
-                    <paper-radio-button id="newMemberTypeAdminTitle" name="ADMIN">Admin</paper-radio-button>
-                </paper-radio-group>
-
-                <div>
-                    <input name="parent" type="hidden" value="{{selectedParent}}" />
-                    <paper-dropdown-menu id="newMemberParentLabel" label="Parent member">
-                        <paper-menu
-                            class="dropdown-content" selected="{{selectedParent}}" attr-for-selected="value"
-                            attr-for-selected="id">
-                            <template is="dom-repeat" items="{{possibleParents}}">
-                                <paper-item value="{{item.id}}">{{item.name}}</paper-item>
-                            </template>
-                        </paper-menu>
-                    </paper-dropdown-menu>
-                </div>
-                <div>
-                    <input name="preferredLanguage" type="hidden" value="{{preferredLanguage}}" />
-                    <paper-dropdown-menu id="preferredLanguageLabel" label="Preferred language">
-                        <paper-menu class="dropdown-content">
-                            <paper-menu class="dropdown-content" selected="{{preferredLanguage}}" attr-for-selected="data-value">
-                                <template is="dom-repeat" items="[[locales]]" as="locale">
-                                    <paper-item data-value="[[locale.code]]">[[locale.name]]</paper-item>
-                                </template>
-                            </paper-menu>
-                        </paper-menu>
-                    </paper-dropdown-menu>
-                </div>
-                <div class="card-actions">
-                    <paper-button id="newMemberDialogCancelButton" dialog-dismiss>Cancel</paper-button>
-                    <paper-button id="newMemberDialogCreateButton" raised class="primary" on-tap="onCreateMember" dialog-confirm>Create</paper-button>
-                    <paper-button id="newMemberDialogCreateAndRepeatButton" raised class="primary" on-tap="onCreateMemberRepeat">Create & repeat</paper-button>
-                </div>
-            </form>
-        </paper-dialog>-->
+                        <input name="role" type="hidden" value="{{selectedType}}" />
+                        <paper-radio-group label="Type" attr-for-selected="name" selected="{{selectedType}}">
+                            <paper-radio-button id="newMemberTypeUserTitle" name="USER">User</paper-radio-button>
+                            <paper-radio-button id="newMemberTypeGroupTitle" name="GROUP">Group</paper-radio-button>
+                            <paper-radio-button id="newMemberTypeAdminTitle" name="ADMIN">Admin</paper-radio-button>
+                        </paper-radio-group>
+        
+                        <div>
+                            <input name="parent" type="hidden" value="{{selectedParent}}" />
+                            <paper-dropdown-menu id="newMemberParentLabel" label="Parent member">
+                                <paper-menu
+                                    class="dropdown-content" selected="{{selectedParent}}" attr-for-selected="value"
+                                    attr-for-selected="id">
+                                    <template is="dom-repeat" items="{{possibleParents}}">
+                                        <paper-item value="{{item.id}}">{{item.name}}</paper-item>
+                                    </template>
+                                </paper-menu>
+                            </paper-dropdown-menu>
+                        </div>
+                        <div>
+                            <input name="preferredLanguage" type="hidden" value="{{preferredLanguage}}" />
+                            <paper-dropdown-menu id="preferredLanguageLabel" label="Preferred language">
+                                <paper-menu class="dropdown-content">
+                                    <paper-menu class="dropdown-content" selected="{{preferredLanguage}}" attr-for-selected="data-value">
+                                        <template is="dom-repeat" items="[[locales]]" as="locale">
+                                            <paper-item data-value="[[locale.code]]">[[locale.name]]</paper-item>
+                                        </template>
+                                    </paper-menu>
+                                </paper-menu>
+                            </paper-dropdown-menu>
+                        </div>
+                        <div class="card-actions">
+                            <paper-button id="newMemberDialogCancelButton" dialog-dismiss>Cancel</paper-button>
+                            <paper-button id="newMemberDialogCreateButton" raised class="primary" on-tap="onCreateMember" dialog-confirm>Create</paper-button>
+                            <paper-button id="newMemberDialogCreateAndRepeatButton" raised class="primary" on-tap="onCreateMemberRepeat">Create & repeat</paper-button>
+                        </div>
+                    </form>
+                </paper-dialog>-->
 
         <paper-dialog id="memberEraseConfirm" modal>
             <h2 id="memberEraseConfirmDialogTitle">Delete member</h2>
@@ -120,7 +120,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </div>
             </form>
         </paper-dialog>
-        <paper-dialog id="promoteAdminDialog" modal>
+<!--        <paper-dialog id="promoteAdminDialog" modal>
             <h2 id="promoteAdminDialogTitle">Promote administrator</h2>
             <form id="promoteMemberForm" is="iron-form" 
                   verbose 
@@ -157,12 +157,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     <paper-button id="demoteAdminDialogAcceptButton" dialog-confirm raised on-tap="onDemoteMemberPrompted">OK</paper-button>
                 </div>
             </form>
-        </paper-dialog>
+        </paper-dialog>-->
 
         <iron-list id="childrenIronList" items="[[data]]" as="item" hidden="[[isEmpty(data)]]" class="layout vertical">
             <template>
                 <paper-item class="layout horizontal">
-                    <paper-material class="flex layout horizontal" nodeid="[[item.id]]" role="[[item.role]]" on-tap="onNavigateToChildren"  tabindex="[[tabIndex]]">
+                    <paper-material class="flex layout horizontal" nodename="[[item.name]]"  nodeid="[[item.id]]" role="[[item.role]]" on-tap="onNavigateToChildren"  tabindex="[[tabIndex]]">
                         <div class="flex">
                             <iron-icon icon="[[getIcon(item.role)]]"></iron-icon>
                             <span >[[item.name]]</span>
@@ -178,7 +178,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </div>
         </paper-card>
 
-        <table>
+        <table class="debug">
             <tr><td>Genocide</td><td>[[genocideRequestParams]]</td></tr>
             <tr><td>Children</td><td>[[childrenRequestParams]]</td></tr>
             <tr><td>Selected account</td><td>[[selectedAccountId]]</td></tr>
@@ -220,6 +220,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     type: String,
                     notify: true
                 },
+                selectedName: {
+                    type: String,
+                    notify: true
+                },
                 possibleParents: {
                     type: Array,
                     notify: true
@@ -246,10 +250,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             listeners: {
                 'deleteMemberForm.iron-form-response': 'onDeleteMemberResponse',
                 'deleteMemberForm.iron-form-error': 'onDeleteMemberError',
-                'promoteMemberForm.iron-form-response': 'onPromoteMemberResponse',
-                'promoteMemberForm.iron-form-error': 'onPromoteMemberError',
-                'demoteMemberForm.iron-form-response': 'onDemoteMemberResponse',
-                'demoteMemberForm.iron-form-error': 'onDemoteMemberError',
+//                'promoteMemberForm.iron-form-response': 'onPromoteMemberResponse',
+//                'promoteMemberForm.iron-form-error': 'onPromoteMemberError',
+//                'demoteMemberForm.iron-form-response': 'onDemoteMemberResponse',
+//                'demoteMemberForm.iron-form-error': 'onDemoteMemberError',
                 'iron-select': 'onSelectMember',
                 'network-tree-refresh': 'onRefresh'
             },
@@ -299,6 +303,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 //                this.accountId = event.currentTarget.nodeid;
                 this.selectedAccountId = event.currentTarget.nodeid;
                 this.selectedRole = event.currentTarget.role;
+                this.selectedName = event.currentTarget.nodename;
                 console.log('Network-view navigate to children ');
 
             },
@@ -338,32 +343,32 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     message: 'Member removing failed.'
                 });
             },
-            onPromoteMemberResponse: function (event, details) {
-                console.log('Member promoted successfully: ' + JSON.stringify(details.response));
-                this.$.childrenIronAjax.generateRequest();
-                this.fire('feedback', {
-                    message: 'Member promoted successfully'
-                });
-            },
-            onPromoteMemberError: function (event, details) {
-                console.log('Promote-member error: ' + JSON.stringify(details.response));
-                this.fire('feedback', {
-                    message: 'Member promoting failed.'
-                });
-            },
-            onDemoteMemberResponse: function (event, details) {
-                console.log('Member demoted successfully: ' + JSON.stringify(details.response));
-                this.$.childrenIronAjax.generateRequest();
-                this.fire('feedback', {
-                    message: 'Member demoted successfully'
-                });
-            },
-            onDemoteMemberError: function (event, details) {
-                console.log('Demote-member error: ' + JSON.stringify(details.response));
-                this.fire('feedback', {
-                    message: 'Member demoting failed.'
-                });
-            },
+//            onPromoteMemberResponse: function (event, details) {
+//                console.log('Member promoted successfully: ' + JSON.stringify(details.response));
+//                this.$.childrenIronAjax.generateRequest();
+//                this.fire('feedback', {
+//                    message: 'Member promoted successfully'
+//                });
+//            },
+//            onPromoteMemberError: function (event, details) {
+//                console.log('Promote-member error: ' + JSON.stringify(details.response));
+//                this.fire('feedback', {
+//                    message: 'Member promoting failed.'
+//                });
+//            },
+//            onDemoteMemberResponse: function (event, details) {
+//                console.log('Member demoted successfully: ' + JSON.stringify(details.response));
+//                this.$.childrenIronAjax.generateRequest();
+//                this.fire('feedback', {
+//                    message: 'Member demoted successfully'
+//                });
+//            },
+//            onDemoteMemberError: function (event, details) {
+//                console.log('Demote-member error: ' + JSON.stringify(details.response));
+//                this.fire('feedback', {
+//                    message: 'Member demoting failed.'
+//                });
+//            },
             isEmpty: function (data) {
                 return data === undefined || data === null || data.length === 0;
             },

@@ -1,6 +1,5 @@
 {
     "elements": {
-        "topflavon-mailbox-view": {},
         "google-youtube": {
             "attributes": {
                 "width": {},
@@ -38,8 +37,6 @@
                 "url": {}
             }
         },
-        "app-drawer-layout": {},
-        "topflavon-network-view": {},
         "iron-list": {},
         "gold-email-input": {
             "attributes": {
@@ -47,16 +44,12 @@
                 "value": {}
             }
         },
-        "plutonium-login-widget": {},
-        "topflavon-share-view": {},
-        "app-toolbar": {},
         "plutonium-field-recipient": {
             "attributes": {
                 "id": {},
                 "label": {}
             }
         },
-        "topflavon-member-editor": {},
         "paper-menu": {
             "attributes": {
                 "attr-for-selected": {},
@@ -93,6 +86,7 @@
                 "id": {}
             }
         },
+        "topflavon-role-changer-prompt": {},
         "iron-dropdown": {
             "attributes": {
                 "vertical-align": {},
@@ -120,7 +114,6 @@
         },
         "iron-pages": {
             "attributes": {
-                "role": {},
                 "attr-for-selected": {},
                 "selected": {}
             }
@@ -140,7 +133,6 @@
                 "id": {}
             }
         },
-        "app-location": {},
         "plutonium-text-section": {
             "attributes": {
                 "field": {},
@@ -149,7 +141,6 @@
                 "id": {}
             }
         },
-        "iron-media-query": {},
         "paper-input": {
             "attributes": {
                 "id": {},
@@ -158,7 +149,6 @@
                 "value": {}
             }
         },
-        "plutonium-forgottenpassword-widget": {},
         "paper-listbox": {
             "attributes": {
                 "id": {},
@@ -184,7 +174,6 @@
                 "parent-candidates": {}
             }
         },
-        "topflavon-about-view": {},
         "template": {
             "attributes": {
                 "as": {},
@@ -198,7 +187,6 @@
                 "model": {}
             }
         },
-        "app-drawer": {},
         "share-content-view": {
             "attributes": {
                 "selected-meta-action": {},
@@ -218,8 +206,6 @@
                 "class": {}
             }
         },
-        "app-header": {},
-        "topflavon-profile-view": {},
         "content": {
             "attributes": {
                 "id": {}
@@ -265,7 +251,6 @@
                 "icon": {}
             }
         },
-        "app-header-layout": {},
         "dom-module": {
             "attributes": {
                 "id": {}
@@ -280,8 +265,6 @@
                 "class": {}
             }
         },
-        "iron-selector": {},
-        "topflavon-content-view": {},
         "about-view": {},
         "paper-icon-button": {
             "attributes": {
@@ -311,8 +294,6 @@
                 "elevation": {}
             }
         },
-        "app-route": {},
-        "plutonium-logon-widget": {},
         "paper-dialog": {
             "attributes": {
                 "exit-animation": {},
@@ -356,7 +337,6 @@
                 "id": {}
             }
         },
-        "plutonium-passwordreset-widget": {},
         "profile-view": {
             "attributes": {
                 "api-url": {},
@@ -381,9 +361,6 @@
         },
         "unresolved": {
             "context": "body"
-        },
-        "condensed-title": {
-            "context": "div"
         },
         "class$": {
             "context": "p"
