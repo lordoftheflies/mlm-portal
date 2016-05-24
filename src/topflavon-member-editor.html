@@ -32,7 +32,7 @@
                       always-on-top>
             <h2 id="newMemberDialogTitle">New member</h2>
             <form id="newMemberForm" is="iron-form" class="card-content" verbose 
-                  content-type="application/json" method="post" action="[[acion]]"
+                  content-type="application/json" method="post" action="[[action]]"
                   handle-as="json">
                 <paper-input id="newMemberNameLabel" name="name" label="Name" type="text"></paper-input>
                 <paper-input hidden="[[isGroup(selectedType)]]" id="newMemberEmailLabel" name="email" label="Email" type="email">
@@ -91,7 +91,7 @@
                 PlutoniumBehaviors.AuthorizationBehavior
             ],
             properties: {
-                acion: {
+                action: {
                     type: String,
                     notify: true
                 },
