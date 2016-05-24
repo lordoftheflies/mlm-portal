@@ -48,14 +48,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <!--<template is="dom-if" if="{{!isEmpty(data.sections)}}">-->
         <div class="layout vertical flex" hidden="[[contentChildrenModel.leaf]]">
-            Tree children
             <iron-list items="{{contentChildrenModel.sections}}" as="section"   hidden="[[!isEmpty(data)]]">
                 <template>
                     <a class="paper-item-link" href="[[getLink(section)]]" tabindex="[[tabIndex]]">
                         <paper-item class="layout horizontal">
-                            <paper-material elevation="1" class="flex">
-                                <span>[[section.title]]</span>
+                            <paper-material elevation="1" class="flex layout horizontal">
+                                <span class="flex">[[section.title]]</span>
+                                <div hidden="{{!isDraftSelected(selectedContentFolder)}}" class="layout horizontal">
+                                    <paper-icon-button icon="create" on-tap="onEditArticle"></paper-icon-button>
+                                    <paper-icon-button icon="delete"></paper-icon-button>
+                                    <paper-icon-button icon="file-upload"></paper-icon-button>
+                                    <paper-icon-button icon="file-download"></paper-icon-button>
+                                </div>
                             </paper-material>
+
                         </paper-item>
                     </a>
                 </template>

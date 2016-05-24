@@ -93,9 +93,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             pattern="/:page"
             data="{{routeData}}"
             tail="{{subroute}}"></app-route>
-        <app-route
+<!--        <app-route
             route="{{subroute}}"
             pattern="/:contentId"
+            data="{{subrouteData}}">
+        </app-route>-->
+        <app-route
+            route="content-view"
+            pattern="/:contentId"
+            data="{{subrouteData}}">
+        </app-route>
+        <app-route
+            route="network-view"
+            pattern="/:memberId"
             data="{{subrouteData}}">
         </app-route>
 
@@ -106,12 +116,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <app-toolbar>Menu</app-toolbar>
                 <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
                     <a id="contentMainMenuTitle" name="content-view" href="/content-view/ROOT">Content</a>
-                    <a id="networkMainMenuTitle" name="network-view" href="/network-view">Network</a>
-                    <a id="mailBoxMainMenuTitle" name="mailbox-view" href="/mailbox-view">Mailbox</a>
+                    <a id="networkMainMenuTitle" name="network-view" href="/network-view/[[session.token]]">Network</a>
+                    <a id="mailBoxMainMenuTitle" name="mailbox-view" href="/mailbox-view/[[session.token]]">Mailbox</a>
                     <a id="aboutMainMenuTitle" name="about-view" href="/about-view">About</a>
-                    <a name="view1" href="/view1">View One</a>
-                    <a name="view2" href="/view2">View Two</a>
-                    <a name="view3" href="/view3">View Three</a>
                 </iron-selector>
             </app-drawer>
 
@@ -148,7 +155,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         <div hidden="[[!session]]">
                             <paper-button on-tap="showUserNavigation">
                                 <iron-icon icon="account-circle"></iron-icon>
-                                <label>{{session.userName}}</label>
+                                <label title>{{session.userName}}</label>
                             </paper-button>
                             <iron-dropdown id="userNavigation" horizontal-align="right" vertical-align="top">
                                 <paper-menu attr-for-selected="data-route" selected="[[route]]" class="dropdown-content">
@@ -166,7 +173,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     </app-toolbar>
                     <app-toolbar>
                         <iron-pages title selected="[[page]]" attr-for-selected="data-route"  attr-for-selected="name" role="navigation">
-                            <h1 data-route="share-content" class="app-name focus-target" tabindex="-1">
+                            <h1 data-route="share-view" class="app-name focus-target" tabindex="-1">
                                 <span>[[applicationTitle]]</span><span>/</span><span id="shareContentViewTitleLabel" class="page-title">Share content</span>
                             </h1>
                             <h1 data-route="content-view" class="app-name focus-target" tabindex="-1">
@@ -190,7 +197,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     <!--Application name--> 
                     <app-toolbar hidden="[[!admin]]">
                         <iron-pages attr-for-selected="data-route" selected="[[page]]" class="flex" style="padding: 0px">
-                            <paper-tabs data-route="share-content"  attr-for-selected="name" selected="{{selectedMetaAction}}" style="width: 100%;" autoselect>
+                            <paper-tabs data-route="share-view"  attr-for-selected="name" selected="{{selectedMetaAction}}" style="width: 100%;" autoselect>
                                 <paper-tab text-id="shareTabLabel" name="share">Share</paper-tab>
                                 <paper-tab text-id="embbeddedContentTabLabel" name="embedded">Embed content</paper-tab>
                                 <paper-tab text-id="assembledContentTabLabel" name="assembled">Assembled content</paper-tab>
@@ -245,13 +252,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </app-header>
                 <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
                     <topflavon-about-view name="about-view"></topflavon-about-view>
+                    <topflavon-share-view name="profile-view" api-url="[[apiUrl]]" account-id="[[session.token]]"></topflavon-share-view>
                     <topflavon-profile-view name="profile-view" api-url="[[apiUrl]]" account-id="[[session.token]]"></topflavon-profile-view>
                     <topflavon-mailbox-view name="mailbox-view" api-url="[[apiUrl]]" account-id="[[session.token]]" selected-mail-box-folder="{{selectedMailboxFolder}}"></topflavon-mailbox-view>
                     <topflavon-network-view name="network-view" api-url="[[apiUrl]]" account-id="[[session.token]]" selected-account="{{selectedAccount}}" parents="{{parents}}" owner-id="[[session.token]]"></topflavon-network-view>
                     <topflavon-content-view name="content-view" api-url="[[apiUrl]]" account-id="[[session.token]]" admin="[[session.powerUser]]" selected-root="{{subrouteData.contentId}}" selected-content-folder="{{selectedContentFolder}}"></topflavon-content-view>
-                    <my-view1 name="view1"></my-view1>
-                    <my-view2 name="view2"></my-view2>
-                    <my-view3 name="view3"></my-view3>
                 </iron-pages>
 
             </app-header-layout>
