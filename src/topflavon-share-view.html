@@ -9,6 +9,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/file-upload/file-upload.html">
+<link rel="import" href="../bower_components/plutonium-field-recipient/plutonium-field-recipient.html">
 <link rel="import" href="topflavon-shared-styles.html">
 <link rel="import" href="plutonium-widget-behavior.html">
 
@@ -18,14 +22,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <style include="topflavon-shared-styles">
 
+            .main-action-fab-container {
+                position: relative;
+            }
+            paper-fab.main-action-fab {
+                position: absolute;
+                bottom: -45px;
+                right: 0px;
+            }
+            paper-fab.minor-action-fab {
+                position: absolute;
+                top: -65px;
+                right: 0px;
+            }
         </style>
 
-        <iron-ajax 
-            id="contactsAjax"
-            url="{{apiUrl}}/addressbook/{{accountId}}/contacts" 
-            last-response="{{contacts}}" 
-            auto>
-        </iron-ajax>
         <iron-ajax 
             id="parentCandidatesAjax"
             url="{{apiUrl}}/content-management/candidates/parent" 
@@ -42,94 +53,121 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             body="{{pageDto}}"></iron-ajax>
 
         <iron-pages selected="{{selectedMetaAction}}" attr-for-selected="name">
-            <paper-card elevation="1" name="share" class="layout vertical">
+            <paper-card elevation="1" name="share" class="layout vertical main-action-fab-container">
                 <div class="card-content layout horizontal">
+                    <paper-fab class="main-action-fab" icon="send" on-tap="onSend" title="Publish content" id="sendMessageFab"></paper-fab>
+
+
                     <div class="flex layout vertical">
-                        <plutonium-field-recipient  
-                            class="flex"
-                            id="recipientsFieldInput"
-                            label="To"
-                            picker-icon="supervisor-account"
-                            picker-title="Contacts"
-                            picker-button-tooltip="Choose contacts."
-                            clear-icon="clear"
-                            clear-button-tooltip="Clear recipients input."
-                            attr-for-selected="id"
-                            as="item"
-                            items="[[contacts]]">
-                            <template is="dom-repeat" items="[[contacts]]">
-                                <paper-item id="[[item.id]]" class="item pad">
-                                    <label>[[item.name]]</label>
-                                </paper-item>
-                            </template>
-                        </plutonium-field-recipient>
+                        <div class="layout horizontal">
+                            <paper-input class="flex" name="recipients" label="[[label]]" value$="{{_recipients}}"></paper-input>
+                            <paper-icon-button icon="supervisor-account" title="Choose contacts." on-tap="onOpenRecipientsDialog"></paper-icon-button>
+                            <paper-icon-button icon="clear" title="Clear recipients input." on-tap="onClearRecipients"></paper-icon-button>
+                        </div>
+                        <!--                        <plutonium-field-recipient  
+                                                    class="flex"
+                                                    id="recipientsFieldInput"
+                                                    label="To"
+                                                    picker-icon="supervisor-account"
+                                                    picker-title="Contacts"
+                                                    picker-button-tooltip="Choose contacts."
+                                                    clear-icon="clear"
+                                                    clear-button-tooltip="Clear recipients input."
+                                                    attr-for-selected="id"
+                                                    as="item"
+                                                    items="[[contacts]]">
+                                                    <template is="dom-repeat" items="[[contacts]]">
+                                                        <paper-item id="[[item.id]]" class="item pad">
+                                                            <label>[[item.name]]</label>
+                                                        </paper-item>
+                                                    </template>
+                                                </plutonium-field-recipient>-->
                         <paper-input id="messageInput" class="bottom title" label="Message" value="{{message}}"></paper-input>
                     </div>
                     <!--<div></div>-->
-                    <paper-fab class="end-justified" icon="send" on-tap="onSend" title="Publish content" id="sendMessageFab"></paper-fab>
+                    <!--<paper-fab class="end-justified" icon="send" on-tap="onSend" title="Publish content" id="sendMessageFab"></paper-fab>-->
                 </div>
 
             </paper-card>
 
+            <div name="content">
+                <paper-card id="propertiesCardTitle" elevation="1" heading="Properties"  name="props" class="layout vertical main-action-fab-container">
 
-            <paper-card elevation="1" name="assembled" class="layout vertical">
-                <div class="card-content layout horizontal" style="padding-top: 10px;">
-                    <plutonium-article-form  
-                        class="flex"
-                        api-url="{{apiUrl}}"
-                        id="pcf"
-                        editable
-                        contacts="{{contacts}}" 
-                        content-model="{{contentModel}}"
-                        parent-candidates="{{parentCandidates}}"
-                        editors="[[editorMap]]">
-                    </plutonium-article-form>
-                </div>
-            </paper-card>
 
-            <paper-card elevation="1" name="embedded" class="layout vertical">
-                <div class="card-content layout horizontal">
-                    <file-upload 
-                        id="uploadFileText"
-                        drop-text="Drop any PDF file here."
-                        error-text="File upload failed."
-                        droppable="true" 
-                        raised="true" 
-                        multi="false" 
-                        method="POST"
-                        target="{{fileUploadTarget}}">Choose File</file-upload>
-                    <div class="flex"></div>
-                    <paper-fab class="end-justified" icon="send" on-tap="onSend" title="Publish content" id="sendMessageFab"></paper-fab>
-                </div>
-            </paper-card>
+                    <div class="card-content layout horizontal">
+                        <paper-fab class="minor-action-fab" icon="send" on-tap="onSend" title="Publish content" id="sendMessageFab"></paper-fab>
+                        <div class="layout vertical flex">
+                            <paper-dropdown-menu 
+                                id="parentDdLabel"
+                                label="Parent">
+                                <paper-listbox id="parentCandidatesList"
+                                               class="dropdown-content"
+                                               attr-for-selected="{{attrForSelected}}"
+                                               items="[[parentCandidates]]"
+                                               as="parent"
+                                               selected="{{selectedParent}}">
+                                    <template is="dom-repeat" items="[[parentCandidates]]">
 
-            <paper-card elevation="1"  name="props" class="layout vertical">
-                <div class="card-content layout horizontal">
-                    <div class="layout vertical flex">
-                        <paper-dropdown-menu 
-                            id="parentDdLabel"
-                            label="Parent">
-                            <paper-listbox id="parentCandidatesList"
-                                           class="dropdown-content"
-                                           attr-for-selected="{{attrForSelected}}"
-                                           items="[[parentCandidates]]"
-                                           as="parent"
-                                           selected="{{selectedParent}}">
-                                <template is="dom-repeat" items="[[parentCandidates]]">
+                                        <paper-item id="[[item.id]]" class="item pad">
+                                            <label>[[item.title]]</label> 
+                                        </paper-item>
+                                    </template>
+                                </paper-listbox>
+                            </paper-dropdown-menu>
 
-                                    <paper-item id="[[item.id]]" class="item pad">
-                                        <label>[[item.title]]</label> 
-                                    </paper-item>
-                                </template>
-                            </paper-listbox>
-                        </paper-dropdown-menu>
+                            <paper-input id="contentTitleInput" class="bottom title" label="Title" value="{{contentModel.title}}"></paper-input>
+                        </div>
+                        <!--<paper-fab class="end-justified" icon="send" on-tap="onSend" title="Publish content" id="sendMessageFab"></paper-fab>-->
 
-                        <paper-input id="contentTitleInput" class="bottom title" label="Title" value="{{contentModel.title}}"></paper-input>
                     </div>
-                    <paper-fab class="end-justified" icon="send" on-tap="onSend" title="Publish content" id="sendMessageFab"></paper-fab>
+                </paper-card>
 
-                </div>
-            </paper-card>
+                <paper-card id="articleContentCard" heading="{{articleContentHeading}}" elevation="1" class="layout vertical">
+
+
+                    <paper-toolbar>
+                        <paper-tabs attr-for-selected="name" selected="{{articleContentType}}" style="width: 100%;" autoselect>
+                            <paper-tab text-id="embbeddedContentTabLabel" name="embedded">Embed content</paper-tab>
+                            <paper-tab text-id="assembledContentTabLabel" name="assembled">Assembled content</paper-tab>
+                        </paper-tabs>
+                    </paper-toolbar>
+
+                    <!--Selectexitemids: [[selectedItemIds.length]]-->
+
+                    <iron-pages selected="{{articleContentType}}" attr-for-selected="name">
+
+                        <div name="assembled" class="card-content layout horizontal" style="padding-top: 10px;">
+                            <plutonium-article-form  
+                                class="flex"
+                                api-url="{{apiUrl}}"
+                                id="pcf"
+                                editable
+                                contacts="{{contacts}}" 
+                                content-model="{{contentModel}}"
+                                parent-candidates="{{parentCandidates}}"
+                                editors="[[editorMap]]">
+                            </plutonium-article-form>
+                        </div>
+
+                        <div name="embedded" class="card-content layout horizontal">
+                            <file-upload 
+                                id="uploadFileText"
+                                drop-text="Drop any PDF file here."
+                                error-text="File upload failed."
+                                droppable="true" 
+                                raised="true" 
+                                multi="false" 
+                                method="POST"
+                                target="{{fileUploadTarget}}">Choose File</file-upload>
+                            <div class="flex"></div>
+                            <!--<paper-fab class="end-justified" icon="send" on-tap="onSend" title="Publish content" id="sendMessageFab"></paper-fab>-->
+
+                        </div>
+                    </iron-pages>
+                </paper-card>
+
+            </div>
+
 
         </iron-pages>
 
@@ -157,14 +195,33 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         ]
                     }
                 },
+                selectedItemIds: {
+                    type: Array,
+                    notify: true
+                },
                 selectedMetaAction: {
                     type: String,
                     notify: true,
+                    value: 'content'
+                },
+                articleContentType: {
+                    type: String,
+                    notify: true,
                     value: 'assembled'
+                },
+                articleContentHeading: {
+                    type: String,
+                    notify: true,
+                    computed: 'computeHeader(articleContentType)'
+                },
+                _recipients: {
+                    type: String,
+                    notify: true,
+                    value: ''
                 }
             },
             observers: [
-//                'updateModel(sections)'
+                'itemsAddedOrRemoved(selectedItemIds.splices)'
             ],
             listeners: {
                 'share': 'onShare',
@@ -192,6 +249,35 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 this.fire('feedback', {
                     message: 'New content shared successfully.'
                 });
+            },
+            onOpenRecipientsDialog: function () {
+                console.log(this.is + ' send event pick-recipients.');
+                this.fire('pick-recipients', {});
+            },
+            /**
+             * Tap clear input event handler.
+             *
+             */
+            onClearRecipients: function () {
+                this.splice('selectedItemIds', 0, this.selectedItemIds.length);
+                console.log('topflavon-recipient-picker clear recipients.');
+            },
+            itemsAddedOrRemoved: function (splice) {
+                if (splice === undefined || splice === null)
+                    return;
+                console.log('topflavon-recipient-picker change recipients: ' + JSON.stringify(this.selectedItemIds));
+                var recipients = '';
+                if (this.items !== undefined && this.items !== null) {
+                    this.items.forEach(function (item, index) {
+                        if (this.selectedItemIds.indexOf(item.id) > -1) {
+                            recipients += item.name + ' ';
+                        }
+                    }, this);
+                }
+                this._recipients = recipients;
+            },
+            computeHeader: function (articleContentHeading) {
+                return ('assembled' === articleContentHeading) ? 'Edit content' : 'Attach file';
             }
         });
 

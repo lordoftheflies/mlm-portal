@@ -42,6 +42,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="topflavon-member-editor.html">
 <link rel="import" href="topflavon-member-delete-prompt.html">
 <link rel="import" href="topflavon-role-changer-prompt.html">
+<link rel="import" href="topflavon-recipient-picker.html">
 
 <dom-module id="my-app">
 
@@ -52,12 +53,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             .debug {
                 display: none;
             }
-            
+
             :host {
                 display: block;
                 --app-primary-color: #4285f4;
                 --app-secondary-color: black;
             }
+            
 
             app-header {
                 background-color: var(--app-primary-color);
@@ -129,6 +131,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                    auto>
 
         </iron-ajax>
+        
+        <iron-ajax 
+            id="contactsAjax"
+            url="[[apiUrl]]/addressbook/[[session.token]]/contacts" 
+            last-response="{{contacts}}" 
+            auto>
+        </iron-ajax>
 
         <topflavon-member-editor
             id="memberEditor"
@@ -161,7 +170,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             subject-name="[[selectedName]]"
             subject-id="[[memberSubrouteData.memberId]]">
         </topflavon-member-delete-prompt>
+        <topflavon-recipient-picker
+            id="recipientPickerDialog"
+            attr-for-selected="id"
+            as="item"
+            items="[[contacts]]"
+            recipients="{{recipients}}">
 
+        </topflavon-recipient-picker>
         <app-drawer-layout fullbleed>
 
             <!-- Drawer content -->
@@ -253,9 +269,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         <iron-pages attr-for-selected="data-route" selected="[[page]]" class="flex" style="padding: 0px">
                             <paper-tabs data-route="share-view"  attr-for-selected="name" selected="{{selectedMetaAction}}" style="width: 100%;" autoselect>
                                 <paper-tab text-id="shareTabLabel" name="share">Share</paper-tab>
-                                <paper-tab text-id="embbeddedContentTabLabel" name="embedded">Embed content</paper-tab>
-                                <paper-tab text-id="assembledContentTabLabel" name="assembled">Assembled content</paper-tab>
-                                <paper-tab text-id="propertiesTabLabel" name="props">Properties</paper-tab>
+                                <paper-tab text-id="contentTabLabel" name="content">Content</paper-tab>
                             </paper-tabs>
                             <paper-tabs hidden="[[!session.powerUser]]" data-route="content-view"  attr-for-selected="name" selected="{{selectedContentFolder}}" style="width: 100%;" autoselect>
                                 <paper-tab text-id="messagesPagePublicFolderTitle" name="public">Public</paper-tab>
@@ -289,16 +303,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             </div>
 
                         </iron-pages>
+                        
                     </app-toolbar>
                 </app-header>
                 <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
                     <topflavon-about-view name="about-view"></topflavon-about-view>
 
-                    <topflavon-share-view name="profile-view" 
-                                          api-url="[[apiUrl]]" 
-                                          account-id="[[session.token]]" 
-                                          content-model="{{editedContentModel}}" 
-                                          selected-meta-action="{{selectedMetaAction}}">
+                    <topflavon-share-view 
+                        id="sharePage"
+                        name="share-view" 
+                        api-url="[[apiUrl]]" 
+                        account-id="[[session.token]]" 
+                        selected-item-ids="{{recipients}}"
+                        content-model="{{editedContentModel}}" 
+                        selected-meta-action="{{selectedMetaAction}}">
                     </topflavon-share-view>
                     <topflavon-profile-view name="profile-view" 
                                             api-url="[[apiUrl]]" 
@@ -380,7 +398,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 'promotionDialog.iron-form-error': 'onPromoteMemberError',
                 'demotionDialog.iron-form-response': 'onDemoteMemberResponse',
                 'demotionDialog.iron-form-error': 'onDemoteMemberError',
-                'feedback': 'onFeedback'
+                'sharePage.pick-recipients': 'onOpenRecipientsPicker',
+                'feedback': 'onFeedback',
+                'recipientPickerDialog.pick-recipients': 'onOpenRecipientsPicker'
             },
             showUserNavigation: function () {
                 console.log("Show user navigation dropdown.");
@@ -472,6 +492,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 this.fire('feedback', {
                     message: 'Member demoting failed.'
                 });
+            },
+            onOpenRecipientsPicker: function (event, detail) {
+                console.log(this.is + ' receive event pick-recipients.');
+                this.$.contactsAjax.generateRequest();
+                this.$.recipientPickerDialog.show();
+            },
+            isContent: function(r) {
+                return r === 'share-view';
             }
         });
 

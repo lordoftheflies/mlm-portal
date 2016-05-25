@@ -1,0 +1,266 @@
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../bower_components/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-dialog-scrollable/paper-dialog-scrollable.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animations.html">
+<link rel="import" href="../bower_components/plutonium-login-widget/plutonium-shared-styles.html">
+
+<!--
+An element providing a solution to no problem in particular.
+Example:
+    <topflavon-recipient-picker></topflavon-recipient-picker>
+Example:
+    <topflavon-recipient-picker>
+      <h2>Hello topflavon-recipient-picker</h2>
+    </topflavon-recipient-picker>
+@demo demo/index.html
+@hero hero.svg
+-->
+
+<dom-module id="topflavon-recipient-picker">
+    <template>
+        <style include="iron-flex iron-flex-alignment plutonium-shared-styles">
+            :host {
+                display: block;
+                box-sizing: border-box;
+            }
+            /*                        :host div.plutonium-input > paper-input{
+                                        @apply(--layout-flex);
+                                    }
+                                    :host div.plutonium-input {
+                                        @apply(--layout-horizontal);
+                                    }*/
+            :host paper-dialog-scrollable {
+                @apply(--layout-vertical);
+                height: 300px;
+            }
+
+            :host paper-dialog {
+                width: 50%;
+            }
+        </style>
+
+
+        <paper-dialog id="dialog" 
+                      class="plutonium widget"
+                      modal entry-animation="scale-up-animation" exit-animation="scale-down-animation"
+                      with-backdrop>
+            <paper-toolbar>
+                <h2 id="recipientsPickerTitle">Choose items</h2>
+            </paper-toolbar>
+            <paper-toolbar class="layout horizontal">
+                <paper-tabs class="bottom flex" selected="{{selectionMode}}">
+                    <paper-tab>Person</paper-tab>
+                    <paper-tab>Group</paper-tab>
+                </paper-tabs>
+            </paper-toolbar>
+            <form>
+                <paper-dialog-scrollable>
+                    <iron-pages selected="{{selectionMode}}" class="layout vertical">
+                        <paper-listbox id="contactList"
+                                       class="layout flex"
+                                       attr-for-selected="id"
+                                       multi
+                                       items="[[items]]"
+                                       as="item"
+                                       selected-values="{{selectedItemIds}}">
+                            <template is="dom-repeat" items="[[items]]">
+                                <paper-item id="[[item.id]]" class="layout horizontal">
+                                    <label>[[item.name]]</label>
+                                </paper-item>
+                            </template>
+                        </paper-listbox>
+                        <paper-listbox id="contactList"
+                                       class="layout flex"
+                                       attr-for-selected="id"
+                                       multi
+                                       items="[[items]]"
+                                       as="item"
+                                       selected-values="{{selectedItemIds}}">
+                            <template is="dom-repeat" items="[[items]]">
+                                <paper-item id="[[item.id]]" class="layout horizontal">
+                                    <label>[[item.name]]</label>
+                                </paper-item>
+                            </template>
+                        </paper-listbox>
+                    </iron-pages>
+                </paper-dialog-scrollable>
+                <div class="buttons">
+                    <paper-button dialog-dismiss raise>Cancel</paper-button>
+                </div>
+                <paper-fab icon="done" dialog-confirm on-tap="onApply"></paper-fab>
+            </form>
+        </paper-dialog>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'topflavon-recipient-picker',
+            properties: {
+                /**
+                 * Selection mode.
+                 */
+                selectionMode: {
+                    type: Number,
+                    notify: true,
+                    value: 0
+                },
+                /**
+                 * Input label.
+                 */
+                label: {
+                    type: String,
+                    notify: true
+                },
+                /**
+                 * Iron-icon key for the picker open button.
+                 */
+                pickerIcon: {
+                    type: String,
+                    notify: true
+                },
+                /**
+                 * Title of the picker dialog window.
+                 */
+                pickerTitle: {
+                    type: String,
+                    notify: true
+                },
+                /**
+                 * Tooltip for picker button.
+                 */
+                pickerButtonTooltip: {
+                    type: String,
+                    notify: true
+                },
+                /**
+                 * As paper-listbox as dom-repeat delegate.
+                 */
+                as: {
+                    type: String,
+                    notify: true
+                },
+                /**
+                 * Iron-icon key for the clear input button.
+                 */
+                clearIcon: {
+                    type: String,
+                    notify: true
+                },
+                /**
+                 * Tooltip for clear button.
+                 */
+                clearButtonTooltip: {
+                    type: String,
+                    notify: true
+                },
+                /**
+                 * Pater-listbox attribute for selected delegate.
+                 */
+                attrForSelected: {
+                    type: String,
+                    notify: true
+                },
+                /**
+                 * Selected item ids.
+                 */
+                selectedItemIds: {
+                    type: Array,
+                    notify: true,
+                    value: []
+                },
+                /**
+                 * Selected item ids.
+                 */
+                recipients: {
+                    type: Array,
+                    notify: true,
+                    value: []
+                },
+                /**
+                 * Emails of the selected elements.
+                 */
+                _recipients: {
+                    type: String,
+                    notify: true,
+                    value: ''
+                },
+                /**
+                 * List of selectable items.
+                 */
+                items: {
+                    type: Object,
+                    notify: true
+                }
+            },
+            observers: [
+                'itemsAddedOrRemoved(selectedItemIds.splices)'
+            ],
+            // Element Lifecycle
+            ready: function () {
+                // `ready` is called after all elements have been configured, but
+                // propagates bottom-up. This element's children are ready, but parents
+                // are not.
+                //
+                // This is the point where you should make modifications to the DOM (when
+                // necessary), or kick off any processes the element wants to perform.
+            },
+            attached: function () {
+                // `attached` fires once the element and its parents have been inserted
+                // into a document.
+                //
+                // This is a good place to perform any work related to your element's
+                // visual state or active behavior (measuring sizes, beginning animations,
+                // loading resources, etc).
+            },
+            detached: function () {
+                // The analog to `attached`, `detached` fires when the element has been
+                // removed from a document.
+                //
+                // Use this to clean up anything you did in `attached`.
+            },
+            // Element Behavior
+            /**
+             * Tap open picker event handler.
+             *
+             */
+            /**
+             * Observer for compute by the selected element list to the input.
+             *
+             * @param {splice} splice Polymer splice event.
+             */
+            itemsAddedOrRemoved: function (splice) {
+                if (splice === undefined || splice === null)
+                    return;
+                console.log('topflavon-recipient-picker change recipients: ' + JSON.stringify(this.selectedItemIds));
+                var recipients = '';
+                if (this.items !== undefined && this.items !== null) {
+                    this.items.forEach(function (item, index) {
+                        if (this.selectedItemIds.indexOf(item.id) > -1) {
+                            recipients += item.name + ' ';
+                        }
+                    }, this);
+                }
+                this._recipients = recipients;
+            },
+            show: function () {
+                this.selectedItemIds = this.recipients;
+                this.$.dialog.open();
+            },
+            onApply: function (event, detail) {
+                this.recipients = this.selectedItemIds;
+            }
+        });
+    </script>
+</dom-module>
