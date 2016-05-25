@@ -35,9 +35,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
         </style>
 
-        <iron-ajax id="rootModelAjax" url="[[apiUrl]]/content-management/toc/info" params="[[infoRequestParams]]" handle-as="json" last-response="{{rootModel}}" auto="[[!selectedRoot]]"></iron-ajax>
-        <iron-ajax id="parentTocAjax" url="[[apiUrl]]/content-management/toc/path" params="[[tocRequestParams]]" handle-as="json" last-response="{{parentModel}}" on-response="onParentTocResponse" on-error="onParentTocError" auto="[[!selectedRoot]]"></iron-ajax>
-        <iron-ajax id="childTocAjax" url="[[apiUrl]]/content-management/toc" params="[[tocRequestParams]]" handle-as="json" on-response="onContentResponse" on-error="onContentError" last-response="{{contentChildrenModel}}" auto="[[!selectedRoot]]"></iron-ajax>
+        <iron-ajax id="rootModelAjax" url="[[apiUrl]]/content-management/toc/info" params="[[infoRequestParams]]" handle-as="json" last-response="{{rootModel}}" auto></iron-ajax>
+        <iron-ajax id="parentTocAjax" url="[[apiUrl]]/content-management/toc/path" params="[[tocRequestParams]]" handle-as="json" last-response="{{parentModel}}" on-response="onParentTocResponse" on-error="onParentTocError" auto></iron-ajax>
+        <iron-ajax id="childTocAjax" url="[[apiUrl]]/content-management/toc" params="[[tocRequestParams]]" handle-as="json" on-response="onContentResponse" on-error="onContentError" last-response="{{contentChildrenModel}}" auto></iron-ajax>
 
 
 
@@ -61,15 +61,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                     <paper-icon-button icon="file-download"></paper-icon-button>
                                 </div>
                             </paper-material>
-
                         </paper-item>
                     </a>
                 </template>
             </iron-list>
-
         </div>
         <paper-card heading="{{contentChildrenModel.title}}" hidden="{{!contentChildrenModel.leaf}}">
-<!--            Article ||
+            Article ||
             Account: {{accountId}}
             Selected root: {{selectedRoot}}
             Selected folder: {{selectedContentFolder}}
@@ -77,7 +75,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             Is leaf: {{contentChildrenModel.leaf}}
             ID: {{contentChildrenModel.id}}
             Title: {{contentChildrenModel.title}}
-            Sections: {{contentChildrenModel.sections.length}}-->
+            Sections: {{contentChildrenModel.sections.length}}
 
             <plutonium-article-section 
                 class="card-content layout vertical"
@@ -170,7 +168,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             this.tocRequestParams.tag = selectedContentFolder;
             this.tocRequestParams.owner = accountId;
             this.infoRequestParams.pageId = selectedRoot;
-            console.log('Toc-Content-view toc navigation request parameters updated: ' + JSON.stringify(this.tocRequestParams))
+            console.log(this.is + ' toc navigation request parameters updated: ' + JSON.stringify(this.tocRequestParams))
             if (this.contentChildrenModel !== undefined && this.contentChildrenModel.sections !== undefined)
                 this.splice('contentChildrenModel.sections', 0, this.contentChildrenModel.sections.length);
             this.$.rootModelAjax.generateRequest();
@@ -179,6 +177,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         },
         observeSelectedContentFolder: function (folder) {
             if (this.tocRequestParams) {
+                console.log(this.is + ' observe selected content folder: ' + folder);
                 this.tocRequestParams.tag = folder;
             }
 //            this.tocRequestParams.owner = this.accountId;
@@ -189,6 +188,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         observeSelectedAccountId: function (accountId) {
 //            this.tocRequestParams.tag = this.selectedContentFolder;
             if (this.tocRequestParams) {
+                console.log(this.is + ' observe selected account: ' + accountId);
                 this.tocRequestParams.owner = accountId;
             }
 //            this.$.rootModelAjax.generateRequest();
