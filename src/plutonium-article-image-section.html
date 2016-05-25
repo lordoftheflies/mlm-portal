@@ -14,7 +14,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="plutonium-article-field-behavior.html">
 <link rel="import" href="plutonium-article-field-sizing-behavior.html">
-<link rel="import" href="plutonium-article-image-editor.html">
+<!--<link rel="import" href="plutonium-article-image-editor.html">-->
 
 <!--
 An element providing a solution to no problem in particular.
@@ -43,7 +43,7 @@ Example:
 
 
         </style>
-        <plutonium-article-image-editor 
+<!--        <plutonium-article-image-editor 
             id="plSectionEditor"
             action-title="Edit section"
             title="{{model.title}}"
@@ -52,7 +52,7 @@ Example:
             height="{{model.height}}"
             width="{{model.width}}"
             font-size="{{model.fontSize}}">
-        </plutonium-article-image-editor>
+        </plutonium-article-image-editor>-->
         <div hidden="[[editable]]" hidden="[[editable]]">
 
             <h2>{{model.title}}</h2>
@@ -110,7 +110,7 @@ Example:
                 },
                 onShowEditor: function () {
                     console.log(this.is + '[' + this.id + '] show field editor.');
-                    this.$.plSectionEditor.open();
+                    this.fire('article-image-edit', this.model);
                 },
                 observeModel: function () {
                     console.log(this.is + '[' + this.id + '] model property changed.');

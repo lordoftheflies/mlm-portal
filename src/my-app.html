@@ -44,6 +44,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="topflavon-member-delete-prompt.html">
 <link rel="import" href="topflavon-role-changer-prompt.html">
 <link rel="import" href="topflavon-recipient-picker.html">
+<link rel="import" href="plutonium-article-link-editor.html">
+<link rel="import" href="plutonium-article-image-editor.html">
+<link rel="import" href="plutonium-article-text-editor.html">
+<link rel="import" href="plutonium-article-video-editor.html">
+
 
 <dom-module id="my-app">
 
@@ -61,7 +66,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 --app-primary-color: var(--paper-indigo-500);
                 --app-secondary-color: black;
             }
-            
+
 
             app-header {
                 background-color: var(--app-primary-color);
@@ -133,7 +138,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                    auto>
 
         </iron-ajax>
-        
+
         <iron-ajax 
             id="contactsAjax"
             url="[[apiUrl]]/addressbook/[[session.token]]/contacts" 
@@ -180,6 +185,45 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             recipients="{{recipients}}">
 
         </topflavon-recipient-picker>
+
+        <plutonium-article-text-editor 
+            id="articleTextEditor"
+            action-title="Edit section"
+            title="{{model.title}}"
+            data="{{model.data}}"
+            justification="{{model.justification}}"
+            font-size="{{model.fontSize}}">
+        </plutonium-article-text-editor>
+        <plutonium-article-video-editor 
+            id="articleVideoEditor"
+            action-title="Edit video"
+            title="{{model.title}}"
+            data="{{model.data}}"
+            justification="{{model.justification}}"
+            height="{{model.height}}"
+            width="{{model.width}}"
+            font-size="{{model.fontSize}}">
+        </plutonium-article-video-editor>
+        <plutonium-article-link-editor 
+            id="articleLinkEditor"
+            action-title="Edit link"
+            title="{{model.title}}"
+            data="{{model.data}}"
+            justification="{{model.justification}}"
+            font-size="{{model.fontSize}}"
+            parent-candidates-url="{{parentCandidatesUrl}}">
+        </plutonium-article-link-editor>
+        <plutonium-article-image-editor 
+            id="articleImageEditor"
+            action-title="Edit image"
+            title="{{model.title}}"
+            data="{{model.data}}"
+            justification="{{model.justification}}"
+            height="{{model.height}}"
+            width="{{model.width}}"
+            font-size="{{model.fontSize}}">
+        </plutonium-article-image-editor>
+
         <app-drawer-layout fullbleed>
 
             <!-- Drawer content -->
@@ -305,7 +349,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             </div>
 
                         </iron-pages>
-                        
+
                     </app-toolbar>
                 </app-header>
                 <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
@@ -375,6 +419,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     type: String,
                     value: "http://localhost:8080/topflavon-backend"
                 },
+                model: {
+                    type: Object,
+                    notify: true
+                }
 //                isMeIndicator: {
 //                    type: Boolean,
 //                    value: true,
@@ -402,7 +450,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 'demotionDialog.iron-form-error': 'onDemoteMemberError',
                 'sharePage.pick-recipients': 'onOpenRecipientsPicker',
                 'feedback': 'onFeedback',
-                'recipientPickerDialog.pick-recipients': 'onOpenRecipientsPicker'
+                'recipientPickerDialog.pick-recipients': 'onOpenRecipientsPicker',
+                'article-text-edit': 'onOpenArticleTextEditor',
+                'article-video-edit': 'onOpenArticleVideoEditor',
+                'article-image-edit': 'onOpenArticleImageEditor',
+                'article-link-edit': 'onOpenArticleLinkEditor'
             },
             showUserNavigation: function () {
                 console.log("Show user navigation dropdown.");
@@ -500,8 +552,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 this.$.contactsAjax.generateRequest();
                 this.$.recipientPickerDialog.show();
             },
-            isContent: function(r) {
+            isContent: function (r) {
                 return r === 'share-view';
+            },
+            onOpenArticleTextEditor: function (event, detail) {
+                this.model = detail;
+                this.$.articleTextEditor.open();
+            },
+            onOpenArticleVideoEditor: function (event, detail) {
+                this.model = detail;
+                this.$.articleVideoEditor.open();
+            },
+            onOpenArticleImageEditor: function (event, detail) {
+                this.model = detail;
+                this.$.articleImageEditor.open();
+            },
+            onOpenArticleLinkEditor: function (event, detail) {
+                this.model = detail;
+                this.$.articleLinkEditor.open();
             }
         });
 

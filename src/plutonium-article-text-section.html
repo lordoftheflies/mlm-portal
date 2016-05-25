@@ -9,11 +9,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
-<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
+<!--<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">-->
 
 
 <link rel="import" href="plutonium-article-field-behavior.html">
-<link rel="import" href="plutonium-article-text-editor.html">
+<!--<link rel="import" href="plutonium-article-text-editor.html">-->
 
 <!--
 An element providing a solution to no problem in particular.
@@ -42,14 +42,14 @@ Example:
 
 
         </style>
-        <plutonium-article-text-editor 
+<!--        <plutonium-article-text-editor 
             id="plSectionEditor"
             action-title="Edit section"
             title="{{model.title}}"
             data="{{model.data}}"
             justification="{{model.justification}}"
             font-size="{{model.fontSize}}">
-        </plutonium-article-text-editor>
+        </plutonium-article-text-editor>-->
 
         <div hidden="[[editable]]">
             <h2>{{model.title}}</h2>
@@ -102,7 +102,7 @@ Example:
                 },
                 onShowEditor: function () {
                     console.log(this.is + '[' + this.id + '] show field editor.');
-                    this.$.plSectionEditor.open();
+                    this.fire('article-text-edit', this.model);
                 },
                 observeModel: function () {
                     console.log(this.is + '[' + this.id + '] model property changed.');

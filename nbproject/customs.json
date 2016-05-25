@@ -2,6 +2,7 @@
     "elements": {
         "file-upload": {},
         "topflavon-mailbox-view": {},
+        "plutonium-article-text-editor": {},
         "google-youtube": {
             "attributes": {
                 "width": {},
@@ -65,6 +66,7 @@
                 "selected": {}
             }
         },
+        "plutonium-article-video-editor": {},
         "paper-dropdown-menu": {},
         "paper-card": {
             "attributes": {
@@ -141,6 +143,7 @@
                 "id": {}
             }
         },
+        "app-location": {},
         "plutonium-text-section": {
             "attributes": {
                 "field": {},
@@ -221,6 +224,7 @@
         },
         "app-header": {},
         "topflavon-profile-view": {},
+        "plutonium-article-image-editor": {},
         "content": {
             "attributes": {
                 "id": {}
@@ -283,6 +287,7 @@
         },
         "iron-selector": {},
         "topflavon-content-view": {},
+        "plutonium-article-link-editor": {},
         "about-view": {},
         "paper-icon-button": {
             "attributes": {
@@ -314,6 +319,7 @@
             }
         },
         "topflavon-member-delete-prompt": {},
+        "app-route": {},
         "plutonium-logon-widget": {},
         "paper-dialog": {
             "attributes": {
