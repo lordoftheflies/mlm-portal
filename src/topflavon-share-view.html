@@ -15,6 +15,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/plutonium-field-recipient/plutonium-field-recipient.html">
 <link rel="import" href="topflavon-shared-styles.html">
 <link rel="import" href="plutonium-widget-behavior.html">
+<link rel="import" href="plutonium-article-form.html">
 
 <dom-module id="topflavon-share-view">
 
@@ -60,7 +61,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                     <div class="flex layout vertical">
                         <div class="layout horizontal">
-                            <paper-input class="flex" name="recipients" label="[[label]]" value$="{{_recipients}}"></paper-input>
+                            <paper-input label="Recipients" class="flex" name="recipients" label="[[label]]" value$="{{_recipients}}"></paper-input>
                             <paper-icon-button icon="supervisor-account" title="Choose contacts." on-tap="onOpenRecipientsDialog"></paper-icon-button>
                             <paper-icon-button icon="clear" title="Clear recipients input." on-tap="onClearRecipients"></paper-icon-button>
                         </div>

@@ -1,0 +1,18 @@
+<script>
+    window.PlutoniumBehaviors = window.PlutoniumBehaviors || {};
+    PlutoniumBehaviors.ArticleFieldSizingBehavior = {
+        properties: {
+            currentWidth: {
+                type: String,
+                computed: 'computeSize(model.width)'
+            },
+            currentHeight: {
+                type: String,
+                computed: 'computeSize(model.height)'
+            }
+        },
+        computeSize: function (value) {
+            return value + 'px';
+        }
+    };
+</script>
