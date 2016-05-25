@@ -19,6 +19,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/paper-toast/paper-toast.html">
 <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
+<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="../bower_components/paper-menu/paper-menu.html">
 <link rel="import" href="../bower_components/paper-styles/paper-styles.html">
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
@@ -56,7 +57,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             :host {
                 display: block;
-                --app-primary-color: #4285f4;
+                /*--app-primary-color: #4285f4;*/
+                --app-primary-color: var(--paper-indigo-500);
                 --app-secondary-color: black;
             }
             
@@ -182,7 +184,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             <!-- Drawer content -->
             <app-drawer>
-                <app-toolbar>Menu</app-toolbar>
+                <app-toolbar></app-toolbar>
                 <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
                     <a id="shareMainMenuTitle" name="share-view" href="/share-view">Share</a>
                     <a id="contentMainMenuTitle" name="content-view" href="/content-view/ROOT">Content</a>
