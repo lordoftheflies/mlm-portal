@@ -55,7 +55,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <iron-pages selected="{{selectedMetaAction}}" attr-for-selected="name">
             <paper-card elevation="1" name="share" class="layout vertical main-action-fab-container">
                 <div class="card-content layout horizontal">
-                    <paper-fab class="main-action-fab" icon="send" on-tap="onSend" title="Publish content" id="sendMessageFab"></paper-fab>
+                    <paper-fab class="main-action-fab" icon="send" on-tap="onSendMessage" title="Publish content" id="sendMessageFab"></paper-fab>
 
 
                     <div class="flex layout vertical">
@@ -95,7 +95,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
                     <div class="card-content layout horizontal">
-                        <paper-fab class="minor-action-fab" icon="send" on-tap="onSend" title="Publish content" id="sendMessageFab"></paper-fab>
+                        <paper-fab class="minor-action-fab" icon="save" on-tap="onOnlySaveContent" title="Publish content" id="sendMessageFab"></paper-fab>
                         <div class="layout vertical flex">
                             <paper-dropdown-menu 
                                 id="parentDdLabel"
@@ -278,6 +278,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             },
             computeHeader: function (articleContentHeading) {
                 return ('assembled' === articleContentHeading) ? 'Edit content' : 'Attach file';
+            },
+            onSendMessage: function(event, detail) {
+                console.log('Send message.');
+            },
+            onOnlySaveContent: function(event, detail) {
+                console.log('Save content.');
             }
         });
 
