@@ -22,6 +22,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="plutonium-widget-behavior.html">
 <link rel="import" href="topflavon-shared-styles.html">
+<link rel="import" href="plutonium-article-section.html">
 
 <dom-module id="topflavon-content-view">
 
@@ -68,7 +69,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         </div>
         <paper-card heading="{{contentChildrenModel.title}}" hidden="{{!contentChildrenModel.leaf}}">
-            Article ||
+<!--            Article ||
             Account: {{accountId}}
             Selected root: {{selectedRoot}}
             Selected folder: {{selectedContentFolder}}
@@ -76,7 +77,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             Is leaf: {{contentChildrenModel.leaf}}
             ID: {{contentChildrenModel.id}}
             Title: {{contentChildrenModel.title}}
-            Sections: {{contentChildrenModel.sections.length}}
+            Sections: {{contentChildrenModel.sections.length}}-->
 
             <plutonium-article-section 
                 class="card-content layout vertical"
