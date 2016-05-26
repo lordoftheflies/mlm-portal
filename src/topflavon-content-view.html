@@ -73,16 +73,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </iron-list>
         </div>
         <paper-card heading="{{contentChildrenModel.title}}" hidden="{{!contentChildrenModel.leaf}}">
-            Article ||
-            Account: {{accountId}}
-            Selected root: {{selectedArticleId}}
-            Selected folder: {{selectedContentFolder}}
-            Ebedded file: {{contentChildrenModel.hasEmbeddedFile}}
-            Is leaf: {{contentChildrenModel.leaf}}
-            ID: {{contentChildrenModel.id}}
-            Title: {{contentChildrenModel.title}}
-            Sections: {{contentChildrenModel.sections.length}}
-
             <plutonium-article-section 
                 class="card-content layout vertical"
                 api-url="[[apiUrl]]"

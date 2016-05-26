@@ -51,24 +51,9 @@ Example:
             }
 
         </style>
-        <table class="debug">
-            <tr>
-                <td>Name</td><td>[[model.name]]</td>
-            </tr>
-            <tr>
-                <td>Type</td><td>[[model.type]]</td>
-            </tr>
-            <tr>
-                <td>Editable</td><td>[[editable]]</td>
-            </tr>
-            <tr>
-                <td>API</td><td>[[apiUrl]]</td>
-            </tr>
-            <tr>
-                <td>Model</td><td>[[model.title]]|[[model.data]]</td>
-            </tr>
-        </table>
+        SSSSSSSSSSSSSSSS: {{model.type}}
         <iron-pages selected="{{model.type}}" attr-for-selected="field">
+            
             <plutonium-article-link-section 
                 name="{{model.name}}" editable="{{editable}}" model="{{model}}"
                 field="plutonium-cm-editor-link"
@@ -106,11 +91,11 @@ Example:
                         type: String,
                         notify: true
                     },
-                    model: {
-                        type: Object,
-                        notify: true,
-                        observer: 'observeModel'
-                    }
+//                    model: {
+//                        type: Object,
+//                        notify: true,
+//                        observer: 'observeModel'
+//                    }
                 },
                 listeners: {
 //                    'removeSection': 'removeSection',
@@ -118,8 +103,8 @@ Example:
                     'apply-model': 'onModifyModel'
                 },
                 // Element Lifecycle
-                observeModel: function (rr) {
-                },
+//                observeModel: function (rr) {
+//                },
                 ready: function () {
                     // `ready` is called after all elements have been configured, but
                     // propagates bottom-up. This element's children are ready, but parents

@@ -9,6 +9,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../bower_components/iron-image/iron-image.html">
 <link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
 
 
@@ -43,27 +45,23 @@ Example:
 
 
         </style>
-<!--        <plutonium-article-image-editor 
-            id="plSectionEditor"
-            action-title="Edit section"
-            title="{{model.title}}"
-            data="{{model.data}}"
-            justification="{{model.justification}}"
-            height="{{model.height}}"
-            width="{{model.width}}"
-            font-size="{{model.fontSize}}">
-        </plutonium-article-image-editor>-->
         <div hidden="[[editable]]" hidden="[[editable]]">
 
             <h2>{{model.title}}</h2>
             <div id="modelData" class$="horizontal {{model.justification}} layout">
-                 <iron-image fade class="thumbnail" sizing="contain" width$="{{model.width}}" height$="{{model.height}}" src="{{model.data}}"></iron-image>
+                 <!--<div class="layout vertical">-->
+                    <!--<iron-image class="thumbnail" sizing="contain" style="width: 100px; height: 100px;" src$="{{model.data}}"></iron-image>-->
+                <!--</div>-->
+                <iron-image class="thumbnail" sizing="contain" width="{{model.width}}" height="{{model.height}}" src="{{model.data}}"></iron-image>
             </div>
         </div>
 
         <paper-card elevation="1" heading="{{model.title}}" class="layout vertical" hidden="[[!editable]]">
             <div id="modelData" class$="card-content horizontal {{model.justification}} layout">
-                 <iron-image fade class="thumbnail" sizing="contain" width$="{{model.width}}" height$="{{model.height}}" src="{{model.data}}"></iron-image>
+                 <!--<div>-->
+                    <!--<iron-image class="thumbnail" sizing="cover" src$="{{model.data}}"></iron-image>-->
+                <!--</div>-->
+                <iron-image fade class="thumbnail" sizing="cover" width$="{{model.width}}" height$="{{model.height}}" src$="{{model.data}}"></iron-image>
             </div>
             <div class="card-actions">
                 <paper-icon-button id="moveUpButton" on-tap="onMoveUpSection" icon="expand-less" raised></paper-icon-button>

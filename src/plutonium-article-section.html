@@ -41,43 +41,45 @@ Example:
                 box-sizing: border-box;
             }
         </style>
+
         <template is="dom-repeat" items="{{contentModel.sections}}" as="section">
-<!--            <plutonium-article-field 
-                class="layout vertical wrap"
-                name="{{section.name}}" 
-                model="{{section}}" 
-                api-url="{{apiUrl}}">
-            </plutonium-article-field>-->
+            QQQQQQQQQQQQQQQQQQ
+            [[section.name]]
+            [[section.title]]
+            [[section.data]]
+            [[section.width]]
+            [[section.height]]
+            
             <plutonium-article-field
                 name="{{section.name}}" 
-                model="{{section}}" 
+                model$="{{section}}" 
                 api-url="{{apiUrl}}">
-            </plutonium-article-field>
-            <br />
-        </template>
+        </plutonium-article-field>
+        <br />
     </template>
+</template>
 
-    <script>
-        Polymer({
-            is: 'plutonium-article-section',
-            properties: {
-                /**
-                 * Data-model of th form.
-                 */
-                contentModel: {
-                    type: Object,
-                    notify: true,
+<script>
+    Polymer({
+        is: 'plutonium-article-section',
+        properties: {
+            /**
+             * Data-model of th form.
+             */
+            contentModel: {
+                type: Object,
+                notify: true,
 //                    observer: 'renderContent'
-                }
-            },
-            observers: [
-                'observeSections(contentModel.sections.splices)'
-            ],
-            //            // Element Lifecycle
-
-            observeSections: function (splices) {
-                console.log(this.is + ' onserve sections.');
             }
-        });
-    </script>
+        },
+        observers: [
+            'observeSections(contentModel.sections.splices)'
+        ],
+        //            // Element Lifecycle
+
+        observeSections: function (splices) {
+            console.log(this.is + ' onserve sections.');
+        }
+    });
+</script>
 </dom-module>

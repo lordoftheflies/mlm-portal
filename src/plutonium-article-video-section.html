@@ -8,11 +8,12 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 <link rel="import" href="../bower_components/polymer/polymer.html">
-
+<link rel="import" href="../bower_components/google-youtube/google-youtube.html">
 <link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">
 
 <link rel="import" href="plutonium-article-field-behavior.html">
 <link rel="import" href="plutonium-article-field-sizing-behavior.html">
+
 <!--<link rel="import" href="plutonium-article-video-editor.html">-->
 
 <!--
@@ -42,16 +43,6 @@ Example:
 
 
         </style>
-<!--        <plutonium-article-video-editor 
-            id="plSectionEditor"
-            action-title="Edit section"
-            title="{{model.title}}"
-            data="{{model.data}}"
-            justification="{{model.justification}}"
-            height="{{model.height}}"
-            width="{{model.width}}"
-            font-size="{{model.fontSize}}">
-        </plutonium-article-video-editor>-->
         <div hidden="[[editable]]">
             <h2>{{model.title}}</h2>
             <div id="modelData" class$="horizontal {{model.justification}} layout">
@@ -66,6 +57,7 @@ Example:
         </div>
 
         <paper-card elevation="1" heading="{{model.title}}" class="layout vertical" hidden="[[!editable]]">
+
             <div id="modelData" class$="card-content horizontal {{model.justification}} layout">
                  <google-youtube
                     video-id="{{model.data}}"
