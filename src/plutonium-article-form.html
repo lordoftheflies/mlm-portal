@@ -93,7 +93,7 @@ Example:
                 <paper-icon-button id="addImageButton" on-tap="onEmbedImage" icon="perm-media" title="Embedd image to the message content."></paper-icon-button>
                 <paper-icon-button id="addLinkButton" on-tap="onEmbedLink" icon="link" title="Embedd a link to another message to the message content."></paper-icon-button>
                 <div class="flex"></div>
-                <paper-fab class="end-justified" icon="send" on-tap="onSend" title="Publish content" id="publishContentFab"></paper-fab>
+                <!--<paper-fab class="end-justified" icon="send" on-tap="onSend" title="Publish content" id="publishContentFab"></paper-fab>-->
             </div>
             <paper-listbox id="assembled" selected="{{selectedSection}}">
                 <template is="dom-repeat" items="{{contentModel.sections}}" as="section">
@@ -373,14 +373,14 @@ Example:
                 data: ''
             });
         },
-        onSend: function () {
-            this.contentModel.leaf = true;
-            this.fire('share', {
-                content: this.contentModel,
-                recipients: this.selectedContactIds,
-                message: this.message
-            });
-        }
+//        onSend: function () {
+//            this.contentModel.leaf = true;
+//            this.fire('share', {
+//                content: this.contentModel,
+//                recipients: this.selectedContactIds,
+//                message: this.message
+//            });
+//        }
     });
 </script>
 </dom-module>

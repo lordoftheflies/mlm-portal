@@ -50,43 +50,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             handle-as="json"
             content-type="application/json"
             method="POST"
-            url="{{apiUrl}}/content-management/save" 
-            body="{{pageDto}}"></iron-ajax>
+            url="[[apiUrl]]/content-management/[[accountId]]/save" 
+            body="{{contentModel}}"></iron-ajax>
 
         <iron-pages selected="{{selectedMetaAction}}" attr-for-selected="name">
             <paper-card elevation="1" name="share" class="layout vertical main-action-fab-container">
                 <div class="card-content layout horizontal">
                     <paper-fab class="main-action-fab" icon="send" on-tap="onSendMessage" title="Publish content" id="sendMessageFab"></paper-fab>
-
-
                     <div class="flex layout vertical">
                         <div class="layout horizontal">
                             <paper-input label="Recipients" class="flex" name="recipients" label="[[label]]" value$="{{_recipients}}"></paper-input>
                             <paper-icon-button icon="supervisor-account" title="Choose contacts." on-tap="onOpenRecipientsDialog"></paper-icon-button>
                             <paper-icon-button icon="clear" title="Clear recipients input." on-tap="onClearRecipients"></paper-icon-button>
                         </div>
-                        <!--                        <plutonium-field-recipient  
-                                                    class="flex"
-                                                    id="recipientsFieldInput"
-                                                    label="To"
-                                                    picker-icon="supervisor-account"
-                                                    picker-title="Contacts"
-                                                    picker-button-tooltip="Choose contacts."
-                                                    clear-icon="clear"
-                                                    clear-button-tooltip="Clear recipients input."
-                                                    attr-for-selected="id"
-                                                    as="item"
-                                                    items="[[contacts]]">
-                                                    <template is="dom-repeat" items="[[contacts]]">
-                                                        <paper-item id="[[item.id]]" class="item pad">
-                                                            <label>[[item.name]]</label>
-                                                        </paper-item>
-                                                    </template>
-                                                </plutonium-field-recipient>-->
                         <paper-input id="messageInput" class="bottom title" label="Message" value="{{message}}"></paper-input>
                     </div>
-                    <!--<div></div>-->
-                    <!--<paper-fab class="end-justified" icon="send" on-tap="onSend" title="Publish content" id="sendMessageFab"></paper-fab>-->
                 </div>
 
             </paper-card>
@@ -96,7 +74,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
                     <div class="card-content layout horizontal">
-                        <paper-fab class="minor-action-fab" icon="save" on-tap="onOnlySaveContent" title="Publish content" id="sendMessageFab"></paper-fab>
+                        <paper-fab class="minor-action-fab" icon="save" on-tap="onShare" title="Publish content" id="sendMessageFab"></paper-fab>
                         <div class="layout vertical flex">
                             <paper-dropdown-menu 
                                 id="parentDdLabel"
@@ -118,8 +96,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                             <paper-input id="contentTitleInput" class="bottom title" label="Title" value="{{contentModel.title}}"></paper-input>
                         </div>
-                        <!--<paper-fab class="end-justified" icon="send" on-tap="onSend" title="Publish content" id="sendMessageFab"></paper-fab>-->
-
                     </div>
                 </paper-card>
 
@@ -238,8 +214,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 //            },
             onShare: function (e, details) {
                 console.log('Save content: ' + JSON.stringify(details));
-                this.pageDto = details.content;
+                this.contentModel.leaf = true;
                 this.$.shareAjax.generateRequest();
+//                this.fire('share', {
+//                    content: this.contentModel,
+//                    recipients: this.selectedContactIds,
+//                    message: this.message
+//                });
             },
             onShareError: function () {
                 this.fire('feedback', {
@@ -280,10 +261,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             computeHeader: function (articleContentHeading) {
                 return ('assembled' === articleContentHeading) ? 'Edit content' : 'Attach file';
             },
-            onSendMessage: function(event, detail) {
+            onSendMessage: function (event, detail) {
                 console.log('Send message.');
             },
-            onOnlySaveContent: function(event, detail) {
+            onOnlySaveContent: function (event, detail) {
                 console.log('Save content.');
             }
         });
