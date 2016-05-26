@@ -18,6 +18,15 @@
                 type: Number,
                 notify: true
             }
+        },
+        resetViewportModel: function () {
+            this._width = this.width;
+            this._height = this.height;
+        },
+        applyViewportModelChanges: function () {
+            console.log(this.is + ' apply changes.');
+            this.width = this._;
+            this.height = this._height;
         }
     };
 </script>
