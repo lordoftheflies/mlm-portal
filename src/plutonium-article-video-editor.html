@@ -127,6 +127,16 @@ Example:
                     this.applyContentModelChanges();
                     this.applyFormattingModelChanges();
                     this.applyViewportModelChanges();
+                    this.fire('modify-model', {
+                        name: this.name,
+                        type: this.field,
+                        title: this.title,
+                        data: this.data,
+                        fontSize: this.fontSize,
+                        justification: this.justification,
+                        width: this.width,
+                        height: this.height
+                    });
                 },
                 onCancelChanges: function () {
                     this.resetFormattingModel();

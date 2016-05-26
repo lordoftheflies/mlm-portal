@@ -133,6 +133,14 @@ Example:
                 onApplyChanges: function () {
                     this.applyContentModelChanges();
                     this.applyFormattingModelChanges();
+                    this.fire('modify-model', {
+                        name: this.name,
+                        type: this.field,
+                        title: this.title,
+                        data: this.data,
+                        fontSize: this.fontSize,
+                        justification: this.justification
+                    });
                 },
                 onCancelChanges: function () {
                     this.resetFormattingModel();
