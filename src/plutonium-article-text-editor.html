@@ -12,8 +12,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../bower_components/paper-input/paper-textarea.html">
+<link rel="import" href="../bower_components/plutonium-login-widget/plutonium-shared-styles.html">
 
 <link rel="import" href="plutonium-article-field-editable-behavior.html">
+<link rel="import" href="plutonium-article-field-formatable-behavior.html">
+<link rel="import" href="plutonium-article-field-overlay-behavior.html">
 <!--
 An element providing a solution to no problem in particular.
 
@@ -33,7 +36,7 @@ Example:
 
 <dom-module id="plutonium-article-text-editor">
     <template>
-        <style include="iron-flex iron-flex-alignment">
+        <style include="iron-flex iron-flex-alignment plutonium-shared-styles">
             :host {
                 --section-font-size: 10px;
             }
@@ -68,8 +71,10 @@ Example:
             entry-animation="scale-up-animation"
             exit-animation="fade-out-animation"
             with-backdrop
-            class="editor">
-            <h2 id="editorDialogTitle">[[actionTitle]]</h2>
+            class="editor plutonium widget">
+            <paper-toolbar>
+                <h2 id="editorDialogTitle">[[actionTitle]]</h2>
+            </paper-toolbar>
             <paper-toolbar>
                 <paper-icon-button id="decreaseSizeButton" on-tap="onDecreaseFontSize" icon="unfold-less" raised></paper-icon-button>
                 <paper-icon-button id="increaseSizeButton" on-tap="onInreaseFontSize" icon="unfold-more" raised></paper-icon-button>
@@ -77,16 +82,18 @@ Example:
                 <paper-icon-button id="alignCenterButton" active="{{_centerJustified}}" toggles raised on-tap="onAlignCenter" icon="editor:format-align-center" raised></paper-icon-button>
                 <paper-icon-button id="alignRightButton" active="{{_endJustified}}" toggles raised on-tap="onAlignRight" icon="editor:format-align-right" raised></paper-icon-button>
             </paper-toolbar>
-            <div class$="horizontal {{_justification}} layout">
-                 <div class="preview">aAbBcC</div>
-            </div>
-            <paper-input id="textModelTitle" label="Title" value="{{_title}}"></paper-input>
-            <paper-textarea id="textModelData" label="Text" rows="10" value="{{_data}}" class="{{_justification}}" >
-            </paper-textarea>
-            <div class="buttons">
-                <paper-button id="editorDialogCancelButton" dialog-dismiss on-tap="onCancelChanges">Cancel</paper-button>
-                <paper-button id="editorDialogAcceptButton" raised dialog-confirm on-tap="onApplyChanges">Apply</paper-button>
-            </div>
+            <form>
+                <div class$="horizontal {{_justification}} layout">
+                     <div class="preview">aAbBcC</div>
+                </div>
+                <paper-input id="textModelTitle" label="Title" value="{{_title}}"></paper-input>
+                <paper-textarea id="textModelData" label="Text" rows="10" value="{{_data}}" class="{{_justification}}" >
+                </paper-textarea>
+                <div class="buttons">
+                    <paper-button id="editorDialogCancelButton" raised dialog-dismiss on-tap="onCancelChanges">Cancel</paper-button>
+                </div>
+                <paper-fab id="editorDialogAcceptButton" icon="done" raised dialog-confirm on-tap="onApplyChanges"></paper-fab>
+            </form>
         </paper-dialog>
     </template>
 
@@ -96,57 +103,22 @@ Example:
             Polymer({
                 is: 'plutonium-article-text-editor',
                 behaviors: [
-                    PlutoniumBehaviors.ArticleFieldEditableBehavior
+                    PlutoniumBehaviors.ArticleFieldEditableBehavior,
+                    PlutoniumBehaviors.ArticleFieldFormatableBehavior,
+                    PlutoniumBehaviors.ArticleFieldOverlayBehavior
                 ],
-                properties: {
-                    title: {
-                        type: String,
-                        notify: true
-                    },
-                    data: {
-                        type: String,
-                        notify: true
-                    },
-                    _title: {
-                        type: String,
-                        notify: true
-                    },
-                    _data: {
-                        type: String,
-                        notify: true
-                    }
-                },
-//                observers: [
-//                    'observeValueChanges(_fontSize, _justification)'
-//                ],
-//                listeners: {
-//                    render: 'onRender'
-//                },
                 // Element Lifecycle
-                observeModel: function (rr) {
-                },
-                // Element Behavior
-//                computeTitle: function (model) {
-//                    this.title = model.title;
-//                },
-
-
                 onApplyChanges: function () {
-                    console.log(this.is + ' apply changes.');
-                    this.justification = this._justification;
-                    this.fontSize = this._fontSize;
-                    this.title = this._title;
-                    this.data = this._data;
+                    this.applyContentModelChanges();
+                    this.applyFormattingModelChanges();
+                    this.applyViewportModelChanges();
                 },
                 onCancelChanges: function () {
-                    this._reset();
-                },
-                _reset: function () {
-                    this._justification = this.justification;
-                    this._fontSize = this.fontSize;
-                    this._title = this.title;
-                    this._data = this.data;
+                    this.resetFormattingModel();
+                    this.resetViewportModel();
+                    this.resetContentModel();
                 }
+
             });
         })();
     </script>

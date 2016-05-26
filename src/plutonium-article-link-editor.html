@@ -11,8 +11,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../bower_components/plutonium-login-widget/plutonium-shared-styles.html">
 
 <link rel="import" href="plutonium-article-field-editable-behavior.html">
+<link rel="import" href="plutonium-article-field-overlay-behavior.html">
+<link rel="import" href="plutonium-article-field-formatable-behavior.html">
 <!--
 An element providing a solution to no problem in particular.
 
@@ -32,35 +35,35 @@ Example:
 
 <dom-module id="plutonium-article-link-editor">
     <template>
-        <style include="iron-flex iron-flex-alignment">
-            :host {
-                --section-font-size: 10px;
-            }
-
-            /*            --section-start-justified {
-                            @apply(--layout-horizontal);
-                            @apply(--layout-start-justified);
+        <style include="iron-flex iron-flex-alignment plutonium-shared-styles">
+            /*            :host {
+                            --section-font-size: 10px;
                         }
-                        
-                        --section-center-justified {
-                            @apply(--layout-horizontal);
-                            @apply(--layout-center-justified);
+            
+                                    --section-start-justified {
+                                        @apply(--layout-horizontal);
+                                        @apply(--layout-start-justified);
+                                    }
+                                    
+                                    --section-center-justified {
+                                        @apply(--layout-horizontal);
+                                        @apply(--layout-center-justified);
+                                    }
+                                    
+                                    --section-end-justified {
+                                        @apply(--layout-horizontal);
+                                        @apply(--layout-end-justified);
+                                    }
+            
+                        :host div.preview,
+                        :host paper-textarea {
+                            font-size: var(--section-font-size);
+            
                         }
-                        
-                        --section-end-justified {
-                            @apply(--layout-horizontal);
-                            @apply(--layout-end-justified);
+            
+                        paper-icon-button[active] {
+                            color: var(--paper-icon-button-ink-color, black);
                         }*/
-
-            :host div.preview,
-            :host paper-textarea {
-                font-size: var(--section-font-size);
-
-            }
-
-            paper-icon-button[active] {
-                color: var(--paper-icon-button-ink-color, black);
-            }
         </style>
         <iron-ajax 
             id="parentCandidatesAjax"
@@ -73,8 +76,10 @@ Example:
             entry-animation="scale-up-animation"
             exit-animation="fade-out-animation"
             with-backdrop
-            class="editor">
-            <h2 id="editorDialogTitle">[[actionTitle]]</h2>
+            class="editor plutonium widget">
+            <paper-toolbar>
+                <h2 id="editorDialogTitle">[[actionTitle]]</h2>
+            </paper-toolbar>
             <paper-toolbar>
                 <paper-icon-button id="decreaseSizeButton" on-tap="onDecreaseFontSize" icon="unfold-less" raised></paper-icon-button>
                 <paper-icon-button id="increaseSizeButton" on-tap="onInreaseFontSize" icon="unfold-more" raised></paper-icon-button>
@@ -82,27 +87,29 @@ Example:
                 <paper-icon-button id="alignCenterButton" active="{{_centerJustified}}" toggles raised on-tap="onAlignCenter" icon="editor:format-align-center" raised></paper-icon-button>
                 <paper-icon-button id="alignRightButton" active="{{_endJustified}}" toggles raised on-tap="onAlignRight" icon="editor:format-align-right" raised></paper-icon-button>
             </paper-toolbar>
-            <div class$="horizontal {{_justification}} layout">
-                 <div class="preview">aAbBcC</div>
-            </div>
-            <div>
-                <paper-input id="linkEditorDialogTitleLabel" name="title" label="Title"  value="{{_title}}"></paper-input>
+            <form>
+                <div class$="horizontal {{_justification}} layout">
+                     <div class="preview">aAbBcC</div>
+                </div>
+                <div>
+                    <paper-input id="linkEditorDialogTitleLabel" name="title" label="Title"  value="{{_title}}"></paper-input>
 
-                <input name="data" type="hidden" />
-                <paper-dropdown-menu id="linkEditorReferenceLabel" label="Reference">
-                    <paper-menu
-                        class="dropdown-content" selected="{{_data}}" attr-for-selected="value"
-                        attr-for-selected="id">
-                        <template is="dom-repeat" items="{{parentCandidates}}">
-                            <paper-item value="{{item.id}}">{{item.title}}</paper-item>
-                        </template>
-                    </paper-menu>
-                </paper-dropdown-menu>
-            </div>
-            <div class="buttons">
-                <paper-button id="editorDialogCancelButton" dialog-dismiss on-tap="onCancelChanges">Cancel</paper-button>
-                <paper-button id="editorDialogAcceptButton" raised dialog-confirm on-tap="onApplyChanges">Apply</paper-button>
-            </div>
+                    <input name="data" type="hidden" />
+                    <paper-dropdown-menu id="linkEditorReferenceLabel" label="Reference">
+                        <paper-menu
+                            class="dropdown-content" selected="{{_data}}" attr-for-selected="value"
+                            attr-for-selected="id">
+                            <template is="dom-repeat" items="{{parentCandidates}}">
+                                <paper-item value="{{item.id}}">{{item.title}}</paper-item>
+                            </template>
+                        </paper-menu>
+                    </paper-dropdown-menu>
+                </div>
+                <div class="buttons">
+                    <paper-button id="editorDialogCancelButton" raised dialog-dismiss on-tap="onCancelChanges">Cancel</paper-button>
+                </div>
+                <paper-fab id="editorDialogAcceptButton" raised dialog-confirm on-tap="onApplyChanges">Apply</paper-fab>
+            </form>
         </paper-dialog>
     </template>
 
@@ -112,7 +119,9 @@ Example:
             Polymer({
                 is: 'plutonium-article-link-editor',
                 behaviors: [
-                    PlutoniumBehaviors.ArticleFieldEditableBehavior
+                    PlutoniumBehaviors.ArticleFieldEditableBehavior,
+                    PlutoniumBehaviors.ArticleFieldOverlayBehavior,
+                    PlutoniumBehaviors.ArticleFieldFormatableBehavior
                 ],
                 properties: {
                     title: {
@@ -136,35 +145,19 @@ Example:
                         notify: true
                     }
                 },
-//                observers: [
-//                    'observeValueChanges(_fontSize, _justification)'
-//                ],
-//                listeners: {
-//                    render: 'onRender'
-//                },
-                // Element Lifecycle
-                observeModel: function (rr) {
-                },
-                // Element Behavior
-//                computeTitle: function (model) {
-//                    this.title = model.title;
-//                },
-
-
+//                              // Element Lifecycle
                 onApplyChanges: function () {
-                    console.log(this.is + ' apply changes.');
-                    this.justification = this._justification;
-                    this.fontSize = this._fontSize;
-                    this.title = this._title;
-                    this.data = this._data;
+                    this.applyContentModelChanges();
+                    this.applyFormattingModelChanges();
+                    this.applyViewportModelChanges();
                 },
                 onCancelChanges: function () {
-                    this._reset();
+                    this.resetFormattingModel();
+                    this.resetViewportModel();
+                    this.resetContentModel();
                 },
-                _reset: function () {
+                resetContentModel: function () {
                     this.$.parentCandidatesAjax.generateRequest();
-                    this._justification = this.justification;
-                    this._fontSize = this.fontSize;
                     this._title = this.title;
                     this._data = this.data;
                 }
