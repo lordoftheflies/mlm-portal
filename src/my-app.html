@@ -111,12 +111,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             pattern="/:page"
             data="{{routeData}}"
             tail="{{subroute}}"></app-route>
-        <!--        <app-route
+<!--                <app-route
                     route="{{subroute}}"
                     pattern="/:contentId"
                     data="{{subrouteData}}">
                 </app-route>-->
-        <app-route
+<!--        <app-route
             route="/content-view"
             pattern="/:contentId"
             data="{{contentSubrouteData}}">
@@ -124,6 +124,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <app-route
             route="/network-view"
             pattern="/:memberId"
+            data="{{memberSubrouteData}}">
+        </app-route>-->
+        <app-route
+            route="{{subroute}}"
+            pattern="/content-view/:contentId"
+            data="{{contentSubrouteData}}">
+        </app-route>
+        <app-route
+            route="{{subroute}}"
+            pattern="/network-view/:memberId"
             data="{{memberSubrouteData}}">
         </app-route>
 
@@ -183,7 +193,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             as="item"
             items="[[contacts]]"
             recipients="{{recipients}}">
-
         </topflavon-recipient-picker>
 
         <plutonium-article-text-editor 
@@ -387,7 +396,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                             api-url="[[apiUrl]]" 
                                             account-id="[[session.token]]" 
                                             admin="[[session.powerUser]]" 
-                                            selected-root="{{contentSubrouteData.contentId}}"
+                                            selected-article-id$="{{contentSubrouteData.contentId}}"
                                             selected-content-folder="{{selectedContentFolder}}">
 
                     </topflavon-content-view>

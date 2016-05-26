@@ -7,7 +7,7 @@
     "iron-elements": "PolymerElements/iron-elements",
     "iron-flex-layout": "polymerelements/iron-flex-layout#^1.0.0",
     "iron-icon": "polymerelements/iron-icon",
-    "iron-dropdown": "^1.4.0",
+    "iron-dropdown": "^1.4.1",
     "iron-image": "polymerelements/iron-image",
     "neon-elements": "PolymerElements/neon-elements",
     "paper-elements": "PolymerElements/paper-elements",

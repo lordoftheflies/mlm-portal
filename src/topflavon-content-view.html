@@ -48,6 +48,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <!--<template is="dom-if" if="{{!isEmpty(data.sections)}}">-->
         <div class="layout vertical flex" hidden="[[contentChildrenModel.leaf]]">
+            Article ||
+            Account: {{accountId}}
+            Selected root: {{selectedRootId}}
+            Selected folder: {{selectedContentFolder}}
+            Ebedded file: {{contentChildrenModel.hasEmbeddedFile}}
+            Is leaf: {{contentChildrenModel.leaf}}
+            ID: {{contentChildrenModel.id}}
+            Title: {{contentChildrenModel.title}}
+            Sections: {{contentChildrenModel.sections.length}}
+
             <iron-list items="{{contentChildrenModel.sections}}" as="section"   hidden="[[!isEmpty(data)]]">
                 <template>
                     <a class="paper-item-link" href="[[getLink(section)]]" tabindex="[[tabIndex]]">
@@ -69,7 +79,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <paper-card heading="{{contentChildrenModel.title}}" hidden="{{!contentChildrenModel.leaf}}">
             Article ||
             Account: {{accountId}}
-            Selected root: {{selectedRoot}}
+            Selected root: {{selectedArticleId}}
             Selected folder: {{selectedContentFolder}}
             Ebedded file: {{contentChildrenModel.hasEmbeddedFile}}
             Is leaf: {{contentChildrenModel.leaf}}
@@ -123,14 +133,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 type: String,
                 notify: true,
                 value: 'public',
-                observer: 'observeSelectedContentFolder'
+//                observer: 'observeSelectedContentFolder'
             },
-            accountId: {
+            selectedArticleId: {
                 type: String,
                 notify: true,
-                observer: 'observeSelectedAccountId'
+//                observer: 'observeSelectedArticleId'
             },
-            selectedRoot: {
+            ownerId: {
                 type: String,
                 notify: true
             },
@@ -157,17 +167,34 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
         },
         observers: [
-            'computeTocRequestParams(selectedRoot, selectedContentFolder, accountId)',
+            'observeCurrentArticle(selectedArticleId, selectedContentFolder, ownerId)',
+            'computeTocRequestParams(selectedArticleId, selectedContentFolder, ownerId)',
 //                    'computeTitle(data.title)'
         ],
         ready: function () {
             console.log(this.is + ' is ready.');
         },
-        computeTocRequestParams: function (selectedRoot, selectedContentFolder, accountId) {
-            this.tocRequestParams.pageId = selectedRoot;
+        observeCurrentArticle: function (selectedRootId, selectedContentFolder, ownerId) {
+            this.tocRequestParams.pageId = selectedRootId;
             this.tocRequestParams.tag = selectedContentFolder;
             this.tocRequestParams.owner = accountId;
-            this.infoRequestParams.pageId = selectedRoot;
+
+            this.infoRequestParams.pageId = selectedRootId;
+
+            console.log(this.is + ' toc navigation request parameters updated: ' + JSON.stringify(this.tocRequestParams))
+            if (this.contentChildrenModel !== undefined && this.contentChildrenModel.sections !== undefined)
+                this.splice('contentChildrenModel.sections', 0, this.contentChildrenModel.sections.length);
+            this.$.rootModelAjax.generateRequest();
+            this.$.childTocAjax.generateRequest();
+            this.$.parentTocAjax.generateRequest();
+        },
+        computeTocRequestParams: function (selectedRootId, selectedContentFolder, accountId) {
+            this.tocRequestParams.pageId = selectedRootId;
+            this.tocRequestParams.tag = selectedContentFolder;
+            this.tocRequestParams.owner = accountId;
+
+            this.infoRequestParams.pageId = selectedRootId;
+
             console.log(this.is + ' toc navigation request parameters updated: ' + JSON.stringify(this.tocRequestParams))
             if (this.contentChildrenModel !== undefined && this.contentChildrenModel.sections !== undefined)
                 this.splice('contentChildrenModel.sections', 0, this.contentChildrenModel.sections.length);
@@ -181,19 +208,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 this.tocRequestParams.tag = folder;
             }
 //            this.tocRequestParams.owner = this.accountId;
-//            this.$.rootModelAjax.generateRequest();
-//            this.$.childTocAjax.generateRequest();
-//            this.$.parentTocAjax.generateRequest();
+            this.$.rootModelAjax.generateRequest();
+            this.$.childTocAjax.generateRequest();
+            this.$.parentTocAjax.generateRequest();
         },
-        observeSelectedAccountId: function (accountId) {
+        observeAccountId: function (accountId) {
 //            this.tocRequestParams.tag = this.selectedContentFolder;
             if (this.tocRequestParams) {
                 console.log(this.is + ' observe selected account: ' + accountId);
                 this.tocRequestParams.owner = accountId;
             }
-//            this.$.rootModelAjax.generateRequest();
-//            this.$.childTocAjax.generateRequest();
-//            this.$.parentTocAjax.generateRequest();
+            this.$.rootModelAjax.generateRequest();
+            this.$.childTocAjax.generateRequest();
+            this.$.parentTocAjax.generateRequest();
+        },
+        observeSelectedArticleId: function (selectedArticleId) {
+
         },
         getItemClasses: function (item) {
             return item.tags.join(" ");
