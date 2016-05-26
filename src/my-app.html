@@ -127,7 +127,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             pattern="/:page"
             data="{{routeData}}"
             tail="{{subroute}}"></app-route>
-        
+
         <app-route
             route="{{subroute}}"
             pattern="/:contentId"
@@ -138,7 +138,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             pattern="/:memberId"
             data="{{memberSubrouteData}}">
         </app-route>
-        
+
         <iron-ajax id="localesAjax" 
                    url="[[apiUrl]]/localization/locales" 
                    last-response="{{locales}}" 
@@ -199,7 +199,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <plutonium-article-text-editor 
             id="articleTextEditor"
+            field="[[model.type]]"
             action-title="Edit section"
+            name="[[model.name]]"
             title="{{model.title}}"
             data="{{model.data}}"
             justification="{{model.justification}}"
@@ -207,6 +209,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </plutonium-article-text-editor>
         <plutonium-article-video-editor 
             id="articleVideoEditor"
+            name="[[model.name]]"
+            field="[[model.type]]"
             action-title="Edit video"
             title="{{model.title}}"
             data="{{model.data}}"
@@ -217,6 +221,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </plutonium-article-video-editor>
         <plutonium-article-link-editor 
             id="articleLinkEditor"
+            name="[[model.name]]"
+            field="[[model.type]]"
             action-title="Edit link"
             title="{{model.title}}"
             data="{{model.data}}"
@@ -226,6 +232,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </plutonium-article-link-editor>
         <plutonium-article-image-editor 
             id="articleImageEditor"
+            field="[[model.type]]"
+            name="[[model.name]]"
             action-title="Edit image"
             title="{{model.title}}"
             data="{{model.data}}"
@@ -435,10 +443,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     type: Object,
                     notify: true
                 },
-                contentSubrouteData: {
-                    type: Object,
-                    notify: true
-                },
                 memberSubrouteData: {
                     type: Object,
                     notify: true,
@@ -480,13 +484,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 'article-text-edit': 'onOpenArticleTextEditor',
                 'article-video-edit': 'onOpenArticleVideoEditor',
                 'article-image-edit': 'onOpenArticleImageEditor',
-                'article-link-edit': 'onOpenArticleLinkEditor'
+                'article-link-edit': 'onOpenArticleLinkEditor',
+                'modify-model': 'onModifyModel'
             },
             ready: function () {
-                
+
             },
             observeMemberSubrouteData: function (subroute) {
-                console.log('Member subroute data: ' + JSON.stringify(subroute));    
+                console.log('Member subroute data: ' + JSON.stringify(subroute));
             },
             observeContentSubrouteData: function (subroute) {
                 console.log('Content subroute data: ' + JSON.stringify(this.contentSubrouteData));
@@ -605,6 +610,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             onOpenArticleLinkEditor: function (event, detail) {
                 this.model = detail;
                 this.$.articleLinkEditor.show();
+            },
+            onModifyModel: function (event, detail) {
+                console.log(this.is + ' reveive modify-model event: ' + JSON.stringify(detail));
+                document.querySelector('plutonium-article-field[name=' + detail.name + ']').fire('apply-model', detail);
             }
         });
 

@@ -97,8 +97,9 @@ Example:
             </div>
             <paper-listbox id="assembled" selected="{{selectedSection}}">
                 <template is="dom-repeat" items="{{contentModel.sections}}" as="section">
-                    <plutonium-article-field name$="[[model.name]]" class="layout vertical wrap"
-                                             model="{{section}}" 
+                    <plutonium-article-field 
+                        name="[[section.name]]" class="layout vertical wrap"
+                                             model$="{{section}}" 
                                              api-url="{{apiUrl}}"
                                              editable>
                 </plutonium-article-field>
@@ -240,14 +241,12 @@ Example:
             console.log('Observe content sections.');
 
         },
-        onCreateSectionInParent: function (e) {
+        onCreateSectionInParent: function (e, detail) {
             console.log('Create new ' + JSON.stringify(e.detail.type) + ' section ' + JSON.stringify(e.detail.type));
-            this.push('contentModel.sections', {
-                type: e.detail.type,
-                name: 'section' + this.contentModel.sections.length,
-                title: '',
-                data: ''
-            });
+            this.push('contentModel.sections', detail);
+            if (detail.name === undefined || detail.name === null) {
+                detail.name = 'section' + this.contentModel.sections.length;
+            }
             //                this.contentModel
             //                var el = document.createElement(e.detail.type);
             //                el.setAttribute('name', "property-" + this.contentModel.sections.length);
@@ -342,28 +341,36 @@ Example:
             console.log('Add section after field[' + 'section' + this.contentModel.sections.length + ']');
             this.fire('create', {
                 name: 'section' + this.contentModel.sections.length,
-                type: 'plutonium-cm-editor-text'
+                type: 'plutonium-cm-editor-text',
+                title: '',
+                data: ''
             });
         },
         onEmbedVideo: function () {
             console.log('Embed video to after field[' + 'section' + this.contentModel.sections.length + ']');
             this.fire('create', {
                 name: 'section' + this.contentModel.sections.length,
-                type: 'plutonium-cm-editor-video'
+                type: 'plutonium-cm-editor-video',
+                title: '',
+                data: ''
             });
         },
         onEmbedImage: function () {
             console.log('Embed image to after field[' + 'section' + this.contentModel.sections.length + ']');
             this.fire('create', {
                 name: this.name,
-                type: 'plutonium-cm-editor-image'
+                type: 'plutonium-cm-editor-image',
+                title: '',
+                data: ''
             });
         },
         onEmbedLink: function () {
             console.log('Embed link to after field[' + 'section' + this.contentModel.sections.length + ']');
             this.fire('create', {
                 name: 'section' + this.contentModel.sections.length,
-                type: 'plutonium-cm-editor-link'
+                type: 'plutonium-cm-editor-link',
+                title: '',
+                data: ''
             });
         },
         onSend: function () {

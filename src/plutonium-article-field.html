@@ -51,6 +51,24 @@ Example:
             }
 
         </style>
+        <table class="debug">
+            <tr>
+                <td>Name</td><td>[[model.name]]</td>
+            </tr>
+            <tr>
+                <td>Type</td><td>[[model.type]]</td>
+            </tr>
+            <tr>
+                <td>Editable</td><td>[[editable]]</td>
+            </tr>
+            <tr>
+                <td>API</td><td>[[apiUrl]]</td>
+            </tr>
+            <tr>
+                <td>Model</td><td>[[model.title]]|[[model.data]]</td>
+            </tr>
+        </table>
+
         <iron-pages selected="{{model.type}}" attr-for-selected="field">
             <plutonium-article-link-section 
                 name="{{model.name}}" editable="{{editable}}" model="{{model}}"
@@ -97,7 +115,8 @@ Example:
                 },
                 listeners: {
 //                    'removeSection': 'removeSection',
-                    'render': 'onRender'
+                    'render': 'onRender',
+                    'apply-model': 'onModifyModel'
                 },
                 // Element Lifecycle
                 observeModel: function (rr) {
@@ -124,8 +143,12 @@ Example:
                     // removed from a document.
                     //
                     // Use this to clean up anything you did in `attached`.
-                }
+                },
                 // Element Behavior
+                onModifyModel: function (event, model) {
+                    this.model = model;
+                    console.log(this.is + ' modifying its model to ' + JSON.stringify(model));
+                }
             });
         })();
     </script>

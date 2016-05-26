@@ -51,6 +51,8 @@ Example:
             font-size="{{model.fontSize}}">
         </plutonium-article-text-editor>-->
 
+        [[model.title]]|[[model.name]]|[[model.type]]
+
         <div hidden="[[editable]]">
             <h2>{{model.title}}</h2>
             <p id="modelData" class$="horizontal {{model.justification}} layout">{{model.data}}</p>

@@ -1,7 +1,18 @@
 <script>
     window.PlutoniumBehaviors = window.PlutoniumBehaviors || {};
     PlutoniumBehaviors.ArticleFieldOverlayBehavior = {
+        properties: {
+            name: {
+                type: String,
+                notify: true
+            },
+            field: {
+                type: String,
+                notify: true
+            }
+        },
         show: function () {
+            this.onCancelChanges();
             this.$.editorDialog.open();
         }
     };
