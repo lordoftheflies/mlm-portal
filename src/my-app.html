@@ -106,37 +106,39 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </style>
 
         <app-location route="{{route}}"></app-location>
+
+        <!--                <app-route
+                            route="{{subroute}}"
+                            pattern="/:contentId"
+                            data="{{subrouteData}}">
+                        </app-route>-->
+        <!--        <app-route
+                    route="/content-view"
+                    pattern="/:contentId"
+                    data="{{contentSubrouteData}}">
+                </app-route>
+                <app-route
+                    route="/network-view"
+                    pattern="/:memberId"
+                    data="{{memberSubrouteData}}">
+                </app-route>-->
         <app-route
             route="{{route}}"
             pattern="/:page"
             data="{{routeData}}"
             tail="{{subroute}}"></app-route>
-<!--                <app-route
-                    route="{{subroute}}"
-                    pattern="/:contentId"
-                    data="{{subrouteData}}">
-                </app-route>-->
-<!--        <app-route
-            route="/content-view"
+        
+        <app-route
+            route="{{subroute}}"
             pattern="/:contentId"
             data="{{contentSubrouteData}}">
         </app-route>
         <app-route
-            route="/network-view"
+            route="{{subroute}}"
             pattern="/:memberId"
             data="{{memberSubrouteData}}">
-        </app-route>-->
-        <app-route
-            route="{{subroute}}"
-            pattern="/content-view/:contentId"
-            data="{{contentSubrouteData}}">
         </app-route>
-        <app-route
-            route="{{subroute}}"
-            pattern="/network-view/:memberId"
-            data="{{memberSubrouteData}}">
-        </app-route>
-
+        
         <iron-ajax id="localesAjax" 
                    url="[[apiUrl]]/localization/locales" 
                    last-response="{{locales}}" 
@@ -396,7 +398,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                             api-url="[[apiUrl]]" 
                                             account-id="[[session.token]]" 
                                             admin="[[session.powerUser]]" 
-                                            selected-article-id$="{{contentSubrouteData.contentId}}"
+                                            owner-id="[[session.token]]"
+                                            selected-article-id="{{contentSubrouteData.contentId}}"
                                             selected-content-folder="{{selectedContentFolder}}">
 
                     </topflavon-content-view>
@@ -431,7 +434,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 model: {
                     type: Object,
                     notify: true
-                }
+                },
+                contentSubrouteData: {
+                    type: Object,
+                    notify: true
+                },
+                memberSubrouteData: {
+                    type: Object,
+                    notify: true,
+                    observer: 'observeMemberSubrouteData'
+                },
+                contentSubrouteData: {
+                    type: Object,
+                    notify: true,
+                    observer: 'observeContentSubrouteData'
+                },
 //                isMeIndicator: {
 //                    type: Boolean,
 //                    value: true,
@@ -464,6 +481,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 'article-video-edit': 'onOpenArticleVideoEditor',
                 'article-image-edit': 'onOpenArticleImageEditor',
                 'article-link-edit': 'onOpenArticleLinkEditor'
+            },
+            ready: function () {
+                
+            },
+            observeMemberSubrouteData: function (subroute) {
+                console.log('Member subroute data: ' + JSON.stringify(subroute));    
+            },
+            observeContentSubrouteData: function (subroute) {
+                console.log('Content subroute data: ' + JSON.stringify(this.contentSubrouteData));
             },
             showUserNavigation: function () {
                 console.log("Show user navigation dropdown.");

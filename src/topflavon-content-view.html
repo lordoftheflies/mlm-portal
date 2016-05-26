@@ -49,13 +49,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <!--<template is="dom-if" if="{{!isEmpty(data.sections)}}">-->
         <div class="layout vertical flex" hidden="[[contentChildrenModel.leaf]]">
             Article ||
-            Account: {{accountId}}
-            Selected root: {{selectedRootId}}
-            Selected folder: {{selectedContentFolder}}
-            Ebedded file: {{contentChildrenModel.hasEmbeddedFile}}
-            Is leaf: {{contentChildrenModel.leaf}}
-            ID: {{contentChildrenModel.id}}
-            Title: {{contentChildrenModel.title}}
+            Owner ID: [[ownerId]]
+            Selected folder: [[selectedContentFolder]]
+            Selected article: [[selectedArticleId]]
             Sections: {{contentChildrenModel.sections.length}}
 
             <iron-list items="{{contentChildrenModel.sections}}" as="section"   hidden="[[!isEmpty(data)]]">
@@ -167,62 +163,81 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
         },
         observers: [
+//            'observeOwnerId(ownerId)',
+//            'observeSelectedArticleId(selectedArticleId)',
+//            'observeSelectedContentFolder(selectedContentFolder)',
             'observeCurrentArticle(selectedArticleId, selectedContentFolder, ownerId)',
-            'computeTocRequestParams(selectedArticleId, selectedContentFolder, ownerId)',
+//            'computeTocRequestParams(selectedArticleId, selectedContentFolder, ownerId)',
 //                    'computeTitle(data.title)'
         ],
         ready: function () {
             console.log(this.is + ' is ready.');
         },
-        observeCurrentArticle: function (selectedRootId, selectedContentFolder, ownerId) {
-            this.tocRequestParams.pageId = selectedRootId;
+        observeCurrentArticle: function (selectedArticleId, selectedContentFolder, ownerId) {
+            this.tocRequestParams.pageId = selectedArticleId;
             this.tocRequestParams.tag = selectedContentFolder;
-            this.tocRequestParams.owner = accountId;
+            this.tocRequestParams.owner = ownerId;
 
-            this.infoRequestParams.pageId = selectedRootId;
+            this.infoRequestParams.pageId = selectedArticleId;
 
             console.log(this.is + ' toc navigation request parameters updated: ' + JSON.stringify(this.tocRequestParams))
-            if (this.contentChildrenModel !== undefined && this.contentChildrenModel.sections !== undefined)
-                this.splice('contentChildrenModel.sections', 0, this.contentChildrenModel.sections.length);
+//            if (this.contentChildrenModel !== undefined && this.contentChildrenModel.sections !== undefined)
+//                this.splice('contentChildrenModel.sections', 0, this.contentChildrenModel.sections.length);
             this.$.rootModelAjax.generateRequest();
             this.$.childTocAjax.generateRequest();
             this.$.parentTocAjax.generateRequest();
         },
         computeTocRequestParams: function (selectedRootId, selectedContentFolder, accountId) {
-            this.tocRequestParams.pageId = selectedRootId;
-            this.tocRequestParams.tag = selectedContentFolder;
-            this.tocRequestParams.owner = accountId;
-
-            this.infoRequestParams.pageId = selectedRootId;
-
-            console.log(this.is + ' toc navigation request parameters updated: ' + JSON.stringify(this.tocRequestParams))
-            if (this.contentChildrenModel !== undefined && this.contentChildrenModel.sections !== undefined)
-                this.splice('contentChildrenModel.sections', 0, this.contentChildrenModel.sections.length);
-            this.$.rootModelAjax.generateRequest();
-            this.$.childTocAjax.generateRequest();
-            this.$.parentTocAjax.generateRequest();
+//            this.tocRequestParams.pageId = selectedRootId;
+//            this.tocRequestParams.tag = selectedContentFolder;
+//            this.tocRequestParams.owner = accountId;
+//
+//            this.infoRequestParams.pageId = selectedRootId;
+//
+//            console.log(this.is + ' toc navigation request parameters updated: ' + JSON.stringify(this.tocRequestParams))
+//            if (this.contentChildrenModel !== undefined && this.contentChildrenModel.sections !== undefined)
+//                this.splice('contentChildrenModel.sections', 0, this.contentChildrenModel.sections.length);
+//            this.$.rootModelAjax.generateRequest();
+//            this.$.childTocAjax.generateRequest();
+//            this.$.parentTocAjax.generateRequest();
         },
         observeSelectedContentFolder: function (folder) {
-            if (this.tocRequestParams) {
-                console.log(this.is + ' observe selected content folder: ' + folder);
-                this.tocRequestParams.tag = folder;
-            }
-//            this.tocRequestParams.owner = this.accountId;
-            this.$.rootModelAjax.generateRequest();
-            this.$.childTocAjax.generateRequest();
-            this.$.parentTocAjax.generateRequest();
+//            if (this.tocRequestParams) {
+//                console.log(this.is + ' observe selected content folder: ' + folder);
+//                this.tocRequestParams.tag = folder;
+//
+//                this.$.rootModelAjax.generateRequest();
+//                this.$.childTocAjax.generateRequest();
+//                this.$.parentTocAjax.generateRequest();
+//            }
+////            this.tocRequestParams.owner = this.accountId;
+
         },
-        observeAccountId: function (accountId) {
-//            this.tocRequestParams.tag = this.selectedContentFolder;
-            if (this.tocRequestParams) {
-                console.log(this.is + ' observe selected account: ' + accountId);
-                this.tocRequestParams.owner = accountId;
-            }
-            this.$.rootModelAjax.generateRequest();
-            this.$.childTocAjax.generateRequest();
-            this.$.parentTocAjax.generateRequest();
+        observeOwnerId: function (ownerId) {
+////            this.tocRequestParams.tag = this.selectedContentFolder;
+//            if (this.tocRequestParams) {
+//                console.log(this.is + ' observe as owner: ' + ownerId);
+//                this.tocRequestParams.owner = ownerId;
+//
+//                this.$.rootModelAjax.generateRequest();
+//                this.$.childTocAjax.generateRequest();
+//                this.$.parentTocAjax.generateRequest();
+//            }
+
         },
         observeSelectedArticleId: function (selectedArticleId) {
+//            console.log(this.is + ' observe as owner: ' + selectedArticleId);
+        },
+        observeAccountId: function (accountId) {
+////            this.tocRequestParams.tag = this.selectedContentFolder;
+//            if (this.tocRequestParams) {
+//                console.log(this.is + ' observe selected account: ' + accountId);
+//                this.tocRequestParams.owner = accountId;
+//
+//                this.$.rootModelAjax.generateRequest();
+//                this.$.childTocAjax.generateRequest();
+//                this.$.parentTocAjax.generateRequest();
+//            }
 
         },
         getItemClasses: function (item) {
@@ -260,17 +275,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 //            page.redirect(app.baseUrl + '/content-tree/' + details.sourceEvent.currentTarget.href);
 //        },
         onContentResponse: function () {
-            console.log('Content fetched for ' + this.selectedRoot);
+            console.log('Content fetched for ' + this.selectedArticleId);
         },
         onContentError: function () {
-            console.log('Content fetching failed for ' + this.selectedRoot);
+            console.log('Content fetching failed for ' + this.selectedArticleId);
         },
         onParentTocResponse: function () {
-            console.log('Toc-Content-View parent path success response (' + this.selectedRoot + ').');
+            console.log('Toc-Content-View parent path success response (' + this.selectedArticleId + ').');
             //                this.renderBreadCrumbs = true;
         },
         onParentTocError: function () {
-            console.log('Toc-Content-View parent path failed to respond (' + this.selectedRoot + ').');
+            console.log('Toc-Content-View parent path failed to respond (' + this.selectedArticleId + ').');
             this.selectedContentFolder = 'public';
             //                this.renderBreadCrumbs = true;
         },
