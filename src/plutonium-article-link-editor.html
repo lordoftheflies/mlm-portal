@@ -124,28 +124,12 @@ Example:
                     PlutoniumBehaviors.ArticleFieldFormatableBehavior
                 ],
                 properties: {
-                    title: {
-                        type: String,
-                        notify: true
-                    },
-                    data: {
-                        type: String,
-                        notify: true
-                    },
-                    _title: {
-                        type: String,
-                        notify: true
-                    },
-                    _data: {
-                        type: String,
-                        notify: true
-                    },
                     parentCandidatesUrl: {
                         type: String,
                         notify: true
                     }
                 },
-//                              // Element Lifecycle
+                // Element Lifecycle
                 onApplyChanges: function () {
                     this.applyContentModelChanges();
                     this.applyFormattingModelChanges();
