@@ -105,8 +105,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         </style>
 
-        <app-location route="{{route}}"></app-location>
-
+        <app-location route="{{route}}" ></app-location>
+<!--use-hash-as-path-->
         <!--                <app-route
                             route="{{subroute}}"
                             pattern="/:contentId"
@@ -148,6 +148,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                    url="[[apiUrl]]/addressbook/all" 
                    last-response="{{possibleParents}}" 
                    auto>
+
+        </iron-ajax>
+        <iron-ajax id="articleDetailAjax" 
+                   url="[[apiUrl]]/content-management/toc" 
+                   params="{{editParams}}"
+                   last-response="{{editedContentModel}}" 
+                   >
 
         </iron-ajax>
 
@@ -453,6 +460,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     notify: true,
                     observer: 'observeContentSubrouteData'
                 },
+                editParams: {
+                    type: Object,
+                    notify: true,
+                    value: {}
+                }
 //                isMeIndicator: {
 //                    type: Boolean,
 //                    value: true,
@@ -485,7 +497,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 'article-video-edit': 'onOpenArticleVideoEditor',
                 'article-image-edit': 'onOpenArticleImageEditor',
                 'article-link-edit': 'onOpenArticleLinkEditor',
-                'modify-model': 'onModifyModel'
+                'modify-model': 'onModifyModel',
+                'edit-content': 'onEditArticle'
             },
             ready: function () {
 
@@ -612,8 +625,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 this.$.articleLinkEditor.show();
             },
             onModifyModel: function (event, detail) {
-                console.log(this.is + ' reveive modify-model event: ' + JSON.stringify(detail));
+                console.log(this.is + ' receive modify-model event: ' + JSON.stringify(detail));
                 document.querySelector('plutonium-article-field[name=' + detail.name + ']').fire('apply-model', detail);
+            },
+            onEditArticle: function(event, detail) {
+                console.log(this.is + ' receive edit-content event: ' + JSON.stringify(detail));
+                this.editParams.pageId = detail.articleId;
+                this.editParams.tag = "drafts";
+                this.editParams.owner = this.session.token;
+                this.$.articleDetailAjax.generateRequest();
+                this.page = 'share-view';
             }
         });
 

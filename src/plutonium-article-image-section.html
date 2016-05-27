@@ -49,19 +49,17 @@ Example:
 
             <h2>{{model.title}}</h2>
             <div id="modelData" class$="horizontal {{model.justification}} layout">
-                 <!--<div class="layout vertical">-->
-                    <!--<iron-image class="thumbnail" sizing="contain" style="width: 100px; height: 100px;" src$="{{model.data}}"></iron-image>-->
-                <!--</div>-->
-                <iron-image class="thumbnail" sizing="contain" width="{{model.width}}" height="{{model.height}}" src="{{model.data}}"></iron-image>
+                 <div class="layout vertical">
+                    <iron-image class="thumbnail" sizing="contain" width="{{model.width}}" height="{{model.height}}" src="{{model.data}}"></iron-image>
+                </div>
             </div>
         </div>
 
         <paper-card elevation="1" heading="{{model.title}}" class="layout vertical" hidden="[[!editable]]">
             <div id="modelData" class$="card-content horizontal {{model.justification}} layout">
-                 <!--<div>-->
-                    <!--<iron-image class="thumbnail" sizing="cover" src$="{{model.data}}"></iron-image>-->
-                <!--</div>-->
-                <iron-image fade class="thumbnail" sizing="cover" width$="{{model.width}}" height$="{{model.height}}" src$="{{model.data}}"></iron-image>
+                 <div class="layout vertical">
+                    <iron-image fade class="thumbnail" sizing="cover" width$="{{model.width}}" height$="{{model.height}}" src$="{{model.data}}"></iron-image>
+                </div>
             </div>
             <div class="card-actions">
                 <paper-icon-button id="moveUpButton" on-tap="onMoveUpSection" icon="expand-less" raised></paper-icon-button>
@@ -111,13 +109,13 @@ Example:
                     this.fire('article-image-edit', this.model);
                 },
                 observeModel: function () {
-                    console.log(this.is + '[' + this.id + '] model property changed.');
+//                    console.log(this.is + '[' + this.id + '] model property changed.');
                 },
                 observeModelData: function (data) {
                     //                this.$.modelData.innerHTML = data;
                 },
                 observeModelStyles: function (property) {
-                    console.log(this.is + '[' + this.id + '] model changed, update styles.');
+//                    console.log(this.is + '[' + this.id + '] model changed, update styles.');
                     this.customStyle['--section-font-size'] = this.model.fontSize + 'px';
                     this.updateStyles();
                 }

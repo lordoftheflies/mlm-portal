@@ -95,13 +95,21 @@ Example:
                 <div class="flex"></div>
                 <!--<paper-fab class="end-justified" icon="send" on-tap="onSend" title="Publish content" id="publishContentFab"></paper-fab>-->
             </div>
+
+            Paaa
+            <template is="dom-repeat" items="{{contentModel.sections}}" as="model">
+                <div style="background-color: greenyellow">{{model.name}}|{{model.type}}|{{model.title}}|{{model.data}}</div>
+            </template>
+
+
+
             <paper-listbox id="assembled" selected="{{selectedSection}}">
                 <template is="dom-repeat" items="{{contentModel.sections}}" as="section">
                     <plutonium-article-field 
                         name="[[section.name]]" class="layout vertical wrap"
-                                             model$="{{section}}" 
-                                             api-url="{{apiUrl}}"
-                                             editable>
+                        model="{{section}}" 
+                        api-url="{{apiUrl}}"
+                        editable>
                 </plutonium-article-field>
                 <br />
             </template>
@@ -243,10 +251,10 @@ Example:
         },
         onCreateSectionInParent: function (e, detail) {
             console.log('Create new ' + JSON.stringify(e.detail.type) + ' section ' + JSON.stringify(e.detail.type));
-            this.push('contentModel.sections', detail);
             if (detail.name === undefined || detail.name === null) {
                 detail.name = 'section' + this.contentModel.sections.length;
             }
+            this.push('contentModel.sections', detail);
             //                this.contentModel
             //                var el = document.createElement(e.detail.type);
             //                el.setAttribute('name', "property-" + this.contentModel.sections.length);

@@ -53,7 +53,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             method="POST"
             url="[[apiUrl]]/content-management/[[accountId]]/save" 
             body="{{contentModel}}"></iron-ajax>
-
         <iron-pages selected="{{selectedMetaAction}}" attr-for-selected="name">
             <paper-card elevation="1" name="share" class="layout vertical main-action-fab-container">
                 <div class="card-content layout horizontal">
@@ -95,7 +94,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                 </paper-listbox>
                             </paper-dropdown-menu>
                             <paper-input id="contentTitleInput" class="bottom title" label="Title" value="{{contentModel.title}}"></paper-input>
-                            <paper-checkbox id="finishedIndicator" value="{{finished}}">Public</paper-checkbox>
+                            <paper-checkbox id="draftIndicator" checked="{{contentModel.draft}}">Draft</paper-checkbox>
                         </div>
                     </div>
                 </paper-card>
@@ -214,7 +213,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 //                };
 //            },
             onShare: function (e, details) {
-                console.log('Save content: ' + JSON.stringify(details));
+                console.log('Save content: ' + JSON.stringify(this.contentModel));
                 this.contentModel.leaf = true;
                 this.$.shareAjax.generateRequest();
 //                this.fire('share', {

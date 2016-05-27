@@ -23,6 +23,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="plutonium-widget-behavior.html">
 <link rel="import" href="topflavon-shared-styles.html">
 <link rel="import" href="plutonium-article-section.html">
+<link rel="import" href="plutonium-article-field.html">
 
 <dom-module id="topflavon-content-view">
 
@@ -35,9 +36,47 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
         </style>
 
-        <iron-ajax id="rootModelAjax" url="[[apiUrl]]/content-management/toc/info" params="[[infoRequestParams]]" handle-as="json" last-response="{{rootModel}}" auto></iron-ajax>
-        <iron-ajax id="parentTocAjax" url="[[apiUrl]]/content-management/toc/path" params="[[tocRequestParams]]" handle-as="json" last-response="{{parentModel}}" on-response="onParentTocResponse" on-error="onParentTocError" auto></iron-ajax>
-        <iron-ajax id="childTocAjax" url="[[apiUrl]]/content-management/toc" params="[[tocRequestParams]]" handle-as="json" on-response="onContentResponse" on-error="onContentError" last-response="{{contentChildrenModel}}" auto></iron-ajax>
+        <iron-ajax id="rootModelAjax" 
+                   url="[[apiUrl]]/content-management/toc/info" 
+                   params="[[infoRequestParams]]" 
+                   handle-as="json" 
+                   last-response="{{rootModel}}" 
+                   auto></iron-ajax>
+        <iron-ajax id="parentTocAjax" 
+                   url="[[apiUrl]]/content-management/toc/path" 
+                   params="[[tocRequestParams]]" 
+                   handle-as="json" 
+                   last-response="{{parentModel}}" 
+                   on-response="onParentTocResponse" 
+                   on-error="onParentTocError" 
+                   auto></iron-ajax>
+        <iron-ajax id="childTocAjax" 
+                   url="[[apiUrl]]/content-management/toc" 
+                   params="[[tocRequestParams]]" 
+                   handle-as="json" 
+                   on-response="onContentResponse" 
+                   on-error="onContentError" 
+                   last-response="{{contentChildrenModel}}" 
+                   auto></iron-ajax>
+        
+        <iron-ajax id="publisherAjax" 
+                   url="[[apiUrl]]/content-management/publish" 
+                   handle-as="json" 
+                   content-type="application/json"
+                   on-response="onPublishResponse" 
+                   on-error="onPublishError"
+                   method="POST"
+                   body="{{publisherModel}}">
+        </iron-ajax>
+        <iron-ajax id="unpublisherAjax" 
+                   url="[[apiUrl]]/content-management/unpublish" 
+                   handle-as="json" 
+                   content-type="application/json"
+                   on-response="onUnpublishResponse" 
+                   on-error="onUnpublishError"
+                   method="POST"
+                   body="{{publisherModel}}">
+        </iron-ajax>
 
 
 
@@ -45,47 +84,56 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             File
             <iframe src$="{{getContentFileUrl(contentChildrenModel.embeddedFileName)}}"></iframe>
         </template>
+        <template is="dom-if" if="{{!contentChildrenModel.hasEmbeddedFile}}">
+            <div class="layout vertical flex" hidden="[[contentChildrenModel.leaf]]">
+                Article ||
+                Owner ID: [[ownerId]]
+                Selected folder: [[selectedContentFolder]]
+                Selected article: [[selectedArticleId]]
+                Sections: {{contentChildrenModel.sections.length}}
 
-        <!--<template is="dom-if" if="{{!isEmpty(data.sections)}}">-->
-        <div class="layout vertical flex" hidden="[[contentChildrenModel.leaf]]">
-            Article ||
-            Owner ID: [[ownerId]]
-            Selected folder: [[selectedContentFolder]]
-            Selected article: [[selectedArticleId]]
-            Sections: {{contentChildrenModel.sections.length}}
-
-            <iron-list items="{{contentChildrenModel.sections}}" as="section"   hidden="[[!isEmpty(data)]]">
-                <template>
-                    <a class="paper-item-link" href="[[getLink(section)]]" tabindex="[[tabIndex]]">
+                <iron-list items="{{contentChildrenModel.sections}}" as="section"   hidden="[[isEmpty(contentChildrenModel)]]">
+                    <template>
+                        <!--                        <a class="paper-item-link" href="{{getLink(section)}}">-->
                         <paper-item class="layout horizontal">
-                            <paper-material elevation="1" class="flex layout horizontal">
+                            <paper-material elevation="1" class="flex layout horizontal" on-tap="onNavigate" name="[[section.name]]">
                                 <span class="flex">[[section.title]]</span>
-                                <div hidden="{{!isDraftSelected(selectedContentFolder)}}" class="layout horizontal">
-                                    <paper-icon-button icon="create" on-tap="onEditArticle"></paper-icon-button>
-                                    <paper-icon-button icon="delete"></paper-icon-button>
-                                    <paper-icon-button icon="file-upload"></paper-icon-button>
-                                    <paper-icon-button icon="file-download"></paper-icon-button>
+                                <div hidden="[[!isDraftSelected(selectedContentFolder)]]" class="layout horizontal">
+                                    <paper-icon-button name="[[section.name]]" icon="create" on-tap="onEditArticle"></paper-icon-button>
+                                    <paper-icon-button name="[[section.name]]" icon="delete" on-tap="onDeleteArticle"></paper-icon-button>
+                                    <paper-icon-button name="[[section.name]]" icon="file-upload" on-tap="onPublishArticle"></paper-icon-button>
+                                    <paper-icon-button name="[[section.name]]" icon="file-download" on-tap="onUnpublishArticle"></paper-icon-button>
                                 </div>
                             </paper-material>
+
                         </paper-item>
-                    </a>
+                        <!--</a>-->
+                    </template>
+                </iron-list>
+
+                <paper-card elevation="1" hidden="[[!isEmpty(contentChildrenModel)]]">
+                    <div class="card-content">
+                        <div id="emptyChildrenText">No content in the folder.</div>
+                    </div>
+                </paper-card>
+            </div>
+            <paper-card heading="[[contentChildrenModel.title]]" hidden="[[!contentChildrenModel.leaf]]">
+                <template is="dom-repeat" items="{{contentChildrenModel.sections}}" as="section">
+                    <plutonium-article-field
+                        name="[[section.name]]" 
+                        model="{{section}}" 
+                        api-url="[[apiUrl]]">
+                    </plutonium-article-field>
+                    <br />
                 </template>
-            </iron-list>
-        </div>
-        <paper-card heading="{{contentChildrenModel.title}}" hidden="{{!contentChildrenModel.leaf}}">
-            <plutonium-article-section 
-                class="card-content layout vertical"
-                api-url="[[apiUrl]]"
-                content-model="{{contentChildrenModel}}">
-            </plutonium-article-section>
-        </paper-card>
+            </paper-card>
+        </template>
+
+        <!--<template is="dom-if" if="{{!isEmpty(data.sections)}}">-->
+
     </template>
 
-    <paper-card elevation="1" hidden="[[!isEmpty(contentChildrenModel)]]">
-        <div class="card-content">
-            <div id="emptyChildrenText">No content in the folder.</div>
-        </div>
-    </paper-card>
+
 
 </template>
 
@@ -156,8 +204,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         observers: [
 //            'observeOwnerId(ownerId)',
 //            'observeSelectedArticleId(selectedArticleId)',
-//            'observeSelectedContentFolder(selectedContentFolder)',
+            'observeSelectedContentFolder(selectedContentFolder)',
             'observeCurrentArticle(selectedArticleId, selectedContentFolder, ownerId)',
+            'observeContentChildrenModel(contentChildrenModel)'
 //            'computeTocRequestParams(selectedArticleId, selectedContentFolder, ownerId)',
 //                    'computeTitle(data.title)'
         ],
@@ -178,7 +227,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             this.$.childTocAjax.generateRequest();
             this.$.parentTocAjax.generateRequest();
         },
-        computeTocRequestParams: function (selectedRootId, selectedContentFolder, accountId) {
+        observeContentChildrenModel: function () {
+            var list = document.querySelector('iron-list')
+            if (list)
+                list.fire('iron-resize');
+        },
+//        computeTocRequestParams: function (selectedRootId, selectedContentFolder, accountId) {
 //            this.tocRequestParams.pageId = selectedRootId;
 //            this.tocRequestParams.tag = selectedContentFolder;
 //            this.tocRequestParams.owner = accountId;
@@ -191,43 +245,46 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 //            this.$.rootModelAjax.generateRequest();
 //            this.$.childTocAjax.generateRequest();
 //            this.$.parentTocAjax.generateRequest();
-        },
+//        },
         observeSelectedContentFolder: function (folder) {
-//            if (this.tocRequestParams) {
-//                console.log(this.is + ' observe selected content folder: ' + folder);
-//                this.tocRequestParams.tag = folder;
+            if (this.tocRequestParams) {
+                console.log(this.is + ' observe selected content folder: ' + folder);
+                this.tocRequestParams.tag = folder;
+                this.tocRequestParams.pageId = this.selectedArticleId = 'ROOT';
 //
 //                this.$.rootModelAjax.generateRequest();
 //                this.$.childTocAjax.generateRequest();
 //                this.$.parentTocAjax.generateRequest();
-//            }
+            }
 ////            this.tocRequestParams.owner = this.accountId;
 
         },
         observeOwnerId: function (ownerId) {
 ////            this.tocRequestParams.tag = this.selectedContentFolder;
-//            if (this.tocRequestParams) {
-//                console.log(this.is + ' observe as owner: ' + ownerId);
+            if (this.tocRequestParams) {
+                console.log(this.is + ' observe as owner: ' + ownerId);
 //                this.tocRequestParams.owner = ownerId;
 //
 //                this.$.rootModelAjax.generateRequest();
 //                this.$.childTocAjax.generateRequest();
 //                this.$.parentTocAjax.generateRequest();
-//            }
+            }
 
         },
         observeSelectedArticleId: function (selectedArticleId) {
-//            console.log(this.is + ' observe as owner: ' + selectedArticleId);
+            if (this.tocRequestParams) {
+                console.log(this.is + ' selected article: ' + selectedArticleId);
+            }
         },
         observeAccountId: function (accountId) {
 ////            this.tocRequestParams.tag = this.selectedContentFolder;
 //            if (this.tocRequestParams) {
 //                console.log(this.is + ' observe selected account: ' + accountId);
-//                this.tocRequestParams.owner = accountId;
-//
-//                this.$.rootModelAjax.generateRequest();
-//                this.$.childTocAjax.generateRequest();
-//                this.$.parentTocAjax.generateRequest();
+////                this.tocRequestParams.owner = accountId;
+////
+////                this.$.rootModelAjax.generateRequest();
+////                this.$.childTocAjax.generateRequest();
+////                this.$.parentTocAjax.generateRequest();
 //            }
 
         },
@@ -250,11 +307,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         isDraftSelected: function (selectedContentFolder) {
             return selectedContentFolder === 'drafts';
         },
-        onEditArticle: function () {
-//                    app.currentEditedContent = this.data;
-            app.route = 'share-content';
-            app.$.scv.contentModel = this.data;
-//                    page.redirect(app.baseUrl + 'share-content');
+        onEditArticle: function (event, detail) {
+            event.stopPropagation();
+            this.fire('edit-content', {
+                articleId: event.currentTarget.name
+            });
         },
         onRemoveArticle: function () {
 
@@ -280,8 +337,51 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             this.selectedContentFolder = 'public';
             //                this.renderBreadCrumbs = true;
         },
+        onPublishResponse: function() {
+            this.fire('feedback', {
+                message: 'Message published succesfully.'
+            });
+        },
+        onPublishError: function() {
+            this.fire('feedback', {
+                message: 'Message publishing failed.'
+            });
+        },
+        onUnpublishResponse: function() {
+            this.fire('feedback', {
+                message: 'Message unpublished succesfully.'
+            });
+        },
+        onUnpublishError: function() {
+            this.fire('feedback', {
+                message: 'Message publishing failed.'
+            });
+        },
         getLink: function (item) {
+//            return '/content-tree/' + item.name;
             return '/content-tree/' + item.hasEmbeddedFile ? item.data : item.name;
+        },
+        onNavigate: function(event, detail) {
+            this.selectedArticleId = event.currentTarget.name;
+        },
+        onDeleteArticle: function(event, detail) {
+            alert('Not implemented yet.');
+        },
+        onPublishArticle: function(event, detail) {
+            event.stopPropagation();
+            this.publisherModel = {
+                owner: this.ownerId,
+                article: event.currentTarget.name
+            };
+            this.$.publisherAjax.generateRequest()
+        },
+        onUnpublishArticle: function(event, detail) {
+            event.stopPropagation();
+            this.publisherModel = {
+                owner: this.ownerId,
+                article: event.currentTarget.name
+            };
+            this.$.unpublisherAjax.generateRequest()
         }
     });
 
