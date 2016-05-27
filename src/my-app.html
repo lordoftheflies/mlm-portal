@@ -106,7 +106,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </style>
 
         <app-location route="{{route}}" ></app-location>
-<!--use-hash-as-path-->
+        <!--use-hash-as-path-->
         <!--                <app-route
                             route="{{subroute}}"
                             pattern="/:contentId"
@@ -628,13 +628,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 console.log(this.is + ' receive modify-model event: ' + JSON.stringify(detail));
                 document.querySelector('plutonium-article-field[name=' + detail.name + ']').fire('apply-model', detail);
             },
-            onEditArticle: function(event, detail) {
+            onEditArticle: function (event, detail) {
                 console.log(this.is + ' receive edit-content event: ' + JSON.stringify(detail));
                 this.editParams.pageId = detail.articleId;
                 this.editParams.tag = "drafts";
                 this.editParams.owner = this.session.token;
                 this.$.articleDetailAjax.generateRequest();
                 this.page = 'share-view';
+            },
+            onLogout: function (event, detail) {
+                this.session = null;
+                this.page = 'about-view';
+                this.fire('unauthorized');
             }
         });
 
