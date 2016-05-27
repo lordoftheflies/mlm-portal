@@ -256,10 +256,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <app-drawer>
                 <app-toolbar></app-toolbar>
                 <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-                    <a id="shareMainMenuTitle" name="share-view" href="/share-view">Share</a>
+                    <a id="shareMainMenuTitle" hidden="[[!session.powerUser]]" name="share-view" href="/share-view">Share</a>
                     <a id="contentMainMenuTitle" name="content-view" href="/content-view/ROOT">Content</a>
-                    <a id="networkMainMenuTitle" name="network-view" href="/network-view/[[session.token]]">Network</a>
-                    <a id="mailBoxMainMenuTitle" name="mailbox-view" href="/mailbox-view/[[session.token]]">Mailbox</a>
+                    <a id="networkMainMenuTitle" hidden="[[!session.powerUser]]" name="network-view" href="/network-view/[[session.token]]">Network</a>
+                    <a id="mailBoxMainMenuTitle" hidden="[[!session.powerUser]]" name="mailbox-view" href="/mailbox-view/[[session.token]]">Mailbox</a>
                     <a id="aboutMainMenuTitle" name="about-view" href="/about-view">About</a>
                 </iron-selector>
             </app-drawer>
@@ -268,7 +268,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                     authentication-url="{{apiUrl}}/authentication/signin">
             </plutonium-login-widget>
             <plutonium-logon-widget id="logonWidget"
-                                    registration-url="{{apiUrl}}/reg"
+                                    registration-url="[[apiUrl]]/authentication/signon"
+                                    profile-url="[[apiUrl]]/authentication/{{activationCode}}/profile"
                                     activation-code="{{activationCode}}">                                        
             </plutonium-logon-widget>
             <plutonium-passwordreset-widget id="passwordResetWidget"
@@ -278,10 +279,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                                 password-reset-url="{{apiUrl}}/reset">
             </plutonium-forgottenpassword-widget>
             <iron-ajax id="sessionAjax" 
-                       on-response="sessionInfoHandler" 
-                       on-error="sessionInitializationErrorHandler" 
                        url="[[apiUrl]]/authentication/session?token=[[token]]" 
-                       last-response="{{session}}"></iron-ajax>s
+                       last-response="{{session}}" auto></iron-ajax>
 
 
             <!-- Main content -->
@@ -337,7 +336,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     </app-toolbar>
 
                     <!--Application name--> 
-                    <app-toolbar hidden="[[!admin]]">
+                    <app-toolbar hidden="[[!session.powerUser]]">
                         <iron-pages attr-for-selected="data-route" selected="[[page]]" class="flex" style="padding: 0px">
                             <paper-tabs data-route="share-view"  attr-for-selected="name" selected="{{selectedMetaAction}}" style="width: 100%;" autoselect>
                                 <paper-tab text-id="shareTabLabel" name="share">Share</paper-tab>
@@ -430,6 +429,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </template>
 
     <script>
+
+        function guid() {
+            function s4() {
+                return Math.floor((1 + Math.random()) * 0x10000).toString(16)
+                        .substring(1);
+            }
+            return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+        }
+
 
         Polymer({
             is: 'my-app',
@@ -640,6 +648,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 this.session = null;
                 this.page = 'about-view';
                 this.fire('unauthorized');
+            },
+            onSessionInitializationError: function (event, args) {
+                console.log(this.is + ' session fetching failed.');
+                if (args.request.status === 409) {
+                    this.$.logonWidget.activationCode = guid();
+                    this.registering = true;
+                } else {
+                    error = JSON.stringify(args.error);
+//            app.activationCode = null;
+                }
+//            this.fire('unauthorized', {});
             }
         });
 
