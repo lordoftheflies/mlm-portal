@@ -202,6 +202,7 @@
             }
         },
         "app-drawer": {},
+        "plutonium-article-video-section": {},
         "share-content-view": {
             "attributes": {
                 "selected-meta-action": {},
@@ -212,6 +213,7 @@
                 "class": {}
             }
         },
+        "plutonium-article-link-section": {},
         "paper-dialog-scrollable": {},
         "paper-textarea": {
             "attributes": {
@@ -222,6 +224,7 @@
                 "class": {}
             }
         },
+        "plutonium-article-text-section": {},
         "app-header": {},
         "topflavon-profile-view": {},
         "plutonium-article-image-editor": {},
@@ -287,6 +290,7 @@
         },
         "iron-selector": {},
         "topflavon-content-view": {},
+        "plutonium-article-image-section": {},
         "plutonium-article-link-editor": {},
         "about-view": {},
         "paper-icon-button": {

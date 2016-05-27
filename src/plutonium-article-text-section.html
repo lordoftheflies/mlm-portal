@@ -8,6 +8,7 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 
 <!--<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html">-->
 
@@ -36,62 +37,53 @@ Example:
     <template>
         <style include="iron-flex iron-flex-alignment">
             :host {
-                display: inline-block;
-                font-size: var(--section-font-size);
+                /*display: block;*/
+                /*font-size: var(--section-font-size, 34px);*/
             }
 
 
         </style>
-<!--        <plutonium-article-text-editor 
-            id="plSectionEditor"
-            action-title="Edit section"
-            title="{{model.title}}"
-            data="{{model.data}}"
-            justification="{{model.justification}}"
-            font-size="{{model.fontSize}}">
-        </plutonium-article-text-editor>-->
-
-        [[model.title]]|[[model.name]]|[[model.type]]
-
-        <div hidden="[[editable]]">
+        <div hidden="[[editable]]" class="layout vertical">
             <h2>{{model.title}}</h2>
-            <p id="modelData" class$="horizontal {{model.justification}} layout">{{model.data}}</p>
+            <div id="modelData" class$="horizontal {{model.justification}} layout">
+                 {{model.data}}
+            </div>
         </div>
 
-        <paper-card elevation="1" heading="{{model.title}}" class="layout vertical" hidden="[[!editable]]">
-            <p id="modelData" class$="card-content horizontal {{model.justification}} layout">{{model.data}}</p>
-            <div class="card-actions">
-                <paper-icon-button id="moveUpButton" on-tap="onMoveUpSection" icon="expand-less" raised></paper-icon-button>
-                <paper-icon-button id="moveDownButton" on-tap="onMoveDownSection" icon="expand-more" raised></paper-icon-button>
-                <paper-icon-button id="showEditorButton" on-tap="onShowEditor" icon="create" raised></paper-icon-button>
-                <paper-icon-button id="removeSectionButton" on-tap="onRemoveSection" icon="delete"></paper-icon-button>
-            </div>
-        </paper-card>
-    </template>
+    <paper-card elevation="1" heading="{{model.title}}" class="layout vertical" hidden="[[!editable]]">
+        <p id="modelData" class$="card-content horizontal {{model.justification}} layout">{{model.data}}</p>
+        <div class="card-actions">
+            <paper-icon-button id="moveUpButton" on-tap="onMoveUpSection" icon="expand-less" raised></paper-icon-button>
+            <paper-icon-button id="moveDownButton" on-tap="onMoveDownSection" icon="expand-more" raised></paper-icon-button>
+            <paper-icon-button id="showEditorButton" on-tap="onShowEditor" icon="create" raised></paper-icon-button>
+            <paper-icon-button id="removeSectionButton" on-tap="onRemoveSection" icon="delete"></paper-icon-button>
+        </div>
+    </paper-card>
+</template>
 
-    <script>
-        (function () {
-            'use strict';
-            Polymer({
-                is: 'plutonium-article-text-section',
-                behaviors: [
-                    PlutoniumBehaviors.ArticleFieldBehavior
-                ],
-                properties: {
-                    model: {
-                        type: Object,
-                        notify: true
-                    }
-                },
-                listeners: {
-                    'removeSection': 'removeSection',
-                },
-                observers: [
-                    'observeModel(model)',
-                    'observeModelStyles(model.*)',
-                    'observeModelData(model.data)'
-                ],
-                // Element Lifecycle
+<script>
+    (function () {
+        'use strict';
+        Polymer({
+            is: 'plutonium-article-text-section',
+            behaviors: [
+                PlutoniumBehaviors.ArticleFieldBehavior
+            ],
+            properties: {
+                model: {
+                    type: Object,
+                    notify: true
+                }
+            },
+            listeners: {
+                'removeSection': 'removeSection',
+            },
+            observers: [
+                'observeModel(model)',
+                'observeModelStyles(model.*)',
+                'observeModelData(model.data)'
+            ],
+            // Element Lifecycle
 
 //                ready: function () {
 //
@@ -99,25 +91,25 @@ Example:
 //                attached: function () {
 //
 //                },
-                detached: function () {
+            detached: function () {
 
-                },
-                onShowEditor: function () {
-                    console.log(this.is + '[' + this.id + '] show field editor.');
-                    this.fire('article-text-edit', this.model);
-                },
-                observeModel: function () {
-                    console.log(this.is + '[' + this.id + '] model property changed.');
-                },
-                observeModelData: function (data) {
-                    this.$.modelData.innerHTML = data;
-                },
-                observeModelStyles: function (property) {
-                    console.log(this.is + '[' + this.id + '] model changed, update styles.');
-                    this.customStyle['--section-font-size'] = this.model.fontSize + 'px';
-                    this.updateStyles();
-                }
-            });
-        })();
-    </script>
+            },
+            onShowEditor: function () {
+                console.log(this.is + '[' + this.id + '] show field editor.');
+                this.fire('article-text-edit', this.model);
+            },
+            observeModel: function () {
+                console.log(this.is + '[' + this.id + '] model property changed.');
+            },
+            observeModelData: function (data) {
+//                this.$.modelData.innerHTML = data;
+            },
+            observeModelStyles: function (property) {
+                console.log(this.is + '[' + this.id + '] model changed, update styles.');
+                this.customStyle['--section-font-size'] = this.model.fontSize + 'px';
+                this.updateStyles();
+            }
+        });
+    })();
+</script>
 </dom-module>

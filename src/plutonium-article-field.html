@@ -18,9 +18,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/i18n-behavior/i18n-behavior.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout-classes.html">
 
 <!-- Behaviors -->
 <link rel="import" href="plutonium-article-field-behavior.html">
+<link rel="import" href="plutonium-widget-behavior.html">
 <!-- Form fields -->
 <link rel="import" href="plutonium-article-image-section.html">
 <link rel="import" href="plutonium-article-link-section.html">
@@ -51,7 +53,6 @@ Example:
             }
 
         </style>
-        <div style="background-color: yellow">{{model.name}}|{{model.type}}|{{model.title}}|{{model.data}}</div>
         <iron-pages selected="{{model.type}}" attr-for-selected="field">
             
             <plutonium-article-link-section 
@@ -59,7 +60,11 @@ Example:
                 field="plutonium-cm-editor-link"
                 parent-candidates-url="{{apiUrl}}/content-management/candidates/child"
                 ></plutonium-article-link-section>
-            <plutonium-article-text-section 
+<!--            <div 
+                name="{{model.name}}" editable="{{editable}}" model="{{model}}"
+                field="plutonium-cm-editor-text"
+                >{{model.data}}</div>-->
+            <plutonium-article-text-section class="layout vertical"
                 name="{{model.name}}" editable="{{editable}}" model="{{model}}"
                 field="plutonium-cm-editor-text"
                 ></plutonium-article-text-section>
