@@ -96,13 +96,7 @@ Example:
                 <!--<paper-fab class="end-justified" icon="send" on-tap="onSend" title="Publish content" id="publishContentFab"></paper-fab>-->
             </div>
 
-            Paaa
-            <template is="dom-repeat" items="{{contentModel.sections}}" as="model">
-                <div style="background-color: greenyellow">{{model.name}}|{{model.type}}|{{model.title}}|{{model.data}}</div>
-            </template>
-
-
-
+            
             <paper-listbox id="assembled" selected="{{selectedSection}}">
                 <template is="dom-repeat" items="{{contentModel.sections}}" as="section">
                     <plutonium-article-field 
