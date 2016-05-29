@@ -185,6 +185,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <td>ActivationData</td>
                 <td>[[stringify(activationData)]]</td>
             </tr>
+            <tr>
+                <td>Recipients</td>
+                <td>[[stringify(recipients)]]</td>
+            </tr>
         </table>
 
         <iron-ajax id="localesAjax" 
@@ -246,10 +250,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </topflavon-member-delete-prompt>
         <topflavon-recipient-picker
             id="recipientPickerDialog"
-            attr-for-selected="id"
-            as="item"
-            items="[[contacts]]"
-            recipients="{{recipients}}">
+            items="{{contacts}}"
+            recipients="{{recipients}}">  
+            <!--_recipients="{{recipientsLabel}}"-->
+        
         </topflavon-recipient-picker>
 
         <plutonium-article-text-editor 
@@ -431,6 +435,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     <topflavon-share-view 
                         id="sharePage"
                         name="share-view" 
+                        items="{{contacts}}"
                         api-url="[[apiUrl]]" 
                         account-id="[[session.token]]" 
                         selected-item-ids="{{recipients}}"

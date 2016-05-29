@@ -57,7 +57,7 @@ Example:
                       modal entry-animation="scale-up-animation" exit-animation="scale-down-animation"
                       with-backdrop>
             <paper-toolbar>
-                <h2 id="recipientsPickerTitle">Choose items</h2>
+                <h2 id="recipientsPickerTitle">Choose recipients</h2>
             </paper-toolbar>
             <paper-toolbar class="layout horizontal">
                 <paper-tabs class="bottom flex" selected="{{selectionMode}}">
@@ -67,6 +67,10 @@ Example:
             </paper-toolbar>
             <form>
                 <paper-dialog-scrollable>
+                    <template is="dom-repeat" items="[[selectedItemIds]]">
+                        <div>[[item]]</div>
+                    </template>
+
                     <iron-pages selected="{{selectionMode}}" class="layout vertical">
                         <paper-listbox id="contactList"
                                        class="layout flex"
@@ -244,22 +248,28 @@ Example:
                 if (splice === undefined || splice === null)
                     return;
                 console.log('topflavon-recipient-picker change recipients: ' + JSON.stringify(this.selectedItemIds));
-                var recipients = '';
+                var recipientsString = '';
                 if (this.items !== undefined && this.items !== null) {
                     this.items.forEach(function (item, index) {
                         if (this.selectedItemIds.indexOf(item.id) > -1) {
-                            recipients += item.name + ' ';
+                            recipientsString += item.name + ' ';
                         }
                     }, this);
                 }
-                this._recipients = recipients;
+                this._recipients = recipientsString;
             },
             show: function () {
-                this.selectedItemIds = this.recipients;
+//                this.selectedItemIds = this.recipients;
                 this.$.dialog.open();
             },
             onApply: function (event, detail) {
-                this.recipients = this.selectedItemIds;
+                this.splice('recipients', 0, this.recipients.length);
+                console.log('Selected recipients:');
+                this.selectedItemIds.forEach(function (item, index) {
+                    this.push('recipients', item);
+                    console.log('- ' + item);
+                }, this);
+                
             }
         });
     </script>

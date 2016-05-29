@@ -11,9 +11,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-input/paper-input-container.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../bower_components/file-upload/file-upload.html">
 <link rel="import" href="../bower_components/plutonium-field-recipient/plutonium-field-recipient.html">
+<link rel="import" href="../bower_components/paper-chip/paper-chip.html">
 <link rel="import" href="topflavon-shared-styles.html">
 <link rel="import" href="plutonium-widget-behavior.html">
 <link rel="import" href="plutonium-article-form.html">
@@ -61,14 +64,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             on-response="onMessageSendResponse"
             on-error="onMessageSendError"
             url="[[apiUrl]]/mailbox/[[accountId]]/send" 
-            body="{{messageModel}}"></iron-ajax>
+            body="{{shareModel}}"></iron-ajax>
         <iron-pages selected="{{selectedMetaAction}}" attr-for-selected="name">
             <paper-card elevation="1" name="share" heading="Share with others" class="layout vertical main-action-fab-container">
                 <div class="card-content layout horizontal">
                     <paper-fab class="minor-action-fab" icon="send" on-tap="onSendMessage" title="Publish content" id="sendMessageFab"></paper-fab>
                     <div class="flex layout vertical">
                         <div class="layout horizontal">
-                            <paper-input label="Recipients" class="flex" name="recipients" label="[[label]]" value$="{{_recipients}}"></paper-input>
+                            <paper-input-container id="recipientsInput" class="flex" always-float-label="true">
+                                <label>Recipients</label>
+                                <div class="paper-input-input layout horizontal wrap">
+                                    <template is="dom-repeat" items="[[selectedItemIds]]">
+                                        <paper-chip member="[[item]]" style="margin-right: 10px; background-color: white; z-index: 2000;" removable>
+                                            <!--TODO: #45-->
+                                            <!--<div class="icon">[[getRoleIcon(item)]]</div>-->
+                                            <h1>[[getUserName(item)]]</h1>
+                                            <h2>[[getUserEmail(item)]]</h2>
+                                        </paper-chip>
+                                    </template>
+                                </div>
+                            </paper-input-container>
+
+                            <!--<paper-input label="Recipients" class="flex" name="recipients" value="{{_recipients}}"></paper-input>-->
                             <paper-icon-button icon="supervisor-account" title="Choose contacts." on-tap="onOpenRecipientsDialog"></paper-icon-button>
                             <paper-icon-button icon="clear" title="Clear recipients input." on-tap="onClearRecipients"></paper-icon-button>
                         </div>
@@ -211,7 +228,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     notify: true,
                     computed: 'computeHeader(articleContentType)'
                 },
-                _recipients: {
+                recipients: {
                     type: String,
                     notify: true,
                     value: ''
@@ -221,6 +238,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 'itemsAddedOrRemoved(selectedItemIds.splices)'
             ],
             listeners: {
+                'remove': 'onRemoveItem',
                 'share': 'onShare',
                 'shareAjax.error': 'onShareError',
                 'shareAjax.response': 'onShareResponse'
@@ -248,10 +266,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 });
             },
             onShareResponse: function () {
-                document.querySelector('#childTocAjax').generateRequest();
                 this.fire('feedback', {
-                    message: 'New content shared successfully.'
+                    message: (this.contentModel.id === undefined || this.contentModel === null) ? 'New content shared successfully.' : 'Content modified successfully.'
                 });
+                document.querySelector('#childTocAjax').generateRequest();
             },
             onNewArticle: function () {
                 this.contentModel = {
@@ -275,15 +293,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 if (splice === undefined || splice === null)
                     return;
                 console.log('topflavon-recipient-picker change recipients: ' + JSON.stringify(this.selectedItemIds));
-                var recipients = '';
+                var recipientslabel = '';
                 if (this.items !== undefined && this.items !== null) {
                     this.items.forEach(function (item, index) {
                         if (this.selectedItemIds.indexOf(item.id) > -1) {
-                            recipients += item.name + ' ';
+                            recipientslabel += item.name + ' ';
                         }
                     }, this);
                 }
-                this._recipients = recipients;
+                this.recipients = recipientslabel;
+            },
+            onRemoveItem: function(event, detail) {
+                event.stopPropagation();
+                this.splice('selectedItemIds', this.selectedItemIds.indexOf(event.currentTarget.member), 1); 
             },
             computeHeader: function (articleContentHeading) {
                 return ('assembled' === articleContentHeading) ? 'Edit content' : 'Attach file';
@@ -292,9 +314,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 console.log('Save content.');
             },
             onSendMessage: function (event, detail) {
+                this.shareModel.recipients = this.selectedItemIds;
+                this.shareModel.message = this.message;
+                this.shareModel.contentId = this.contentModel.id;
                 this.$.messageSendAjax.generateRequest();
             },
             onMessageSendResponse: function () {
+                this.selectedMetaAction = 'content';
                 this.fire('feedback', {
                     message: 'Message sent successfully.'
                 });
@@ -303,7 +329,56 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 this.fire('feedback', {
                     message: 'Message sending failed.'
                 });
+            },
+            getUserName: function (id) {
+                if (this.items !== undefined && this.items !== null) {
+                    var name = 'Unknown';
+                    this.items.forEach(function (item, index) {
+                        if (item.id === id) {
+                            name = item.name;
+                        }
+                    }, this);
+                    return name;
+                }
+            },
+            getUserEmail: function (id) {
+                if (this.items !== undefined && this.items !== null) {
+                    var name = 'Unknown';
+                    this.items.forEach(function (item, index) {
+                        if (item.id === id) {
+                            name = item.email;
+                        }
+                    }, this);
+                    return name;
+                }
+            },
+            getRoleIcon: function (id) {
+                if (this.items !== undefined && this.items !== null) {
+                    var name = 'Unknown';
+                    this.items.forEach(function (item, index) {
+                        if (item.id === id) {
+                            // TODO: remove #45
+                            // name = item.role.charAt(0).toUpperCase();
+                            name = 'M';
+                        }
+                    }, this);
+                    return name;
+                }
             }
+//            itemsAddedOrRemoved: function (splice) {
+//                if (splice === undefined || splice === null)
+//                    return;
+//                console.log('topflavon-recipient-picker change recipients: ' + JSON.stringify(this.selectedItemIds));
+//                var recipientsString = '';
+//                if (this.items !== undefined && this.items !== null) {
+//                    this.items.forEach(function (item, index) {
+//                        if (this.selectedItemIds.indexOf(item.id) > -1) {
+//                            recipientsString += item.name + ' ';
+//                        }
+//                    }, this);
+//                }
+//                this._recipients = recipientsString;
+//            }
 
         });
 
