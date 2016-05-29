@@ -67,10 +67,6 @@ Example:
             </paper-toolbar>
             <form>
                 <paper-dialog-scrollable>
-                    <template is="dom-repeat" items="[[selectedItemIds]]">
-                        <div>[[item]]</div>
-                    </template>
-
                     <iron-pages selected="{{selectionMode}}" class="layout vertical">
                         <paper-listbox id="contactList"
                                        class="layout flex"
