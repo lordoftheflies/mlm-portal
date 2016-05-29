@@ -53,10 +53,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             method="POST"
             url="[[apiUrl]]/content-management/[[accountId]]/save" 
             body="{{contentModel}}"></iron-ajax>
+        <iron-ajax 
+            id="messageSendAjax"
+            handle-as="json"
+            content-type="application/json"
+            method="POST"
+            on-response="onMessageSendResponse"
+            on-error="onMessageSendError"
+            url="[[apiUrl]]/mailbox/[[accountId]]/send" 
+            body="{{messageModel}}"></iron-ajax>
         <iron-pages selected="{{selectedMetaAction}}" attr-for-selected="name">
-            <paper-card elevation="1" name="share" class="layout vertical main-action-fab-container">
+            <paper-card elevation="1" name="share" heading="Share with others" class="layout vertical main-action-fab-container">
                 <div class="card-content layout horizontal">
-                    <paper-fab class="main-action-fab" icon="send" on-tap="onSendMessage" title="Publish content" id="sendMessageFab"></paper-fab>
+                    <paper-fab class="minor-action-fab" icon="send" on-tap="onSendMessage" title="Publish content" id="sendMessageFab"></paper-fab>
                     <div class="flex layout vertical">
                         <div class="layout horizontal">
                             <paper-input label="Recipients" class="flex" name="recipients" label="[[label]]" value$="{{_recipients}}"></paper-input>
@@ -103,6 +112,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
                     <paper-toolbar>
+                        <paper-fab class="minor-action-fab" icon="clear" on-tap="onNewArticle" title="Cancel all changes & create new article." id="sendNewContentFab"></paper-fab>
+
                         <paper-tabs attr-for-selected="name" selected="{{articleContentType}}" style="width: 100%;" autoselect>
                             <paper-tab text-id="embbeddedContentTabLabel" name="embedded">Embed content</paper-tab>
                             <paper-tab text-id="assembledContentTabLabel" name="assembled">Assembled content</paper-tab>
@@ -110,6 +121,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     </paper-toolbar>
 
                     <!--Selectexitemids: [[selectedItemIds.length]]-->
+
+
 
                     <iron-pages selected="{{articleContentType}}" attr-for-selected="name">
 
@@ -172,6 +185,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         ]
                     }
                 },
+                shareModel: {
+                    type: Object,
+                    notify: true,
+                    value: {
+                        recipients: []
+                    }
+                },
                 selectedItemIds: {
                     type: Array,
                     notify: true
@@ -228,9 +248,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 });
             },
             onShareResponse: function () {
+                document.querySelector('#childTocAjax').generateRequest();
                 this.fire('feedback', {
                     message: 'New content shared successfully.'
                 });
+            },
+            onNewArticle: function () {
+                this.contentModel = {
+                    sections: [
+                    ]
+                };
             },
             onOpenRecipientsDialog: function () {
                 console.log(this.is + ' send event pick-recipients.');
@@ -261,12 +288,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             computeHeader: function (articleContentHeading) {
                 return ('assembled' === articleContentHeading) ? 'Edit content' : 'Attach file';
             },
-            onSendMessage: function (event, detail) {
-                console.log('Send message.');
-            },
             onOnlySaveContent: function (event, detail) {
                 console.log('Save content.');
+            },
+            onSendMessage: function (event, detail) {
+                this.$.messageSendAjax.generateRequest();
+            },
+            onMessageSendResponse: function () {
+                this.fire('feedback', {
+                    message: 'Message sent successfully.'
+                });
+            },
+            onMessageSendError: function () {
+                this.fire('feedback', {
+                    message: 'Message sending failed.'
+                });
             }
+
         });
 
     </script>
