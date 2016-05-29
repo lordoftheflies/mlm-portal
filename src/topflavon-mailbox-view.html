@@ -37,9 +37,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                          <div class="pad">
                             <div class="primary container">
-                                <span>[[item.from]]</span>
+                                <span>[[item.fromName]]</span>
                                 <div class="flexchild"></div>
-                                <span>[[item.ts]]</span>
+                                <span>[[item.subject]]</span>
                             </div>
                             <div class="secondary">
                                 <span>[[item.title]]</span>
@@ -52,7 +52,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <!--</template>-->
         <!--<template is="dom-if" if="{{isEmpty(data)}}">-->
         <!--<br />-->
-        <paper-card elevation="1" hidden="[[!isEmpty(data)]]">
+        <paper-card elevation="1" hidden="[[!isEmpty(mailBoxModel)]]">
             <div class="card-content">
                 <div id="emptyMailBoxFolderText">No messages in the folder.</div>
             </div>
@@ -76,6 +76,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 },
                 accountId: {
                     type: String,
+                    notify: true
+                },
+                mailBoxModel: {
+                    type: Object,
                     notify: true
                 }
             },

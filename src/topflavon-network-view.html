@@ -35,14 +35,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                    url="[[apiUrl]]/addressbook/genocide" 
                    params="[[genocideRequestParams]]" 
                    last-response="{{parents}}" 
-                   auto="[[!parents]]">
+                   auto>
 
         </iron-ajax>
         <iron-ajax id="childrenIronAjax" 
                    url="[[apiUrl]]/addressbook/children" 
                    params="[[childrenRequestParams]]" 
                    last-response="{{data}}" 
-                   auto="[[!data]]">
+                   auto>
 
         </iron-ajax>
 
