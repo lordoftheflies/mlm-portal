@@ -11,7 +11,7 @@
         <!-- Disable tap highlight on IE -->
         <meta name="msapplication-tap-highlight" content="no">
 
-        
+
         <!-- Add to homescreen for Chrome on Android -->
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="application-name" content="Web Starter Kit">
@@ -35,7 +35,7 @@
         <link rel="canonical" href="http://www.example.com/">
         -->
 
-        
+
         <title>TopFlavon</title>
 
         <link rel="shortcut icon" sizes="32x32" href="/images/favicon.png">
@@ -44,12 +44,39 @@
         <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-        
+
         <!-- Web Application Manifest -->
         <link rel="manifest" href="manifest.json">
 
-        <!-- Application loader -->
-        <script src="app.js" async></script>
+        <script>
+
+            // setup Polymer options
+            window.Polymer = {lazyRegister: true, dom: 'shadow'};
+
+            // load webcomponents polyfills
+            (function () {
+                if ('registerElement' in document
+                        && 'import' in document.createElement('link')
+                        && 'content' in document.createElement('template')) {
+                    // browser has web components
+                } else {
+                    // polyfill web components
+                    var e = document.createElement('script');
+                    e.src = '/bower_components/webcomponentsjs/webcomponents-lite.min.js';
+                    document.head.appendChild(e);
+                }
+            })();
+
+            // load pre-caching service worker
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function () {
+                    navigator.serviceWorker.register('/service-worker.js');
+                });
+            }
+
+        </script>
+
+        <link rel="import" href="/src/my-app.html">
 
         <style>
 
@@ -66,13 +93,13 @@
             }
 
             /* Preloader style */
-            body[unresolved] #splash {
+/*            my-app[unresolved] #splash {
                 display: inline-block;
                 opacity: 1;
-            }
-            body #splash {
+            }*/
+/*            body #splash {
                 display: none;
-            }
+            }*/
 
             #splash {
                 position: absolute;
@@ -93,8 +120,12 @@
         </style>
 
     </head>
-    <body  onload="polymerLoader.loadPolymerApplication()" unresolved>
+    <!--<body  onload="polymerLoader.loadPolymerApplication()" unresolved>-->
+    <body>
         <!-- Preloading screen -->
+        <!--<div id="splash"></div>-->
+    <my-app id="app" unresolved prefix="topflavon" landing-page="about-view">
         <div id="splash"></div>
-    </body>
+    </my-app>
+</body>
 </html>
