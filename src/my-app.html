@@ -57,9 +57,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <style include="iron-flex iron-alignment topflavon-shared-styles">
 
             .debug {
-                display: none;
+                /*display: none;*/
+                position: absolute;
+                bottom: 0px;
+                right: 0px;
+                display: table;
+                z-index: 10000;
+                background-color: yellow;
             }
 
+            
+            
             :host {
                 display: block;
                 /*--app-primary-color: #4285f4;*/
@@ -105,7 +113,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         </style>
 
-        <app-location route="{{route}}" ></app-location>
+        <app-location route="{{route}}" query-params="{{queryParams}}"></app-location>
         <!--use-hash-as-path-->
         <!--                <app-route
                             route="{{subroute}}"
@@ -122,22 +130,62 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     pattern="/:memberId"
                     data="{{memberSubrouteData}}">
                 </app-route>-->
+
+        <!--        <app-route
+                    route="/registrate"
+                    pattern="/:page"
+                    data="{{registrationRouteData}}"
+                    tail="{{subroute}}"></app-route>-->
+        <app-route
+            route="{{route}}"
+            pattern="/registrate"
+            data="{{activationData}}">
+        </app-route>
+        <app-route
+            route="{{route}}"
+            pattern="/content-view/:contentId"
+            data="{{contentSubrouteData}}">
+        </app-route>
+        <app-route
+            route="{{route}}"
+            pattern="/network-view/:memberId"
+            data="{{memberSubrouteData}}">
+        </app-route>
+
         <app-route
             route="{{route}}"
             pattern="/:page"
             data="{{routeData}}"
             tail="{{subroute}}"></app-route>
 
-        <app-route
-            route="{{subroute}}"
-            pattern="/:contentId"
-            data="{{contentSubrouteData}}">
-        </app-route>
-        <app-route
-            route="{{subroute}}"
-            pattern="/:memberId"
-            data="{{memberSubrouteData}}">
-        </app-route>
+
+
+        <table class="debug">
+            <tr>
+                <td>Route</td>
+                <td>[[stringify(route)]]</td>
+            </tr>
+            <tr>
+                <td>Subroute</td>
+                <td>[[stringify(subroute)]]</td>
+            </tr>
+            <tr>
+                <td>ContentSubrouteData</td>
+                <td>[[stringify(contentSubrouteData)]]</td>
+            </tr>
+            <tr>
+                <td>MemberSubrouteData</td>
+                <td>[[stringify(memberSubrouteData)]]</td>
+            </tr>
+            <tr>
+                <td>QueryParams</td>
+                <td>[[stringify(queryParams)]]</td>
+            </tr>
+            <tr>
+                <td>ActivationData</td>
+                <td>[[stringify(activationData)]]</td>
+            </tr>
+        </table>
 
         <iron-ajax id="localesAjax" 
                    url="[[apiUrl]]/localization/locales" 
@@ -508,8 +556,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 'modify-model': 'onModifyModel',
                 'edit-content': 'onEditArticle'
             },
+//            observers: [
+//                
+//            ],
             ready: function () {
-
+                if (this.queryParams.code) {
+                    this.activationCode = this.queryParams.code;
+                    this.registering = true;
+                    this.$
+                }
             },
             observeMemberSubrouteData: function (subroute) {
                 console.log('Member subroute data: ' + JSON.stringify(subroute));
@@ -659,6 +714,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 //            app.activationCode = null;
                 }
 //            this.fire('unauthorized', {});
+            },
+            stringify: function (obj) {
+                return JSON.stringify(obj);
             }
         });
 
