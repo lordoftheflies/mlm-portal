@@ -86,12 +86,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </template>
         <template is="dom-if" if="{{!contentChildrenModel.hasEmbeddedFile}}">
             <div class="layout vertical flex" hidden="[[contentChildrenModel.leaf]]">
-                Article ||
-                Owner ID: [[ownerId]]
-                Selected folder: [[selectedContentFolder]]
-                Selected article: [[selectedArticleId]]
-                Sections: {{contentChildrenModel.sections.length}}
-
                 <iron-list items="{{contentChildrenModel.sections}}" as="section"   hidden="[[isEmpty(contentChildrenModel)]]">
                     <template>
                         <!--                        <a class="paper-item-link" href="{{getLink(section)}}">-->
