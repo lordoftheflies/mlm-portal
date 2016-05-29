@@ -56,8 +56,8 @@ var polymerLoader = (function () {
     function loadPolymerApplication() {
         // Only insert once.
         if (!pgApploaded) {
-            addLinkTag('stylesheet', 'styles/layered.css', true);
-            addLinkTag('stylesheet', 'styles/main.css');
+//            addLinkTag('stylesheet', 'styles/layered.css', true);
+//            addLinkTag('stylesheet', 'styles/main.css');
             addLinkTag('import', '/src/my-app.html', false, true);
             pgApploaded = true;
         }
