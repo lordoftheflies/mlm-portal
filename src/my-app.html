@@ -336,7 +336,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 
             <!-- Main content -->
-            <app-header-layout has-scrolling-region>
+            <app-header-layout has-scrolling-region id="headerLayout">
 
                 <app-header condenses fixed shadow effects="waterfall resize-title fade-background parallax-background" class="layout horizontal">
                     <app-toolbar primary>
@@ -388,7 +388,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     </app-toolbar>
 
                     <!--Application name--> 
-                    <app-toolbar hidden="[[!session.powerUser]]">
+                    <app-toolbar id="bottomToolbar" hidden="[[!session.powerUser]]">
                         <iron-pages attr-for-selected="data-route" selected="[[page]]" class="flex" style="padding: 0px">
                             <paper-tabs data-route="share-view"  attr-for-selected="name" selected="{{selectedMetaAction}}" style="width: 100%;" autoselect>
                                 <paper-tab text-id="shareTabLabel" name="share">Share</paper-tab>
@@ -505,8 +505,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 },
                 apiUrl: {
                     type: String,
-                    value: "http://http://185.51.67.30/topflavon-backend"
-//                    value: "http://localhost:8080/topflavon-backend"
+//                    value: "http://http://185.51.67.30/topflavon-backend"
+                    value: "http://localhost:8084/topflavon-backend"
                 },
                 model: {
                     type: Object,
@@ -562,15 +562,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 'modify-model': 'onModifyModel',
                 'edit-content': 'onEditArticle'
             },
-//            observers: [
-//                
-//            ],
+            observers: [
+                'observerAuthority(session.powerUser)'
+            ],
             ready: function () {
                 if (this.queryParams.code) {
                     this.activationCode = this.queryParams.code;
                     this.registering = true;
-                    this.$
+//                    this.$
                 }
+            },
+            observerAuthority: function(pu) {
+                this.$.headerLayout.resetLayout();
             },
             observeMemberSubrouteData: function (subroute) {
                 console.log('Member subroute data: ' + JSON.stringify(subroute));
