@@ -93,13 +93,13 @@
             }
 
             /* Preloader style */
-/*            my-app[unresolved] #splash {
-                display: inline-block;
-                opacity: 1;
-            }*/
-/*            body #splash {
-                display: none;
-            }*/
+            /*            my-app[unresolved] #splash {
+                            display: inline-block;
+                            opacity: 1;
+                        }*/
+            /*            body #splash {
+                            display: none;
+                        }*/
 
             #splash {
                 position: absolute;
@@ -121,10 +121,10 @@
 
     </head>
     <!--<body  onload="polymerLoader.loadPolymerApplication()" unresolved>-->
-    <body>
+    <body unresolved>
         <!-- Preloading screen -->
         <!--<div id="splash"></div>-->
-    <my-app id="app" unresolved prefix="topflavon" landing-page="about-view">
+    <my-app id="app" prefix="topflavon" landing-page="about-view">
         <div id="splash"></div>
     </my-app>
 </body>

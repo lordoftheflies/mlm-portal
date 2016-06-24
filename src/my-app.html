@@ -66,8 +66,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 background-color: yellow;
             }
 
-            
-            
+
+
             :host {
                 display: block;
                 /*--app-primary-color: #4285f4;*/
@@ -114,38 +114,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </style>
 
         <app-location route="{{route}}" query-params="{{queryParams}}"></app-location>
-        <!--use-hash-as-path-->
-        <!--                <app-route
-                            route="{{subroute}}"
-                            pattern="/:contentId"
-                            data="{{subrouteData}}">
-                        </app-route>-->
-        <!--        <app-route
-                    route="/content-view"
-                    pattern="/:contentId"
-                    data="{{contentSubrouteData}}">
-                </app-route>
-                <app-route
-                    route="/network-view"
-                    pattern="/:memberId"
-                    data="{{memberSubrouteData}}">
-                </app-route>-->
 
-        <!--        <app-route
-                    route="/registrate"
-                    pattern="/:page"
-                    data="{{registrationRouteData}}"
-                    tail="{{subroute}}"></app-route>-->
         <app-route
             route="{{route}}"
             pattern="/registrate"
             data="{{activationData}}">
         </app-route>
+
         <app-route
             route="{{route}}"
             pattern="/content-view/:contentId"
             data="{{contentSubrouteData}}">
         </app-route>
+
         <app-route
             route="{{route}}"
             pattern="/network-view/:memberId"
@@ -253,7 +234,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             items="{{contacts}}"
             recipients="{{recipients}}">  
             <!--_recipients="{{recipientsLabel}}"-->
-        
+
         </topflavon-recipient-picker>
 
         <plutonium-article-text-editor 
@@ -316,24 +297,29 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </iron-selector>
             </app-drawer>
 
-            <plutonium-login-widget id="loginWidget"
-                                    authentication-url="{{apiUrl}}/authentication/signin">
+            <plutonium-login-widget 
+                id="loginWidget"
+                authentication-url="{{apiUrl}}/authentication/signin">
             </plutonium-login-widget>
-            <plutonium-logon-widget id="logonWidget"
-                                    registration-url="[[apiUrl]]/authentication/signon"
-                                    profile-url="[[apiUrl]]/authentication/{{activationCode}}/profile"
-                                    activation-code="{{activationCode}}">                                        
+            <plutonium-logon-widget 
+                id="logonWidget"
+                registration-url="[[apiUrl]]/authentication/signon"
+                profile-url="[[apiUrl]]/authentication/{{activationCode}}/profile"
+                activation-code="{{activationCode}}">                                        
             </plutonium-logon-widget>
-            <plutonium-passwordreset-widget id="passwordResetWidget"
-                                            password-reset-url="{{apiUrl}}/reset">
+            <plutonium-passwordreset-widget 
+                id="passwordResetWidget"
+                password-reset-url="{{apiUrl}}/reset">
             </plutonium-passwordreset-widget>
-            <plutonium-forgottenpassword-widget id="forgottenPasswordWidget"
-                                                password-reset-url="{{apiUrl}}/reset">
+            <plutonium-forgottenpassword-widget 
+                id="forgottenPasswordWidget"
+                password-reset-url="{{apiUrl}}/reset">
             </plutonium-forgottenpassword-widget>
-            <iron-ajax id="sessionAjax" 
-                       url="[[apiUrl]]/authentication/session?token=[[token]]" 
-                       last-response="{{session}}" auto></iron-ajax>
-
+            <iron-ajax 
+                id="sessionAjax" 
+                url="[[apiUrl]]/authentication/session?token=[[token]]" 
+                last-response="{{session}}" auto>
+            </iron-ajax>
 
             <!-- Main content -->
             <app-header-layout has-scrolling-region id="headerLayout">
@@ -367,22 +353,34 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     <app-toolbar>
                         <iron-pages title selected="[[page]]" attr-for-selected="data-route"  attr-for-selected="name" role="navigation">
                             <h1 data-route="share-view" class="app-name focus-target" tabindex="-1">
-                                <span>[[applicationTitle]]</span><span>/</span><span id="shareContentViewTitleLabel" class="page-title">Share content</span>
+                                <span>[[applicationTitle]]</span>
+                                <span>/</span>
+                                <span id="shareContentViewTitleLabel" class="page-title">Share content</span>
                             </h1>
                             <h1 data-route="content-view" class="app-name focus-target" tabindex="-1">
-                                <span>[[applicationTitle]]</span><span>/</span><span id="contentTreeViewTitleLabel" class="page-title">Contents</span>
+                                <span>[[applicationTitle]]</span>
+                                <span>/</span>
+                                <span id="contentTreeViewTitleLabel" class="page-title">Contents</span>
                             </h1>
                             <h1 data-route="mailbox-view" class="app-name focus-target" tabindex="-1">
-                                <span>[[applicationTitle]]</span><span>/</span><span id="mailBoxViewTitleLabel" class="page-title">Mailbox</span>
+                                <span>[[applicationTitle]]</span>
+                                <span>/</span>
+                                <span id="mailBoxViewTitleLabel" class="page-title">Mailbox</span>
                             </h1>
                             <h1 data-route="network-view" class="app-name focus-target" tabindex="-1">
-                                <span>[[applicationTitle]]</span><span>/</span><span id="networkViewTitleLabel" class="page-title">Network</span>
+                                <span>[[applicationTitle]]</span>
+                                <span>/</span>
+                                <span id="networkViewTitleLabel" class="page-title">Network</span>
                             </h1>
                             <h1 data-route="about-view" class="app-name focus-target" tabindex="-1">
-                                <span id="mainTitle">[[applicationTitle]]</span><span>/</span><span id="aboutViewTitleLabel" class="page-title">About</span>
+                                <span id="mainTitle">[[applicationTitle]]</span>
+                                <span>/</span>
+                                <span id="aboutViewTitleLabel" class="page-title">About</span>
                             </h1>
                             <h1 data-route="profile-view" class="app-name focus-target" tabindex="-1">
-                                <span id="mainTitle">[[applicationTitle]]</span><span>/</span><span id="profileViewTitleLabel" class="page-title">Profile</span>
+                                <span id="mainTitle">[[applicationTitle]]</span>
+                                <span>/</span>
+                                <span id="profileViewTitleLabel" class="page-title">Profile</span>
                             </h1>
                         </iron-pages>
                     </app-toolbar>
@@ -442,15 +440,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         content-model="{{editedContentModel}}" 
                         selected-meta-action="{{selectedMetaAction}}">
                     </topflavon-share-view>
-                    <topflavon-profile-view name="profile-view" 
-                                            api-url="[[apiUrl]]" 
-                                            account-id="[[session.token]]">
+
+                    <topflavon-profile-view 
+                        name="profile-view" 
+                        api-url="[[apiUrl]]" 
+                        account-id="[[session.token]]">
                     </topflavon-profile-view>
-                    <topflavon-mailbox-view name="mailbox-view" 
-                                            api-url="[[apiUrl]]" 
-                                            account-id="[[session.token]]" 
-                                            selected-mail-box-folder="{{selectedMailboxFolder}}">
+
+                    <topflavon-mailbox-view 
+                        name="mailbox-view" 
+                        api-url="[[apiUrl]]" 
+                        account-id="[[session.token]]" 
+                        selected-mail-box-folder="{{selectedMailboxFolder}}">
                     </topflavon-mailbox-view>
+
                     <topflavon-network-view 
                         id="networkPage"
                         name="network-view" 
@@ -461,15 +464,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         selected-role="{{selectedRole}}"
                         selected-account-id="{{memberSubrouteData.memberId}}">
                     </topflavon-network-view>
-                    <topflavon-content-view name="content-view" 
-                                            api-url="[[apiUrl]]" 
-                                            account-id="[[session.token]]" 
-                                            admin="[[session.powerUser]]" 
-                                            owner-id="[[session.token]]"
-                                            selected-article-id="{{contentSubrouteData.contentId}}"
-                                            selected-content-folder="{{selectedContentFolder}}">
 
+                    <topflavon-content-view 
+                        name="content-view" 
+                        api-url="[[apiUrl]]" 
+                        account-id="[[session.token]]" 
+                        admin="[[session.powerUser]]" 
+                        owner-id="[[session.token]]"
+                        selected-article-id="{{contentSubrouteData.contentId}}"
+                        selected-content-folder="{{selectedContentFolder}}">
                     </topflavon-content-view>
+
                 </iron-pages>
             </app-header-layout>
 
@@ -572,7 +577,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 //                    this.$
                 }
             },
-            observerAuthority: function(pu) {
+            observerAuthority: function (pu) {
                 this.$.headerLayout.resetLayout();
             },
             observeMemberSubrouteData: function (subroute) {
