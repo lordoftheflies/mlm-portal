@@ -29,6 +29,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/iron-dropdown/iron-dropdown.html">
+<link rel="import" href="../bower_components/polymer-cookie/polymer-cookie.html">
 <!--<link rel="import" href="../bower_components/plutonium-login-widget/plutonium-shared-styles.html">-->
 <link rel="import" href="../bower_components/plutonium-login-widget/plutonium-login-widget.html">
 <link rel="import" href="../bower_components/plutonium-login-widget/plutonium-logon-widget.html">
@@ -139,7 +140,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             data="{{routeData}}"
             tail="{{subroute}}"></app-route>
 
-
+        <polymer-cookie
+            id="rememberMeCookie"
+            name="rememberMe"
+            value="{{rememberMe}}"
+            time="1"
+            format="d">
+        </polymer-cookie>
+        <polymer-cookie
+            id="tokenCookie"
+            name="token"
+            value="{{token}}"
+            time="1"
+            format="d">
+        </polymer-cookie>
 
         <table class="debug">
             <tr>
@@ -299,6 +313,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
             <plutonium-login-widget 
                 id="loginWidget"
+                remember-me="{{rememberMe}}"
                 authentication-url="{{apiUrl}}/authentication/signin">
             </plutonium-login-widget>
             <plutonium-logon-widget 
@@ -427,6 +442,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
                     </app-toolbar>
                 </app-header>
+
+                Remember me: [[rememberMe]]
+                Token: [[token]]
+
                 <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
                     <topflavon-about-view name="about-view"></topflavon-about-view>
 
@@ -716,6 +735,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             onLogout: function (event, detail) {
                 this.session = null;
                 this.page = 'about-view';
+
+                this.$.rememberMeCookie.eraseCookie();
+                this.$.tokenCookie.eraseCookie();
+
                 this.fire('unauthorized');
             },
             onSessionInitializationError: function (event, args) {

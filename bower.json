@@ -45,7 +45,8 @@
     "plutonium-field-recipient": "git@github.com:lordoftheflies/plutonium-field-recipient.git#^1.0.1",
     "paper-listbox": "^1.1.2",
     "paper-checkbox": "^1.2.0",
-    "paper-chip": "^1.0.0"
+    "paper-chip": "^1.0.0",
+    "polymer-cookie": "^1.1.1"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"
