@@ -719,7 +719,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             },
             onModifyModel: function (event, detail) {
                 console.log(this.is + ' receive modify-model event: ' + JSON.stringify(detail));
-                document.querySelector('plutonium-article-field[name=' + detail.name + ']').fire('apply-model', detail);
+//                document.querySelector('plutonium-article-field[name=' + detail.name + ']').fire('apply-model', detail);
+                this.$.sharePage.$.pcf.$$('plutonium-article-field[name=\"' + detail.name + '\"]').fire('apply-model', detail);
             },
             onEditArticle: function (event, detail) {
                 console.log(this.is + ' receive edit-content event: ' + JSON.stringify(detail));
