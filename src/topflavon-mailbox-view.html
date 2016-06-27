@@ -29,24 +29,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <iron-ajax id="mailBoxAjax" url="[[apiUrl]]/mailbox/[[accountId]]/[[selectedMailBoxFolder]]" last-response="{{mailBoxModel}}"></iron-ajax>
 
         <!--<template is="dom-if" if="{{!isEmpty(data)}}">-->
-        <iron-list items="[[mailBoxModel]]" as="item" hidden="[[isEmpty(mailBoxModel)]]">
+        <iron-list items="[[mailBoxModel]]" as="message" hidden="[[isEmpty(mailBoxModel)]]" class="layout vertical">
             <template>
-                <div>
-                    <div class$="item [[getItemClasses(item)]]" tabindex$="[[tabIndex]]">
-                         <!--<iron-image class="avatar" sizing="contain" src="[[item.image]]"></iron-image>-->
-
-                         <div class="pad">
-                            <div class="primary container">
-                                <span>[[item.fromName]]</span>
-                                <div class="flexchild"></div>
-                                <span>[[item.subject]]</span>
+                <paper-item class="layout horizontal">
+                    <paper-material class="flex layout horizontal" tabindex="[[tabIndex]]">
+                        <div class="flex">
+                            <div class="layout horizontal">
+                                <span>[[message.fromName]]</span>
+                                <div class="flex"></div>
+                                <!--<span>[[message.subject]]</span>-->
                             </div>
                             <div class="secondary">
-                                <span>[[item.title]]</span>
+                                <span>[[message.message]]</span>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </paper-material>
+                </paper-item>
             </template>
         </iron-list>
         <!--</template>-->
