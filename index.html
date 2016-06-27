@@ -73,6 +73,7 @@
                     navigator.serviceWorker.register('/service-worker.js')
                             .then(function (reg) {
                                 console.log(':^)', reg);
+                                var pushManager = reg.pushManager;
                                 reg.pushManager.subscribe({
                                     userVisibleOnly: true
                                 })
@@ -80,7 +81,7 @@
                                             console.log('Notification subscription succeed.');
 
                                             var endpointUrl = sub.endpoint.split('/');
-                                            subscriptionId = endpointUrl[endpointUrl.length - 1];
+                                            var subscriptionId = endpointUrl[endpointUrl.length - 1];
                                             document.querySelector('my-app#app').subscriptionId = subscriptionId;
                                             console.log("SUBSCRIPTION ID: " + subscriptionId);
                                         })

@@ -10,6 +10,8 @@
 console.info('Service worker disabled for development, will be generated at build time.');
 console.info('But, now I\'m implementing push notifications.');
 
+//var hostName = 'localhost:8084/topflavon-backend';
+var hostName = '185.51.67.30:8080/topflavon-backend';
 
 console.log('Service worker for notifications started.', self);
 self.addEventListener('install', function (event) {
@@ -19,15 +21,48 @@ self.addEventListener('install', function (event) {
 self.addEventListener('activate', function (event) {
     console.log('Notification service-worker  activated', event);
 });
-self.addEventListener('push', function (event) {
+self.addEventListener('push', function (event, a, b, c) {
     console.log('Notification service-worker received a push message.', event);
     var title = 'Push message';
-    var payload = event.data ? event.data.text() : 'no payload';
-    event.waitUntil(self.registration.showNotification(title, {
-        body: payload,
-        icon: 'images/favicon-64x64.png',
-        tag: 'topflavon-notification'
-    }));
+//    var payload = event.data ? event.data.text() : 'no payload';
+//                    value: "http://185.51.67.30:8080/topflavon-backend"
+//                    value: "http://localhost:8084/topflavon-backend"
+//    var accountId = document.querySelector('my-app#app').session.token;
+//    event.waitUntil(
+    self.registration.pushManager.getSubscription()
+            .then(function (sub) {
+                var endpointUrl = sub.endpoint.split('/');
+                var subscriptionId = endpointUrl[endpointUrl.length - 1];
+                var notificationBackendUrl = 'http://' + hostName + '/mailbox/notifications?subscriptionId=' + encodeURIComponent(subscriptionId);
+                console.log('Fetch notifications from ' + notificationBackendUrl);
+                fetch(notificationBackendUrl)
+                        .then(function (response) {
+//            if (response.status < 400) {
+//            console.log('got ', response);
+//                cache.put(url, response.clone());
+//            }
+                            return response.json();
+                        })
+                        .then(function (payload) {
+                            payload.forEach(function (currentValue, index, arr) {
+                                console.log('Notify user', payload);
+                                self.registration.showNotification(currentValue.fromName + ": " + currentValue.subject, {
+                                    body: currentValue.message,
+                                    icon: '/images/favicon-64x64.png',
+                                    tag: 'topflavon-notification-' + currentValue.id
+                                });
+                            }, self);
+                        })
+                        .catch(function (e) {
+                            console.log("Error fetching notifications", e.stack);
+                        });
+
+            })
+            .catch(function (e) {
+                console.log("Error subscription id", e.stack);
+            });
+//            );
+
 });
 self.addEventListener('notificationclick', function (event) {
     console.log('Notification click: tag ', event.notification.tag);

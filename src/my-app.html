@@ -218,7 +218,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             body="{{subscriptionDto}}"
             content-type="application/json"
             last-response="{{subsResp}}" 
-            method="POST">
+            method="POST"
+            auto>
         </iron-ajax>
 
         <topflavon-member-editor
@@ -537,8 +538,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 },
                 apiUrl: {
                     type: String,
-//                    value: "http://185.51.67.30:8080/topflavon-backend"
-                    value: "http://localhost:8084/topflavon-backend"
+                    value: "http://185.51.67.30:8080/topflavon-backend"
+//                    value: "http://localhost:8084/topflavon-backend"
                 },
                 subscriptionId: {
                     type: String,
