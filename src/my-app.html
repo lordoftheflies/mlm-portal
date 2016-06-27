@@ -212,6 +212,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             auto>
         </iron-ajax>
 
+        <iron-ajax 
+            id="syncSubsAjax"
+            url="[[apiUrl]]/mailbox/subscription"
+            body="{{subscriptionDto}}"
+            content-type="application/json"
+            last-response="{{subsResp}}" 
+            method="POST">
+        </iron-ajax>
+
         <topflavon-member-editor
             id="memberEditor"
             action="[[apiUrl]]/addressbook/save"
@@ -443,6 +452,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     </app-toolbar>
                 </app-header>
 
+                Subscription ID: {{subscriptionId}}
+
                 <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
                     <topflavon-about-view name="about-view"></topflavon-about-view>
 
@@ -526,8 +537,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 },
                 apiUrl: {
                     type: String,
-//                    value: "http://http://185.51.67.30/topflavon-backend"
+//                    value: "http://185.51.67.30:8080/topflavon-backend"
                     value: "http://localhost:8084/topflavon-backend"
+                },
+                subscriptionId: {
+                    type: String,
+                    notify: true,
+                    observer: 'observeSubscriptionId'
+                },
+                subscriptionDto: {
+                    type: Object,
+                    notify: true,
+                    value: {
+                        accountId: null,
+                        subscriptionId: null
+                    }
                 },
                 model: {
                     type: Object,
@@ -592,6 +616,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     this.registering = true;
 //                    this.$
                 }
+            },
+            observeSubscriptionId: function (subscriptionId) {
+                this.subscriptionDto.accountId = this.session.token;
+                this.subscriptionDto.subscriptionId = this.subscriptionId;
+                console.log('Synchronize subscription for FCM:', this.subscriptionDto);
+                this.$.syncSubsAjax.generateRequest();
             },
             observerAuthority: function (pu) {
                 this.$.headerLayout.resetLayout();
