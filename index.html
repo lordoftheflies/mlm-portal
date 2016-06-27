@@ -70,7 +70,27 @@
             // load pre-caching service worker
             if ('serviceWorker' in navigator) {
                 window.addEventListener('load', function () {
-                    navigator.serviceWorker.register('/service-worker.js');
+                    navigator.serviceWorker.register('/service-worker.js')
+                            .then(function (reg) {
+                                console.log(':^)', reg);
+                                reg.pushManager.subscribe({
+                                    userVisibleOnly: true
+                                })
+                                        .then(function (sub) {
+                                            console.log('Notification subscription succeed.');
+
+                                            var endpointUrl = sub.endpoint.split('/');
+                                            subscriptionId = endpointUrl[endpointUrl.length - 1];
+                                            document.querySelector('my-app#app').subscriptionId = subscriptionId;
+                                            console.log("SUBSCRIPTION ID: " + subscriptionId);
+                                        })
+                                        .catch(function (error) {
+                                            console.log('Notification subscribe failed: ', error);
+                                        });
+                            })
+                            .catch(function (error) {
+                                console.log(':^(', error);
+                            });
                 });
             }
 
