@@ -538,8 +538,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 },
                 apiUrl: {
                     type: String,
-                    value: "http://185.51.67.30:8080/topflavon-backend"
-//                    value: "http://localhost:8084/topflavon-backend"
+//                    value: "http://185.51.67.30:8080/topflavon-backend"
+                    value: "http://localhost:8084/topflavon-backend"
+//                    value: "https://localhost:8443/topflavon-backend"
                 },
                 subscriptionId: {
                     type: String,
@@ -619,8 +620,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 }
             },
             observeSubscriptionId: function (subscriptionId) {
-                this.subscriptionDto.accountId = this.session.token;
-                this.subscriptionDto.subscriptionId = this.subscriptionId;
+                if (this.session)
+                    this.subscriptionDto.accountId = this.session.token;
+                if (this.subscriptionDto)
+                    this.subscriptionDto.subscriptionId = this.subscriptionId;
                 console.log('Synchronize subscription for FCM:', this.subscriptionDto);
                 this.$.syncSubsAjax.generateRequest();
             },
