@@ -155,37 +155,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             format="d">
         </polymer-cookie>
 
-        <table class="debug">
-            <tr>
-                <td>Route</td>
-                <td>[[stringify(route)]]</td>
-            </tr>
-            <tr>
-                <td>Subroute</td>
-                <td>[[stringify(subroute)]]</td>
-            </tr>
-            <tr>
-                <td>ContentSubrouteData</td>
-                <td>[[stringify(contentSubrouteData)]]</td>
-            </tr>
-            <tr>
-                <td>MemberSubrouteData</td>
-                <td>[[stringify(memberSubrouteData)]]</td>
-            </tr>
-            <tr>
-                <td>QueryParams</td>
-                <td>[[stringify(queryParams)]]</td>
-            </tr>
-            <tr>
-                <td>ActivationData</td>
-                <td>[[stringify(activationData)]]</td>
-            </tr>
-            <tr>
-                <td>Recipients</td>
-                <td>[[stringify(recipients)]]</td>
-            </tr>
-        </table>
-
         <iron-ajax id="localesAjax" 
                    url="[[apiUrl]]/localization/locales" 
                    last-response="{{locales}}" 
@@ -256,8 +225,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <topflavon-recipient-picker
             id="recipientPickerDialog"
             items="{{contacts}}"
-            recipients="{{recipients}}">  
-            <!--_recipients="{{recipientsLabel}}"-->
+            recipients="{{recipients}}">
 
         </topflavon-recipient-picker>
 
@@ -307,6 +275,31 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             font-size="{{model.fontSize}}">
         </plutonium-article-image-editor>
 
+        <plutonium-login-widget 
+            id="loginWidget"
+            remember-me="{{rememberMe}}"
+            authentication-url="{{apiUrl}}/authentication/signin">
+        </plutonium-login-widget>
+        <plutonium-logon-widget 
+            id="logonWidget"
+            registration-url="[[apiUrl]]/authentication/signon"
+            profile-url="[[apiUrl]]/authentication/{{activationCode}}/profile"
+            activation-code="{{activationCode}}">                                        
+        </plutonium-logon-widget>
+        <plutonium-passwordreset-widget 
+            id="passwordResetWidget"
+            password-reset-url="{{apiUrl}}/reset">
+        </plutonium-passwordreset-widget>
+        <plutonium-forgottenpassword-widget 
+            id="forgottenPasswordWidget"
+            password-reset-url="{{apiUrl}}/reset">
+        </plutonium-forgottenpassword-widget>
+        <iron-ajax 
+            id="sessionAjax" 
+            url="[[apiUrl]]/authentication/session?token=[[token]]" 
+            last-response="{{session}}" auto>
+        </iron-ajax>
+
         <app-drawer-layout fullbleed>
 
             <!-- Drawer content -->
@@ -320,31 +313,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     <a id="aboutMainMenuTitle" name="about-view" href="/about-view">About</a>
                 </iron-selector>
             </app-drawer>
-
-            <plutonium-login-widget 
-                id="loginWidget"
-                remember-me="{{rememberMe}}"
-                authentication-url="{{apiUrl}}/authentication/signin">
-            </plutonium-login-widget>
-            <plutonium-logon-widget 
-                id="logonWidget"
-                registration-url="[[apiUrl]]/authentication/signon"
-                profile-url="[[apiUrl]]/authentication/{{activationCode}}/profile"
-                activation-code="{{activationCode}}">                                        
-            </plutonium-logon-widget>
-            <plutonium-passwordreset-widget 
-                id="passwordResetWidget"
-                password-reset-url="{{apiUrl}}/reset">
-            </plutonium-passwordreset-widget>
-            <plutonium-forgottenpassword-widget 
-                id="forgottenPasswordWidget"
-                password-reset-url="{{apiUrl}}/reset">
-            </plutonium-forgottenpassword-widget>
-            <iron-ajax 
-                id="sessionAjax" 
-                url="[[apiUrl]]/authentication/session?token=[[token]]" 
-                last-response="{{session}}" auto>
-            </iron-ajax>
 
             <!-- Main content -->
             <app-header-layout has-scrolling-region id="headerLayout">
