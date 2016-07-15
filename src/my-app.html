@@ -317,12 +317,44 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <!-- Main content -->
             <app-header-layout has-scrolling-region id="headerLayout">
 
-                <app-header condenses fixed shadow effects="waterfall resize-title fade-background parallax-background" class="layout horizontal">
+                <app-header fixed shadow effects="waterfall" class="layout horizontal">
                     <app-toolbar primary>
                         <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
-                        <div class="flex" >
+<!--                        <div class="flex" >
                             <h4 condensed-title>[[applicationTitle]]</h4>
-                        </div>
+                        </div>-->
+                        <iron-pages class="flex" selected="[[page]]" attr-for-selected="data-route"  attr-for-selected="name" role="navigation">
+                            <h1 title data-route="share-view" class="app-name focus-target" tabindex="-1">
+<!--                                <span>[[applicationTitle]]</span>
+                                <span>/</span>-->
+                                <span id="shareContentViewTitleLabel" class="page-title">Share content</span>
+                            </h1>
+                            <h1 title data-route="content-view" class="app-name focus-target" tabindex="-1">
+<!--                                <span>[[applicationTitle]]</span>
+                                <span>/</span>-->
+                                <span id="contentTreeViewTitleLabel" class="page-title">Contents</span>
+                            </h1>
+                            <h1 title data-route="mailbox-view" class="app-name focus-target" tabindex="-1">
+<!--                                <span>[[applicationTitle]]</span>
+                                <span>/</span>-->
+                                <span id="mailBoxViewTitleLabel" class="page-title">Mailbox</span>
+                            </h1>
+                            <h1 title data-route="network-view" class="app-name focus-target" tabindex="-1">
+<!--                                <span>[[applicationTitle]]</span>
+                                <span>/</span>-->
+                                <span id="networkViewTitleLabel" class="page-title">Network</span>
+                            </h1>
+                            <h1 title data-route="about-view" class="app-name focus-target" tabindex="-1">
+<!--                                <span id="mainTitle">[[applicationTitle]]</span>
+                                <span>/</span>-->
+                                <span id="aboutViewTitleLabel" class="page-title">About</span>
+                            </h1>
+                            <h1 title data-route="profile-view" class="app-name focus-target" tabindex="-1">
+<!--                                <span id="mainTitle">[[applicationTitle]]</span>
+                                <span>/</span>-->
+                                <span id="profileViewTitleLabel" class="page-title">Profile</span>
+                            </h1>
+                        </iron-pages>
 
                         <div hidden="[[!session]]">
                             <paper-button on-tap="showUserNavigation">
@@ -343,7 +375,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                             </iron-dropdown>
                         </div>
                     </app-toolbar>
-                    <app-toolbar>
+<!--                    <app-toolbar>
                         <iron-pages title selected="[[page]]" attr-for-selected="data-route"  attr-for-selected="name" role="navigation">
                             <h1 data-route="share-view" class="app-name focus-target" tabindex="-1">
                                 <span>[[applicationTitle]]</span>
@@ -376,7 +408,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                 <span id="profileViewTitleLabel" class="page-title">Profile</span>
                             </h1>
                         </iron-pages>
-                    </app-toolbar>
+                    </app-toolbar>-->
 
                     <!--Application name--> 
                     <app-toolbar id="bottomToolbar" hidden="[[!session.powerUser]]">
@@ -421,7 +453,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     </app-toolbar>
                 </app-header>
 
-                Subscription ID: {{subscriptionId}}
+                <!--Subscription ID: {{subscriptionId}}-->
 
                 <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
                     <topflavon-about-view name="about-view"></topflavon-about-view>
@@ -506,8 +538,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 },
                 apiUrl: {
                     type: String,
-//                    value: "http://185.51.67.30:8080/topflavon-backend"
-                    value: "http://localhost:8084/topflavon-backend"
+                    value: "http://185.51.67.30:8080/topflavon-backend"
+//                    value: "https://185.51.67.30:8080/topflavon-backend"
+//                    value: "http://localhost:8084/topflavon-backend"
 //                    value: "https://localhost:8443/topflavon-backend"
                 },
                 subscriptionId: {

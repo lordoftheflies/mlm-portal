@@ -35,9 +35,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     <paper-material class="flex layout horizontal" tabindex="[[tabIndex]]">
                         <div class="flex">
                             <div class="layout horizontal">
-                                <span>[[message.fromName]]</span>
+                                <div class="layout vertical">
+                                    <span hidden="[[isOutbox(selectedMailBoxFolder)]]">From: [[message.fromName]]</span>
+                                    <span hidden="[[isInbox(selectedMailBoxFolder)]]">To: [[message.toName]]</span>
+                                </div>
                                 <div class="flex"></div>
-                                <!--<span>[[message.subject]]</span>-->
+                                <span>[[message.ts]]</span>
                             </div>
                             <div class="secondary">
                                 <span>[[message.message]]</span>
@@ -93,6 +96,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             computeMailboxFolderRequest: function (accountId, selectedMailBoxFolder) {
                 console.log(this.is + ' fetch ' + selectedMailBoxFolder + ' from ' + accountId + '\'s mailbox.');
                 this.$.mailBoxAjax.generateRequest();
+            },
+            isOutbox: function(selectedMailBoxFolder) {
+                return selectedMailBoxFolder === 'outbox';
+            },
+            isInbox: function(selectedMailBoxFolder) {
+                return selectedMailBoxFolder === 'inbox';
             },
             isEmpty: function (data) {
                 return data === undefined || data === null || data.length === 0;
