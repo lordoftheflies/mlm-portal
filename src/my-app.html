@@ -17,6 +17,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
 <link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
 <link rel="import" href="../bower_components/paper-toast/paper-toast.html">
 <link rel="import" href="../bower_components/paper-tabs/paper-tabs.html">
 <link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
@@ -37,9 +38,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/plutonium-login-widget/plutonium-forgottenpassword-widget.html">
 <link rel="import" href="../bower_components/plutonium-login-widget/plutonium-secure-application-behavior.html">
 
+
+<link rel="import" href="../bower_components/mlm-elements/mlm-elements.html">
+
 <link rel="import" href="my-icons.html">
 <link rel="import" href="topflavon-shared-styles.html">
-<link rel="import" href="plutonium-authorization-behavior.html">
+<!--<link rel="import" href="plutonium-authorization-behavior.html">
 
 <link rel="import" href="topflavon-member-editor.html">
 <link rel="import" href="topflavon-member-delete-prompt.html">
@@ -48,7 +52,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="plutonium-article-link-editor.html">
 <link rel="import" href="plutonium-article-image-editor.html">
 <link rel="import" href="plutonium-article-text-editor.html">
-<link rel="import" href="plutonium-article-video-editor.html">
+<link rel="import" href="plutonium-article-video-editor.html">-->
 
 
 <dom-module id="my-app">
@@ -155,37 +159,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             format="d">
         </polymer-cookie>
 
-        <table class="debug">
-            <tr>
-                <td>Route</td>
-                <td>[[stringify(route)]]</td>
-            </tr>
-            <tr>
-                <td>Subroute</td>
-                <td>[[stringify(subroute)]]</td>
-            </tr>
-            <tr>
-                <td>ContentSubrouteData</td>
-                <td>[[stringify(contentSubrouteData)]]</td>
-            </tr>
-            <tr>
-                <td>MemberSubrouteData</td>
-                <td>[[stringify(memberSubrouteData)]]</td>
-            </tr>
-            <tr>
-                <td>QueryParams</td>
-                <td>[[stringify(queryParams)]]</td>
-            </tr>
-            <tr>
-                <td>ActivationData</td>
-                <td>[[stringify(activationData)]]</td>
-            </tr>
-            <tr>
-                <td>Recipients</td>
-                <td>[[stringify(recipients)]]</td>
-            </tr>
-        </table>
-
         <iron-ajax id="localesAjax" 
                    url="[[apiUrl]]/localization/locales" 
                    last-response="{{locales}}" 
@@ -222,13 +195,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             auto>
         </iron-ajax>
 
-        <topflavon-member-editor
+        <mlm-member-editor
             id="memberEditor"
             action="[[apiUrl]]/addressbook/save"
             possible-parents="[[possibleParents]]"
             locales="[[locales]]">
-        </topflavon-member-editor>
-        <topflavon-role-changer-prompt
+        </mlm-member-editor>
+        <mlm-role-changer-prompt
             id="promotionDialog"
             action="[[apiUrl]]/addressbook/promote"
             owner-id="[[session.token]]"
@@ -236,8 +209,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             operation-name="promote"
             role-name="administrator"
             subject-id="[[memberSubrouteData.memberId]]">
-        </topflavon-role-changer-prompt>
-        <topflavon-role-changer-prompt
+        </mlm-role-changer-prompt>
+        <mlm-role-changer-prompt
             id="demotionDialog"
             action="[[apiUrl]]/addressbook/demote"
             owner-id="[[session.token]]"
@@ -245,21 +218,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             operation-name="demote"
             role-name="user"
             subject-id="[[memberSubrouteData.memberId]]">
-        </topflavon-role-changer-prompt>
-        <topflavon-member-delete-prompt
+        </mlm-role-changer-prompt>
+        <mlm-member-delete-prompt
             id="deleteMemberDialog"
             action="[[apiUrl]]/addressbook/delete"
             owner-id="[[session.token]]"
             subject-name="[[selectedName]]"
             subject-id="[[memberSubrouteData.memberId]]">
-        </topflavon-member-delete-prompt>
-        <topflavon-recipient-picker
+        </mlm-member-delete-prompt>
+        <mlm-recipient-picker
             id="recipientPickerDialog"
             items="{{contacts}}"
-            recipients="{{recipients}}">  
-            <!--_recipients="{{recipientsLabel}}"-->
+            recipients="{{recipients}}">
 
-        </topflavon-recipient-picker>
+        </mlm-recipient-picker>
 
         <plutonium-article-text-editor 
             id="articleTextEditor"
@@ -307,6 +279,31 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             font-size="{{model.fontSize}}">
         </plutonium-article-image-editor>
 
+        <plutonium-login-widget 
+            id="loginWidget"
+            remember-me="{{rememberMe}}"
+            authentication-url="{{apiUrl}}/authentication/signin">
+        </plutonium-login-widget>
+        <plutonium-logon-widget 
+            id="logonWidget"
+            registration-url="[[apiUrl]]/authentication/signon"
+            profile-url="[[apiUrl]]/authentication/{{activationCode}}/profile"
+            activation-code="{{activationCode}}">                                        
+        </plutonium-logon-widget>
+        <plutonium-passwordreset-widget 
+            id="passwordResetWidget"
+            password-reset-url="{{apiUrl}}/reset">
+        </plutonium-passwordreset-widget>
+        <plutonium-forgottenpassword-widget 
+            id="forgottenPasswordWidget"
+            password-reset-url="{{apiUrl}}/reset">
+        </plutonium-forgottenpassword-widget>
+        <iron-ajax 
+            id="sessionAjax" 
+            url="[[apiUrl]]/authentication/session?token=[[token]]" 
+            last-response="{{session}}" auto>
+        </iron-ajax>
+
         <app-drawer-layout fullbleed>
 
             <!-- Drawer content -->
@@ -321,94 +318,127 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </iron-selector>
             </app-drawer>
 
-            <plutonium-login-widget 
-                id="loginWidget"
-                remember-me="{{rememberMe}}"
-                authentication-url="{{apiUrl}}/authentication/signin">
-            </plutonium-login-widget>
-            <plutonium-logon-widget 
-                id="logonWidget"
-                registration-url="[[apiUrl]]/authentication/signon"
-                profile-url="[[apiUrl]]/authentication/{{activationCode}}/profile"
-                activation-code="{{activationCode}}">                                        
-            </plutonium-logon-widget>
-            <plutonium-passwordreset-widget 
-                id="passwordResetWidget"
-                password-reset-url="{{apiUrl}}/reset">
-            </plutonium-passwordreset-widget>
-            <plutonium-forgottenpassword-widget 
-                id="forgottenPasswordWidget"
-                password-reset-url="{{apiUrl}}/reset">
-            </plutonium-forgottenpassword-widget>
-            <iron-ajax 
-                id="sessionAjax" 
-                url="[[apiUrl]]/authentication/session?token=[[token]]" 
-                last-response="{{session}}" auto>
-            </iron-ajax>
-
             <!-- Main content -->
             <app-header-layout has-scrolling-region id="headerLayout">
 
-                <app-header condenses fixed shadow effects="waterfall resize-title fade-background parallax-background" class="layout horizontal">
+                <app-header fixed shadow effects="waterfall" class="layout horizontal">
                     <app-toolbar primary>
                         <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
-                        <div class="flex" >
-                            <h4 condensed-title>[[applicationTitle]]</h4>
-                        </div>
-
-                        <div hidden="[[!session]]">
-                            <paper-button on-tap="showUserNavigation">
-                                <iron-icon icon="account-circle"></iron-icon>
-                                <label title>{{session.userName}}</label>
-                            </paper-button>
-                            <iron-dropdown id="userNavigation" horizontal-align="right" vertical-align="top">
-                                <paper-menu attr-for-selected="data-route" selected="[[route]]" class="dropdown-content">
-                                    <a data-route="profile" href="/profile-view">
-                                        <iron-icon icon="account-circle"></iron-icon>
-                                        <span id="profileMenuTitle">Profile</span>
-                                    </a>
-                                    <a data-route="signout" href="#" on-tap="onLogout">
-                                        <iron-icon icon="markunread-mailbox"></iron-icon>
-                                        <span id="logoutButtonLabel">Logout</span>
-                                    </a>
-                                </paper-menu>
-                            </iron-dropdown>
-                        </div>
-                    </app-toolbar>
-                    <app-toolbar>
-                        <iron-pages title selected="[[page]]" attr-for-selected="data-route"  attr-for-selected="name" role="navigation">
-                            <h1 data-route="share-view" class="app-name focus-target" tabindex="-1">
-                                <span>[[applicationTitle]]</span>
-                                <span>/</span>
+                        <!--                        <div class="flex" >
+                                                    <h4 condensed-title>[[applicationTitle]]</h4>
+                                                </div>-->
+                        <iron-pages class="flex" selected="[[page]]" attr-for-selected="data-route"  attr-for-selected="name" role="navigation">
+                            <h1 title data-route="share-view" class="app-name focus-target" tabindex="-1">
+                                <!--                                <span>[[applicationTitle]]</span>
+                                                                <span>/</span>-->
                                 <span id="shareContentViewTitleLabel" class="page-title">Share content</span>
                             </h1>
-                            <h1 data-route="content-view" class="app-name focus-target" tabindex="-1">
-                                <span>[[applicationTitle]]</span>
-                                <span>/</span>
+                            <h1 title data-route="content-view" class="app-name focus-target" tabindex="-1">
+                                <!--                                <span>[[applicationTitle]]</span>
+                                                                <span>/</span>-->
                                 <span id="contentTreeViewTitleLabel" class="page-title">Contents</span>
                             </h1>
-                            <h1 data-route="mailbox-view" class="app-name focus-target" tabindex="-1">
-                                <span>[[applicationTitle]]</span>
-                                <span>/</span>
+                            <h1 title data-route="mailbox-view" class="app-name focus-target" tabindex="-1">
+                                <!--                                <span>[[applicationTitle]]</span>
+                                                                <span>/</span>-->
                                 <span id="mailBoxViewTitleLabel" class="page-title">Mailbox</span>
                             </h1>
-                            <h1 data-route="network-view" class="app-name focus-target" tabindex="-1">
-                                <span>[[applicationTitle]]</span>
-                                <span>/</span>
+                            <h1 title data-route="network-view" class="app-name focus-target" tabindex="-1">
+                                <!--                                <span>[[applicationTitle]]</span>
+                                                                <span>/</span>-->
                                 <span id="networkViewTitleLabel" class="page-title">Network</span>
                             </h1>
-                            <h1 data-route="about-view" class="app-name focus-target" tabindex="-1">
-                                <span id="mainTitle">[[applicationTitle]]</span>
-                                <span>/</span>
+                            <h1 title data-route="about-view" class="app-name focus-target" tabindex="-1">
+                                <!--                                <span id="mainTitle">[[applicationTitle]]</span>
+                                                                <span>/</span>-->
                                 <span id="aboutViewTitleLabel" class="page-title">About</span>
                             </h1>
-                            <h1 data-route="profile-view" class="app-name focus-target" tabindex="-1">
-                                <span id="mainTitle">[[applicationTitle]]</span>
-                                <span>/</span>
+                            <h1 title data-route="profile-view" class="app-name focus-target" tabindex="-1">
+                                <!--                                <span id="mainTitle">[[applicationTitle]]</span>
+                                                                <span>/</span>-->
                                 <span id="profileViewTitleLabel" class="page-title">Profile</span>
                             </h1>
                         </iron-pages>
+
+                        <plutonium-avatar-button hidden="[[!session]]" user="[[user]]">
+                            <!--                            <a href="/profile-view" tabindex="-1" class="menu">
+                                                            <paper-item raised>Profile</paper-item>
+                                                        </a>
+                                                        <a href="/help-page" tabindex="-1" class="menu">
+                                                            <paper-item raised>Help</paper-item>
+                                                        </a>
+                                                        <a href="/splash-page" tabindex="-1" class="menu">
+                                                            <paper-item raised>Logout</paper-item>
+                                                        </a>-->
+
+                            <a href="/profile-view" class="menu">
+                                <paper-item class="menu">
+                                    <iron-icon icon="account-circle" item-icon></iron-icon>
+                                    <span id="profileMenuTitle">Profile</span>
+                                </paper-item>
+                            </a>
+                            <a href="#" on-tap="onLogout" class="menu">
+                                <paper-item class="menu">
+                                    <iron-icon icon="markunread-mailbox" item-icon></iron-icon>
+                                    <span id="logoutButtonLabel">Logout</span>
+                                </paper-item>
+                            </a>
+                        </plutonium-avatar-button>
+                        <!--                        <div hidden="[[!session]]">
+                                                    <paper-button on-tap="showUserNavigation">
+                                                        <iron-icon icon="account-circle"></iron-icon>
+                                                        <label title>{{session.userName}}</label>
+                                                    </paper-button>
+                                                    
+                                                    
+                                                    <iron-dropdown id="userNavigation" horizontal-align="right" vertical-align="top">
+                                                        <paper-menu attr-for-selected="data-route" selected="[[route]]" class="dropdown-content">
+                                                            <a data-route="profile" href="/profile-view">
+                                                                <iron-icon icon="account-circle"></iron-icon>
+                                                                <span id="profileMenuTitle">Profile</span>
+                                                            </a>
+                                                            <a data-route="signout" href="#" on-tap="onLogout">
+                                                                <iron-icon icon="markunread-mailbox"></iron-icon>
+                                                                <span id="logoutButtonLabel">Logout</span>
+                                                            </a>
+                                                        </paper-menu>
+                                                    </iron-dropdown>
+                                                </div>-->
                     </app-toolbar>
+                    <!--                    <app-toolbar>
+                                            <iron-pages title selected="[[page]]" attr-for-selected="data-route"  attr-for-selected="name" role="navigation">
+                                                <h1 data-route="share-view" class="app-name focus-target" tabindex="-1">
+                                                    <span>[[applicationTitle]]</span>
+                                                    <span>/</span>
+                                                    <span id="shareContentViewTitleLabel" class="page-title">Share content</span>
+                                                </h1>
+                                                <h1 data-route="content-view" class="app-name focus-target" tabindex="-1">
+                                                    <span>[[applicationTitle]]</span>
+                                                    <span>/</span>
+                                                    <span id="contentTreeViewTitleLabel" class="page-title">Contents</span>
+                                                </h1>
+                                                <h1 data-route="mailbox-view" class="app-name focus-target" tabindex="-1">
+                                                    <span>[[applicationTitle]]</span>
+                                                    <span>/</span>
+                                                    <span id="mailBoxViewTitleLabel" class="page-title">Mailbox</span>
+                                                </h1>
+                                                <h1 data-route="network-view" class="app-name focus-target" tabindex="-1">
+                                                    <span>[[applicationTitle]]</span>
+                                                    <span>/</span>
+                                                    <span id="networkViewTitleLabel" class="page-title">Network</span>
+                                                </h1>
+                                                <h1 data-route="about-view" class="app-name focus-target" tabindex="-1">
+                                                    <span id="mainTitle">[[applicationTitle]]</span>
+                                                    <span>/</span>
+                                                    <span id="aboutViewTitleLabel" class="page-title">About</span>
+                                                </h1>
+                                                <h1 data-route="profile-view" class="app-name focus-target" tabindex="-1">
+                                                    <span id="mainTitle">[[applicationTitle]]</span>
+                                                    <span>/</span>
+                                                    <span id="profileViewTitleLabel" class="page-title">Profile</span>
+                                                </h1>
+                                            </iron-pages>
+                                        </app-toolbar>-->
 
                     <!--Application name--> 
                     <app-toolbar id="bottomToolbar" hidden="[[!session.powerUser]]">
@@ -453,12 +483,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                     </app-toolbar>
                 </app-header>
 
-                Subscription ID: {{subscriptionId}}
+                <!--Subscription ID: {{subscriptionId}}-->
 
                 <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
-                    <topflavon-about-view name="about-view"></topflavon-about-view>
+                    <mlm-about-view name="about-view"></mlm-about-view>
 
-                    <topflavon-share-view 
+                    <mlm-share-view 
                         id="sharePage"
                         name="share-view" 
                         items="{{contacts}}"
@@ -467,22 +497,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         selected-item-ids="{{recipients}}"
                         content-model="{{editedContentModel}}" 
                         selected-meta-action="{{selectedMetaAction}}">
-                    </topflavon-share-view>
+                    </mlm-share-view>
 
-                    <topflavon-profile-view 
+                    <mlm-profile-view 
                         name="profile-view" 
                         api-url="[[apiUrl]]" 
                         account-id="[[session.token]]">
-                    </topflavon-profile-view>
+                    </mlm-profile-view>
 
-                    <topflavon-mailbox-view 
+                    <mlm-mailbox-view 
                         name="mailbox-view" 
                         api-url="[[apiUrl]]" 
                         account-id="[[session.token]]" 
                         selected-mail-box-folder="{{selectedMailboxFolder}}">
-                    </topflavon-mailbox-view>
+                    </mlm-mailbox-view>
 
-                    <topflavon-network-view 
+                    <mlm-network-view 
                         id="networkPage"
                         name="network-view" 
                         api-url="[[apiUrl]]" 
@@ -491,9 +521,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         selected-name="{{selectedName}}"
                         selected-role="{{selectedRole}}"
                         selected-account-id="{{memberSubrouteData.memberId}}">
-                    </topflavon-network-view>
+                    </mlm-network-view>
 
-                    <topflavon-content-view 
+                    <mlm-content-view 
                         name="content-view" 
                         api-url="[[apiUrl]]" 
                         account-id="[[session.token]]" 
@@ -501,7 +531,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         owner-id="[[session.token]]"
                         selected-article-id="{{contentSubrouteData.contentId}}"
                         selected-content-folder="{{selectedContentFolder}}">
-                    </topflavon-content-view>
+                    </mlm-content-view>
 
                 </iron-pages>
             </app-header-layout>
@@ -532,6 +562,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 PlutoniumBehaviors.AuthorizationBehavior
             ],
             properties: {
+                user: {
+                    type: Object,
+                    computed: 'convertSessionToUser(session)'
+                },
                 applicationTitle: {
                     type: String,
                     value: 'TopFlavon'
@@ -539,6 +573,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 apiUrl: {
                     type: String,
 //                    value: "http://185.51.67.30:8080/topflavon-backend"
+//                    value: "https://185.51.67.30:8080/topflavon-backend"
                     value: "http://localhost:8084/topflavon-backend"
 //                    value: "https://localhost:8443/topflavon-backend"
                 },
@@ -786,6 +821,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             },
             stringify: function (obj) {
                 return JSON.stringify(obj);
+            },
+            convertSessionToUser: function (session) {
+                if (session !== undefined && session !== null) {
+                    return {
+                        displayName: session.userName,
+                        email: null
+                    };
+                } else
+                    return {
+                        displayName: 'Anonymous',
+                        email: null
+                    };
             }
         });
 

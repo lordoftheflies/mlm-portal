@@ -2,11 +2,11 @@
     "entrypoint": "index.html",
     "shell": "src/my-app.html",
     "fragments": [
-        "src/topflavon-share-view.html",
-        "src/topflavon-content-view.html",
-        "src/topflavon-mailbox-view.html",
-        "src/topflavon-about-view.html",
-        "src/topflavon-profile-view.html",
-        "src/topflavon-network-view.html"
+        "bower_components/mlm-elements/mlm-share-view.html",
+        "bower_components/mlm-elements/mlm-profile-view.html",
+        "bower_components/mlm-elements/mlm-mailbox-view.html",
+        "bower_components/mlm-elements/mlm-about-view.html",
+        "bower_components/mlm-elements/mlm-content-view.html",
+        "bower_components/mlm-elements/mlm-network-view.html"
     ]
 }
