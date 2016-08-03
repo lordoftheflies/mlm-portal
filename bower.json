@@ -42,11 +42,12 @@
     "paper-dialog": "^1.0.4",
     "iron-overlay-behavior": "^1.7.6",
     "file-upload": "^1.7.3",
-    "plutonium-field-recipient": "git@github.com:lordoftheflies/plutonium-field-recipient.git#^1.0.1",
+    "plutonium-field-recipient": "git@github.com:lordoftheflies/plutonium-field-recipient.git",
     "paper-listbox": "^1.1.2",
     "paper-checkbox": "^1.2.0",
     "paper-chip": "^1.0.0",
-    "polymer-cookie": "^1.1.1"
+    "polymer-cookie": "^1.1.1",
+    "mlm-elements": "lordoftheflies/mlm-elements"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"
