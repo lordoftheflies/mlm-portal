@@ -59,7 +59,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <template>
 
-        <style include="iron-flex iron-alignment topflavon-shared-styles">
+        <style include="iron-flex iron-alignment mlm-shared-styles">
 
             .debug {
                 display: none;
@@ -310,7 +310,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <app-drawer>
                 <app-toolbar></app-toolbar>
                 <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-                    <a id="shareMainMenuTitle" hidden="[[!session.powerUser]]" name="share-view" href="/share-view">Share</a>
+                    <!--<a id="shareMainMenuTitle" hidden="[[!session.powerUser]]" name="share-view" href="/share-view">Share</a>-->
                     <a id="contentMainMenuTitle" name="content-view" href="/content-view/ROOT">Content</a>
                     <a id="networkMainMenuTitle" hidden="[[!session.powerUser]]" name="network-view" href="/network-view/[[session.token]]">Network</a>
                     <a id="mailBoxMainMenuTitle" hidden="[[!session.powerUser]]" name="mailbox-view" href="/mailbox-view/[[session.token]]">Mailbox</a>
@@ -324,41 +324,41 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <app-header fixed shadow effects="waterfall" class="layout horizontal">
                     <app-toolbar primary>
                         <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
-                        <!--                        <div class="flex" >
-                                                    <h4 condensed-title>[[applicationTitle]]</h4>
-                                                </div>-->
-                        <iron-pages class="flex" selected="[[page]]" attr-for-selected="data-route"  attr-for-selected="name" role="navigation">
+                                                <div class="flex" >
+                                                    <h1 title>TopFlavon</h1>
+                                                </div>
+<!--                        <iron-pages class="flex" selected="[[page]]" attr-for-selected="data-route"  attr-for-selected="name" role="navigation">
                             <h1 title data-route="share-view" class="app-name focus-target" tabindex="-1">
-                                <!--                                <span>[[applicationTitle]]</span>
-                                                                <span>/</span>-->
+                                                                <span>[[applicationTitle]]</span>
+                                                                <span>/</span>
                                 <span id="shareContentViewTitleLabel" class="page-title">Share content</span>
                             </h1>
                             <h1 title data-route="content-view" class="app-name focus-target" tabindex="-1">
-                                <!--                                <span>[[applicationTitle]]</span>
-                                                                <span>/</span>-->
+                                                                <span>[[applicationTitle]]</span>
+                                                                <span>/</span>
                                 <span id="contentTreeViewTitleLabel" class="page-title">Contents</span>
                             </h1>
                             <h1 title data-route="mailbox-view" class="app-name focus-target" tabindex="-1">
-                                <!--                                <span>[[applicationTitle]]</span>
-                                                                <span>/</span>-->
+                                                                <span>[[applicationTitle]]</span>
+                                                                <span>/</span>
                                 <span id="mailBoxViewTitleLabel" class="page-title">Mailbox</span>
                             </h1>
                             <h1 title data-route="network-view" class="app-name focus-target" tabindex="-1">
-                                <!--                                <span>[[applicationTitle]]</span>
-                                                                <span>/</span>-->
+                                                                <span>[[applicationTitle]]</span>
+                                                                <span>/</span>
                                 <span id="networkViewTitleLabel" class="page-title">Network</span>
                             </h1>
                             <h1 title data-route="about-view" class="app-name focus-target" tabindex="-1">
-                                <!--                                <span id="mainTitle">[[applicationTitle]]</span>
-                                                                <span>/</span>-->
+                                                                <span id="mainTitle">[[applicationTitle]]</span>
+                                                                <span>/</span>
                                 <span id="aboutViewTitleLabel" class="page-title">About</span>
                             </h1>
                             <h1 title data-route="profile-view" class="app-name focus-target" tabindex="-1">
-                                <!--                                <span id="mainTitle">[[applicationTitle]]</span>
-                                                                <span>/</span>-->
+                                                                <span id="mainTitle">[[applicationTitle]]</span>
+                                                                <span>/</span>
                                 <span id="profileViewTitleLabel" class="page-title">Profile</span>
                             </h1>
-                        </iron-pages>
+                        </iron-pages>-->
 
                         <plutonium-avatar-button hidden="[[!session]]" user="[[user]]">
                             <!--                            <a href="/profile-view" tabindex="-1" class="menu">
@@ -469,13 +469,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                                     </template>
                                 </paper-tabs>
                                 <!--<paper-icon-button icon="arrow-upward" on-tap="onNavigateUp"></paper-icon-button>-->
-                                <paper-icon-button icon="add-circle" on-tap="onOpenCreateMember"></paper-icon-button>
+<!--                                <paper-icon-button icon="add-circle" on-tap="onOpenCreateMember"></paper-icon-button>
                                 <paper-icon-button icon="remove-circle" on-tap="onOpenDeleteMember"></paper-icon-button>
                                 <paper-icon-button icon="send" on-tap="onSendTo"></paper-icon-button>
                                 <template is="dom-if" if="[[!isMe(memberSubrouteData.memberId, session.token)]]">
                                     <paper-icon-button icon="star" hidden="[[!isUserIndicator]]" on-tap="onOpenPromoteMember"></paper-icon-button>
                                     <paper-icon-button icon="star-border" hidden="[[!isAdminIndicator]]" on-tap="onOpenDemoteMember"></paper-icon-button>
-                                </template>
+                                </template>-->
                             </div>
 
                         </iron-pages>
@@ -488,6 +488,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
                     <mlm-about-view name="about-view"></mlm-about-view>
 
+                    <mlm-send-view 
+                        id="sendPage"
+                        name="send-view" 
+                        items="{{contacts}}"
+                        api-url="[[apiUrl]]" 
+                        account-id="[[session.token]]" 
+                        selected-item-ids="{{recipients}}"
+                        content-model="{{editedContentModel}}" 
+                        selected-meta-action="{{selectedMetaAction}}">
+                    </mlm-send-view>
                     <mlm-share-view 
                         id="sharePage"
                         name="share-view" 
@@ -642,7 +652,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 'article-image-edit': 'onOpenArticleImageEditor',
                 'article-link-edit': 'onOpenArticleLinkEditor',
                 'modify-model': 'onModifyModel',
-                'edit-content': 'onEditArticle'
+                'edit-content': 'onEditArticle',
+                
+                'new-message': 'onNavigateToMessage',
+                'new-content': 'onNavigateToShare'
             },
             observers: [
                 'observerAuthority(session.powerUser)'
@@ -822,6 +835,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             stringify: function (obj) {
                 return JSON.stringify(obj);
             },
+            
+            onNavigateToMessage: function() {
+              this.set('route.path', '/send-view');  
+            },
+            onNavigateToShare: function() {
+              this.set('route.path', '/share-view');  
+            },
+            
             convertSessionToUser: function (session) {
                 if (session !== undefined && session !== null) {
                     return {
