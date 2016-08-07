@@ -1,6 +1,6 @@
 {
     "entrypoint": "index.html",
-    "shell": "src/my-app.html",
+    "shell": "bower_components/mlm-elements/mlm-app.html",
     "fragments": [
         "bower_components/mlm-elements/mlm-share-view.html",
         "bower_components/mlm-elements/mlm-profile-view.html",
