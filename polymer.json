@@ -3,6 +3,7 @@
     "shell": "bower_components/mlm-elements/mlm-app.html",
     "fragments": [
         "bower_components/mlm-elements/mlm-share-view.html",
+        "bower_components/mlm-elements/mlm-send-view.html",
         "bower_components/mlm-elements/mlm-profile-view.html",
         "bower_components/mlm-elements/mlm-mailbox-view.html",
         "bower_components/mlm-elements/mlm-about-view.html",
