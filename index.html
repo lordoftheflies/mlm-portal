@@ -92,7 +92,8 @@
 //                            .catch(function (error) {
 //                                console.log(':^(', error);
 //                            });
-                    navigator.serviceWorker.register('/topflavon/notification-worker.js')
+//                    navigator.serviceWorker.register('/topflavon/notification-worker.js')
+                    navigator.serviceWorker.register('/notification-worker.js')
                             .then(function (reg) {
                                 console.log(':^)', reg);
                                 var pushManager = reg.pushManager;
@@ -104,7 +105,7 @@
 
                                             var endpointUrl = sub.endpoint.split('/');
                                             var subscriptionId = endpointUrl[endpointUrl.length - 1];
-                                            document.querySelector('my-app#app').subscriptionId = subscriptionId;
+                                            document.querySelector('mlm-app#app').subscriptionId = subscriptionId;
                                             console.log("SUBSCRIPTION ID: " + subscriptionId);
                                         })
                                         .catch(function (error) {
