@@ -7,7 +7,8 @@
  * Code distributed by Google as part of the polymer project is also
  * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
  */
-var hostName = 'http://localhost:8084/topflavon-backend';
+//var hostName = 'http://localhost:8084/topflavon-backend';
+var hostName = 'https://cherubits.hu:8443';
 //var hostName = 'https://localhost:8443/topflavon-backend';
 //var hostName = 'http://185.51.67.30:8080/topflavon-backend';
 //var hostName = 'https://185.51.67.30:8443/topflavon-backend';
