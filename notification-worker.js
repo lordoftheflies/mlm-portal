@@ -8,11 +8,12 @@
  * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
  */
 //var hostName = 'http://localhost:8084/topflavon-backend';
-var hostName = 'https://cherubits.hu:8443';
+var backendUrl = 'https://cherubits.hu:8443';
+var baseUrl = 'https://cherubits.hu/topflavon';
 //var hostName = 'https://localhost:8443/topflavon-backend';
 //var hostName = 'http://185.51.67.30:8080/topflavon-backend';
 //var hostName = 'https://185.51.67.30:8443/topflavon-backend';
-console.info('Start notification service-worker ...', hostName);
+console.info('Start notification service-worker ...', backendUrl);
 
 console.log('Service worker for notifications started.', self);
 self.addEventListener('install', function (event) {
@@ -34,7 +35,7 @@ self.addEventListener('push', function (event, a, b, c) {
             .then(function (sub) {
                 var endpointUrl = sub.endpoint.split('/');
                 var subscriptionId = endpointUrl[endpointUrl.length - 1];
-                var notificationBackendUrl = hostName + '/mailbox/notifications?subscriptionId=' + encodeURIComponent(subscriptionId);
+                var notificationBackendUrl = backendUrl + '/mailbox/notifications?subscriptionId=' + encodeURIComponent(subscriptionId);
                 console.log('Fetch notifications from ' + notificationBackendUrl);
                 fetch(notificationBackendUrl)
                         .then(function (response) {
@@ -49,7 +50,7 @@ self.addEventListener('push', function (event, a, b, c) {
                                 console.log('Notify user', payload);
                                 self.registration.showNotification(currentValue.fromName + ": " + currentValue.subject, {
                                     body: currentValue.message,
-                                    icon: '/images/favicon-64x64.png',
+                                    icon: baseUrl + '/images/favicon-64x64.png',
                                     tag: 'topflavon-notification-' + currentValue.id
                                 });
                             }, self);
@@ -68,7 +69,7 @@ self.addEventListener('push', function (event, a, b, c) {
 self.addEventListener('notificationclick', function (event) {
     console.log('Notification click: tag ', event.notification.tag);
     event.notification.close();
-    var url = '/content-view/ROOT';
+    var url = baseUrl + '/content-view/ROOT';
     event.waitUntil(clients.matchAll({
         type: 'window'
     })
