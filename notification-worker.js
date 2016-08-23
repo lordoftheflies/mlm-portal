@@ -8,7 +8,7 @@
  * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
  */
 //var hostName = 'http://localhost:8084/topflavon-backend';
-var backendUrl = 'https://topflavon.net:8443';
+var backendUrl = 'https://www.topflavon.net:8443';
 var baseUrl = 'https://www.topflavon.net';
 //var hostName = 'https://localhost:8443/topflavon-backend';
 //var hostName = 'http://185.51.67.30:8080/topflavon-backend';
